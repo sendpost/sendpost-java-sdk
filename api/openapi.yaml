@@ -1,0 +1,4736 @@
+openapi: 3.1.0
+info:
+  description: "# Introduction\n\nSendPost provides email API and SMTP relay which\
+    \ can be used not just to send & measure but also alert & optimised email sending.\n\
+    \nYou can use SendPost to:\n\n* Send personalised emails to multiple recipients\
+    \ using email API \n\n* Track opens and clicks\n\n* Analyse statistics around\
+    \ open, clicks, bounce, unsubscribe and spam \n\n\nAt and advanced level you can\
+    \ use it to:\n\n* Manage multiple sub-accounts which may map to your promotional\
+    \ or transactional sending, multiple product lines or multiple customers \n\n\
+    * Classify your emails using groups for better analysis\n\n* Analyse and fix email\
+    \ sending at sub-account level, IP Pool level or group level\n\n* Have automated\
+    \ alerts to notify disruptions regarding email sending\n\n* Manage different dedicated\
+    \ IP Pools so to better control your email sending\n\n* Automatically know when\
+    \ IP or domain is blacklisted or sender score is down\n\n* Leverage pro deliverability\
+    \ tools to get significantly better email deliverability & inboxing\n\n\n[<img\
+    \ src=\"https://run.pstmn.io/button.svg\" alt=\"Run In Postman\" style=\"width:\
+    \ 128px; height: 32px;\">](https://god.gw.postman.com/run-collection/33476323-e6dbd27f-c4a7-4d49-bcac-94b0611b938b?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D33476323-e6dbd27f-c4a7-4d49-bcac-94b0611b938b%26entityType%3Dcollection%26workspaceId%3D6b1e4f65-96a9-4136-9512-6266c852517e)\
+    \ \n\n# Overview\n\n## REST API\n\nSendPost API is built on REST API principles.\
+    \ Authenticated users can interact with any of the API endpoints to perform:\n\
+    \n* **GET**- to get a resource\n\n* **POST** - to create a resource\n\n* **PUT**\
+    \ - to update an existing resource\n\n* **DELETE** - to delete a resource\n\n\n\
+    The API endpoint for all API calls is:\n<code>https://api.sendpost.io/api/v1</code>\n\
+    \n\nSome conventions that have been followed in the API design overall are following:\n\
+    \n\n* All resources have either <code>/api/v1/subaccount</code> or <code>/api/v1/account</code>\
+    \ in their API call resource path based on who is authorised for the resource.\
+    \ All API calls with path <code>/api/v1/subaccount</code> use <code>X-SubAccount-ApiKey</code>\
+    \ in their request header. Likewise all API calls with path <code>/api/v1/account</code>\
+    \ use <code>X-Account-ApiKey</code> in their request header.\n\n* All resource\
+    \ endpoints end with singular name and not plural. So we have <code>domain</code>\
+    \ instead of domains for domain resource endpoint. Likewise we have <code>sender</code>\
+    \ instead of senders for sender resource endpoint.\n\n* Body submitted for POST\
+    \ / PUT API calls as well as JSON response from SendPost API follow camelcase\
+    \ convention\n\n* All timestamps returned in response (created or submittedAt\
+    \ response fields) are UNIX nano epoch timestamp.\n\n\n<aside class=\"success\"\
+    >\nAll resources have either <code>/api/v1/subaccount</code> or <code>/api/v1/account</code>\
+    \ in their API call resource path based on who is authorised for the resource.\
+    \ All API calls with path <code>/api/v1/subaccount</code> use <code>X-SubAccount-ApiKey</code>\
+    \ in their request header. Likewise all API calls with path <code>/api/v1/account</code>\
+    \ use <code>X-Account-ApiKey</code> in their request header.\n</aside>\n\n\nSendPost\
+    \ uses conventional HTTP response codes to indicate the success or failure of\
+    \ an API request. \n\n\n* Codes in the <code>2xx</code> range indicate success.\
+    \ \n\n* Codes in the <code>4xx</code> range indicate an error owing due to unauthorize\
+    \ access, incorrect request parameters or body etc.\n\n* Code in the <code>5xx</code>\
+    \ range indicate an eror with SendPost's servers ( internal service issue or maintenance\
+    \ )\n\n\n<aside class=\"info\">\nSendPost all responses return <code>created</code>\
+    \ in UNIX nano epoch timestamp. \n</aside>\n\n\n## Authentication\n\nSendPost\
+    \ uses API keys for authentication. You can register a new SendPost API key at\
+    \ our [developer portal](https://app.sendpost.io/register).\n\n\nSendPost expects\
+    \ the API key to be included in all API requests to the server in a header that\
+    \ looks like the following:\n\n\n`X-SubAccount-ApiKey: AHEZEP8192SEGH`\n\n\nThis\
+    \ API key is used for all Sub-Account level operations such as:\n\n* Sending emails\n\
+    \n* Retrieving stats regarding open, click, bounce, unsubscribe and spam\n\n*\
+    \ Uploading suppressions list\n\n* Verifying sending domains\nand more\n\nIn addition\
+    \ to <code>X-SubAccount-ApiKey</code> you also have another API Key <code>X-Account-APIKey</code>\
+    \ which is used for Account level operations such as :\n\n* Creating and managing\
+    \ sub-accounts\n\n* Allocating IPs for your account\n\n* Getting overall billing\
+    \ and usage information\n\n* Email List validation\n\n* Creating and managing\
+    \ alerts\nand more\n\n\n<aside class=\"notice\">\nYou must look at individual\
+    \ API reference page to look at whether <code>X-SubAccount-ApiKey</code> is required\
+    \ or <code>X-Account-ApiKey</code>\n</aside>\n\n\nIn case an incorrect API Key\
+    \ header is specified or if it is missed you will get HTTP Response 401 ( Unauthorized\
+    \ ) response from SendPost.\n\n\n## HTTP Response Headers\n\n\nCode          \
+    \ | Reason                 | Details\n---------------| -----------------------|\
+    \ -----------\n200            | Success                | Everything went well\n\
+    401            | Unauthorized           | Incorrect or missing API header either\
+    \ <code>X-SubAccount-ApiKey</code> or <code>X-Account-ApiKey</code>\n403     \
+    \       | Forbidden              | Typically sent when resource with same name\
+    \ or details already exist\n406            | Missing resource id    | Resource\
+    \ id specified is either missing or doesn't exist\n422            | Unprocessable\
+    \ entity   | Request body is not in proper format\n500            | Internal server\
+    \ error  | Some error happened at SendPost while processing API request\n503 \
+    \           | Service Unavailable    | SendPost is offline for maintenance. Please\
+    \ try again later\n\n# API SDKs\n\nWe have native SendPost SDKs in the following\
+    \ programming languages. You can integrate with them or create your own SDK with\
+    \ our API specification. In case you need any assistance with respect to API then\
+    \ do reachout to our team from website chat or email us at **hello@sendpost.io**\n\
+    \n\n* [PHP](https://github.com/sendpost/sendpost_php_sdk)\n\n* [Javascript](https://github.com/sendpost/sendpost_javascript_sdk)\n\
+    \n* [Ruby](https://github.com/sendpost/sendpost_ruby_sdk)\n\n* [Python](https://github.com/sendpost/sendpost_python_sdk)\n\
+    \n* [Golang](https://github.com/sendpost/sendpost_go_sdk)\n\n\n# API Reference\n\
+    \nSendX REST API can be broken down into two major sub-sections:\n\n\n* Sub-Account\n\
+    \n* Account \n\n\nSub-Account API operations enable common email sending API use-cases\
+    \ like sending bulk email, adding new domains or senders for email sending programmatically,\
+    \ retrieving stats, adding suppressions etc. All Sub-Account API operations need\
+    \ to pass <code>X-SubAccount-ApiKey</code> header with every API call.\n\n\nThe\
+    \ Account API operations allow users to manage multiple sub-accounts and manage\
+    \ IPs. A single parent SendPost account can have 100's of sub-accounts. You may\
+    \ want to create sub-accounts for different products your company is running or\
+    \ to segregate types of emails or for managing email sending across multiple customers\
+    \ of yours.\n\n\n# SMTP Reference\n\nSimple Mail Transfer Protocol (SMTP) is a\
+    \ quick and easy way to send email from one server to another. SendPost provides\
+    \ an SMTP service that allows you to deliver your email via our servers instead\
+    \ of your own client or server. \nThis means you can count on SendPost's delivery\
+    \ at scale for your SMTP needs. \n\n\n## Integrating SMTP \n\n\n1. Get the SMTP\
+    \ `username` and `password` from your SendPost account.\n\n2. Set the server host\
+    \ in your email client or application to `smtp.sendpost.io`. This setting is sometimes\
+    \ referred to as the external SMTP server or the SMTP relay.\n\n3. Set the `username`\
+    \ and `password`.\n\n4. Set the port to `587` (or as specified below).\n\n## SMTP\
+    \ Ports\n\n\n- For an unencrypted or a TLS connection, use port `25`, `2525` or\
+    \ `587`.\n\n- For a SSL connection, use port `465`\n\n- Check your firewall and\
+    \ network to ensure they're not blocking any of our SMTP Endpoints.\n\n\nSendPost\
+    \ supports STARTTLS for establishing a TLS-encrypted connection. STARTTLS is a\
+    \ means of upgrading an unencrypted connection to an encrypted connection. There\
+    \ are versions of STARTTLS for a variety of protocols; the SMTP version is defined\
+    \ in [RFC 3207](https://www.ietf.org/rfc/rfc3207.txt).\n\n\nTo set up a STARTTLS\
+    \ connection, the SMTP client connects to the SendPost SMTP endpoint `smtp.sendpost.io`\
+    \ on port 25, 587, or 2525, issues an EHLO command, and waits for the server to\
+    \ announce that it supports the STARTTLS SMTP extension. The client then issues\
+    \ the STARTTLS command, initiating TLS negotiation. When negotiation is complete,\
+    \ the client issues an EHLO command over the new encrypted connection, and the\
+    \ SMTP session proceeds normally.\n\n\n<aside class=\"success\">\nIf you are unsure\
+    \ which port to use, a TLS connection on port 587 is typically recommended.\n\
+    </aside>\n\n\n## Sending email from your application\n\n\n```javascript\n\"use\
+    \ strict\";\n\nconst nodemailer = require(\"nodemailer\");\n\nasync function main()\
+    \ {\n// create reusable transporter object using the default SMTP transport\n\
+    let transporter = nodemailer.createTransport({\nhost: \"smtp.sendpost.io\",\n\
+    port: 587,\nsecure: false, // true for 465, false for other ports\nauth: {\nuser:\
+    \  \"<username>\" , // generated ethereal user\npass: \"<password>\", // generated\
+    \ ethereal password\n},\nrequireTLS: true,\ndebug: true,\nlogger: true,\n});\n\
+    \n// send mail with defined transport object\ntry {\nlet info = await transporter.sendMail({\n\
+    from: 'erlich@piedpiper.com',\nto: 'gilfoyle@piedpiper.com',\nsubject: 'Test Email\
+    \ Subject',\nhtml: '<h1>Hello Geeks!!!</h1>',\n});\nconsole.log(\"Message sent:\
+    \ %s\", info.messageId);\n} catch (e) {\nconsole.log(e)\n}\n}\n\nmain().catch(console.error);\n\
+    ```\n\nFor PHP\n\n\n```php\n<?php\n// Import PHPMailer classes into the global\
+    \ namespace\nuse PHPMailer\\PHPMailer\\PHPMailer;\nuse PHPMailer\\PHPMailer\\\
+    SMTP;\nuse PHPMailer\\PHPMailer\\Exception;\n\n// Load Composer's autoloader\n\
+    require 'vendor/autoload.php';\n\n$mail = new PHPMailer(true);\n\n// Settings\n\
+    try {\n$mail->SMTPDebug = SMTP::DEBUG_CONNECTION;                  // Enable verbose\
+    \ debug output\n$mail->isSMTP();                                            //\
+    \ Send using SMTP\n$mail->Host       = 'smtp.sendpost.io';                   \
+    \  // Set the SMTP server to send through\n$mail->SMTPAuth   = true;         \
+    \                          // Enable SMTP authentication\n$mail->Username   =\
+    \ '<username>';                           // SMTP username\n$mail->Password  \
+    \ = '<password>';                           // SMTP password\n$mail->SMTPSecure\
+    \ = PHPMailer::ENCRYPTION_STARTTLS;         // Enable implicit TLS encryption\n\
+    $mail->Port       = 587;                                    // TCP port to connect\
+    \ to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`\n\n\
+    //Recipients\n$mail->setFrom('erlich@piedpiper.com', 'Erlich');\n$mail->addAddress('gilfoyle@piedpiper.com',\
+    \ 'Gilfoyle');\n\n//Content\n$mail->isHTML(true);                            \
+    \      //Set email format to HTML\n$mail->Subject = 'Here is the subject';\n$mail->Body\
+    \    = 'This is the HTML message body <b>in bold!</b>';\n$mail->AltBody = 'This\
+    \ is the body in plain text for non-HTML mail clients';\n\n$mail->send();\necho\
+    \ 'Message has been sent';\n\n} catch (Exception $e) {\necho \"Message could not\
+    \ be sent. Mailer Error: {$mail->ErrorInfo}\";\n}\n```\nFor Python\n```python\n\
+    #!/usr/bin/python3\n\nimport sys\nimport os\nimport re\n\nfrom smtplib import\
+    \ SMTP\nimport ssl\n\nfrom email.mime.text import MIMEText\n\nSMTPserver = 'smtp.sendpost.io'\n\
+    PORT = 587\nsender =     'erlich@piedpiper.com'\ndestination = ['gilfoyle@piedpiper.com']\n\
+    \nUSERNAME = \"<username>\"\nPASSWORD = \"<password>\"\n\n# typical values for\
+    \ text_subtype are plain, html, xml\ntext_subtype = 'plain'\n\ncontent=\"\"\"\\\
+    \nTest message\n\"\"\"\n\nsubject=\"Sent from Python\"\n\ntry:\nmsg = MIMEText(content,\
+    \ text_subtype)\nmsg['Subject']= subject\nmsg['From']   = sender\n\nconn = SMTP(SMTPserver,\
+    \ PORT)\nconn.ehlo()\ncontext = ssl.create_default_context()\nconn.starttls(context=context)\
+    \  # upgrade to tls\nconn.ehlo()\nconn.set_debuglevel(True)\nconn.login(USERNAME,\
+    \ PASSWORD)\n\ntry:\nresp = conn.sendmail(sender, destination, msg.as_string())\n\
+    print(\"Send Mail Response: \", resp)\nexcept Exception as e:\nprint(\"Send Email\
+    \ Error: \", e)\nfinally:\nconn.quit()\n\nexcept Exception as e:\nprint(\"Error:\"\
+    , e)\n```\nFor Golang\n```go\npackage main\n\nimport (\n\"fmt\"\n\"net/smtp\"\n\
+    \"os\"\n)\n\n// Sending Email Using Smtp in Golang\n\nfunc main() {\n\nusername\
+    \ := \"<username>\"\npassword := \"<password>\"\n\nfrom := \"erlich@piedpiper.com\"\
+    \ntoList := []string{\"gilfoyle@piedpiper.com\"}\nhost := \"smtp.sendpost.io\"\
+    \nport := \"587\" // recommended\n\n// This is the message to send in the mail\n\
+    msg := \"Hello geeks!!!\"\n\n// We can't send strings directly in mail,\n// strings\
+    \ need to be converted into slice bytes\nbody := []byte(msg)\n\n// PlainAuth uses\
+    \ the given username and password to\n// authenticate to host and act as identity.\n\
+    // Usually identity should be the empty string,\n// to act as username.\nauth\
+    \ := smtp.PlainAuth(\"\", username, password, host)\n\n// SendMail uses TLS connection\
+    \ to send the mail\n// The email is sent to all address in the toList,\n// the\
+    \ body should be of type bytes, not strings\n// This returns error if any occured.\n\
+    err := smtp.SendMail(host+\":\"+port, auth, from, toList, body)\n\n// handling\
+    \ the errors\nif err != nil {\nfmt.Println(err)\nos.Exit(1)\n}\n\nfmt.Println(\"\
+    Successfully sent mail to all user in toList\")\n}\n\n```\nFor Java\n```java\n\
+    // implementation 'com.sun.mail:javax.mail:1.6.2'\n\nimport java.util.Properties;\n\
+    \nimport javax.mail.Message;\nimport javax.mail.Session;\nimport javax.mail.Transport;\n\
+    import javax.mail.internet.InternetAddress;\nimport javax.mail.internet.MimeMessage;\n\
+    \npublic class SMTPConnect {\n\n// This address must be verified.\nstatic final\
+    \ String FROM = \"erlich@piedpiper.com\";\nstatic final String FROMNAME = \"Erlich\
+    \ Bachman\";\n\n// Replace recipient@example.com with a \"To\" address. If your\
+    \ account\n// is still in the sandbox, this address must be verified.\nstatic\
+    \ final String TO = \"gilfoyle@piedpiper.com\";\n\n// Replace smtp_username with\
+    \ your SendPost SMTP user name.\nstatic final String SMTP_USERNAME = \"<username>\"\
+    ;\n\n// Replace smtp_password with your SendPost SMTP password.\nstatic final\
+    \ String SMTP_PASSWORD = \"<password>\";\n\n// SMTP Host Name\nstatic final String\
+    \ HOST = \"smtp.sendpost.io\";\n\n// The port you will connect to on SendPost\
+    \ SMTP Endpoint.\nstatic final int PORT = 587;\n\nstatic final String SUBJECT\
+    \ = \"SendPost SMTP Test (SMTP interface accessed using Java)\";\n\nstatic final\
+    \ String BODY = String.join(\nSystem.getProperty(\"line.separator\"),\n\"<h1>SendPost\
+    \ SMTP Test</h1>\",\n\"<p>This email was sent with SendPost using the \",\n\"\
+    <a href='https://github.com/eclipse-ee4j/mail'>Javamail Package</a>\",\n\" for\
+    \ <a href='https://www.java.com'>Java</a>.\"\n);\n\npublic static void main(String[]\
+    \ args) throws Exception {\n\n// Create a Properties object to contain connection\
+    \ configuration information.\nProperties props = System.getProperties();\nprops.put(\"\
+    mail.transport.protocol\", \"smtp\");\nprops.put(\"mail.smtp.port\", PORT);\n\
+    props.put(\"mail.smtp.starttls.enable\", \"true\");\nprops.put(\"mail.smtp.debug\"\
+    , \"true\");\nprops.put(\"mail.smtp.auth\", \"true\");\n\n// Create a Session\
+    \ object to represent a mail session with the specified properties.\nSession session\
+    \ = Session.getDefaultInstance(props);\n\n// Create a message with the specified\
+    \ information.\nMimeMessage msg = new MimeMessage(session);\nmsg.setFrom(new InternetAddress(FROM,FROMNAME));\n\
+    msg.setRecipient(Message.RecipientType.TO, new InternetAddress(TO));\nmsg.setSubject(SUBJECT);\n\
+    msg.setContent(BODY,\"text/html\");\n\n// Create a transport.\nTransport transport\
+    \ = session.getTransport();\n\n// Send the message.\ntry {\nSystem.out.println(\"\
+    Sending...\");\n\n// Connect to SendPost SMTP using the SMTP username and password\
+    \ you specified above.\ntransport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);\n\
+    \n// Send the email.\ntransport.sendMessage(msg, msg.getAllRecipients());\nSystem.out.println(\"\
+    Email sent!\");\n\n} catch (Exception ex) {\n\nSystem.out.println(\"The email\
+    \ was not sent.\");\nSystem.out.println(\"Error message: \" + ex.getMessage());\n\
+    System.out.println(ex);\n}\n// Close and terminate the connection.\n}\n}\n```\n\
+    \nMany programming languages support sending email using SMTP. This capability\
+    \ might be built into the programming language itself, or it might be available\
+    \ as an add-on, plug-in, or library. You can take advantage of this capability\
+    \ by sending email through SendPost from within application programs that you\
+    \ write.\n\nWe have provided examples in Python3, Golang, Java, PHP, JS.\n"
+  title: SendPost API
+  version: 1.0.0
+servers:
+- url: https://api.sendpost.io/api/v1
+tags:
+- description: "This API allows you to send emails from a specific sub-account. You\
+    \ can specify one email recipient or multiple recipients with this API call. You\
+    \ can provide options for tracking opens or clicks, having dynamic custom fields\
+    \ or if-else conditions for email personalisation.\n\nYou can also assign various\
+    \ groups to each API call which will later be useful while analysing stats. Also\
+    \ you can specify custom headers which will be added to webhook payload on occurrence\
+    \ of events such as email processed, delivered, opened, clicked, bounced, unsubscribed\
+    \ etc.\n\nIf you are running on dedicated IP plan then you can also specify the\
+    \ IPPool from which emails should be sent.\n## Personalisation within email\n\
+    Sendpost allows users to personalize email content dynamically using Handlebars.\
+    \ Personalization can be applied to the text body, html body and the subject itself.\
+    \ Here's how you can utilize custom field variables to enhance your email communication.\n\
+    ```js\n{\n  \"from\": {\n    \"email\": \"richard@piedpiper.com\",\n    \"name\"\
+    : \"Richard\"\n  },\n  \"to\": [\n    {\n      \"email\": \"gavin@hooli.com\"\
+    ,\n      \"name\": \"Gavin Belson\",\n      \"customFields\": {\n        \"firstName\"\
+    : \"Gavin\",\n        \"discountCode\": \"BELSON240\"\n        \"status\": \"\
+    VIP\"\n      }\n    },\n    {\n      \"email\": \"erlich@piedpiper.com\",\n  \
+    \    \"name\": \"Erlich Bachman\",\n      \"customFields\": {\n        \"firstName\"\
+    : \"Erlich\",\n        \"discountCode\" : \"BACHMAN10\"\n        \"status\": \"\
+    Incubator\"\n      }\n    },\n  ],\n  \"subject\": \"Hello, {{firstName}}! Welcome\
+    \ to Pied Piper!\",\n  \"htmlBody\": \"<p>Hi {{firstName}},</p><p>Your discount\
+    \ code is <b>{{discountCode}}</b>. Your account status is {{status}}}.</p>\",\n\
+    \  \"textBody\": \"Hi {{firstName}},\\n\\nYour discount code is {{discountCode}}.\
+    \ Your account status is {{status}}.\",\n  \"ippool\": \"default\",\n  \"trackOpens\"\
+    : true,\n  \"trackClicks\": true,\n  \"groups\": [\n    \"special-offers\"\n \
+    \ ]\n}\n```\n\n### Explanation:\nCustom Fields for Personalization:\n- Each recipient\
+    \ in the to array has a customFields map. \n- These fields are used to dynamically\
+    \ render the email content.\n- Example: `{{firstName}}`, `{{discountCode}}`, and\
+    \ `{{status}}` in the subject, htmlBody, and textBody are replaced with the respective\
+    \ values from customFields.\n### Output Example:\n\nFor gavin@hooli.com:\n\n\n\
+    Subject: Hello, Gavin! Your Special Offer Awaits\n<p>Hi Gavin,</p><p>Your discount\
+    \ code is <b>BELSON240</b>. Your account status is VIP.</p>\n\n\n---\n\n\n\nFor\
+    \ erlich@piedpier.com:\n\n\n\nSubject: Hello, Erlich! Your Special Offer Awaits\n\
+    <p>Hi Erlich,</p><p>Your discount code is <b>BACHMAN10</b>. Your account status\
+    \ is Incubator.</p>\n\n\n---\n\n### Note: \n<strong>`unsubscribe` is a reserved\
+    \ custom field name. You can't use it as a custom field name.</strong>\n\n## Unsubscribe\
+    \ link in your templates\nHere is how to add an unsubscribe link to your SendPost\
+    \ email templates.\nAdd this to your email template:\n\n```\n\n<a href='{{unsubscribe}}'>Unsubscribe</a>\n\
+    ```\n\nAny user who clicks on this will get added to the suppression list on your\
+    \ SendPost subaccount.\n"
+  name: Email
+- description: |
+    This API allows you to manage your domains for a specific sub-account. Across all the requests you need to pass X-SubAccount-ApiKey header.
+  name: Domain
+- description: |
+    This API allows you to get your stats for a specific sub-account. Across all the requests you need to pass X-SubAccount-ApiKey header. You will be able to see email processed, delivered, opens, clicks, hardBounce, softBounce, unsubscribe and spam complaints.
+  name: Stats
+- description: |
+    This API allows you to manage your suppressions for a specific sub-account. Across all the requests you need to pass X-SubAccount-ApiKey header.
+  name: Suppression
+- description: |
+    This API allows you to manage your ips for a specific account. Across all the requests you need to pass X-Account-ApiKey header.
+  name: IP
+- description: "This API allows you to manage your ippools for a specific account.\
+    \ Across all the requests you need to pass X-Account-ApiKey header.\n## Routing\
+    \ Strategies and Metadata\n\n### routing_strategy 0 (RoundRobinStrategy)\nIn RoundRobinStrategy\
+    \ all your emails are fairly shared between all your IPs and TPSPs\n\nThe payload\
+    \ for routingMetaData for RoundRobinStrategy is:\n\nKey | Value\n--------- | -----------\n\
+    routingStrategy | 0\nroutingMetaData | \"{}\"\n\n\nFor example, if you have IP\
+    \ 3.238.19.86 and TPSPs Sendgrid and Mailgun and send 6 emails then 2 emails will\
+    \ be sent from 3.238.19.86, Mailgun and Sengrid.\n\n### routing_strategy 1 (EmailProviderStrategy)\n\
+    \nIn the EmailProviderStrategy we can assign IPs and TPSPs to the specific email\
+    \ provider.\n\nExisting email provider types:\n\nId | Description\n--------- |\
+    \ -----------\n0 | Email type Gmail\n1 | Email type Yahoo\n2 | Email type AOL\n\
+    3 | Email type Microsoft\n4 | Email type Comcast\n5 | Email type Yandex\n6 | Email\
+    \ type GMX\n7 | Email type Mailru\n8 | Email type Icloud\n9 | Email type Zoho\n\
+    10 | Email type QQ\n11 | Email type default\n\n\nKey | Value\n--------- | -----------\n\
+    routingStrategy | 1\nroutingMetaData | JsonPayload\n\nJsonPayload example:\n```json\n\
+    {\n  \"0\": \"[\\\"IP_100\\\",\\\"IP_105\\\"]\",\n  \"1\": \"[\\\"TPSP_101\\\"\
+    ]\",\n  \"others\": \"[\\\"IP_102\\\",\\\"TPSP_103\\\",\\\"IP_104\\\"]\"\n} \n\
+    ```\n\n\nOn the left side, you can see the email types: 0 is Gmail, 1 is Yahoo,\
+    \ and 'others' in this case all email addresses that don't belong to Yahoo or\
+    \ Gmail, the left side key is in the string format. Currently, for the right side,\
+    \ the format is an Array of strings in the format of \"Entity_ID\". Where 'Entity'\
+    \ could be 'IP' or 'TPSP' (third-party sending provider).\n\nFor example, the\
+    \ 'IP_' prefix means that the entity is IP, and 100 in \"IP_100\" mean that the\
+    \ ID of this IP is 100. For example, the 'TPSP_' prefix means that the entity\
+    \ is TPSP, and 101 in \"TPSP_101\" mean that the ID of this TPSP is 101.\n\nThe\
+    \ metadata above means: that for Gmail we send emails fairly between IPs with\
+    \ ID 105 and ID 100; and for Yahoo, we send emails from TPSP with ID 101; and\
+    \ for all the rest email types we send fairly from the TPSP with ID 103 and from\
+    \ IP with ID 104 and 102.\n\n### routing_strategy 2 (VolumePercentageStrategy)\n\
+    \nIn the VolumePercentageStrategy we can assign volumes to the specific IPs and\
+    \ TPSPs.\n\nKey | Value\n--------- | -----------\nroutingStrategy | 2\nroutingMetaData\
+    \ | JsonPayload\n\nJsonPayload example:\n\n```json \n{\n  \"IP_100\":   \"2\"\
+    ,\n  \"IP_101\":   \"3\",\n  \"TPSP_102\": \"1\",\n  \"TPSP_103\": \"4\"\n}\n\
+    ```\nCurrently, for the left side, the format is a string in the format of \"\
+    Entity_ID\". Where 'Entity' could be 'IP' or 'TPSP' (third-party sending provider).\
+    \ And for the right side, the volume number of emails that we send (also in the\
+    \ string format).\n\nFor example, the 'IP_' prefix means that the entity is IP,\
+    \ and 100 in \"IP_100\" mean that the ID of this IP is 100. For example, the 'TPSP_'\
+    \ prefix means that the entity is TPSP, and 101 in \"TPSP_101\" mean that the\
+    \ ID of this TPSP is 101.\n\nThe metadata above means: that, for example, if we\
+    \ send 20 emails, 4 go from IP with ID 100, 6 go from IP with ID 101, 2 go from\
+    \ TPSP with ID 102, and 8 go from TPSP with ID 103.\n\n### routing_strategy 3\
+    \ (SendingDomainStrategy)\nIn the SendingDomainStrategy we can assign IPs and\
+    \ TPSPs to the specific domains that we are sending from.\n\nKey | Value\n---------\
+    \ | -----------\nroutingStrategy | 3\nroutingMetaData | JsonPayload\n\nJsonPayload\
+    \ example:\n```json \n{\n  \"sendx.io\":    \"[\\\"TPSP_100\\\",\\\"IP_105\\\"\
+    ]\",\n  \"sendpost.io\": \"[\\\"IP_101\\\"]\",\n  \"others\":      \"[\\\"IP_102\\\
+    \",\\\"IP_103\\\",\\\"TPSP_104\\\"]\"\n}\n```\n\nOn the left side, you can see\
+    \ the domains, in this case, it's sendx.io and sendpost.io, and 'others'. The\
+    \ email would be put in the 'others' category if its domain doesn't belong to\
+    \ sendx.io or sendpost.io. Currently, for the right side, the format is an Array\
+    \ of strings in the format of \"Entity_ID\". Where 'Entity' could be 'IP' or 'TPSP'\
+    \ (third-party sending provider).\n\nFor example, the 'IP_' prefix means that\
+    \ the entity is IP, and 100 in \"IP_100\" mean that the ID of this IP is 100.\
+    \ For example, the 'TPSP_' prefix means that the entity is TPSP, and 101 in \"\
+    TPSP_101\" mean that the ID of this TPSP is 101.\n\nThe metadata above means:\
+    \ that, for example, if we send emails from t1@sendx.io, t2@sendx.io, t1@sendpost.io,\
+    \ t1@gmail.com, t2@gmail.com, t3@gmail.com, t4@yahoo.com The sendx.io emails (t1@sendx.io,\
+    \ t2@sendx.io) will be sent from TPSP with ID 100 and IP with ID 105. The sendpost.io\
+    \ emails will be sent from IP with ID 101. The 'others' emails (t1@gmail.com,\
+    \ t2@gmail.com, t3@gmail.com, t4@yahoo.com) will be sent from IP with ID 102 and\
+    \ 103, and TPSP with ID 104.\n"
+  name: IPPools
+- description: |
+    This API allows you to get your stats for a specific account. Across all the requests you need to pass X-Account-ApiKey header. You will be able to see email processed, delivered, opens, clicks, hardBounce, softBounce, unsubscribe and spam complaints for the specific account.
+  name: Stats (A)
+- description: |
+    This API allows you to manage your subaccounts for a specific sub-account. Across all the requests you need to pass X-Account-ApiKey header.
+  name: Sub-Account
+- description: |
+    This API allows you to manage your webhooks for a specific account. Across all the requests you need to pass X-Account-ApiKey header.
+  name: Webhook
+- description: |
+    Webhooks are a HTTP Post request made to your application endpoint when an interesting event happens at SendPost. This includes events such as email opens, clicks, hard bounce, spam, unsubscribe and more.
+
+    You may want to consume webhook events if you want to replicate state of your email recipients to your internal system ( have they unsubcribed or has their email bounced ?) or you want to build custom analytics for internal product consumption.
+
+    Other use-cases where consuming webhook may be relevant is when you are building an application on top of SendPost such as an email marketing software and you want to show emails delivered, opened, clicked etc. to your customers.
+
+
+    # Testing Webhooks
+
+    Generally configuring a webhook is pretty cumbersome process for developers.  At SendPost we have tried to make it a bit simpler:
+
+    * **Webhook Single-Click Test**
+
+    You can go to SendPost dashboard and click on button to test individual webhook. This will trigger a test Webhook API call of the specific event such as email open, click etc.
+
+    * **Request Bin**
+
+    [RequestBin](https://requestbin.com/) is a great service to inspect HTTP requests. You can create a temporary RequestBin URL and use the temporary URL as your webhook URL in SendPost.
+
+    After that you can trigger webhook calls either using curl or through our Webhook Single-Click Test. RequestBin will then record the HTTP requests and allow you to inspect the HTTP requests to verify headers, JSON body, and other information about the webhook request.
+
+    This will provide you with information about the HTTP requests used in the webhook if you don’t have a public URL set up yet and want to start developing right away.
+  name: Webhook Reference
+- description: |
+    This API allows you to manage your messages for a specific account. Across all the requests you need to pass X-Account-ApiKey header.
+  name: Message
+paths:
+  /subaccount/email/:
+    post:
+      description: Use this API to send either a single or batch email.
+      operationId: sendEmail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailMessageObject'
+        description: Email message details
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/EmailResponse'
+                type: array
+          description: A list of email message response objects.
+      security:
+      - subAccountAuth: []
+      summary: Send Email
+      tags:
+      - Email
+      x-code-samples:
+      - lang: js
+        label: JavaScript
+        source: |
+          const { EmailApi, EmailMessage } = require('sendpost_js');
+          const email = new EmailApi();
+          const apiKey = 'your_api_key'; // {String} Sub-Account API Key
+
+          (async function() {
+            const message = new EmailMessage();
+            message.from = { email: 'richard@piedpiper.com' };
+            message.to = [{ email: 'gavin@hooli.com' }]
+            message.subject = 'Hello'
+            message.htmlBody = '<strong>it works!</strong>';
+            message.ippool = 'PiedPiper'
+
+            const opts = {
+              emailMessage: message
+            };
+            try {
+              const data = await email.sendEmail(apiKey, opts)
+              console.log('API called successfully. Returned data: ', data);
+            } catch (error) {
+              console.error(error);
+            }
+          })()
+      - lang: php
+        label: PHP
+        source: "require_once(__DIR__ . '/vendor/autoload.php');\n$client = new GuzzleHttp\\\
+          Client();\n\n$apiInstance = new sendpost\\api\\EmailApi($client);\n\n$x_sub_account_api_key\
+          \ = 'your_api_key'; // string | Sub-Account API Key\n$email_message = new\
+          \ \\sendpost\\model\\EmailMessage(); \n$email_message->setSubject('Hello\
+          \ World');\n$email_message->setHtmlBody('<strong>it works!</strong>');\n\
+          $email_message->setIppool('PiedPiper');\n$from = new \\sendpost\\model\\\
+          From();\n$from->setEmail('richard@piedpiper.com');\n\n$to = new \\sendpost\\\
+          model\\To();\n$to->setEmail('gavin@hooli.com');\n$email_message->setTo(array($to));\n\
+          $email_message->setFrom($from);\n\ntry {\n    $result = $apiInstance->sendEmail($x_sub_account_api_key,\
+          \ $email_message);\n    print_r($result);\n} catch (Exception $e) {\n  \
+          \  echo 'Exception when calling EmailApi->sendEmail: ', $e->getMessage(),\
+          \ PHP_EOL;\n}\n"
+      - lang: python
+        label: Python
+        source: |
+          import sendpost_python_sdk
+          from pprint import pprint
+          from sendpost_python_sdk.apis.tags import email_api
+
+          # Enter a context with an instance of the API client
+          with sendpost_python_sdk.ApiClient() as api_client:
+              # Create an instance of the API class
+              api_instance = email_api.EmailApi(api_client)
+              x_sub_account_api_key = "your_api_key" # str | Sub-Account API Key
+              email = {
+                "from": {
+                      "email": "richard@piedpiper.com",
+                },
+                "to": [
+                  {
+                    "email": "gavin@hooli.com",
+                  }
+                ],
+                "subject": "Hello World",
+                "htmlBody": "<strong>it works!</strong>",
+                "ippool": "PiedPiper",
+              }
+              try:
+                  api_response = api_instance.send_email(header_params={ 'X-SubAccount-ApiKey': x_sub_account_api_key}, body=email)
+                  pprint(api_response)
+              except sendpost_python_sdk.ApiException as e:
+                  print("Exception when calling EmailApi->send_email: %s\n" % e)
+      - lang: ruby
+        label: Ruby
+        source: |
+          require 'sendpost_ruby_sdk'
+
+          api_instance = Sendpost::EmailApi.new
+          x_sub_account_api_key = 'your_api_key' # String | Sub-Account API Key
+          email_message = Sendpost::EmailMessage.new
+          email_message.from = {
+            email: 'richard@piedpiper.com'
+          }
+          email_message.to = [{
+            email: 'gavin@hooli.com'
+          }]
+          email_message.subject = 'Hello World'
+          email_message.html_body =  '<strong>it works!</strong>'
+          email_message.ippool = 'PiedPiper'
+
+          opts = {
+            email_message: email_message # EmailMessage | Email message
+          }
+
+          begin
+            result = api_instance.send_email(x_sub_account_api_key, opts)
+            p result
+          rescue Sendpost::ApiError => e
+            puts "Exception when calling EmailApi->send_email: #{e}"
+          end
+      - lang: go
+        label: Go
+        source: |
+          cfg := sendpost.NewConfiguration()
+          client := sendpost.NewAPIClient(cfg)
+
+          emailMessage := sendpost.EmailMessage{}
+          emailMessage.SetSubject("Hello World")
+          emailMessage.SetHtmlBody("<strong>it works!</strong>")
+          emailMessage.SetIppool("PiedPiper")
+          emailMessage.From = &sendpost.From{}
+          emailMessage.From.SetEmail("richard@piedpiper.com")
+          tos := make([]sendpost.To, 0)
+          to := &sendpost.To{}
+          to.SetEmail("gavin@hooli.com")
+          tos = append(tos, *to)
+          emailMessage.To = tos
+
+          emailRequest := sendpost.ApiSendEmailRequest{}
+          emailRequest = emailRequest.XSubAccountApiKey("your_api_key")
+          emailRequest = emailRequest.EmailMessage(emailMessage)
+          res, _, err := client.EmailApi.SendEmailExecute(emailRequest)
+      - lang: shell
+        label: cURL
+        source: |
+          curl -X POST "https://api.sendpost.io/api/v1/subaccount/email/" \
+          -H "accept: application/json" \
+          -H "X-SubAccount-ApiKey: your_api_key" \
+          -d '{
+            "from": { "email": "richard@piedpiper.com" },
+            "to": [{ "email": "gavin@hooli.com" }],
+            "subject": "Hello World",
+            "htmlBody": "<strong>it works!</strong>",
+            "ippool": "PiedPiper"
+          }'
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /subaccount/email/template:
+    post:
+      description: |
+        Use this API to send an email with a predefined template. This makes it easy to integrate transactional emails with minimal code.
+      operationId: sendEmailWithTemplate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailMessageWithTemplate'
+        description: Email message details with template information
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/EmailResponse'
+                type: array
+          description: A list of email message response objects.
+      security:
+      - subAccountAuth: []
+      summary: Send Email With Template
+      tags:
+      - Email
+      x-code-samples:
+      - lang: JavaScript
+        label: JavaSript
+        source: |
+          const { EmailApi, EmailMessage } = require('sendpost_js');
+          const email = new EmailApi();
+          const apiKey = 'your_api_key'; // {String} Sub-Account API Key
+
+          (async function() {
+            const message = new EmailMessage();
+            message.from = { email: 'richard@piedpiper.com' };
+
+            message.to = [{
+              email: 'gavin@hooli.com',
+              cc: [{ email: 'dinesh@bachmanity.com' }],
+              bcc: [{ email: 'jian@bachmanity.com' }],
+            }]
+
+            message.subject = 'Hello'
+            message.htmlBody = '<strong>it works!</strong>';
+            message.ippool = 'PiedPiper'
+
+            message.template = 'Welcome Mail'
+
+            const opts = {
+              emailMessage: message
+            };
+            try {
+              const data = await email.sendEmailWithTemplate(apiKey, opts)
+              console.log('API called successfully. Returned data: ', data);
+            } catch (error) {
+              console.error(error);
+            }
+          })()
+      - lang: php
+        label: PHP
+        source: "require_once(__DIR__ . '/vendor/autoload.php');\n$client = new GuzzleHttp\\\
+          Client();\n\n$apiInstance = new sendpost\\api\\EmailApi($client);\n\n$x_sub_account_api_key\
+          \ = 'your_api_key'; // string | Sub-Account API Key\n$email_message = new\
+          \ \\sendpost\\model\\EmailMessage(); \n$email_message->setSubject('Hello\
+          \ World');\n$email_message->setHtmlBody('<strong>it works!</strong>');\n\
+          $email_message->setIppool('PiedPiper');\n$from = new \\sendpost\\model\\\
+          From();\n$from->setEmail('richard@piedpiper.com');\n\n$cc = new \\sendpost\\\
+          model\\CopyTo();\n$cc->setEmail('dinesh@bachmanity.com');\n$to->setCc(array($cc));\n\
+          $bcc = new \\sendpost\\model\\CopyTo();\n$bcc->setEmail('jian@bachmanity.com');\n\
+          $to->setBcc(array($bcc));\n\n$email_message->setTemplate('Welcome Mail');\n\
+          \n$to = new \\sendpost\\model\\To();\n$to->setEmail('gavin@hooli.com');\n\
+          $email_message->setTo(array($to));\n$email_message->setFrom($from);\n\n\
+          try {\n    $result = $apiInstance->sendEmailWithTemplate($x_sub_account_api_key,\
+          \ $email_message);\n    print_r($result);\n} catch (Exception $e) {\n  \
+          \  echo 'Exception when calling EmailApi->sendEmail: ', $e->getMessage(),\
+          \ PHP_EOL;\n}\n"
+      - lang: Python
+        label: Python SDK
+        source: |
+          import sendpost_python_sdk
+          from pprint import pprint
+          from sendpost_python_sdk.apis.tags import email_api
+
+          # Enter a context with an instance of the API client
+          with sendpost_python_sdk.ApiClient() as api_client:
+              # Create an instance of the API class
+              api_instance = email_api.EmailApi(api_client)
+              x_sub_account_api_key = "your_api_key" # str | Sub-Account API Key
+              email = {
+                "from": {
+                      "email": "richard@piedpiper.com",
+                },
+                "to": [
+                  {
+                    "email": "gavin@hooli.com",
+                    "cc": [{ "email": "dinesh@bachmanity.com" }],
+                    "bcc": [{ "email": "jian@bachmanity.com" }],
+                  }
+                ],
+                "template": "Welcome Mail",
+                "subject": "Hello World",
+                "htmlBody": "<strong>it works!</strong>",
+                "ippool": "PiedPiper",
+              }
+              try:
+                  api_response = api_instance.send_email_with_template(header_params={ 'X-SubAccount-ApiKey': x_sub_account_api_key}, body=email)
+                  pprint(api_response)
+              except sendpost_python_sdk.ApiException as e:
+                  print("Exception when calling EmailApi->send_email: %s\n" % e)
+      - lang: go
+        label: Go
+        source: |
+          cfg := sendpost.NewConfiguration()
+          client := sendpost.NewAPIClient(cfg)
+
+          emailMessage := sendpost.EmailMessage{}
+          emailMessage.SetSubject("Hello World")
+          emailMessage.SetHtmlBody("<strong>it works!</strong>")
+          emailMessage.SetIppool("PiedPiper")
+          emailMessage.From = &sendpost.From{}
+          emailMessage.From.SetEmail("richard@piedpiper.com")
+
+          emailMessage.SetTemplate("Welcome Mail")
+
+          tos := make([]sendpost.To, 0)
+          to := &sendpost.To{}
+          to.SetEmail("gavin@hooli.com")
+
+          ccs := make([]sendpost.CopyTo, 0)
+          cc := &sendpost.CopyTo{}
+          cc.SetEmail("dinesh@bachmanity.com")
+          ccs = append(ccs, *cc)
+          to.SetCc(ccs)
+          bccs := make([]sendpost.CopyTo, 0)
+          bcc := &sendpost.CopyTo{}
+          bcc.SetEmail("jian@bachmanity.com")
+          bccs = append(bccs, *bcc)
+          to.SetBcc(bccs)
+
+          tos = append(tos, *to)
+          emailMessage.To = tos
+
+          emailRequest := sendpost.ApiSendEmailWithTemplateRequest{}
+          emailRequest = emailRequest.XSubAccountApiKey("your_api_key")
+          emailRequest = emailRequest.EmailMessage(emailMessage)
+          res, _, err := client.EmailApi.SendEmailWithTemplateExecute(emailRequest)
+      - lang: ruby
+        label: Ruby
+        source: |
+          require 'sendpost_ruby_sdk'
+
+          api_instance = Sendpost::EmailApi.new
+          x_sub_account_api_key = 'your_api_key' # String | Sub-Account API Key
+          email_message = Sendpost::EmailMessage.new
+          email_message.from = {
+            email: 'richard@piedpiper.com'
+          }
+          email_message.to = [{
+            email: 'gavin@hooli.com',
+            cc: [{ email: 'dinesh@bachmanity.com' }],
+            bcc: [{ email: 'jian@bachmanity.com' }]
+          }]
+
+          email_message.subject = 'Hello World'
+          email_message.template = 'Welcome Mail'
+          email_message.html_body =  '<strong>it works!</strong>'
+          email_message.ippool = 'PiedPiper'
+
+          opts = {
+            email_message: email_message # EmailMessage | Email message
+          }
+
+          begin
+            result = api_instance.send_email_with_template(x_sub_account_api_key, opts)
+            p result
+          rescue Sendpost::ApiError => e
+            puts "Exception when calling EmailApi->send_email: #{e}"
+          end
+      - lang: shell
+        label: cURL
+        source: |
+          curl -X POST "https://api.sendpost.io/api/v1/subaccount/email/template" \
+          -H "accept: application/json" \
+          -H "X-SubAccount-ApiKey: your_api_key" \
+          -d '{
+            "from": { "email": "richard@piedpiper.com" },
+            "to": [{ "email": "gavin@hooli.com" }],
+            "templateId": "12345",
+            "dynamicData": {
+              "name": "Gavin",
+              "product": "Compression Algorithm"
+            },
+            "ippool": "PiedPiper"
+          }'
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /subaccount/domain/{domain_id}:
+    delete:
+      description: Delete a specific domain using its `id`.
+      parameters:
+      - description: The unique ID of the domain to delete.
+        explode: false
+        in: path
+        name: domain_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResponse'
+          description: Successful response
+      security:
+      - subAccountAuth: []
+      summary: Delete a specific domain
+      tags:
+      - Domain
+      x-code-samples:
+      - lang: shell
+        source: |
+          curl -X DELETE "https://api.sendpost.io/api/v1/subaccount/domain/<domain_id>" \
+          -H "accept: application/json" \
+          -H "X-SubAccount-ApiKey: <subaccount_api_key>"
+      - lang: python
+        source: |
+          import requests
+          url = "https://api.sendpost.io/api/v1/subaccount/domain/<domain_id>"
+          headers = {
+              "accept": "application/json",
+              "X-SubAccount-ApiKey": "<subaccount_api_key>"
+          }
+          response = requests.delete(url, headers=headers)
+          print(response.json())
+      x-accepts:
+      - application/json
+    get:
+      description: Retrieve details of a specific domain using its `id`.
+      parameters:
+      - description: The unique ID of the domain to retrieve.
+        explode: false
+        in: path
+        name: domain_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+          description: Successful response
+      security:
+      - subAccountAuth: []
+      summary: Get a specific domain
+      tags:
+      - Domain
+      x-code-samples:
+      - lang: python
+        source: |
+          import requests
+          url = "https://api.sendpost.io/api/v1/subaccount/domain/<domain_id>"
+          headers = {
+              "accept": "application/json",
+              "X-SubAccount-ApiKey": "<subaccount_api_key>"
+          }
+          response = requests.get(url, headers=headers)
+          print(response.json())
+      x-accepts:
+      - application/json
+  /subaccount/domain:
+    get:
+      description: |
+        Retrieve a list of all domains associated with the sub-account, including their DNS records and authentication status.
+      operationId: getAllDomains
+      parameters:
+      - description: Number of records to return per request
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          minimum: 1
+          type: integer
+        style: form
+      - description: Number of initial records to skip
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      - description: Case insensitive search against domain names
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Domain'
+                type: array
+          description: List of domains retrieved successfully
+      security:
+      - subAccountAuth: []
+      summary: Get All Domains
+      tags:
+      - Domain
+      x-code-samples:
+      - lang: Python
+        label: Python SDK
+        source: |
+          import sendpost_python_sdk
+          from sendpost_python_sdk.apis.tags import domain_api
+
+          with sendpost_python_sdk.ApiClient() as api_client:
+            api_instance = domain_api.DomainApi(api_client)
+            x_sub_account_api_key = "your_api_key"
+
+            try:
+              domains = api_instance.get_all_domains(
+                header_params={ 'X-SubAccount-ApiKey': x_sub_account_api_key }
+              )
+              print(domains)
+            except sendpost_python_sdk.ApiException as e:
+              print(f"Exception: {e}")
+      - lang: JavaScript
+        label: Node.js
+        source: |
+          const { DomainApi } = require('sendpost_js');
+          const domain = new DomainApi();
+          const apiKey = 'your_api_key';
+
+          (async function() {
+            try {
+              const data = await domain.getAllDomains(apiKey);
+              console.log('API called successfully. Returned data: ', data);
+            } catch (error) {
+              console.error(error);
+            }
+          })();
+      x-accepts:
+      - application/json
+    post:
+      description: Add a new domain using its `name`.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDomainRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+          description: Successful response
+      security:
+      - subAccountAuth: []
+      summary: Create a new domain
+      tags:
+      - Domain
+      x-code-samples:
+      - lang: shell
+        source: |
+          curl -X POST "https://api.sendpost.io/api/v1/subaccount/domain" \
+          -H "accept: application/json" \
+          -H "X-SubAccount-ApiKey: <subaccount_api_key>" \
+          -d '{"name": "example.com"}'
+      - lang: python
+        source: |
+          import requests
+          url = "https://api.sendpost.io/api/v1/subaccount/domain"
+          headers = {
+              "accept": "application/json",
+              "X-SubAccount-ApiKey": "<subaccount_api_key>"
+          }
+          data = {"name": "example.com"}
+          response = requests.post(url, headers=headers, json=data)
+          print(response.json())
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /account/subaccount/stat/{subaccount_id}:
+    get:
+      description: |
+        Retrieves a list of email stats for a specific sub-account within a given date range. Both `from` and `to` dates are inclusive.   **Note**: The maximum date range is 31 days.
+      parameters:
+      - description: Start date for stats retrieval.
+        explode: true
+        in: query
+        name: from
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: |
+          Date to which stats should be retrieved ( Note than from date should be earlier than to date. Also the difference between from and to date shouldn't ne more than 60 days )
+        explode: true
+        in: query
+        name: to
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: The ID of the subaccount to retrieve
+        explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          example: 11
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Stat'
+                type: array
+          description: Successful response
+      security:
+      - accountAuth: []
+      summary: Get All Stats
+      tags:
+      - Stats
+      x-code-samples:
+      - lang: python
+        source: |
+          import requests
+          url = "https://api.sendpost.io/api/v1/subaccount/stat"
+          params = {"from": "2020-03-12", "to": "2020-04-14"}
+          headers = {
+              "accept": "application/json",
+              "X-SubAccount-ApiKey": "<subaccount_api_key>"
+          }
+          response = requests.get(url, headers=headers, params=params)
+          print(response.json())
+      x-accepts:
+      - application/json
+  /account/subaccount/stat/{subaccount_id}/aggregate:
+    get:
+      description: |
+        Retrieves aggregated email stats for a specific sub-account for a date range.   **Note**: The maximum date range is 366 days.
+      parameters:
+      - description: Start date for stats retrieval.
+        explode: true
+        in: query
+        name: from
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: |
+          Date to which stats should be retrieved ( Note than from date should be earlier than to date. Also the difference between from and to date shouldn't ne more than 60 days )
+        explode: true
+        in: query
+        name: to
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: The ID of the subaccount to retrieve
+        explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          example: 11
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AggregateStat'
+          description: Successful response
+      security:
+      - accountAuth: []
+      summary: Get Aggregate Stats
+      tags:
+      - Stats
+      x-code-samples:
+      - lang: python
+        source: |
+          import requests
+          url = "https://api.sendpost.io/api/v1/subaccount/stat/aggregate"
+          params = {"from": "2019-01-01", "to": "2019-12-31"}
+          headers = {
+              "accept": "application/json",
+              "X-SubAccount-ApiKey": "<subaccount_api_key>"
+          }
+          response = requests.get(url, headers=headers, params=params)
+          print(response.json())
+      x-accepts:
+      - application/json
+  /account/subaccount/stat/{subaccount_id}/group:
+    get:
+      description: |
+        Retrieves aggregated email stats for a specific group in a sub-account for the specified daterange.
+        The maximum daterange for which these stats can be retrieved is 366 days. Ensure that the difference between the `from` and `to` dates does not exceed 366 days.
+      operationId: getAggregateStatsByGroup
+      parameters:
+      - description: Group whose aggregated stats need to be retrieved
+        explode: true
+        in: query
+        name: group
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: The starting date for the aggregated stats
+        explode: true
+        in: query
+        name: from
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: |
+          The ending date for the aggregated stats (Note: `from` should be earlier than `to` and the date range should not exceed 366 days)
+        explode: true
+        in: query
+        name: to
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: The ID of the subaccount to retrieve
+        explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          example: 11
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                statsExample:
+                  value:
+                    processed: 22500
+                    delivered: 20000
+                    dropped: 1000
+                    hardBounced: 1000
+                    softBounced: 500
+                    opened: 5000
+                    clicked: 3000
+                    unsubscribed: 500
+                    spam: 200
+              schema:
+                $ref: '#/components/schemas/AggregateStat'
+          description: Aggregated email stats for the group within the specified date
+            range
+      security:
+      - accountAuth: []
+      summary: Get aggregated stats by group
+      tags:
+      - Stats
+      x-accepts:
+      - application/json
+  /subaccount/suppression:
+    delete:
+      description: |
+        Deletes one or more suppressions for a given sub-account. The request can contain a list of emails to delete specific suppressions or delete a single suppression.
+      operationId: deleteSuppression
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deleteSuppression_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                deletionExample:
+                  value:
+                    message: Suppressions have been deleted successfully
+              schema:
+                $ref: '#/components/schemas/deleteSuppression_200_response'
+          description: A message indicating successful suppression deletion
+      security:
+      - subAccountAuth: []
+      summary: Delete suppressions
+      tags:
+      - Suppression
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+    get:
+      description: |
+        Retrieves a list of suppressions associated with a specific sub-account within a given date range.
+        The maximum difference between `from` and `to` dates should not exceed 60 days.
+      operationId: getSuppressionList
+      parameters:
+      - description: Start date for the suppression records
+        explode: true
+        in: query
+        name: from
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: |
+          End date for the suppression records (Note: `from` should be earlier than `to` and the date range should not exceed 60 days)
+        explode: true
+        in: query
+        name: to
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: Number of records to return per request
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      - description: Number of initial records to skip
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - description: Case-insensitive search against suppression email
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |
+          Type of suppression. Valid values: `hardBounce`, `manual`, `spamComplaint`, `unsubscribe`
+        explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          enum:
+          - hardBounce
+          - manual
+          - spamComplaint
+          - unsubscribe
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                suppressionExample:
+                  value:
+                  - id: 35
+                    reason: 1
+                    email: gilfoyle@piedpiper.com
+                    created: 1567512491588025000
+                  - id: 37
+                    reason: 0
+                    email: jianyang@gmail.com
+                    created: 1567512491588023121
+              schema:
+                items:
+                  $ref: '#/components/schemas/Suppression'
+                type: array
+          description: A list of suppressions
+      security:
+      - subAccountAuth: []
+      summary: Get all suppressions
+      tags:
+      - Suppression
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Creates new suppressions by posting to the suppression resource. You can specify different types of suppressions including `hardBounce`, `manual`, `unsubscribe`, and `spamComplaint`.
+      operationId: createSuppression
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createSuppression_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                creationExample:
+                  value:
+                  - id: 37
+                    reason: 2
+                    email: jackbarker@hooli.com
+                    created: 1567512491588025000
+                  - id: 39
+                    reason: 2
+                    email: bighead@hooli.com
+                    created: 1567512491588025100
+                  - id: 40
+                    reason: 0
+                    email: russhannelman@gmail.com
+                    created: 1567512491588025120
+                  - id: 44
+                    reason: 1
+                    email: jared@piedpiper.com
+                    created: 1567512491588026727
+                  - id: 57
+                    reason: 3
+                    email: gilfoyle@piedpiper.com
+                    created: 1567512491588028215
+              schema:
+                items:
+                  $ref: '#/components/schemas/Suppression'
+                type: array
+          description: A list of created suppressions
+      security:
+      - subAccountAuth: []
+      summary: Create new suppressions
+      tags:
+      - Suppression
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /account/ip/:
+    get:
+      description: |
+        Retrieves a list of all IPs associated with the main account.
+      operationId: getAllIps
+      parameters:
+      - description: Number of records to return per request
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of initial records to skip
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Case insensitive search against IP's public IP address
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 11321
+                autoWarmupEnabled: true
+                autoWarmupStage: 7
+                publicIP: 52.34.11.12
+                created: 1567512491588018064
+              - id: 11322
+                autoWarmupEnabled: true
+                autoWarmupStage: 10
+                publicIP: 34.21.14.11
+                created: 1567512491588017564
+              schema:
+                items:
+                  $ref: '#/components/schemas/IP'
+                type: array
+          description: A list of IPs associated with the account
+      security:
+      - accountAuth: []
+      summary: Get All IPs
+      tags:
+      - IP
+      x-accepts:
+      - application/json
+  /account/ip/{ip_id}:
+    delete:
+      description: |
+        Deletes a specific IP resource based on the provided IP ID.
+      operationId: deleteIp
+      parameters:
+      - description: The ID of the IP resource to delete
+        explode: false
+        in: path
+        name: ip_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPDeletionResponse'
+          description: Confirmation message after successful IP deletion
+      security:
+      - accountAuth: []
+      summary: Delete a Specific IP
+      tags:
+      - IP
+      x-accepts:
+      - application/json
+    get:
+      description: |
+        Retrieves detailed information about a specific IP based on the provided ID.
+      operationId: getSpecificIp
+      parameters:
+      - description: The ID of the IP resource to retrieve
+        explode: false
+        in: path
+        name: ip_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 11322
+                autoWarmupEnabled: true
+                autoWarmupStage: 10
+                publicIP: 34.21.14.11
+                created: 1567512491588017564
+              schema:
+                $ref: '#/components/schemas/IP'
+          description: Information about the specified IP
+      security:
+      - accountAuth: []
+      summary: Get a Specific IP
+      tags:
+      - IP
+      x-accepts:
+      - application/json
+    put:
+      description: |
+        Updates an existing IP resource based on the provided IP ID.
+      operationId: updateIp
+      parameters:
+      - description: The ID of the IP resource to update
+        explode: false
+        in: path
+        name: ip_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IPUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IP'
+          description: The updated IP information
+      security:
+      - accountAuth: []
+      summary: Update an Existing IP
+      tags:
+      - IP
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /account/ip/allocate:
+    put:
+      description: |
+        Allocates a new IP resource to the account.
+      operationId: allocateNewIp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IPAllocationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IP'
+          description: Details of the allocated IP
+      security:
+      - accountAuth: []
+      summary: Allocate a New IP
+      tags:
+      - IP
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /account/message:
+    get:
+      description: Retrieve messages sent via the SendPost platform within a specific
+        date range.
+      operationId: getAllMessages
+      parameters:
+      - description: Date from which messages should be retrieved.
+        explode: true
+        in: query
+        name: from
+        required: true
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Date to which messages should be retrieved. (Should be later
+          than `from` and no more than 60 days apart.)
+        explode: true
+        in: query
+        name: to
+        required: true
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Number of records to return per request.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          type: integer
+        style: form
+      - description: Number of initial records to skip.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Message'
+                type: array
+          description: Successful retrieval of messages.
+        "400":
+          description: Invalid input parameters.
+        "401":
+          description: Unauthorized. Invalid API key.
+      security:
+      - accountAuth: []
+      summary: Get all  messages
+      tags:
+      - Message
+      x-accepts:
+      - application/json
+  /account/message/{message_id}:
+    get:
+      description: Retrieve detailed information about a specific message by its ID.
+      operationId: getMessageById
+      parameters:
+      - description: The ID of the message to retrieve.
+        explode: false
+        in: path
+        name: message_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+          description: Successful retrieval of the message.
+        "404":
+          description: Message not found.
+        "401":
+          description: Unauthorized. Invalid API key.
+      security:
+      - accountAuth: []
+      summary: Retrieve a specific message
+      tags:
+      - Message
+      x-accepts:
+      - application/json
+  /account/ippool:
+    get:
+      description: Retrieves a list of all IPPools and information about all IPs contained
+        in that pool.
+      operationId: getAllIPPools
+      parameters:
+      - description: Number of records to return per request
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          example: 10
+          type: integer
+        style: form
+      - description: Number of initial records to skip
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          example: 0
+          type: integer
+        style: form
+      - description: Case insensitive search against IPPool name
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          example: Transactional
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 746
+                name: Transactional
+                created: 1597511124804000
+                ips:
+                - id: 6
+                  publicIP: 3.238.19.86
+                  reverseDNSHostname: sp0006.mtaspb.email
+                  type: 1
+                  created: 1597511124804000
+                thirdPartySendingProviders:
+                - id: 2
+                  name: mailgun
+                  type: 2
+                  domain: your_domain
+                  endpoint: https://api.mailgun.net/v3
+                  key: your_public_key
+                  secret: your_private_key
+                  port: 0
+                  oauthToken: ""
+                  retryTime: 0
+                  created: 1597511124704000
+                routingStrategy: 0
+                routingMetaData: "{}"
+                autoWarmupEnabled: false
+                infraMonitor: true
+                ipDomainWarmupStatus: null
+              schema:
+                items:
+                  $ref: '#/components/schemas/IPPool'
+                type: array
+          description: A list of IPPools
+        "401":
+          description: Unauthorized
+      security:
+      - accountAuth: []
+      summary: Get All IPPools
+      tags:
+      - IPPools
+      x-accepts:
+      - application/json
+    post:
+      description: "Creates a new IPPool with the specified name, IPs, and third-party\
+        \ sending providers."
+      operationId: createIPPool
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Marketing Promotional
+              tpsps:
+              - 1
+              ips:
+              - publicIP: 3.238.19.87
+            schema:
+              $ref: '#/components/schemas/IPPoolCreateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 3
+                name: Marketing Promotional
+                created: 1686304219037565000
+                ips:
+                - id: 6
+                  publicIP: 3.238.19.86
+                  reverseDNSHostname: sp0006.mtaspb.email
+                  type: 1
+                  created: 1597511124804000
+                thirdPartySendingProviders:
+                - id: 1
+                  name: sendgrid
+                  type: 1
+                  domain: ""
+                  endpoint: ""
+                  key: ""
+                  secret: your_api_key
+                  port: 0
+                  oauthToken: ""
+                  retryTime: 0
+                  created: 1597511124701000
+                routingStrategy: 0
+                routingMetaData: "{}"
+              schema:
+                $ref: '#/components/schemas/IPPool'
+          description: Created IPPool details
+        "403":
+          description: "Forbidden, IPPool with the same name already exists"
+      security:
+      - accountAuth: []
+      summary: Create a New IPPool
+      tags:
+      - IPPools
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /account/ippool/{ippool_id}:
+    delete:
+      description: Delete a specific IPPool based on its ID.
+      operationId: deleteIPPool
+      parameters:
+      - description: The ID of the IPPool to delete
+        explode: false
+        in: path
+        name: ippool_id
+        required: true
+        schema:
+          example: 756
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 756
+                message: IPPool (Marketing Promotional) has been deleted successfully
+              schema:
+                $ref: '#/components/schemas/IPPoolDeleteResponse'
+          description: Successful deletion of the IPPool
+        "404":
+          description: IPPool not found
+        "401":
+          description: Unauthorized
+      summary: Delete a Specific IPPool
+      tags:
+      - IPPools
+      x-accepts:
+      - application/json
+    get:
+      description: Retrieves details of a specific IPPool based on its ID.
+      operationId: getIPPoolById
+      parameters:
+      - description: The ID of the IPPool whose information you want to retrieve
+        explode: false
+        in: path
+        name: ippool_id
+        required: true
+        schema:
+          example: 74
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 74
+                name: Transactional
+                created: 1567512491586102044
+                overflowPool: true
+                ips: []
+                thirdPartySendingProviders:
+                - id: 2
+                  name: mailgun
+                  type: 2
+                  domain: your_domain
+                  endpoint: https://api.mailgun.net/v3
+                  key: your_public_key
+                  secret: your_private_key
+                  port: 0
+                  oauthToken: ""
+                  retryTime: 0
+                  created: 1597511124704000
+                - id: 1
+                  name: sendgrid
+                  type: 1
+                  domain: ""
+                  endpoint: ""
+                  key: ""
+                  secret: your_api_key
+                  port: 0
+                  oauthToken: ""
+                  retryTime: 0
+                  created: 1597511124701000
+                routingStrategy: 0
+                routingMetaData: "{}"
+              schema:
+                $ref: '#/components/schemas/IPPool'
+          description: Details of a specific IPPool
+        "401":
+          description: Unauthorized
+      security:
+      - accountAuth: []
+      summary: Get a Specific IPPool
+      tags:
+      - IPPools
+      x-accepts:
+      - application/json
+    put:
+      description: Update the details of an existing IPPool by its ID.
+      operationId: updateIPPool
+      parameters:
+      - description: The ID of the IPPool to update
+        explode: false
+        in: path
+        name: ippool_id
+        required: true
+        schema:
+          example: 756
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Marketing Promotional
+              ips:
+              - publicIP: 52.12.10.12
+              - publicIP: 52.10.12.17
+              - publicIP: 35.11.10.5
+            schema:
+              $ref: '#/components/schemas/IPPoolUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 756
+                name: Marketing Promotional
+                created: 1567512491586102044
+                ips:
+                - id: 11429
+                  autoWarmupEnabled: true
+                  autoWarmupStage: 5
+                  publicIP: 52.12.10.12
+                  created: 1567512491588017564
+                - id: 11530
+                  autoWarmupEnabled: true
+                  autoWarmupStage: 0
+                  publicIP: 52.10.12.17
+                  created: 1567512491568815272
+                - id: 11531
+                  autoWarmupEnabled: true
+                  autoWarmupStage: 0
+                  publicIP: 35.11.10.5
+                  created: 1567512491568025264
+                thirdPartySendingProviders: []
+                routingStrategy: 0
+                routingMetaData: "{}"
+              schema:
+                $ref: '#/components/schemas/IPPool'
+          description: The updated IPPool details
+        "400":
+          description: Bad request - invalid or missing data
+        "404":
+          description: IPPool not found
+        "401":
+          description: Unauthorized
+      summary: Update an Existing IPPool
+      tags:
+      - IPPools
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /account/stat:
+    get:
+      description: Retrieve email statistics for all sub-accounts of a specific account
+        for a given date range.
+      operationId: getAllAccountStats
+      parameters:
+      - description: The start date for retrieving stats (inclusive)
+        explode: true
+        in: query
+        name: from
+        required: true
+        schema:
+          example: 2020-03-12
+          format: date
+          type: string
+        style: form
+      - description: The end date for retrieving stats (inclusive). The difference
+          between `from` and `to` should not exceed 31 days.
+        explode: true
+        in: query
+        name: to
+        required: true
+        schema:
+          example: 2020-04-14
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - date: 2020-03-12
+                stats:
+                  processed: 1225
+                  delivered: 1200
+                  dropped: 10
+                  hardBounced: 10
+                  softBounced: 5
+                  opens: 150
+                  clicks: 130
+                  unsubscribed: 15
+                  spams: 12
+              - date: 2020-03-14
+                stats:
+                  processed: 1340
+                  delivered: 1300
+                  dropped: 20
+                  hardBounced: 15
+                  softBounced: 5
+                  opens: 172
+                  clicks: 147
+                  unsubscribed: 5
+                  spams: 2
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccountStats'
+                type: array
+          description: A list of statistics for the specified date range.
+        "400":
+          description: "Bad request, invalid date range"
+        "401":
+          description: "Unauthorized, invalid API key"
+        "404":
+          description: Data not found for the given date range
+      security:
+      - accountAuth: []
+      summary: Get All Account Stats
+      tags:
+      - Stats (A)
+      x-accepts:
+      - application/json
+  /account/stat/aggregate:
+    get:
+      description: Retrieve aggregated email statistics for all sub-accounts of a
+        specific account for a given date range.
+      operationId: getAccountAggregateStats
+      parameters:
+      - description: The start date for retrieving aggregated stats (inclusive)
+        explode: true
+        in: query
+        name: from
+        required: true
+        schema:
+          example: 2019-01-01
+          format: date
+          type: string
+        style: form
+      - description: The end date for retrieving aggregated stats (inclusive). The
+          difference between `from` and `to` should not exceed 366 days.
+        explode: true
+        in: query
+        name: to
+        required: true
+        schema:
+          example: 2019-12-31
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                processed: 22500
+                delivered: 20000
+                dropped: 1000
+                hardBounced: 1000
+                softBounced: 500
+                opens: 5000
+                clicks: 3000
+                unsubscribed: 500
+                spams: 200
+              schema:
+                $ref: '#/components/schemas/AggregateStats'
+          description: Aggregated statistics for the specified date range.
+        "400":
+          description: "Bad request, invalid date range"
+        "401":
+          description: "Unauthorized, invalid API key"
+        "404":
+          description: Data not found for the given date range
+      security:
+      - accountAuth: []
+      summary: Get Account Aggregate Stats
+      tags:
+      - Stats (A)
+      x-accepts:
+      - application/json
+  /account/stat/group:
+    get:
+      description: Gets a list of all email stats for all sub-accounts of a specific
+        account by group for a given daterange. The maximum daterange for which these
+        stats can be retrieved is 31 days.
+      operationId: getAccountStatsByGroup
+      parameters:
+      - description: Group whose stats need to be retrieved
+        explode: true
+        in: query
+        name: group
+        required: true
+        schema:
+          example: shopify
+          type: string
+        style: form
+      - description: Date from which stats should be retrieved (should be in the format
+          `YYYY-MM-DD`)
+        explode: true
+        in: query
+        name: from
+        required: true
+        schema:
+          example: 2020-03-12
+          format: date
+          type: string
+        style: form
+      - description: Date to which stats should be retrieved (should be in the format
+          `YYYY-MM-DD`). Note that the difference between `from` and `to` should not
+          be more than 31 days.
+        explode: true
+        in: query
+        name: to
+        required: true
+        schema:
+          example: 2020-04-14
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Stat'
+                type: array
+          description: Successfully retrieved stats by group.
+        "400":
+          description: "Bad Request, invalid query parameters."
+        "401":
+          description: "Unauthorized, invalid API key."
+      security:
+      - accountAuth: []
+      summary: Get All Account Stats By Group
+      tags:
+      - Stats (A)
+      x-accepts:
+      - application/json
+  /account/stat/aggregate/group:
+    get:
+      description: Gets aggregated email stats for a specific group in all sub-accounts
+        of a specific account for the given daterange. The maximum daterange for which
+        these stats can be retrieved is 366 days.
+      operationId: getAccountAggregateStatsByGroup
+      parameters:
+      - description: Group whose aggregate stats need to be retrieved.
+        explode: true
+        in: query
+        name: group
+        required: true
+        schema:
+          example: shopify
+          type: string
+        style: form
+      - description: Date from which stats should be retrieved (should be in the format
+          `YYYY-MM-DD`).
+        explode: true
+        in: query
+        name: from
+        required: true
+        schema:
+          example: 2019-01-01
+          format: date
+          type: string
+        style: form
+      - description: Date to which stats should be retrieved (should be in the format
+          `YYYY-MM-DD`). Note that the difference between `from` and `to` should not
+          be more than 366 days.
+        explode: true
+        in: query
+        name: to
+        required: true
+        schema:
+          example: 2019-12-31
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AggregateStat'
+          description: Successfully retrieved aggregate stats by group.
+        "400":
+          description: "Bad Request, invalid query parameters."
+        "401":
+          description: "Unauthorized, invalid API key."
+      security:
+      - accountAuth: []
+      summary: Get Account Aggregate Stats by Group
+      tags:
+      - Stats (A)
+      x-accepts:
+      - application/json
+  /account/subaccount/:
+    get:
+      description: Retrieves a list of all sub-accounts associated with a specific
+        account.
+      operationId: getAllSubAccounts
+      parameters:
+      - description: Number of records to return per request.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          example: 10
+          type: integer
+        style: form
+      - description: Number of initial records to skip.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          example: 0
+          type: integer
+        style: form
+      - description: Case-insensitive search against the sub-account name.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          example: Hooli
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SubAccount'
+                type: array
+          description: Successfully retrieved sub-accounts.
+        "401":
+          description: "Unauthorized, invalid API key."
+      security:
+      - accountAuth: []
+      summary: Get All Sub-Accounts
+      tags:
+      - Sub-Account
+      x-accepts:
+      - application/json
+    post:
+      description: Creates a new sub-account under the current account.
+      operationId: createSubAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewSubAccount'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubAccount'
+          description: Sub-account successfully created.
+        "403":
+          description: "Forbidden, sub-account with the same name already exists."
+        "401":
+          description: "Unauthorized, invalid API key."
+      security:
+      - accountAuth: []
+      summary: Create a New Sub-Account
+      tags:
+      - Sub-Account
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /account/subaccount/{subaccount_id}:
+    delete:
+      description: Deletes a specific sub-account by its ID.
+      operationId: deleteSubAccount
+      parameters:
+      - description: The ID of the sub-account to delete.
+        explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          example: 12
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteSubAccountResponse'
+          description: Sub-account successfully deleted.
+        "406":
+          description: Not Acceptable. Cannot delete the default sub-account.
+        "401":
+          description: Unauthorized. Invalid API key.
+      security:
+      - accountAuth: []
+      summary: Delete a Specific Sub-Account
+      tags:
+      - Sub-Account
+      x-accepts:
+      - application/json
+    get:
+      description: Retrieves a specific sub-account by its ID.
+      operationId: getSubAccount
+      parameters:
+      - description: The ID of the sub-account to retrieve.
+        explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          example: 11
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubAccount'
+          description: Successfully retrieved the sub-account.
+        "404":
+          description: Sub-account not found.
+        "401":
+          description: "Unauthorized, invalid API key."
+      security:
+      - accountAuth: []
+      summary: Get a Specific Sub-Account
+      tags:
+      - Sub-Account
+      x-accepts:
+      - application/json
+    put:
+      description: Updates the details of an existing sub-account.
+      operationId: updateSubAccount
+      parameters:
+      - description: The ID of the sub-account to update.
+        explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          example: 12
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSubAccount'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubAccount'
+          description: Sub-account successfully updated.
+        "404":
+          description: Sub-account not found.
+        "401":
+          description: "Unauthorized, invalid API key."
+      security:
+      - accountAuth: []
+      summary: Update an Existing Sub-Account
+      tags:
+      - Sub-Account
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /account/webhook:
+    get:
+      description: "Retrieves a list of all webhooks, their endpoints, and the events\
+        \ for which they are active."
+      operationId: getAllWebhooks
+      parameters:
+      - description: Number of records to return per request.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          example: 10
+          type: integer
+        style: form
+      - description: Number of initial records to skip.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          example: 0
+          type: integer
+        style: form
+      - description: Case insensitive search against webhook URL.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          example: hooli
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Webhook'
+                type: array
+          description: A list of webhooks.
+      security:
+      - accountAuth: []
+      summary: Get All Webhooks
+      tags:
+      - Webhook
+      x-accepts:
+      - application/json
+    post:
+      description: Create a new webhook by specifying its properties.
+      operationId: createWebhook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewWebhook'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+          description: Webhook created successfully.
+        "401":
+          description: Unauthorized. Invalid API key.
+        "403":
+          description: Forbidden. Webhook with the same URL already exists.
+        "406":
+          description: Not Acceptable. Cannot create webhook for the default sub-account.
+        "422":
+          description: Unprocessable entity. Invalid request body.
+      security:
+      - accountAuth: []
+      summary: Create a New Webhook
+      tags:
+      - Webhook
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /account/webhook/{webhook_id}:
+    delete:
+      description: Delete a webhook by its ID.
+      operationId: deleteWebhook
+      parameters:
+      - description: ID of the webhook to delete.
+        explode: false
+        in: path
+        name: webhook_id
+        required: true
+        schema:
+          example: 117
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteWebhookResponse'
+          description: Webhook deleted successfully.
+      security:
+      - accountAuth: []
+      summary: Delete a Specific Webhook
+      tags:
+      - Webhook
+      x-accepts:
+      - application/json
+    get:
+      description: Retrieves a specific webhook based on its ID.
+      operationId: getWebhook
+      parameters:
+      - description: The ID of the webhook to retrieve.
+        explode: false
+        in: path
+        name: webhook_id
+        required: true
+        schema:
+          example: 117
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+          description: Webhook details.
+      security:
+      - accountAuth: []
+      summary: Get a Specific Webhook
+      tags:
+      - Webhook
+      x-accepts:
+      - application/json
+    put:
+      description: Update the properties of an existing webhook.
+      operationId: updateWebhook
+      parameters:
+      - description: ID of the webhook to update.
+        explode: false
+        in: path
+        name: webhook_id
+        required: true
+        schema:
+          example: 117
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWebhook'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+          description: Webhook updated successfully.
+      security:
+      - accountAuth: []
+      summary: Update an Existing Webhook
+      tags:
+      - Webhook
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+components:
+  schemas:
+    EmailMessageObject:
+      example:
+        headers:
+          key: headers
+        trackOpens: true
+        htmlBody: htmlBody
+        subject: subject
+        ippool: ippool
+        groups:
+        - groups
+        - groups
+        from:
+          name: name
+          email: email
+        textBody: textBody
+        to:
+        - cc:
+          - name: name
+            email: email
+          - name: name
+            email: email
+          bcc:
+          - name: name
+            email: email
+          - name: name
+            email: email
+          name: name
+          email: email
+        - cc:
+          - name: name
+            email: email
+          - name: name
+            email: email
+          bcc:
+          - name: name
+            email: email
+          - name: name
+            email: email
+          name: name
+          email: email
+        trackClicks: true
+      properties:
+        from:
+          $ref: '#/components/schemas/EmailAddress'
+        to:
+          items:
+            $ref: '#/components/schemas/Recipient'
+          type: array
+        subject:
+          type: string
+        htmlBody:
+          type: string
+        textBody:
+          type: string
+        ippool:
+          type: string
+        headers:
+          additionalProperties:
+            type: string
+        trackOpens:
+          type: boolean
+        trackClicks:
+          type: boolean
+        groups:
+          items:
+            type: string
+          type: array
+    EmailMessageWithTemplate:
+      allOf:
+      - $ref: '#/components/schemas/EmailMessageObject'
+      - properties:
+          template:
+            type: string
+      example:
+        template: template
+        headers:
+          key: headers
+        trackOpens: true
+        htmlBody: htmlBody
+        subject: subject
+        ippool: ippool
+        groups:
+        - groups
+        - groups
+        from:
+          name: name
+          email: email
+        textBody: textBody
+        to:
+        - cc:
+          - name: name
+            email: email
+          - name: name
+            email: email
+          bcc:
+          - name: name
+            email: email
+          - name: name
+            email: email
+          name: name
+          email: email
+        - cc:
+          - name: name
+            email: email
+          - name: name
+            email: email
+          bcc:
+          - name: name
+            email: email
+          - name: name
+            email: email
+          name: name
+          email: email
+        trackClicks: true
+    EmailResponse:
+      example:
+        messageID: messageID
+        errorCode: 6
+        to: to
+        submittedAt: 0
+        message: message
+      properties:
+        to:
+          type: string
+        submittedAt:
+          description: UNIX epoch nano timestamp
+          type: integer
+        messageID:
+          description: Message UUID
+          type: string
+        errorCode:
+          type: integer
+        message:
+          type: string
+    EmailAddress:
+      example:
+        name: name
+        email: email
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+    Recipient:
+      example:
+        cc:
+        - name: name
+          email: email
+        - name: name
+          email: email
+        bcc:
+        - name: name
+          email: email
+        - name: name
+          email: email
+        name: name
+        email: email
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+        cc:
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+          type: array
+        bcc:
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+          type: array
+    Domain:
+      example:
+        dkim:
+          textValue: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsGMUVM1bqebA0bgtf0HQ6P/FZJy42k/OHP0OgVv4WMSsHOvCFre1/6d1GTx3ldeJf612K3L7wV4iJfDMh2FEpuQ+z+pOro3FarWuawoiJbBudgQQ8rResnZ4Sg3W1Zr3tcZgBCEQ9WoLDv/B2dd01p3ZJ40hsco+Fw75Ldnrd3wIDAQAB
+          host: 1587987845._domainkey.hooli.com
+          type: TXT
+        returnPath:
+          textValue: sp.sendpost.email
+          host: sp-bounces.hooli.com
+          type: CNAME
+        created: 1567512491587205024
+        name: piedpiper.com
+        id: 117
+        dkimVerified: false
+        returnPathVerified: false
+        track:
+          textValue: api.sendpost.io
+          host: track.hooli.com
+          type: CNAME
+        dkimConfig: dkimConfig
+        dmarc:
+          textValue: v=DMARC1; p=none;
+          host: _dmarc.hooli.com
+          type: TXT
+        dmarcVerified: false
+        trackVerified: true
+      properties:
+        id:
+          description: Unique ID for the domain.
+          example: 117
+          type: integer
+        name:
+          description: Name of the domain.
+          example: piedpiper.com
+          type: string
+        dkim:
+          $ref: '#/components/schemas/Domain_dkim'
+        returnPath:
+          $ref: '#/components/schemas/Domain_returnPath'
+        track:
+          $ref: '#/components/schemas/Domain_track'
+        dmarc:
+          $ref: '#/components/schemas/Domain_dmarc'
+        dkimConfig:
+          description: DKIM configuration
+          type: string
+        dkimVerified:
+          description: Status of DKIM verification ( true or false )
+          example: false
+          type: boolean
+        dmarcVerified:
+          description: Status of DMARC verification ( true or false)
+          example: false
+          type: boolean
+        returnPathVerified:
+          description: Status of ReturnPath verification ( true or false )
+          example: false
+          type: boolean
+        trackVerified:
+          description: Status of Track verification ( true or false )
+          example: true
+          type: boolean
+        created:
+          description: UNIX epoch timestamp in nanoseconds.
+          example: 1567512491587205024
+          format: int64
+          type: integer
+    DeleteResponse:
+      example:
+        id: 0
+        message: message
+      properties:
+        id:
+          description: ID of the deleted domain.
+          type: integer
+        message:
+          description: Success message.
+          type: string
+    CreateDomainRequest:
+      example:
+        name: hooli.com
+      properties:
+        name:
+          description: "Name of the domain (e.g., hooli.com)."
+          example: hooli.com
+          type: string
+    Stat:
+      example:
+        date: 2020-03-12
+        stats:
+          processed: 225
+          unsubscribed: 6
+          hardBounced: 10
+          dropped: 10
+          softBounced: 5
+          delivered: 200
+          spam: 2
+      properties:
+        date:
+          description: Date for which stats are retrieved (UTC).
+          example: 2020-03-12
+          format: date
+          type: string
+        stats:
+          $ref: '#/components/schemas/Stat_stats'
+    AggregateStat:
+      example:
+        processed: 225
+        unsubscribed: 6
+        hardBounced: 10
+        dropped: 10
+        softBounced: 5
+        delivered: 200
+        spam: 2
+      properties:
+        processed:
+          description: Number of emails accepted by SendPost API.
+          example: 225
+          type: integer
+        delivered:
+          description: Number of emails we were able to successfully deliver at SMTP
+            without encountering any error
+          example: 200
+          type: integer
+        dropped:
+          description: Number of emails drop without attempting to deliver either
+            because the email is invalid or email in in existing suppression list
+          example: 10
+          type: integer
+        hardBounced:
+          description: Number of emails where we got SMTP hard bounce error code by
+            the recipient mail provider
+          example: 10
+          type: integer
+        softBounced:
+          description: Number of emails where we got temporary soft bounce error by
+            the recipent mail provider. Soft bounced emails are retried upto 5 times
+            over 24 hour period before marking them as hardBounced.
+          example: 5
+          type: integer
+        unsubscribed:
+          description: Number of email recipients who unsubscribed from receiving
+            further emails
+          example: 6
+          type: integer
+        spam:
+          description: Number of email recipients who marked emails as spam
+          example: 2
+          type: integer
+    EmailStats:
+      properties:
+        date:
+          description: The UTC date for which stats are retrieved
+          format: date
+          type: string
+        stats:
+          $ref: '#/components/schemas/EmailStats_stats'
+    AggregatedEmailStats:
+      properties:
+        processed:
+          description: Total number of emails accepted by SendPost API
+          type: integer
+        delivered:
+          description: Total number of emails successfully delivered to SMTP
+          type: integer
+        dropped:
+          description: Total number of emails dropped without delivery
+          type: integer
+        hardBounced:
+          description: Total number of hard bounce errors
+          type: integer
+        softBounced:
+          description: Total number of soft bounce errors
+          type: integer
+        opened:
+          description: Total number of emails opened by recipients
+          type: integer
+        clicked:
+          description: Total number of links clicked by recipients
+          type: integer
+        unsubscribed:
+          description: Total number of unsubscribed recipients
+          type: integer
+        spam:
+          description: Total number of spams reported by recipients
+          type: integer
+    Suppression:
+      example:
+        reason: 6
+        created: 1
+        id: 0
+        email: email
+      properties:
+        id:
+          description: The ID of the suppression
+          type: integer
+        reason:
+          description: "The reason for the suppression (0 = manual, 1 = unsubscribe,\
+            \ 2 = hard bounce, 3 = spam complaint)"
+          type: integer
+        email:
+          description: The email address for the suppression
+          type: string
+        created:
+          description: UNIX epoch nano timestamp when the suppression was created
+          format: int64
+          type: integer
+    IP:
+      example:
+        autoWarmupPlan: autoWarmupPlan
+        yahooSettings: "{\"name\":\"yahoo\",\"maxConcurrentConnections\":16,...}"
+        comcastSettings: "{\"name\":\"comcast\",\"maxConcurrentConnections\":20,...}"
+        created: 1703224038766344700
+        icloudSettings: "{\"name\":\"icloud\",\"maxConcurrentConnections\":20,...}"
+        publicIP: 52.34.11.12
+        attSettings: "{\"name\":\"att\",\"maxConcurrentConnections\":1,...}"
+        type: 0
+        zohoSettings: "{\"name\":\"zoho\",\"maxConcurrentConnections\":1,...}"
+        systemDomain:
+          dkim:
+            textValue: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsGMUVM1bqebA0bgtf0HQ6P/FZJy42k/OHP0OgVv4WMSsHOvCFre1/6d1GTx3ldeJf612K3L7wV4iJfDMh2FEpuQ+z+pOro3FarWuawoiJbBudgQQ8rResnZ4Sg3W1Zr3tcZgBCEQ9WoLDv/B2dd01p3ZJ40hsco+Fw75Ldnrd3wIDAQAB
+            host: 1587987845._domainkey.hooli.com
+            type: TXT
+          returnPath:
+            textValue: sp.sendpost.email
+            host: sp-bounces.hooli.com
+            type: CNAME
+          created: 1567512491587205024
+          name: piedpiper.com
+          id: 117
+          dkimVerified: false
+          returnPathVerified: false
+          track:
+            textValue: api.sendpost.io
+            host: track.hooli.com
+            type: CNAME
+          dkimConfig: dkimConfig
+          dmarc:
+            textValue: v=DMARC1; p=none;
+            host: _dmarc.hooli.com
+            type: TXT
+          dmarcVerified: false
+          trackVerified: true
+        gmxSettings: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
+        reverseDNSHostname: example.mtaspg.email
+        infraMonitor: true
+        mailruSettings: "{\"name\":\"mailru\",\"maxConcurrentConnections\":1,...}"
+        aolSettings: "{\"name\":\"aol\",\"maxConcurrentConnections\":20,...}"
+        id: 11321
+        yandexSettings: "{\"name\":\"yandex\",\"maxConcurrentConnections\":2,...}"
+        state: 1
+        qqSettings: "{\"name\":\"qq\",\"maxConcurrentConnections\":1,...}"
+        infraClassification: ""
+        gmailSettings: "{\"name\":\"gmail\",\"maxConcurrentConnections\":100,...}"
+        microsoftSettings: "{\"name\":\"microsoft\",\"maxConcurrentConnections\":16,...}"
+        defaultSettings: "{\"name\":\"default\",\"maxConcurrentConnections\":14,...}"
+      properties:
+        id:
+          description: Unique ID for the IP
+          example: 11321
+          type: integer
+        publicIP:
+          description: The public IP address associated with the resource
+          example: 52.34.11.12
+          type: string
+        systemDomain:
+          $ref: '#/components/schemas/Domain'
+        reverseDNSHostname:
+          description: The reverse DNS hostname for the IP
+          example: example.mtaspg.email
+          type: string
+        type:
+          description: Type of the IP
+          example: 0
+          type: integer
+        gmailSettings:
+          description: Configuration for Gmail delivery settings in JSON format
+          example: "{\"name\":\"gmail\",\"maxConcurrentConnections\":100,...}"
+          type: string
+        yahooSettings:
+          description: Configuration for Yahoo delivery settings in JSON format
+          example: "{\"name\":\"yahoo\",\"maxConcurrentConnections\":16,...}"
+          type: string
+        aolSettings:
+          description: Configuration for AOL delivery settings in JSON format
+          example: "{\"name\":\"aol\",\"maxConcurrentConnections\":20,...}"
+          type: string
+        microsoftSettings:
+          description: Configuration for Microsoft delivery settings in JSON format
+          example: "{\"name\":\"microsoft\",\"maxConcurrentConnections\":16,...}"
+          type: string
+        comcastSettings:
+          description: Configuration for Comcast delivery settings in JSON format
+          example: "{\"name\":\"comcast\",\"maxConcurrentConnections\":20,...}"
+          type: string
+        yandexSettings:
+          description: Configuration for Yandex delivery settings in JSON format
+          example: "{\"name\":\"yandex\",\"maxConcurrentConnections\":2,...}"
+          type: string
+        gmxSettings:
+          description: Configuration for GMX delivery settings in JSON format
+          example: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
+          type: string
+        mailruSettings:
+          description: Configuration for Mail.ru delivery settings in JSON format
+          example: "{\"name\":\"mailru\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        icloudSettings:
+          description: Configuration for iCloud delivery settings in JSON format
+          example: "{\"name\":\"icloud\",\"maxConcurrentConnections\":20,...}"
+          type: string
+        zohoSettings:
+          description: Configuration for Zoho delivery settings in JSON format
+          example: "{\"name\":\"zoho\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        qqSettings:
+          description: Configuration for QQ delivery settings in JSON format
+          example: "{\"name\":\"qq\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        defaultSettings:
+          description: Default delivery settings in JSON format
+          example: "{\"name\":\"default\",\"maxConcurrentConnections\":14,...}"
+          type: string
+        attSettings:
+          description: Configuration for AT&T delivery settings in JSON format
+          example: "{\"name\":\"att\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        created:
+          description: The timestamp (UNIX epoch) when the IP was created
+          example: 1703224038766344700
+          type: integer
+        infraClassification:
+          description: Classification of the infrastructure
+          example: ""
+          type: string
+        infraMonitor:
+          description: Indicates whether infrastructure monitoring is enabled
+          example: true
+          type: boolean
+        state:
+          description: The state of the IP
+          example: 1
+          type: integer
+        autoWarmupPlan:
+          description: The auto-warmup plan associated with the IP
+          type: string
+          nullable: true
+          example: null
+      required:
+      - created
+      - id
+      - publicIP
+    IPAllocationRequest:
+      example:
+        overflowPool: true
+        ips:
+        - 34.21.14.11
+        - 34.21.14.11
+      properties:
+        overflowPool:
+          description: Determines whether emails should be sent over shared IP when
+            the IP pool is full
+          example: true
+          type: boolean
+        ips:
+          items:
+            description: List of IP resources within the pool
+            example: 34.21.14.11
+            type: string
+          type: array
+      required:
+      - ips
+      - overflowPool
+    IPUpdateRequest:
+      example:
+        autoWarmupEnabled: false
+      properties:
+        autoWarmupEnabled:
+          description: Whether the IP warmup should happen automatically or be managed
+            manually
+          example: false
+          type: boolean
+      required:
+      - autoWarmupEnabled
+    IPDeletionResponse:
+      example:
+        id: 11322
+        message: IP (34.21.14.11) has been deleted successfully
+      properties:
+        id:
+          description: The unique ID of the IP
+          example: 11322
+          type: integer
+        message:
+          description: The confirmation message after deletion
+          example: IP (34.21.14.11) has been deleted successfully
+          type: string
+      required:
+      - id
+      - message
+    IPPool:
+      example:
+        thirdPartySendingProviders:
+        - endpoint: ""
+          port: 0
+          created: 1597511124701000
+          domain: ""
+          name: sendgrid
+          retryTime: 0
+          id: 1
+          secret: your_api_key
+          type: 1
+          oauthToken: ""
+          key: ""
+        - endpoint: ""
+          port: 0
+          created: 1597511124701000
+          domain: ""
+          name: sendgrid
+          retryTime: 0
+          id: 1
+          secret: your_api_key
+          type: 1
+          oauthToken: ""
+          key: ""
+        created: 1597511124804000
+        routingMetaData: "{}"
+        ips:
+        - autoWarmupPlan: autoWarmupPlan
+          yahooSettings: "{\"name\":\"yahoo\",\"maxConcurrentConnections\":16,...}"
+          comcastSettings: "{\"name\":\"comcast\",\"maxConcurrentConnections\":20,...}"
+          created: 1703224038766344700
+          icloudSettings: "{\"name\":\"icloud\",\"maxConcurrentConnections\":20,...}"
+          publicIP: 52.34.11.12
+          attSettings: "{\"name\":\"att\",\"maxConcurrentConnections\":1,...}"
+          type: 0
+          zohoSettings: "{\"name\":\"zoho\",\"maxConcurrentConnections\":1,...}"
+          systemDomain:
+            dkim:
+              textValue: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsGMUVM1bqebA0bgtf0HQ6P/FZJy42k/OHP0OgVv4WMSsHOvCFre1/6d1GTx3ldeJf612K3L7wV4iJfDMh2FEpuQ+z+pOro3FarWuawoiJbBudgQQ8rResnZ4Sg3W1Zr3tcZgBCEQ9WoLDv/B2dd01p3ZJ40hsco+Fw75Ldnrd3wIDAQAB
+              host: 1587987845._domainkey.hooli.com
+              type: TXT
+            returnPath:
+              textValue: sp.sendpost.email
+              host: sp-bounces.hooli.com
+              type: CNAME
+            created: 1567512491587205024
+            name: piedpiper.com
+            id: 117
+            dkimVerified: false
+            returnPathVerified: false
+            track:
+              textValue: api.sendpost.io
+              host: track.hooli.com
+              type: CNAME
+            dkimConfig: dkimConfig
+            dmarc:
+              textValue: v=DMARC1; p=none;
+              host: _dmarc.hooli.com
+              type: TXT
+            dmarcVerified: false
+            trackVerified: true
+          gmxSettings: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
+          reverseDNSHostname: example.mtaspg.email
+          infraMonitor: true
+          mailruSettings: "{\"name\":\"mailru\",\"maxConcurrentConnections\":1,...}"
+          aolSettings: "{\"name\":\"aol\",\"maxConcurrentConnections\":20,...}"
+          id: 11321
+          yandexSettings: "{\"name\":\"yandex\",\"maxConcurrentConnections\":2,...}"
+          state: 1
+          qqSettings: "{\"name\":\"qq\",\"maxConcurrentConnections\":1,...}"
+          infraClassification: ""
+          gmailSettings: "{\"name\":\"gmail\",\"maxConcurrentConnections\":100,...}"
+          microsoftSettings: "{\"name\":\"microsoft\",\"maxConcurrentConnections\"\
+            :16,...}"
+          defaultSettings: "{\"name\":\"default\",\"maxConcurrentConnections\":14,...}"
+        - autoWarmupPlan: autoWarmupPlan
+          yahooSettings: "{\"name\":\"yahoo\",\"maxConcurrentConnections\":16,...}"
+          comcastSettings: "{\"name\":\"comcast\",\"maxConcurrentConnections\":20,...}"
+          created: 1703224038766344700
+          icloudSettings: "{\"name\":\"icloud\",\"maxConcurrentConnections\":20,...}"
+          publicIP: 52.34.11.12
+          attSettings: "{\"name\":\"att\",\"maxConcurrentConnections\":1,...}"
+          type: 0
+          zohoSettings: "{\"name\":\"zoho\",\"maxConcurrentConnections\":1,...}"
+          systemDomain:
+            dkim:
+              textValue: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsGMUVM1bqebA0bgtf0HQ6P/FZJy42k/OHP0OgVv4WMSsHOvCFre1/6d1GTx3ldeJf612K3L7wV4iJfDMh2FEpuQ+z+pOro3FarWuawoiJbBudgQQ8rResnZ4Sg3W1Zr3tcZgBCEQ9WoLDv/B2dd01p3ZJ40hsco+Fw75Ldnrd3wIDAQAB
+              host: 1587987845._domainkey.hooli.com
+              type: TXT
+            returnPath:
+              textValue: sp.sendpost.email
+              host: sp-bounces.hooli.com
+              type: CNAME
+            created: 1567512491587205024
+            name: piedpiper.com
+            id: 117
+            dkimVerified: false
+            returnPathVerified: false
+            track:
+              textValue: api.sendpost.io
+              host: track.hooli.com
+              type: CNAME
+            dkimConfig: dkimConfig
+            dmarc:
+              textValue: v=DMARC1; p=none;
+              host: _dmarc.hooli.com
+              type: TXT
+            dmarcVerified: false
+            trackVerified: true
+          gmxSettings: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
+          reverseDNSHostname: example.mtaspg.email
+          infraMonitor: true
+          mailruSettings: "{\"name\":\"mailru\",\"maxConcurrentConnections\":1,...}"
+          aolSettings: "{\"name\":\"aol\",\"maxConcurrentConnections\":20,...}"
+          id: 11321
+          yandexSettings: "{\"name\":\"yandex\",\"maxConcurrentConnections\":2,...}"
+          state: 1
+          qqSettings: "{\"name\":\"qq\",\"maxConcurrentConnections\":1,...}"
+          infraClassification: ""
+          gmailSettings: "{\"name\":\"gmail\",\"maxConcurrentConnections\":100,...}"
+          microsoftSettings: "{\"name\":\"microsoft\",\"maxConcurrentConnections\"\
+            :16,...}"
+          defaultSettings: "{\"name\":\"default\",\"maxConcurrentConnections\":14,...}"
+        overflowPoolName: Transactional
+        warmupInterval: 60
+        infraMonitor: true
+        routingStrategy: 0
+        autoWarmupEnabled: false
+        ipDomainWarmupStatus: ipDomainWarmupStatus
+        name: Transactional
+        id: 746
+        shouldOverflow: true
+      properties:
+        id:
+          example: 746
+          type: integer
+        name:
+          example: Transactional
+          type: string
+        created:
+          example: 1597511124804000
+          type: integer
+        ips:
+          items:
+            $ref: '#/components/schemas/IP'
+          type: array
+        thirdPartySendingProviders:
+          items:
+            $ref: '#/components/schemas/ThirdPartySendingProvider'
+          type: array
+        routingStrategy:
+          example: 0
+          type: integer
+        routingMetaData:
+          example: "{}"
+          type: string
+        autoWarmupEnabled:
+          example: false
+          type: boolean
+        infraMonitor:
+          example: true
+          type: boolean
+        ipDomainWarmupStatus:
+          type: string
+          nullable: true
+          example: null
+        shouldOverflow:
+          description: "Indicates whether the IP should overflow, once email capacity\
+            \ of the IP Pool has been reached, should we send remaining emails over\
+            \ shared IP or not"
+          example: true
+          type: boolean
+        overflowPoolName:
+          description: The name of the overflow pool
+          example: Transactional
+          type: string
+        warmupInterval:
+          description: The interval for the warmup
+          example: 60
+          type: integer
+    ThirdPartySendingProvider:
+      example:
+        endpoint: ""
+        port: 0
+        created: 1597511124701000
+        domain: ""
+        name: sendgrid
+        retryTime: 0
+        id: 1
+        secret: your_api_key
+        type: 1
+        oauthToken: ""
+        key: ""
+      properties:
+        id:
+          example: 1
+          type: integer
+        name:
+          example: sendgrid
+          type: string
+        type:
+          example: 1
+          type: integer
+        domain:
+          example: ""
+          type: string
+        endpoint:
+          example: ""
+          type: string
+        key:
+          example: ""
+          type: string
+        secret:
+          example: your_api_key
+          type: string
+        port:
+          example: 0
+          type: integer
+        oauthToken:
+          example: ""
+          type: string
+        retryTime:
+          example: 0
+          type: integer
+        created:
+          example: 1597511124701000
+          type: integer
+    IPPoolCreateRequest:
+      example:
+        routingStrategy: 0
+        overflowPool: false
+        name: Marketing Promotional
+        routingMetaData: "{}"
+        ips:
+        - publicIP: 52.13.11.14
+        - publicIP: 52.13.11.14
+        tpsps:
+        - 1
+      properties:
+        name:
+          example: Marketing Promotional
+          type: string
+        ips:
+          items:
+            $ref: '#/components/schemas/EIP'
+          type: array
+        tpsps:
+          example:
+          - 1
+          items:
+            type: integer
+          type: array
+        routingStrategy:
+          example: 0
+          type: integer
+        routingMetaData:
+          example: "{}"
+          type: string
+        overflowPool:
+          example: false
+          type: boolean
+    IPPoolUpdateRequest:
+      example:
+        routingStrategy: 0
+        name: Marketing Promotional
+        routingMetaData: "{}"
+        ips:
+        - publicIP: 52.12.10.12
+        - publicIP: 52.10.12.17
+        - publicIP: 35.11.10.5
+      properties:
+        name:
+          example: Marketing Promotional
+          type: string
+        ips:
+          example:
+          - publicIP: 52.12.10.12
+          - publicIP: 52.10.12.17
+          - publicIP: 35.11.10.5
+          items:
+            $ref: '#/components/schemas/IP'
+          type: array
+        routingStrategy:
+          example: 0
+          type: integer
+        routingMetaData:
+          example: "{}"
+          type: string
+    IPPoolDeleteResponse:
+      example:
+        id: 756
+        message: IPPool (Marketing Promotional) has been deleted successfully
+      properties:
+        id:
+          example: 756
+          type: integer
+        message:
+          example: IPPool (Marketing Promotional) has been deleted successfully
+          type: string
+    AccountStats:
+      example:
+        date: 2020-03-12
+        stat:
+          processed: 1225
+          unsubscribed: 15
+          spams: 12
+          hardBounced: 10
+          dropped: 10
+          softBounced: 5
+          opens: 150
+          clicks: 130
+          delivered: 1200
+      properties:
+        date:
+          example: 2020-03-12
+          format: date
+          type: string
+        stat:
+          $ref: '#/components/schemas/AccountStats_stat'
+    AggregateStats:
+      example:
+        processed: 22500
+        unsubscribed: 500
+        spams: 200
+        hardBounced: 1000
+        dropped: 1000
+        softBounced: 500
+        opens: 5000
+        clicks: 3000
+        delivered: 20000
+      properties:
+        processed:
+          example: 22500
+          type: integer
+        delivered:
+          example: 20000
+          type: integer
+        dropped:
+          example: 1000
+          type: integer
+        hardBounced:
+          example: 1000
+          type: integer
+        softBounced:
+          example: 500
+          type: integer
+        opens:
+          example: 5000
+          type: integer
+        clicks:
+          example: 3000
+          type: integer
+        unsubscribed:
+          example: 500
+          type: integer
+        spams:
+          example: 200
+          type: integer
+    SubAccount:
+      example:
+        isPlus: true
+        updatedBy:
+          phoneNumber: "+919876543210"
+          isForbidden: false
+          isVerified: true
+          created: 1567512491588004044
+          companyName: SendPost
+          onboardQAnswered: true
+          name: Raj
+          id: 117
+          updated: 1567512491588004044
+          email: raj@piedpiper.com
+          logoURL: https://www.sendpost.io/logo.png
+        apiKey: AHZ3125333JHEP
+        createdBy:
+          phoneNumber: "+919876543210"
+          isForbidden: false
+          isVerified: true
+          created: 1567512491588004044
+          companyName: SendPost
+          onboardQAnswered: true
+          name: Raj
+          id: 117
+          updated: 1567512491588004044
+          email: raj@piedpiper.com
+          logoURL: https://www.sendpost.io/logo.png
+        created: 1567512491586102044
+        name: Hooli
+        id: 11
+        type: 1
+        labels:
+        - label1
+        - label2
+        smtpAuths:
+        - password: default@117.sendpost.io
+          created: 1567512491588004044
+          id: 117
+          updated: 1567512491588004044
+          username: default@117.sendpost.io
+        - password: default@117.sendpost.io
+          created: 1567512491588004044
+          id: 117
+          updated: 1567512491588004044
+          username: default@117.sendpost.io
+      properties:
+        id:
+          description: Unique ID for the sub-account.
+          example: 11
+          type: integer
+        name:
+          description: Name of the sub-account.
+          example: Hooli
+          type: string
+        created:
+          description: UNIX epoch nano timestamp when the sub-account was created.
+          example: 1567512491586102044
+          type: integer
+        apiKey:
+          description: API key for the sub-account.
+          example: AHZ3125333JHEP
+          type: string
+        labels:
+          description: Labels associated with the sub-account
+          example:
+          - label1
+          - label2
+          items:
+            type: string
+          type: array
+        isPlus:
+          description: Indicates whether the sub-account is a Plus sub-account
+          example: true
+          type: boolean
+        type:
+          description: Type of the sub-account
+          enum:
+          - 0
+          - 1
+          example: 1
+          type: integer
+        createdBy:
+          $ref: '#/components/schemas/Member'
+        updatedBy:
+          $ref: '#/components/schemas/Member'
+        smtpAuths:
+          description: SMTP Auths associated with the sub-account
+          items:
+            $ref: '#/components/schemas/SMTPAuth'
+          type: array
+    SMTPAuth:
+      example:
+        password: default@117.sendpost.io
+        created: 1567512491588004044
+        id: 117
+        updated: 1567512491588004044
+        username: default@117.sendpost.io
+      properties:
+        id:
+          description: Unique ID for the SMTP Auth
+          example: 117
+          type: integer
+        username:
+          description: Username for the SMTP Auth
+          example: default@117.sendpost.io
+          type: string
+        password:
+          description: Password for the SMTP Auth
+          example: default@117.sendpost.io
+          type: string
+        created:
+          description: UNIX epoch nano timestamp when the SMTP Auth was created
+          example: 1567512491588004044
+          type: integer
+        updated:
+          description: UNIX epoch nano timestamp when the SMTP Auth was updated
+          example: 1567512491588004044
+          type: integer
+    Member:
+      example:
+        phoneNumber: "+919876543210"
+        isForbidden: false
+        isVerified: true
+        created: 1567512491588004044
+        companyName: SendPost
+        onboardQAnswered: true
+        name: Raj
+        id: 117
+        updated: 1567512491588004044
+        email: raj@piedpiper.com
+        logoURL: https://www.sendpost.io/logo.png
+      properties:
+        id:
+          description: Unique ID for the member
+          example: 117
+          type: integer
+        isVerified:
+          description: Indicates whether the member is verified
+          example: true
+          type: boolean
+        isForbidden:
+          description: Indicates whether the member is forbidden
+          example: false
+          type: boolean
+        email:
+          description: Email for the member
+          example: raj@piedpiper.com
+          type: string
+        name:
+          description: Name for the member
+          example: Raj
+          type: string
+        logoURL:
+          description: Logo URL for the member
+          example: https://www.sendpost.io/logo.png
+          type: string
+        companyName:
+          description: Company name for the member
+          example: SendPost
+          type: string
+        onboardQAnswered:
+          description: Indicates whether the member has answered onboarding question
+          example: true
+          type: boolean
+        phoneNumber:
+          description: Phone number for the member
+          example: "+919876543210"
+          type: string
+        created:
+          description: UNIX epoch nano timestamp when the member was created
+          example: 1567512491588004044
+          type: integer
+        updated:
+          description: UNIX epoch nano timestamp when the member was updated
+          example: 1567512491588004044
+          type: integer
+    NewSubAccount:
+      example:
+        name: FoxHole
+      properties:
+        name:
+          description: Name for the new sub-account.
+          example: FoxHole
+          type: string
+    UpdateSubAccount:
+      example:
+        name: FoxHole V1
+      properties:
+        name:
+          description: New name for the sub-account.
+          example: FoxHole V1
+          type: string
+    DeleteSubAccountResponse:
+      example:
+        id: 12
+        message: Sub-Account (FoxHole V1) has been deleted successfully.
+      properties:
+        id:
+          description: Unique ID for the deleted sub-account.
+          example: 12
+          type: integer
+        message:
+          description: Message confirming the deletion.
+          example: Sub-Account (FoxHole V1) has been deleted successfully.
+          type: string
+    EIP:
+      example:
+        publicIP: 52.13.11.14
+      properties:
+        publicIP:
+          description: list of IP resources which are a part of the IP Pool containing
+            public IP information. Note that the IPs specified in the IPPool should
+            have been allocated in advance for your account
+          example: 52.13.11.14
+          type: string
+      required:
+      - publicIP
+    Webhook:
+      example:
+        hardBounced: true
+        created: 1567512491588004044
+        dropped: false
+        delivered: true
+        opened: true
+        clicked: true
+        enabled: true
+        url: https://app.hooli.com/email/webhook
+        processed: true
+        unsubscribed: true
+        softBounced: false
+        id: 117
+        spam: true
+      properties:
+        id:
+          description: Unique ID for the webhook.
+          example: 117
+          type: integer
+        enabled:
+          description: Indicates if the webhook is active or paused.
+          example: true
+          type: boolean
+        url:
+          description: URL endpoint to which webhook calls need to be made.
+          example: https://app.hooli.com/email/webhook
+          type: string
+        processed:
+          description: Trigger webhook on email message being processed.
+          example: true
+          type: boolean
+        delivered:
+          description: Trigger webhook on email message being delivered.
+          example: true
+          type: boolean
+        dropped:
+          description: Trigger webhook on email message being dropped.
+          example: false
+          type: boolean
+        softBounced:
+          description: Trigger webhook on email message being soft bounced.
+          example: false
+          type: boolean
+        hardBounced:
+          description: Trigger webhook on email message being hard bounced.
+          example: true
+          type: boolean
+        opened:
+          description: Trigger webhook on email message being opened.
+          example: true
+          type: boolean
+        clicked:
+          description: Trigger webhook on email message link being clicked.
+          example: true
+          type: boolean
+        unsubscribed:
+          description: Trigger webhook on email message being unsubscribed.
+          example: true
+          type: boolean
+        spam:
+          description: Trigger webhook on email message being marked as spam.
+          example: true
+          type: boolean
+        created:
+          description: UNIX epoch nano timestamp when the webhook was created.
+          example: 1567512491588004044
+          format: int64
+          type: integer
+    NewWebhook:
+      example:
+        processed: true
+        unsubscribed: true
+        hardBounced: true
+        dropped: false
+        softBounced: false
+        delivered: true
+        opened: true
+        spam: true
+        clicked: true
+        enabled: true
+        url: https://app.hooli.com/email/webhook
+      properties:
+        enabled:
+          description: Is the webhook active or in a paused state?
+          example: true
+          type: boolean
+        url:
+          description: URL endpoint to which webhook calls are sent.
+          example: https://app.hooli.com/email/webhook
+          type: string
+        processed:
+          description: Trigger webhook on email message being processed.
+          example: true
+          type: boolean
+        delivered:
+          description: Trigger webhook on email message being delivered.
+          example: true
+          type: boolean
+        dropped:
+          description: Trigger webhook on email message being dropped.
+          example: false
+          type: boolean
+        softBounced:
+          description: Trigger webhook on email message being soft bounced.
+          example: false
+          type: boolean
+        hardBounced:
+          description: Trigger webhook on email message being hard bounced.
+          example: true
+          type: boolean
+        opened:
+          description: Trigger webhook on email message being opened.
+          example: true
+          type: boolean
+        clicked:
+          description: Trigger webhook on email message link being clicked.
+          example: true
+          type: boolean
+        unsubscribed:
+          description: Trigger webhook on email message being unsubscribed.
+          example: true
+          type: boolean
+        spam:
+          description: Trigger webhook on email message being marked as spam.
+          example: true
+          type: boolean
+    UpdateWebhook:
+      allOf:
+      - $ref: '#/components/schemas/NewWebhook'
+      example:
+        processed: true
+        unsubscribed: true
+        hardBounced: true
+        dropped: false
+        softBounced: false
+        delivered: true
+        opened: true
+        spam: true
+        clicked: true
+        enabled: true
+        url: https://app.hooli.com/email/webhook
+    DeleteWebhookResponse:
+      example:
+        id: 117
+        message: Webhook (https://app.hooli.com/email/webhook) has been deleted successfully.
+      properties:
+        id:
+          description: Unique ID of the deleted webhook.
+          example: 117
+          type: integer
+        message:
+          description: Success message.
+          example: Webhook (https://app.hooli.com/email/webhook) has been deleted
+            successfully.
+          type: string
+    WebhookObject:
+      example:
+        emailMessage:
+          headers:
+            X-Campaign-Id: "12345"
+          trackOpens: true
+          customFields:
+            Company: Company Name
+            Email: user@example.com
+          messageID: mjhl-1401-sasdf-129324
+          groups:
+          - welcome
+          - user-onboarding
+          publicIP: 52.34.11.12
+          accountID: 117
+          ipID: 123
+          subAccountID: 117
+          emailType: default
+          replyTo:
+            name: Gavin
+            email: gavin@hooli.com
+          localIP: 127.0.0.1
+          from:
+            name: Richard
+            email: richard@piedpiper.com
+          to:
+          - cc:
+            - customFields:
+                Company: Hooli
+              name: Dinesh
+              email: dinesh@bachmanity.com
+            - customFields:
+                Company: Hooli
+              name: Dinesh
+              email: dinesh@bachmanity.com
+            bcc:
+            - customFields:
+                Company: Hooli
+              name: Jian
+              email: jian@bachmanity.com
+            - customFields:
+                Company: Hooli
+              name: Jian
+              email: jian@bachmanity.com
+            customFields:
+              Company: Hooli
+            name: Gavin
+            email: gavin@hooli.com
+          - cc:
+            - customFields:
+                Company: Hooli
+              name: Dinesh
+              email: dinesh@bachmanity.com
+            - customFields:
+                Company: Hooli
+              name: Dinesh
+              email: dinesh@bachmanity.com
+            bcc:
+            - customFields:
+                Company: Hooli
+              name: Jian
+              email: jian@bachmanity.com
+            - customFields:
+                Company: Hooli
+              name: Jian
+              email: jian@bachmanity.com
+            customFields:
+              Company: Hooli
+            name: Gavin
+            email: gavin@hooli.com
+          submittedAt: 1567512491587205024
+          trackClicks: true
+          webhookEndpoint: https://webhook.example.com/webhook
+          ipPool: transactional-piedpiper
+        event:
+          eventID: edhg-123gh-afasdf-124egh
+          messageSubject: Welcome to Pied Piper :) + 1 quick question
+          tpspId: 1
+          groups:
+          - transactional
+          - user-onboarding
+          messageID: mjhl-1401-sasdf-129324
+          smtpCode: 200
+          type: 2
+          domainID: 123
+          eventMetadata:
+            smtpDescription: email delivered successfully
+            geo:
+              countryCode: US
+              postalCode: "12345"
+              timeZone: America/Los_Angeles
+              cityID: "123"
+              continentCode: EU
+            os:
+              Major: "10"
+              PatchMinor: "0"
+              Family: Windows
+              Minor: "0"
+              Patch: "0"
+            clickedURL: https://hooli.com
+            trackedIP: 52.34.11.12
+            smtpCode: 200
+            userAgent:
+              Major: "5.0"
+              Family: Mozilla
+              Minor: "0"
+              Patch: "0"
+            rawUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\
+              \ (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+            device:
+              Family: ""
+          smtpDescription: email delivered successfully
+          accountID: 117
+          ipID: 123
+          messageType: default
+          subAccountID: 117
+          toName: Gavin
+          ipPoolID: 123
+          fromName: Richard
+          from: richard@piedpiper.com
+          to: gavin@hooli.com
+          submittedAt: 1567512491587205024
+      properties:
+        event:
+          $ref: '#/components/schemas/Event'
+        emailMessage:
+          $ref: '#/components/schemas/EmailMessage'
+      tags:
+      - Webhook Reference
+    Event:
+      example:
+        eventID: edhg-123gh-afasdf-124egh
+        messageSubject: Welcome to Pied Piper :) + 1 quick question
+        tpspId: 1
+        groups:
+        - transactional
+        - user-onboarding
+        messageID: mjhl-1401-sasdf-129324
+        smtpCode: 200
+        type: 2
+        domainID: 123
+        eventMetadata:
+          smtpDescription: email delivered successfully
+          geo:
+            countryCode: US
+            postalCode: "12345"
+            timeZone: America/Los_Angeles
+            cityID: "123"
+            continentCode: EU
+          os:
+            Major: "10"
+            PatchMinor: "0"
+            Family: Windows
+            Minor: "0"
+            Patch: "0"
+          clickedURL: https://hooli.com
+          trackedIP: 52.34.11.12
+          smtpCode: 200
+          userAgent:
+            Major: "5.0"
+            Family: Mozilla
+            Minor: "0"
+            Patch: "0"
+          rawUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\
+            \ (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+          device:
+            Family: ""
+        smtpDescription: email delivered successfully
+        accountID: 117
+        ipID: 123
+        messageType: default
+        subAccountID: 117
+        toName: Gavin
+        ipPoolID: 123
+        fromName: Richard
+        from: richard@piedpiper.com
+        to: gavin@hooli.com
+        submittedAt: 1567512491587205024
+      properties:
+        eventID:
+          example: edhg-123gh-afasdf-124egh
+          type: string
+        groups:
+          example:
+          - transactional
+          - user-onboarding
+          items:
+            type: string
+          type: array
+        ipID:
+          example: 123
+          type: integer
+        ipPoolID:
+          example: 123
+          type: integer
+        domainID:
+          example: 123
+          type: integer
+        tpspId:
+          example: 1
+          type: integer
+        messageType:
+          example: default
+          type: string
+        messageSubject:
+          example: Welcome to Pied Piper :) + 1 quick question
+          type: string
+        accountID:
+          example: 117
+          type: integer
+        subAccountID:
+          example: 117
+          type: integer
+        messageID:
+          example: mjhl-1401-sasdf-129324
+          type: string
+        type:
+          example: 2
+          type: integer
+        from:
+          example: richard@piedpiper.com
+          type: string
+        fromName:
+          example: Richard
+          type: string
+        to:
+          example: gavin@hooli.com
+          type: string
+        toName:
+          example: Gavin
+          type: string
+        submittedAt:
+          example: 1567512491587205024
+          type: integer
+        smtpCode:
+          example: 200
+          type: integer
+        smtpDescription:
+          example: email delivered successfully
+          type: string
+        eventMetadata:
+          $ref: '#/components/schemas/EventMetadata'
+    EventMetadata:
+      example:
+        smtpDescription: email delivered successfully
+        geo:
+          countryCode: US
+          postalCode: "12345"
+          timeZone: America/Los_Angeles
+          cityID: "123"
+          continentCode: EU
+        os:
+          Major: "10"
+          PatchMinor: "0"
+          Family: Windows
+          Minor: "0"
+          Patch: "0"
+        clickedURL: https://hooli.com
+        trackedIP: 52.34.11.12
+        smtpCode: 200
+        userAgent:
+          Major: "5.0"
+          Family: Mozilla
+          Minor: "0"
+          Patch: "0"
+        rawUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\
+          \ (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+        device:
+          Family: ""
+      properties:
+        smtpCode:
+          example: 200
+          type: integer
+        smtpDescription:
+          example: email delivered successfully
+          type: string
+        userAgent:
+          $ref: '#/components/schemas/UserAgent'
+        os:
+          $ref: '#/components/schemas/OperatingSystem'
+        device:
+          $ref: '#/components/schemas/Device'
+        geo:
+          $ref: '#/components/schemas/GeoLocation'
+        clickedURL:
+          example: https://hooli.com
+          type: string
+        trackedIP:
+          example: 52.34.11.12
+          type: string
+        rawUserAgent:
+          example: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,\
+            \ like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+          type: string
+    UserAgent:
+      example:
+        Major: "5.0"
+        Family: Mozilla
+        Minor: "0"
+        Patch: "0"
+      properties:
+        Family:
+          example: Mozilla
+          type: string
+        Major:
+          example: "5.0"
+          type: string
+        Minor:
+          example: "0"
+          type: string
+        Patch:
+          example: "0"
+          type: string
+    OperatingSystem:
+      example:
+        Major: "10"
+        PatchMinor: "0"
+        Family: Windows
+        Minor: "0"
+        Patch: "0"
+      properties:
+        Family:
+          example: Windows
+          type: string
+        Major:
+          example: "10"
+          type: string
+        Minor:
+          example: "0"
+          type: string
+        Patch:
+          example: "0"
+          type: string
+        PatchMinor:
+          example: "0"
+          type: string
+    Device:
+      example:
+        Family: ""
+      properties:
+        Family:
+          example: ""
+          type: string
+    GeoLocation:
+      example:
+        countryCode: US
+        postalCode: "12345"
+        timeZone: America/Los_Angeles
+        cityID: "123"
+        continentCode: EU
+      properties:
+        cityID:
+          example: "123"
+          type: string
+        continentCode:
+          example: EU
+          type: string
+        countryCode:
+          example: US
+          type: string
+        postalCode:
+          example: "12345"
+          type: string
+        timeZone:
+          example: America/Los_Angeles
+          type: string
+    EmailMessage:
+      example:
+        headers:
+          X-Campaign-Id: "12345"
+        trackOpens: true
+        customFields:
+          Company: Company Name
+          Email: user@example.com
+        messageID: mjhl-1401-sasdf-129324
+        groups:
+        - welcome
+        - user-onboarding
+        publicIP: 52.34.11.12
+        accountID: 117
+        ipID: 123
+        subAccountID: 117
+        emailType: default
+        replyTo:
+          name: Gavin
+          email: gavin@hooli.com
+        localIP: 127.0.0.1
+        from:
+          name: Richard
+          email: richard@piedpiper.com
+        to:
+        - cc:
+          - customFields:
+              Company: Hooli
+            name: Dinesh
+            email: dinesh@bachmanity.com
+          - customFields:
+              Company: Hooli
+            name: Dinesh
+            email: dinesh@bachmanity.com
+          bcc:
+          - customFields:
+              Company: Hooli
+            name: Jian
+            email: jian@bachmanity.com
+          - customFields:
+              Company: Hooli
+            name: Jian
+            email: jian@bachmanity.com
+          customFields:
+            Company: Hooli
+          name: Gavin
+          email: gavin@hooli.com
+        - cc:
+          - customFields:
+              Company: Hooli
+            name: Dinesh
+            email: dinesh@bachmanity.com
+          - customFields:
+              Company: Hooli
+            name: Dinesh
+            email: dinesh@bachmanity.com
+          bcc:
+          - customFields:
+              Company: Hooli
+            name: Jian
+            email: jian@bachmanity.com
+          - customFields:
+              Company: Hooli
+            name: Jian
+            email: jian@bachmanity.com
+          customFields:
+            Company: Hooli
+          name: Gavin
+          email: gavin@hooli.com
+        submittedAt: 1567512491587205024
+        trackClicks: true
+        webhookEndpoint: https://webhook.example.com/webhook
+        ipPool: transactional-piedpiper
+      properties:
+        messageID:
+          example: mjhl-1401-sasdf-129324
+          type: string
+        accountID:
+          example: 117
+          type: integer
+        subAccountID:
+          example: 117
+          type: integer
+        ipID:
+          example: 123
+          type: integer
+        publicIP:
+          example: 52.34.11.12
+          type: string
+        localIP:
+          example: 127.0.0.1
+          type: string
+        emailType:
+          example: default
+          type: string
+        submittedAt:
+          example: 1567512491587205024
+          type: integer
+        from:
+          $ref: '#/components/schemas/EmailMessage_from'
+        replyTo:
+          $ref: '#/components/schemas/EmailMessage_replyTo'
+        to:
+          items:
+            $ref: '#/components/schemas/EmailMessage_to_inner'
+          type: array
+        groups:
+          example:
+          - welcome
+          - user-onboarding
+          items:
+            type: string
+          type: array
+        ipPool:
+          example: transactional-piedpiper
+          type: string
+        headers:
+          additionalProperties:
+            type: string
+          example:
+            X-Campaign-Id: "12345"
+        customFields:
+          additionalProperties:
+            type: string
+          example:
+            Company: Company Name
+            Email: user@example.com
+        trackOpens:
+          example: true
+          type: boolean
+        trackClicks:
+          example: true
+          type: boolean
+        webhookEndpoint:
+          example: https://webhook.example.com/webhook
+          type: string
+    Message:
+      example:
+        headers: "{\"X-Campaign-Id\": \"User onboarding\"}"
+        trackOpens: true
+        subject: Welcome to Pied Piper :) + 1 quick question
+        ippool: transactional-piedpiper
+        preText: Congrats and get some Pied Piper cred inside
+        textBody: "Thanks for joining Pied Piper {{.FirstName}}.Pied Piper has changed\
+          \ many landscapes. Compression. Data. The Internet"
+        htmlBody: "Thanks for joining Pied Piper {{.FirstName}}.Pied Piper has changed\
+          \ many landscapes. Compression. Data. The Internet"
+        replyTo:
+          name: PiedPipers
+          email: team@piedpiper.com
+        from:
+          name: PiedPipers
+          email: team@piedpiper.com
+        id: 4d9c5148-63fc-4999-99ea-fc997b0a24e2
+        to:
+        - customFields: "{\"Company\": \"Hooli\"}"
+          name: Peter Gregory
+          email: peter@hooli.com
+        - customFields: "{\"Company\": \"Hooli\"}"
+          name: Peter Gregory
+          email: peter@hooli.com
+        submittedAt: 1588760624008835220
+        trackClicks: true
+      properties:
+        id:
+          description: Unique ID for the message.
+          example: 4d9c5148-63fc-4999-99ea-fc997b0a24e2
+          type: string
+        submittedAt:
+          description: UNIX epoch nano timestamp when message was submitted.
+          example: 1588760624008835220
+          type: integer
+        from:
+          $ref: '#/components/schemas/Person'
+        replyTo:
+          $ref: '#/components/schemas/Person'
+        to:
+          description: "List of objects comprising name, email and customFields of\
+            \ the recipients"
+          items:
+            $ref: '#/components/schemas/Message_to_inner'
+          type: array
+        headers:
+          additionalProperties:
+            type: string
+          description: "Key-Value pair which are added to every email message being\
+            \ sent and also with webhooks triggered on events such as email delivered,\
+            \ open, click etc. They are useful to identify emai, recipient etc. in\
+            \ your internal system"
+          example: "{\"X-Campaign-Id\": \"User onboarding\"}"
+        subject:
+          description: Email subject line.
+          example: Welcome to Pied Piper :) + 1 quick question
+          type: string
+        preText:
+          description: Text which appears on mobile right after email subject line.
+          example: Congrats and get some Pied Piper cred inside
+          type: string
+        htmlBody:
+          description: HTML email content.
+          example: "Thanks for joining Pied Piper {{.FirstName}}.Pied Piper has changed\
+            \ many landscapes. Compression. Data. The Internet"
+          type: string
+        textBody:
+          description: Text email content.
+          example: "Thanks for joining Pied Piper {{.FirstName}}.Pied Piper has changed\
+            \ many landscapes. Compression. Data. The Internet"
+          type: string
+        ippool:
+          description: IP Pool from which emails will go out. Relevant only for customers
+            on dedicated IP plans.
+          example: transactional-piedpiper
+          type: string
+        trackOpens:
+          description: Indicates if email opens need to be tracked.
+          example: true
+          type: boolean
+        trackClicks:
+          description: Indicates if email clicks need to be tracked.
+          example: true
+          type: boolean
+    Person:
+      example:
+        name: PiedPipers
+        email: team@piedpiper.com
+      properties:
+        name:
+          description: Name of the person.
+          example: PiedPipers
+          type: string
+        email:
+          description: Email address of the person.
+          example: team@piedpiper.com
+          format: email
+          type: string
+    createSuppression_request_hardBounce_inner:
+      properties:
+        email:
+          example: jackbarker@hooli.com
+          format: email
+          type: string
+    createSuppression_request_manual_inner:
+      properties:
+        email:
+          example: russhannelman@gmail.com
+          format: email
+          type: string
+    createSuppression_request_unsubscribe_inner:
+      properties:
+        email:
+          example: jared@piedpiper.com
+          format: email
+          type: string
+    createSuppression_request_spamComplaint_inner:
+      properties:
+        email:
+          example: gilfoyle@piedpiper.com
+          format: email
+          type: string
+    createSuppression_request:
+      properties:
+        hardBounce:
+          description: list of email addresses which you want to mark in hardBounce
+            suppression list
+          items:
+            $ref: '#/components/schemas/createSuppression_request_hardBounce_inner'
+          type: array
+        manual:
+          description: list of email addresses which you want to mark in manual suppression
+            list
+          items:
+            $ref: '#/components/schemas/createSuppression_request_manual_inner'
+          type: array
+        unsubscribe:
+          description: list of email addresses which you want to mark in unsubscribe
+            suppression list
+          items:
+            $ref: '#/components/schemas/createSuppression_request_unsubscribe_inner'
+          type: array
+        spamComplaint:
+          description: list of email addresses which you want to mark in spamComplaint
+            suppression list
+          items:
+            $ref: '#/components/schemas/createSuppression_request_spamComplaint_inner'
+          type: array
+    deleteSuppression_request:
+      properties:
+        suppressions:
+          items:
+            $ref: '#/components/schemas/createSuppression_request_spamComplaint_inner'
+          type: array
+    deleteSuppression_200_response:
+      example:
+        message: message
+      properties:
+        message:
+          description: A success message after the suppression(s) are deleted
+          type: string
+    Domain_dkim:
+      description: "DKIM record host, type and value"
+      example:
+        textValue: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsGMUVM1bqebA0bgtf0HQ6P/FZJy42k/OHP0OgVv4WMSsHOvCFre1/6d1GTx3ldeJf612K3L7wV4iJfDMh2FEpuQ+z+pOro3FarWuawoiJbBudgQQ8rResnZ4Sg3W1Zr3tcZgBCEQ9WoLDv/B2dd01p3ZJ40hsco+Fw75Ldnrd3wIDAQAB
+        host: 1587987845._domainkey.hooli.com
+        type: TXT
+      properties:
+        host:
+          example: 1587987845._domainkey.hooli.com
+          type: string
+        type:
+          example: TXT
+          type: string
+        textValue:
+          example: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsGMUVM1bqebA0bgtf0HQ6P/FZJy42k/OHP0OgVv4WMSsHOvCFre1/6d1GTx3ldeJf612K3L7wV4iJfDMh2FEpuQ+z+pOro3FarWuawoiJbBudgQQ8rResnZ4Sg3W1Zr3tcZgBCEQ9WoLDv/B2dd01p3ZJ40hsco+Fw75Ldnrd3wIDAQAB
+          type: string
+    Domain_returnPath:
+      description: "ReturnPath record host, type and value"
+      example:
+        textValue: sp.sendpost.email
+        host: sp-bounces.hooli.com
+        type: CNAME
+      properties:
+        host:
+          example: sp-bounces.hooli.com
+          type: string
+        type:
+          example: CNAME
+          type: string
+        textValue:
+          example: sp.sendpost.email
+          type: string
+    Domain_track:
+      description: "Track record host, type and value. This domain will be used for\
+        \ link tracking while rewriting links in your email message"
+      example:
+        textValue: api.sendpost.io
+        host: track.hooli.com
+        type: CNAME
+      properties:
+        host:
+          example: track.hooli.com
+          type: string
+        type:
+          example: CNAME
+          type: string
+        textValue:
+          example: api.sendpost.io
+          type: string
+    Domain_dmarc:
+      description: "DMARC record host, type and value"
+      example:
+        textValue: v=DMARC1; p=none;
+        host: _dmarc.hooli.com
+        type: TXT
+      properties:
+        host:
+          example: _dmarc.hooli.com
+          type: string
+        type:
+          example: TXT
+          type: string
+        textValue:
+          example: v=DMARC1; p=none;
+          type: string
+    Stat_stats:
+      example:
+        processed: 225
+        unsubscribed: 6
+        hardBounced: 10
+        dropped: 10
+        softBounced: 5
+        delivered: 200
+        spam: 2
+      properties:
+        processed:
+          description: Number of emails accepted by SendPost API.
+          example: 225
+          type: integer
+        delivered:
+          description: Number of emails we were able to successfully deliver at SMTP
+            without encountering any error
+          example: 200
+          type: integer
+        dropped:
+          description: Number of emails drop without attempting to deliver either
+            because the email is invalid or email in in existing suppression list
+          example: 10
+          type: integer
+        hardBounced:
+          description: Number of emails where we got SMTP hard bounce error code by
+            the recipient mail provider
+          example: 10
+          type: integer
+        softBounced:
+          description: Number of emails where we got temporary soft bounce error by
+            the recipent mail provider. Soft bounced emails are retried upto 5 times
+            over 24 hour period before marking them as hardBounced.
+          example: 5
+          type: integer
+        unsubscribed:
+          description: Number of email recipients who unsubscribed from receiving
+            further emails
+          example: 6
+          type: integer
+        spam:
+          description: Number of email recipients who marked emails as spam
+          example: 2
+          type: integer
+    EmailStats_stats:
+      properties:
+        processed:
+          description: Number of emails accepted by SendPost API
+          type: integer
+        delivered:
+          description: Number of emails successfully delivered to SMTP without errors
+          type: integer
+        dropped:
+          description: Number of emails dropped without attempting to deliver due
+            to invalid email or suppression list
+          type: integer
+        hardBounced:
+          description: Number of emails that resulted in a hard bounce error
+          type: integer
+        softBounced:
+          description: Number of emails that resulted in a temporary soft bounce error
+          type: integer
+        opened:
+          description: Number of emails opened by recipients
+          type: integer
+        clicked:
+          description: Number of email links clicked by recipients
+          type: integer
+        unsubscribed:
+          description: Number of email recipients who unsubscribed
+          type: integer
+        spam:
+          description: Number of emails marked as spam by recipients
+          type: integer
+    AccountStats_stat:
+      example:
+        processed: 1225
+        unsubscribed: 15
+        spams: 12
+        hardBounced: 10
+        dropped: 10
+        softBounced: 5
+        opens: 150
+        clicks: 130
+        delivered: 1200
+      properties:
+        processed:
+          example: 1225
+          type: integer
+        delivered:
+          example: 1200
+          type: integer
+        dropped:
+          example: 10
+          type: integer
+        hardBounced:
+          example: 10
+          type: integer
+        softBounced:
+          example: 5
+          type: integer
+        opens:
+          example: 150
+          type: integer
+        clicks:
+          example: 130
+          type: integer
+        unsubscribed:
+          example: 15
+          type: integer
+        spams:
+          example: 12
+          type: integer
+    EmailMessage_from:
+      example:
+        name: Richard
+        email: richard@piedpiper.com
+      properties:
+        name:
+          example: Richard
+          type: string
+        email:
+          example: richard@piedpiper.com
+          type: string
+    EmailMessage_replyTo:
+      example:
+        name: Gavin
+        email: gavin@hooli.com
+      properties:
+        name:
+          example: Gavin
+          type: string
+        email:
+          example: gavin@hooli.com
+          type: string
+    EmailMessage_to_inner_cc_inner:
+      example:
+        customFields:
+          Company: Hooli
+        name: Dinesh
+        email: dinesh@bachmanity.com
+      properties:
+        name:
+          example: Dinesh
+          type: string
+        email:
+          example: dinesh@bachmanity.com
+          type: string
+        customFields:
+          additionalProperties:
+            type: string
+          example:
+            Company: Hooli
+    EmailMessage_to_inner_bcc_inner:
+      example:
+        customFields:
+          Company: Hooli
+        name: Jian
+        email: jian@bachmanity.com
+      properties:
+        name:
+          example: Jian
+          type: string
+        email:
+          example: jian@bachmanity.com
+          type: string
+        customFields:
+          additionalProperties:
+            type: string
+          example:
+            Company: Hooli
+    EmailMessage_to_inner:
+      example:
+        cc:
+        - customFields:
+            Company: Hooli
+          name: Dinesh
+          email: dinesh@bachmanity.com
+        - customFields:
+            Company: Hooli
+          name: Dinesh
+          email: dinesh@bachmanity.com
+        bcc:
+        - customFields:
+            Company: Hooli
+          name: Jian
+          email: jian@bachmanity.com
+        - customFields:
+            Company: Hooli
+          name: Jian
+          email: jian@bachmanity.com
+        customFields:
+          Company: Hooli
+        name: Gavin
+        email: gavin@hooli.com
+      properties:
+        name:
+          example: Gavin
+          type: string
+        email:
+          example: gavin@hooli.com
+          type: string
+        customFields:
+          additionalProperties:
+            type: string
+          example:
+            Company: Hooli
+        cc:
+          items:
+            $ref: '#/components/schemas/EmailMessage_to_inner_cc_inner'
+          type: array
+        bcc:
+          items:
+            $ref: '#/components/schemas/EmailMessage_to_inner_bcc_inner'
+          type: array
+    Message_to_inner:
+      example:
+        customFields: "{\"Company\": \"Hooli\"}"
+        name: Peter Gregory
+        email: peter@hooli.com
+      properties:
+        name:
+          description: Name of the recipient.
+          example: Peter Gregory
+          type: string
+        email:
+          description: Email address of the recipient.
+          example: peter@hooli.com
+          format: email
+          type: string
+        customFields:
+          additionalProperties:
+            type: string
+          description: Key-Value pair of custom fields.
+          example: "{\"Company\": \"Hooli\"}"
+  securitySchemes:
+    accountAuth:
+      description: This api key can be used for all account level operations
+      in: header
+      name: X-Account-ApiKey
+      type: apiKey
+    subAccountAuth:
+      description: This api key can be used only for sub account level operations
+      in: header
+      name: X-SubAccount-ApiKey
+      type: apiKey
+
