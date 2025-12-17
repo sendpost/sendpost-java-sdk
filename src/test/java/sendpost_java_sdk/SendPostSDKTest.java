@@ -4,9 +4,8 @@ import sendpost_java_sdk.ApiClient;
 import sendpost_java_sdk.ApiException;
 import sendpost_java_sdk.Configuration;
 import sendpost_java_sdk.auth.ApiKeyAuth;
-import sendpost_java_sdk.api.*;
-import sendpost_java_sdk.model.*;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
@@ -261,7 +260,10 @@ public class SendPostSDKTest {
             SuppressionApi suppressionApi = new SuppressionApi(apiClient);
             
             System.out.println("Fetching suppressions...");
-            List<Suppression> suppressions = suppressionApi.getSuppressionList(50, 0, null);
+            // Get suppressions from last 30 days
+            LocalDate toDate = LocalDate.now();
+            LocalDate fromDate = toDate.minusDays(30);
+            List<Suppression> suppressions = suppressionApi.getSuppressionList(fromDate, toDate, 50, 0, null, null);
             
             System.out.println("✓ Suppressions retrieved successfully!");
             System.out.println("Total suppressions: " + suppressions.size());
