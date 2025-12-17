@@ -2528,21 +2528,31 @@ components:
       - properties:
           template:
             type: string
+          templateId:
+            description: Template ID for the email template
+            type: string
+          templateVariables:
+            additionalProperties:
+              type: string
+            description: Template variables as key-value pairs
       example:
         template: template
         headers:
           key: headers
         trackOpens: true
-        htmlBody: htmlBody
         subject: subject
         ippool: ippool
         groups:
         - groups
         - groups
+        textBody: textBody
+        templateId: templateId
+        templateVariables:
+          key: templateVariables
+        htmlBody: htmlBody
         from:
           name: name
           email: email
-        textBody: textBody
         to:
         - cc:
           - name: name
@@ -2571,23 +2581,27 @@ components:
         trackClicks: true
     EmailResponse:
       example:
-        messageID: messageID
+        messageId: messageId
         errorCode: 6
         to: to
         submittedAt: 0
         message: message
+        status: status
       properties:
         to:
           type: string
         submittedAt:
           description: UNIX epoch nano timestamp
           type: integer
-        messageID:
+        messageId:
           description: Message UUID
           type: string
         errorCode:
           type: integer
         message:
+          type: string
+        status:
+          description: Status of the email response
           type: string
     EmailAddress:
       example:
@@ -2630,15 +2644,19 @@ components:
         dkim:
           textValue: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsGMUVM1bqebA0bgtf0HQ6P/FZJy42k/OHP0OgVv4WMSsHOvCFre1/6d1GTx3ldeJf612K3L7wV4iJfDMh2FEpuQ+z+pOro3FarWuawoiJbBudgQQ8rResnZ4Sg3W1Zr3tcZgBCEQ9WoLDv/B2dd01p3ZJ40hsco+Fw75Ldnrd3wIDAQAB
           host: 1587987845._domainkey.hooli.com
+          verified: false
           type: TXT
         returnPath:
           textValue: sp.sendpost.email
           host: sp-bounces.hooli.com
           type: CNAME
         created: 1567512491587205024
+        verified: false
+        dkimVerified: false
+        dmarcVerified: false
+        trackVerified: true
         name: piedpiper.com
         id: 117
-        dkimVerified: false
         returnPathVerified: false
         track:
           textValue: api.sendpost.io
@@ -2649,8 +2667,6 @@ components:
           textValue: v=DMARC1; p=none;
           host: _dmarc.hooli.com
           type: TXT
-        dmarcVerified: false
-        trackVerified: true
       properties:
         id:
           description: Unique ID for the domain.
@@ -2686,6 +2702,10 @@ components:
         trackVerified:
           description: Status of Track verification ( true or false )
           example: true
+          type: boolean
+        verified:
+          description: Overall verification status of the domain
+          example: false
           type: boolean
         created:
           description: UNIX epoch timestamp in nanoseconds.
@@ -2816,6 +2836,7 @@ components:
         reason: 6
         created: 1
         id: 0
+        type: hardBounce
         email: email
       properties:
         id:
@@ -2832,6 +2853,15 @@ components:
           description: UNIX epoch nano timestamp when the suppression was created
           format: int64
           type: integer
+        type:
+          description: "Type of suppression. Valid values: hardBounce, manual, spamComplaint,\
+            \ unsubscribe"
+          enum:
+          - hardBounce
+          - manual
+          - spamComplaint
+          - unsubscribe
+          type: string
     IP:
       example:
         autoWarmupPlan: autoWarmupPlan
@@ -2847,15 +2877,19 @@ components:
           dkim:
             textValue: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsGMUVM1bqebA0bgtf0HQ6P/FZJy42k/OHP0OgVv4WMSsHOvCFre1/6d1GTx3ldeJf612K3L7wV4iJfDMh2FEpuQ+z+pOro3FarWuawoiJbBudgQQ8rResnZ4Sg3W1Zr3tcZgBCEQ9WoLDv/B2dd01p3ZJ40hsco+Fw75Ldnrd3wIDAQAB
             host: 1587987845._domainkey.hooli.com
+            verified: false
             type: TXT
           returnPath:
             textValue: sp.sendpost.email
             host: sp-bounces.hooli.com
             type: CNAME
           created: 1567512491587205024
+          verified: false
+          dkimVerified: false
+          dmarcVerified: false
+          trackVerified: true
           name: piedpiper.com
           id: 117
-          dkimVerified: false
           returnPathVerified: false
           track:
             textValue: api.sendpost.io
@@ -2866,8 +2900,6 @@ components:
             textValue: v=DMARC1; p=none;
             host: _dmarc.hooli.com
             type: TXT
-          dmarcVerified: false
-          trackVerified: true
         gmxSettings: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
         reverseDNSHostname: example.mtaspg.email
         infraMonitor: true
@@ -3066,15 +3098,19 @@ components:
             dkim:
               textValue: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsGMUVM1bqebA0bgtf0HQ6P/FZJy42k/OHP0OgVv4WMSsHOvCFre1/6d1GTx3ldeJf612K3L7wV4iJfDMh2FEpuQ+z+pOro3FarWuawoiJbBudgQQ8rResnZ4Sg3W1Zr3tcZgBCEQ9WoLDv/B2dd01p3ZJ40hsco+Fw75Ldnrd3wIDAQAB
               host: 1587987845._domainkey.hooli.com
+              verified: false
               type: TXT
             returnPath:
               textValue: sp.sendpost.email
               host: sp-bounces.hooli.com
               type: CNAME
             created: 1567512491587205024
+            verified: false
+            dkimVerified: false
+            dmarcVerified: false
+            trackVerified: true
             name: piedpiper.com
             id: 117
-            dkimVerified: false
             returnPathVerified: false
             track:
               textValue: api.sendpost.io
@@ -3085,8 +3121,6 @@ components:
               textValue: v=DMARC1; p=none;
               host: _dmarc.hooli.com
               type: TXT
-            dmarcVerified: false
-            trackVerified: true
           gmxSettings: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
           reverseDNSHostname: example.mtaspg.email
           infraMonitor: true
@@ -3114,15 +3148,19 @@ components:
             dkim:
               textValue: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsGMUVM1bqebA0bgtf0HQ6P/FZJy42k/OHP0OgVv4WMSsHOvCFre1/6d1GTx3ldeJf612K3L7wV4iJfDMh2FEpuQ+z+pOro3FarWuawoiJbBudgQQ8rResnZ4Sg3W1Zr3tcZgBCEQ9WoLDv/B2dd01p3ZJ40hsco+Fw75Ldnrd3wIDAQAB
               host: 1587987845._domainkey.hooli.com
+              verified: false
               type: TXT
             returnPath:
               textValue: sp.sendpost.email
               host: sp-bounces.hooli.com
               type: CNAME
             created: 1567512491587205024
+            verified: false
+            dkimVerified: false
+            dmarcVerified: false
+            trackVerified: true
             name: piedpiper.com
             id: 117
-            dkimVerified: false
             returnPathVerified: false
             track:
               textValue: api.sendpost.io
@@ -3133,8 +3171,6 @@ components:
               textValue: v=DMARC1; p=none;
               host: _dmarc.hooli.com
               type: TXT
-            dmarcVerified: false
-            trackVerified: true
           gmxSettings: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
           reverseDNSHostname: example.mtaspg.email
           infraMonitor: true
@@ -4287,6 +4323,7 @@ components:
           email: peter@hooli.com
         submittedAt: 1588760624008835220
         trackClicks: true
+        status: delivered
       properties:
         id:
           description: Unique ID for the message.
@@ -4345,6 +4382,10 @@ components:
           description: Indicates if email clicks need to be tracked.
           example: true
           type: boolean
+        status:
+          description: Status of the message
+          example: delivered
+          type: string
     Person:
       example:
         name: PiedPipers
@@ -4427,6 +4468,7 @@ components:
       example:
         textValue: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsGMUVM1bqebA0bgtf0HQ6P/FZJy42k/OHP0OgVv4WMSsHOvCFre1/6d1GTx3ldeJf612K3L7wV4iJfDMh2FEpuQ+z+pOro3FarWuawoiJbBudgQQ8rResnZ4Sg3W1Zr3tcZgBCEQ9WoLDv/B2dd01p3ZJ40hsco+Fw75Ldnrd3wIDAQAB
         host: 1587987845._domainkey.hooli.com
+        verified: false
         type: TXT
       properties:
         host:
@@ -4438,6 +4480,10 @@ components:
         textValue:
           example: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsGMUVM1bqebA0bgtf0HQ6P/FZJy42k/OHP0OgVv4WMSsHOvCFre1/6d1GTx3ldeJf612K3L7wV4iJfDMh2FEpuQ+z+pOro3FarWuawoiJbBudgQQ8rResnZ4Sg3W1Zr3tcZgBCEQ9WoLDv/B2dd01p3ZJ40hsco+Fw75Ldnrd3wIDAQAB
           type: string
+        verified:
+          description: Status of DKIM verification
+          example: false
+          type: boolean
     Domain_returnPath:
       description: "ReturnPath record host, type and value"
       example:

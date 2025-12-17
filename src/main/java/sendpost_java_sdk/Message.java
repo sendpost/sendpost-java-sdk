@@ -54,7 +54,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Message
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-17T13:10:50.640856+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-17T13:20:11.010065+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Message {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -120,6 +120,11 @@ public class Message {
   @SerializedName(SERIALIZED_NAME_TRACK_CLICKS)
   @javax.annotation.Nullable
   private Boolean trackClicks;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
+  private String status;
 
   public Message() {
   }
@@ -387,6 +392,25 @@ public class Message {
   }
 
 
+  public Message status(@javax.annotation.Nullable String status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Status of the message
+   * @return status
+   */
+  @javax.annotation.Nullable
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(@javax.annotation.Nullable String status) {
+    this.status = status;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -409,12 +433,13 @@ public class Message {
         Objects.equals(this.textBody, message.textBody) &&
         Objects.equals(this.ippool, message.ippool) &&
         Objects.equals(this.trackOpens, message.trackOpens) &&
-        Objects.equals(this.trackClicks, message.trackClicks);
+        Objects.equals(this.trackClicks, message.trackClicks) &&
+        Objects.equals(this.status, message.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, submittedAt, from, replyTo, to, headers, subject, preText, htmlBody, textBody, ippool, trackOpens, trackClicks);
+    return Objects.hash(id, submittedAt, from, replyTo, to, headers, subject, preText, htmlBody, textBody, ippool, trackOpens, trackClicks, status);
   }
 
   @Override
@@ -434,6 +459,7 @@ public class Message {
     sb.append("    ippool: ").append(toIndentedString(ippool)).append("\n");
     sb.append("    trackOpens: ").append(toIndentedString(trackOpens)).append("\n");
     sb.append("    trackClicks: ").append(toIndentedString(trackClicks)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -469,6 +495,7 @@ public class Message {
     openapiFields.add("ippool");
     openapiFields.add("trackOpens");
     openapiFields.add("trackClicks");
+    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -526,6 +553,9 @@ public class Message {
       }
       if ((jsonObj.get("ippool") != null && !jsonObj.get("ippool").isJsonNull()) && !jsonObj.get("ippool").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ippool` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ippool").toString()));
+      }
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
 

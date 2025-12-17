@@ -20,6 +20,7 @@
 |**ippool** | **String** | IP Pool from which emails will go out. Relevant only for customers on dedicated IP plans. |  [optional] |
 |**trackOpens** | **Boolean** | Indicates if email opens need to be tracked. |  [optional] |
 |**trackClicks** | **Boolean** | Indicates if email clicks need to be tracked. |  [optional] |
+|**status** | **String** | Status of the message |  [optional] |
 
 
 

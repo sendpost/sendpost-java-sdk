@@ -18,6 +18,8 @@
 |**trackClicks** | **Boolean** |  |  [optional] |
 |**groups** | **List&lt;String&gt;** |  |  [optional] |
 |**template** | **String** |  |  [optional] |
+|**templateId** | **String** | Template ID for the email template |  [optional] |
+|**templateVariables** | **Map&lt;String, String&gt;** | Template variables as key-value pairs |  [optional] |
 
 
 
