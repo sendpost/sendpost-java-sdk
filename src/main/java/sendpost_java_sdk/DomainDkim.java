@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * DKIM record host, type and value
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:21:25.807988+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class DomainDkim {
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
@@ -64,6 +64,11 @@ public class DomainDkim {
   @SerializedName(SERIALIZED_NAME_TEXT_VALUE)
   @javax.annotation.Nullable
   private String textValue;
+
+  public static final String SERIALIZED_NAME_VERIFIED = "verified";
+  @SerializedName(SERIALIZED_NAME_VERIFIED)
+  @javax.annotation.Nullable
+  private Boolean verified;
 
   public DomainDkim() {
   }
@@ -125,6 +130,25 @@ public class DomainDkim {
   }
 
 
+  public DomainDkim verified(@javax.annotation.Nullable Boolean verified) {
+    this.verified = verified;
+    return this;
+  }
+
+  /**
+   * Status of DKIM verification
+   * @return verified
+   */
+  @javax.annotation.Nullable
+  public Boolean getVerified() {
+    return verified;
+  }
+
+  public void setVerified(@javax.annotation.Nullable Boolean verified) {
+    this.verified = verified;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -137,12 +161,13 @@ public class DomainDkim {
     DomainDkim domainDkim = (DomainDkim) o;
     return Objects.equals(this.host, domainDkim.host) &&
         Objects.equals(this.type, domainDkim.type) &&
-        Objects.equals(this.textValue, domainDkim.textValue);
+        Objects.equals(this.textValue, domainDkim.textValue) &&
+        Objects.equals(this.verified, domainDkim.verified);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(host, type, textValue);
+    return Objects.hash(host, type, textValue, verified);
   }
 
   @Override
@@ -152,6 +177,7 @@ public class DomainDkim {
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    textValue: ").append(toIndentedString(textValue)).append("\n");
+    sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -177,6 +203,7 @@ public class DomainDkim {
     openapiFields.add("host");
     openapiFields.add("type");
     openapiFields.add("textValue");
+    openapiFields.add("verified");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

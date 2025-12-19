@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * AccountStatsStat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:21:25.807988+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class AccountStatsStat {
   public static final String SERIALIZED_NAME_PROCESSED = "processed";
   @SerializedName(SERIALIZED_NAME_PROCESSED)

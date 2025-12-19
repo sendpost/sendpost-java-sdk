@@ -18,6 +18,7 @@
 |**dmarcVerified** | **Boolean** | Status of DMARC verification ( true or false) |  [optional] |
 |**returnPathVerified** | **Boolean** | Status of ReturnPath verification ( true or false ) |  [optional] |
 |**trackVerified** | **Boolean** | Status of Track verification ( true or false ) |  [optional] |
+|**verified** | **Boolean** | Overall verification status of the domain |  [optional] |
 |**created** | **Long** | UNIX epoch timestamp in nanoseconds. |  [optional] |
 
 

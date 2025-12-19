@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Suppression
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:21:25.807988+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Suppression {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -59,6 +59,11 @@ public class Suppression {
   @SerializedName(SERIALIZED_NAME_REASON)
   @javax.annotation.Nullable
   private Integer reason;
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
+  private Integer type;
 
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
@@ -108,6 +113,25 @@ public class Suppression {
 
   public void setReason(@javax.annotation.Nullable Integer reason) {
     this.reason = reason;
+  }
+
+
+  public Suppression type(@javax.annotation.Nullable Integer type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * The type of the suppression (alias for reason: 0 &#x3D; manual, 1 &#x3D; unsubscribe, 2 &#x3D; hard bounce, 3 &#x3D; spam complaint)
+   * @return type
+   */
+  @javax.annotation.Nullable
+  public Integer getType() {
+    return type;
+  }
+
+  public void setType(@javax.annotation.Nullable Integer type) {
+    this.type = type;
   }
 
 
@@ -161,13 +185,14 @@ public class Suppression {
     Suppression suppression = (Suppression) o;
     return Objects.equals(this.id, suppression.id) &&
         Objects.equals(this.reason, suppression.reason) &&
+        Objects.equals(this.type, suppression.type) &&
         Objects.equals(this.email, suppression.email) &&
         Objects.equals(this.created, suppression.created);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, reason, email, created);
+    return Objects.hash(id, reason, type, email, created);
   }
 
   @Override
@@ -176,6 +201,7 @@ public class Suppression {
     sb.append("class Suppression {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("}");
@@ -202,6 +228,7 @@ public class Suppression {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("reason");
+    openapiFields.add("type");
     openapiFields.add("email");
     openapiFields.add("created");
 

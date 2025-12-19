@@ -52,7 +52,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Domain
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:21:25.807988+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Domain {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -108,6 +108,11 @@ public class Domain {
   @SerializedName(SERIALIZED_NAME_TRACK_VERIFIED)
   @javax.annotation.Nullable
   private Boolean trackVerified;
+
+  public static final String SERIALIZED_NAME_VERIFIED = "verified";
+  @SerializedName(SERIALIZED_NAME_VERIFIED)
+  @javax.annotation.Nullable
+  private Boolean verified;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -326,6 +331,25 @@ public class Domain {
   }
 
 
+  public Domain verified(@javax.annotation.Nullable Boolean verified) {
+    this.verified = verified;
+    return this;
+  }
+
+  /**
+   * Overall verification status of the domain
+   * @return verified
+   */
+  @javax.annotation.Nullable
+  public Boolean getVerified() {
+    return verified;
+  }
+
+  public void setVerified(@javax.annotation.Nullable Boolean verified) {
+    this.verified = verified;
+  }
+
+
   public Domain created(@javax.annotation.Nullable Long created) {
     this.created = created;
     return this;
@@ -366,12 +390,13 @@ public class Domain {
         Objects.equals(this.dmarcVerified, domain.dmarcVerified) &&
         Objects.equals(this.returnPathVerified, domain.returnPathVerified) &&
         Objects.equals(this.trackVerified, domain.trackVerified) &&
+        Objects.equals(this.verified, domain.verified) &&
         Objects.equals(this.created, domain.created);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, dkim, returnPath, track, dmarc, dkimConfig, dkimVerified, dmarcVerified, returnPathVerified, trackVerified, created);
+    return Objects.hash(id, name, dkim, returnPath, track, dmarc, dkimConfig, dkimVerified, dmarcVerified, returnPathVerified, trackVerified, verified, created);
   }
 
   @Override
@@ -389,6 +414,7 @@ public class Domain {
     sb.append("    dmarcVerified: ").append(toIndentedString(dmarcVerified)).append("\n");
     sb.append("    returnPathVerified: ").append(toIndentedString(returnPathVerified)).append("\n");
     sb.append("    trackVerified: ").append(toIndentedString(trackVerified)).append("\n");
+    sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -423,6 +449,7 @@ public class Domain {
     openapiFields.add("dmarcVerified");
     openapiFields.add("returnPathVerified");
     openapiFields.add("trackVerified");
+    openapiFields.add("verified");
     openapiFields.add("created");
 
     // a set of required properties/fields (JSON key names)

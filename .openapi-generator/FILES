@@ -188,5 +188,3 @@ src/main/java/sendpost_java_sdk/auth/ApiKeyAuth.java
 src/main/java/sendpost_java_sdk/auth/Authentication.java
 src/main/java/sendpost_java_sdk/auth/HttpBasicAuth.java
 src/main/java/sendpost_java_sdk/auth/HttpBearerAuth.java
-src/test/java/sendpost_java_sdk/AttachmentTest.java
-src/test/java/sendpost_java_sdk/CopyToTest.java

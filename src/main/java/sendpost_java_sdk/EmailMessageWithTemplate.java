@@ -55,7 +55,7 @@ import sendpost_java_sdk.JSON;
 /**
  * EmailMessageWithTemplate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:21:25.807988+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class EmailMessageWithTemplate {
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
@@ -136,6 +136,16 @@ public class EmailMessageWithTemplate {
   @SerializedName(SERIALIZED_NAME_TEMPLATE)
   @javax.annotation.Nullable
   private String template;
+
+  public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
+  @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
+  @javax.annotation.Nullable
+  private String templateId;
+
+  public static final String SERIALIZED_NAME_TEMPLATE_VARIABLES = "templateVariables";
+  @SerializedName(SERIALIZED_NAME_TEMPLATE_VARIABLES)
+  @javax.annotation.Nullable
+  private Map<String, String> templateVariables = new HashMap<>();
 
   public EmailMessageWithTemplate() {
   }
@@ -476,6 +486,52 @@ public class EmailMessageWithTemplate {
   }
 
 
+  public EmailMessageWithTemplate templateId(@javax.annotation.Nullable String templateId) {
+    this.templateId = templateId;
+    return this;
+  }
+
+  /**
+   * Template ID for the email template
+   * @return templateId
+   */
+  @javax.annotation.Nullable
+  public String getTemplateId() {
+    return templateId;
+  }
+
+  public void setTemplateId(@javax.annotation.Nullable String templateId) {
+    this.templateId = templateId;
+  }
+
+
+  public EmailMessageWithTemplate templateVariables(@javax.annotation.Nullable Map<String, String> templateVariables) {
+    this.templateVariables = templateVariables;
+    return this;
+  }
+
+  public EmailMessageWithTemplate putTemplateVariablesItem(String key, String templateVariablesItem) {
+    if (this.templateVariables == null) {
+      this.templateVariables = new HashMap<>();
+    }
+    this.templateVariables.put(key, templateVariablesItem);
+    return this;
+  }
+
+  /**
+   * Key-Value pair of template variables
+   * @return templateVariables
+   */
+  @javax.annotation.Nullable
+  public Map<String, String> getTemplateVariables() {
+    return templateVariables;
+  }
+
+  public void setTemplateVariables(@javax.annotation.Nullable Map<String, String> templateVariables) {
+    this.templateVariables = templateVariables;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -501,12 +557,14 @@ public class EmailMessageWithTemplate {
         Objects.equals(this.groups, emailMessageWithTemplate.groups) &&
         Objects.equals(this.attachments, emailMessageWithTemplate.attachments) &&
         Objects.equals(this.webhookEndpoint, emailMessageWithTemplate.webhookEndpoint) &&
-        Objects.equals(this.template, emailMessageWithTemplate.template);
+        Objects.equals(this.template, emailMessageWithTemplate.template) &&
+        Objects.equals(this.templateId, emailMessageWithTemplate.templateId) &&
+        Objects.equals(this.templateVariables, emailMessageWithTemplate.templateVariables);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(from, replyTo, to, subject, preText, htmlBody, textBody, ampBody, ippool, headers, trackOpens, trackClicks, groups, attachments, webhookEndpoint, template);
+    return Objects.hash(from, replyTo, to, subject, preText, htmlBody, textBody, ampBody, ippool, headers, trackOpens, trackClicks, groups, attachments, webhookEndpoint, template, templateId, templateVariables);
   }
 
   @Override
@@ -529,6 +587,8 @@ public class EmailMessageWithTemplate {
     sb.append("    attachments: ").append(toIndentedString(attachments)).append("\n");
     sb.append("    webhookEndpoint: ").append(toIndentedString(webhookEndpoint)).append("\n");
     sb.append("    template: ").append(toIndentedString(template)).append("\n");
+    sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
+    sb.append("    templateVariables: ").append(toIndentedString(templateVariables)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -567,6 +627,8 @@ public class EmailMessageWithTemplate {
     openapiFields.add("attachments");
     openapiFields.add("webhookEndpoint");
     openapiFields.add("template");
+    openapiFields.add("templateId");
+    openapiFields.add("templateVariables");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -656,6 +718,9 @@ public class EmailMessageWithTemplate {
       }
       if ((jsonObj.get("template") != null && !jsonObj.get("template").isJsonNull()) && !jsonObj.get("template").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `template` to be a primitive type in the JSON string but got `%s`", jsonObj.get("template").toString()));
+      }
+      if ((jsonObj.get("templateId") != null && !jsonObj.get("templateId").isJsonNull()) && !jsonObj.get("templateId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `templateId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("templateId").toString()));
       }
   }
 
