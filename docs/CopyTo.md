@@ -1,6 +1,6 @@
 
 
-# Recipient
+# CopyTo
 
 
 ## Properties
@@ -9,8 +9,6 @@
 |------------ | ------------- | ------------- | -------------|
 |**email** | **String** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
-|**cc** | [**List&lt;CopyTo&gt;**](CopyTo.md) |  |  [optional] |
-|**bcc** | [**List&lt;CopyTo&gt;**](CopyTo.md) |  |  [optional] |
 |**customFields** | **Map&lt;String, Object&gt;** | Custom fields for personalization |  [optional] |
 
 

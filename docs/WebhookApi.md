@@ -78,7 +78,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Webhook created successfully. |  -  |
+| **200** | Webhook created successfully. |  -  |
 | **401** | Unauthorized. Invalid API key. |  -  |
 | **403** | Forbidden. Webhook with the same URL already exists. |  -  |
 | **406** | Not Acceptable. Cannot create webhook for the default sub-account. |  -  |

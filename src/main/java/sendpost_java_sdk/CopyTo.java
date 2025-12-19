@@ -20,10 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import sendpost_java_sdk.IP;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,34 +48,48 @@ import java.util.Set;
 import sendpost_java_sdk.JSON;
 
 /**
- * IPPoolUpdateRequest
+ * CopyTo
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
-public class IPPoolUpdateRequest {
+public class CopyTo {
+  public static final String SERIALIZED_NAME_EMAIL = "email";
+  @SerializedName(SERIALIZED_NAME_EMAIL)
+  @javax.annotation.Nullable
+  private String email;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
   private String name;
 
-  public static final String SERIALIZED_NAME_IPS = "ips";
-  @SerializedName(SERIALIZED_NAME_IPS)
+  public static final String SERIALIZED_NAME_CUSTOM_FIELDS = "customFields";
+  @SerializedName(SERIALIZED_NAME_CUSTOM_FIELDS)
   @javax.annotation.Nullable
-  private List<IP> ips = new ArrayList<>();
+  private Map<String, Object> customFields = new HashMap<>();
 
-  public static final String SERIALIZED_NAME_ROUTING_STRATEGY = "routingStrategy";
-  @SerializedName(SERIALIZED_NAME_ROUTING_STRATEGY)
-  @javax.annotation.Nullable
-  private Integer routingStrategy;
-
-  public static final String SERIALIZED_NAME_ROUTING_META_DATA = "routingMetaData";
-  @SerializedName(SERIALIZED_NAME_ROUTING_META_DATA)
-  @javax.annotation.Nullable
-  private String routingMetaData;
-
-  public IPPoolUpdateRequest() {
+  public CopyTo() {
   }
 
-  public IPPoolUpdateRequest name(@javax.annotation.Nullable String name) {
+  public CopyTo email(@javax.annotation.Nullable String email) {
+    this.email = email;
+    return this;
+  }
+
+  /**
+   * Get email
+   * @return email
+   */
+  @javax.annotation.Nullable
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(@javax.annotation.Nullable String email) {
+    this.email = email;
+  }
+
+
+  public CopyTo name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -95,68 +108,30 @@ public class IPPoolUpdateRequest {
   }
 
 
-  public IPPoolUpdateRequest ips(@javax.annotation.Nullable List<IP> ips) {
-    this.ips = ips;
+  public CopyTo customFields(@javax.annotation.Nullable Map<String, Object> customFields) {
+    this.customFields = customFields;
     return this;
   }
 
-  public IPPoolUpdateRequest addIpsItem(IP ipsItem) {
-    if (this.ips == null) {
-      this.ips = new ArrayList<>();
+  public CopyTo putCustomFieldsItem(String key, Object customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new HashMap<>();
     }
-    this.ips.add(ipsItem);
+    this.customFields.put(key, customFieldsItem);
     return this;
   }
 
   /**
-   * Get ips
-   * @return ips
+   * Custom fields for personalization
+   * @return customFields
    */
   @javax.annotation.Nullable
-  public List<IP> getIps() {
-    return ips;
+  public Map<String, Object> getCustomFields() {
+    return customFields;
   }
 
-  public void setIps(@javax.annotation.Nullable List<IP> ips) {
-    this.ips = ips;
-  }
-
-
-  public IPPoolUpdateRequest routingStrategy(@javax.annotation.Nullable Integer routingStrategy) {
-    this.routingStrategy = routingStrategy;
-    return this;
-  }
-
-  /**
-   * Get routingStrategy
-   * @return routingStrategy
-   */
-  @javax.annotation.Nullable
-  public Integer getRoutingStrategy() {
-    return routingStrategy;
-  }
-
-  public void setRoutingStrategy(@javax.annotation.Nullable Integer routingStrategy) {
-    this.routingStrategy = routingStrategy;
-  }
-
-
-  public IPPoolUpdateRequest routingMetaData(@javax.annotation.Nullable String routingMetaData) {
-    this.routingMetaData = routingMetaData;
-    return this;
-  }
-
-  /**
-   * Get routingMetaData
-   * @return routingMetaData
-   */
-  @javax.annotation.Nullable
-  public String getRoutingMetaData() {
-    return routingMetaData;
-  }
-
-  public void setRoutingMetaData(@javax.annotation.Nullable String routingMetaData) {
-    this.routingMetaData = routingMetaData;
+  public void setCustomFields(@javax.annotation.Nullable Map<String, Object> customFields) {
+    this.customFields = customFields;
   }
 
 
@@ -169,26 +144,24 @@ public class IPPoolUpdateRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IPPoolUpdateRequest ipPoolUpdateRequest = (IPPoolUpdateRequest) o;
-    return Objects.equals(this.name, ipPoolUpdateRequest.name) &&
-        Objects.equals(this.ips, ipPoolUpdateRequest.ips) &&
-        Objects.equals(this.routingStrategy, ipPoolUpdateRequest.routingStrategy) &&
-        Objects.equals(this.routingMetaData, ipPoolUpdateRequest.routingMetaData);
+    CopyTo copyTo = (CopyTo) o;
+    return Objects.equals(this.email, copyTo.email) &&
+        Objects.equals(this.name, copyTo.name) &&
+        Objects.equals(this.customFields, copyTo.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, ips, routingStrategy, routingMetaData);
+    return Objects.hash(email, name, customFields);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IPPoolUpdateRequest {\n");
+    sb.append("class CopyTo {\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
-    sb.append("    routingStrategy: ").append(toIndentedString(routingStrategy)).append("\n");
-    sb.append("    routingMetaData: ").append(toIndentedString(routingMetaData)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -211,10 +184,9 @@ public class IPPoolUpdateRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("email");
     openapiFields.add("name");
-    openapiFields.add("ips");
-    openapiFields.add("routingStrategy");
-    openapiFields.add("routingMetaData");
+    openapiFields.add("customFields");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -224,42 +196,28 @@ public class IPPoolUpdateRequest {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to IPPoolUpdateRequest
+   * @throws IOException if the JSON Element is invalid with respect to CopyTo
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!IPPoolUpdateRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in IPPoolUpdateRequest is not found in the empty JSON string", IPPoolUpdateRequest.openapiRequiredFields.toString()));
+        if (!CopyTo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CopyTo is not found in the empty JSON string", CopyTo.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!IPPoolUpdateRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IPPoolUpdateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!CopyTo.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CopyTo` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
+      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (jsonObj.get("ips") != null && !jsonObj.get("ips").isJsonNull()) {
-        JsonArray jsonArrayips = jsonObj.getAsJsonArray("ips");
-        if (jsonArrayips != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("ips").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `ips` to be an array in the JSON string but got `%s`", jsonObj.get("ips").toString()));
-          }
-
-          // validate the optional field `ips` (array)
-          for (int i = 0; i < jsonArrayips.size(); i++) {
-            IP.validateJsonElement(jsonArrayips.get(i));
-          };
-        }
-      }
-      if ((jsonObj.get("routingMetaData") != null && !jsonObj.get("routingMetaData").isJsonNull()) && !jsonObj.get("routingMetaData").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `routingMetaData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("routingMetaData").toString()));
       }
   }
 
@@ -267,22 +225,22 @@ public class IPPoolUpdateRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IPPoolUpdateRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IPPoolUpdateRequest' and its subtypes
+       if (!CopyTo.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CopyTo' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IPPoolUpdateRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IPPoolUpdateRequest.class));
+       final TypeAdapter<CopyTo> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CopyTo.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<IPPoolUpdateRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<CopyTo>() {
            @Override
-           public void write(JsonWriter out, IPPoolUpdateRequest value) throws IOException {
+           public void write(JsonWriter out, CopyTo value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public IPPoolUpdateRequest read(JsonReader in) throws IOException {
+           public CopyTo read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -293,18 +251,18 @@ public class IPPoolUpdateRequest {
   }
 
   /**
-   * Create an instance of IPPoolUpdateRequest given an JSON string
+   * Create an instance of CopyTo given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of IPPoolUpdateRequest
-   * @throws IOException if the JSON string is invalid with respect to IPPoolUpdateRequest
+   * @return An instance of CopyTo
+   * @throws IOException if the JSON string is invalid with respect to CopyTo
    */
-  public static IPPoolUpdateRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, IPPoolUpdateRequest.class);
+  public static CopyTo fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CopyTo.class);
   }
 
   /**
-   * Convert an instance of IPPoolUpdateRequest to an JSON string
+   * Convert an instance of CopyTo to an JSON string
    *
    * @return JSON string
    */

@@ -22,8 +22,10 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import sendpost_java_sdk.EmailAddress;
+import java.util.Map;
+import sendpost_java_sdk.CopyTo;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +53,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Recipient
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-17T13:23:02.403668+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Recipient {
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
@@ -66,12 +68,17 @@ public class Recipient {
   public static final String SERIALIZED_NAME_CC = "cc";
   @SerializedName(SERIALIZED_NAME_CC)
   @javax.annotation.Nullable
-  private List<EmailAddress> cc = new ArrayList<>();
+  private List<CopyTo> cc = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_BCC = "bcc";
   @SerializedName(SERIALIZED_NAME_BCC)
   @javax.annotation.Nullable
-  private List<EmailAddress> bcc = new ArrayList<>();
+  private List<CopyTo> bcc = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_CUSTOM_FIELDS = "customFields";
+  @SerializedName(SERIALIZED_NAME_CUSTOM_FIELDS)
+  @javax.annotation.Nullable
+  private Map<String, Object> customFields = new HashMap<>();
 
   public Recipient() {
   }
@@ -114,12 +121,12 @@ public class Recipient {
   }
 
 
-  public Recipient cc(@javax.annotation.Nullable List<EmailAddress> cc) {
+  public Recipient cc(@javax.annotation.Nullable List<CopyTo> cc) {
     this.cc = cc;
     return this;
   }
 
-  public Recipient addCcItem(EmailAddress ccItem) {
+  public Recipient addCcItem(CopyTo ccItem) {
     if (this.cc == null) {
       this.cc = new ArrayList<>();
     }
@@ -132,21 +139,21 @@ public class Recipient {
    * @return cc
    */
   @javax.annotation.Nullable
-  public List<EmailAddress> getCc() {
+  public List<CopyTo> getCc() {
     return cc;
   }
 
-  public void setCc(@javax.annotation.Nullable List<EmailAddress> cc) {
+  public void setCc(@javax.annotation.Nullable List<CopyTo> cc) {
     this.cc = cc;
   }
 
 
-  public Recipient bcc(@javax.annotation.Nullable List<EmailAddress> bcc) {
+  public Recipient bcc(@javax.annotation.Nullable List<CopyTo> bcc) {
     this.bcc = bcc;
     return this;
   }
 
-  public Recipient addBccItem(EmailAddress bccItem) {
+  public Recipient addBccItem(CopyTo bccItem) {
     if (this.bcc == null) {
       this.bcc = new ArrayList<>();
     }
@@ -159,12 +166,39 @@ public class Recipient {
    * @return bcc
    */
   @javax.annotation.Nullable
-  public List<EmailAddress> getBcc() {
+  public List<CopyTo> getBcc() {
     return bcc;
   }
 
-  public void setBcc(@javax.annotation.Nullable List<EmailAddress> bcc) {
+  public void setBcc(@javax.annotation.Nullable List<CopyTo> bcc) {
     this.bcc = bcc;
+  }
+
+
+  public Recipient customFields(@javax.annotation.Nullable Map<String, Object> customFields) {
+    this.customFields = customFields;
+    return this;
+  }
+
+  public Recipient putCustomFieldsItem(String key, Object customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new HashMap<>();
+    }
+    this.customFields.put(key, customFieldsItem);
+    return this;
+  }
+
+  /**
+   * Custom fields for personalization
+   * @return customFields
+   */
+  @javax.annotation.Nullable
+  public Map<String, Object> getCustomFields() {
+    return customFields;
+  }
+
+  public void setCustomFields(@javax.annotation.Nullable Map<String, Object> customFields) {
+    this.customFields = customFields;
   }
 
 
@@ -181,12 +215,13 @@ public class Recipient {
     return Objects.equals(this.email, recipient.email) &&
         Objects.equals(this.name, recipient.name) &&
         Objects.equals(this.cc, recipient.cc) &&
-        Objects.equals(this.bcc, recipient.bcc);
+        Objects.equals(this.bcc, recipient.bcc) &&
+        Objects.equals(this.customFields, recipient.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, name, cc, bcc);
+    return Objects.hash(email, name, cc, bcc, customFields);
   }
 
   @Override
@@ -197,6 +232,7 @@ public class Recipient {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    cc: ").append(toIndentedString(cc)).append("\n");
     sb.append("    bcc: ").append(toIndentedString(bcc)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -223,6 +259,7 @@ public class Recipient {
     openapiFields.add("name");
     openapiFields.add("cc");
     openapiFields.add("bcc");
+    openapiFields.add("customFields");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -265,7 +302,7 @@ public class Recipient {
 
           // validate the optional field `cc` (array)
           for (int i = 0; i < jsonArraycc.size(); i++) {
-            EmailAddress.validateJsonElement(jsonArraycc.get(i));
+            CopyTo.validateJsonElement(jsonArraycc.get(i));
           };
         }
       }
@@ -279,7 +316,7 @@ public class Recipient {
 
           // validate the optional field `bcc` (array)
           for (int i = 0; i < jsonArraybcc.size(); i++) {
-            EmailAddress.validateJsonElement(jsonArraybcc.get(i));
+            CopyTo.validateJsonElement(jsonArraybcc.get(i));
           };
         }
       }

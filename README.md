@@ -2,7 +2,7 @@
 
 SendPost API
 - API version: 1.0.0
-  - Build date: 2025-12-17T13:23:02.403668+05:30[Asia/Kolkata]
+  - Build date: 2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]
   - Generator version: 7.13.0
 
 # Introduction
@@ -661,6 +661,8 @@ Class | Method | HTTP request | Description
  - [AggregateStat](docs/AggregateStat.md)
  - [AggregateStats](docs/AggregateStats.md)
  - [AggregatedEmailStats](docs/AggregatedEmailStats.md)
+ - [Attachment](docs/Attachment.md)
+ - [CopyTo](docs/CopyTo.md)
  - [CreateDomainRequest](docs/CreateDomainRequest.md)
  - [CreateSuppressionRequest](docs/CreateSuppressionRequest.md)
  - [CreateSuppressionRequestHardBounceInner](docs/CreateSuppressionRequestHardBounceInner.md)

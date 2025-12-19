@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * EmailResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-17T13:23:02.403668+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class EmailResponse {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -60,10 +60,10 @@ public class EmailResponse {
   @javax.annotation.Nullable
   private Integer submittedAt;
 
-  public static final String SERIALIZED_NAME_MESSAGE_ID = "messageId";
-  @SerializedName(SERIALIZED_NAME_MESSAGE_ID)
+  public static final String SERIALIZED_NAME_MESSAGE_I_D = "messageID";
+  @SerializedName(SERIALIZED_NAME_MESSAGE_I_D)
   @javax.annotation.Nullable
-  private String messageId;
+  private String messageID;
 
   public static final String SERIALIZED_NAME_ERROR_CODE = "errorCode";
   @SerializedName(SERIALIZED_NAME_ERROR_CODE)
@@ -74,11 +74,6 @@ public class EmailResponse {
   @SerializedName(SERIALIZED_NAME_MESSAGE)
   @javax.annotation.Nullable
   private String message;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  @javax.annotation.Nullable
-  private String status;
 
   public EmailResponse() {
   }
@@ -121,22 +116,22 @@ public class EmailResponse {
   }
 
 
-  public EmailResponse messageId(@javax.annotation.Nullable String messageId) {
-    this.messageId = messageId;
+  public EmailResponse messageID(@javax.annotation.Nullable String messageID) {
+    this.messageID = messageID;
     return this;
   }
 
   /**
    * Message UUID
-   * @return messageId
+   * @return messageID
    */
   @javax.annotation.Nullable
-  public String getMessageId() {
-    return messageId;
+  public String getMessageID() {
+    return messageID;
   }
 
-  public void setMessageId(@javax.annotation.Nullable String messageId) {
-    this.messageId = messageId;
+  public void setMessageID(@javax.annotation.Nullable String messageID) {
+    this.messageID = messageID;
   }
 
 
@@ -178,25 +173,6 @@ public class EmailResponse {
   }
 
 
-  public EmailResponse status(@javax.annotation.Nullable String status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Status of the email response
-   * @return status
-   */
-  @javax.annotation.Nullable
-  public String getStatus() {
-    return status;
-  }
-
-  public void setStatus(@javax.annotation.Nullable String status) {
-    this.status = status;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -209,15 +185,14 @@ public class EmailResponse {
     EmailResponse emailResponse = (EmailResponse) o;
     return Objects.equals(this.to, emailResponse.to) &&
         Objects.equals(this.submittedAt, emailResponse.submittedAt) &&
-        Objects.equals(this.messageId, emailResponse.messageId) &&
+        Objects.equals(this.messageID, emailResponse.messageID) &&
         Objects.equals(this.errorCode, emailResponse.errorCode) &&
-        Objects.equals(this.message, emailResponse.message) &&
-        Objects.equals(this.status, emailResponse.status);
+        Objects.equals(this.message, emailResponse.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(to, submittedAt, messageId, errorCode, message, status);
+    return Objects.hash(to, submittedAt, messageID, errorCode, message);
   }
 
   @Override
@@ -226,10 +201,9 @@ public class EmailResponse {
     sb.append("class EmailResponse {\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
     sb.append("    submittedAt: ").append(toIndentedString(submittedAt)).append("\n");
-    sb.append("    messageId: ").append(toIndentedString(messageId)).append("\n");
+    sb.append("    messageID: ").append(toIndentedString(messageID)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -254,10 +228,9 @@ public class EmailResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("to");
     openapiFields.add("submittedAt");
-    openapiFields.add("messageId");
+    openapiFields.add("messageID");
     openapiFields.add("errorCode");
     openapiFields.add("message");
-    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -287,14 +260,11 @@ public class EmailResponse {
       if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      if ((jsonObj.get("messageId") != null && !jsonObj.get("messageId").isJsonNull()) && !jsonObj.get("messageId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `messageId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("messageId").toString()));
+      if ((jsonObj.get("messageID") != null && !jsonObj.get("messageID").isJsonNull()) && !jsonObj.get("messageID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `messageID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("messageID").toString()));
       }
       if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
-      }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
 

@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Suppression
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-17T13:23:02.403668+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Suppression {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -69,67 +69,6 @@ public class Suppression {
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nullable
   private Long created;
-
-  /**
-   * Type of suppression. Valid values: hardBounce, manual, spamComplaint, unsubscribe
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    HARD_BOUNCE("hardBounce"),
-    
-    MANUAL("manual"),
-    
-    SPAM_COMPLAINT("spamComplaint"),
-    
-    UNSUBSCRIBE("unsubscribe");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      TypeEnum.fromValue(value);
-    }
-  }
-
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nullable
-  private TypeEnum type;
 
   public Suppression() {
   }
@@ -210,25 +149,6 @@ public class Suppression {
   }
 
 
-  public Suppression type(@javax.annotation.Nullable TypeEnum type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Type of suppression. Valid values: hardBounce, manual, spamComplaint, unsubscribe
-   * @return type
-   */
-  @javax.annotation.Nullable
-  public TypeEnum getType() {
-    return type;
-  }
-
-  public void setType(@javax.annotation.Nullable TypeEnum type) {
-    this.type = type;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -242,13 +162,12 @@ public class Suppression {
     return Objects.equals(this.id, suppression.id) &&
         Objects.equals(this.reason, suppression.reason) &&
         Objects.equals(this.email, suppression.email) &&
-        Objects.equals(this.created, suppression.created) &&
-        Objects.equals(this.type, suppression.type);
+        Objects.equals(this.created, suppression.created);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, reason, email, created, type);
+    return Objects.hash(id, reason, email, created);
   }
 
   @Override
@@ -259,7 +178,6 @@ public class Suppression {
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -286,7 +204,6 @@ public class Suppression {
     openapiFields.add("reason");
     openapiFields.add("email");
     openapiFields.add("created");
-    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -315,13 +232,6 @@ public class Suppression {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `type`
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
-        TypeEnum.validateJsonElement(jsonObj.get("type"));
       }
   }
 

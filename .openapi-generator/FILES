@@ -10,6 +10,8 @@ docs/AccountStatsStat.md
 docs/AggregateStat.md
 docs/AggregateStats.md
 docs/AggregatedEmailStats.md
+docs/Attachment.md
+docs/CopyTo.md
 docs/CreateDomainRequest.md
 docs/CreateSuppressionRequest.md
 docs/CreateSuppressionRequestHardBounceInner.md
@@ -100,7 +102,9 @@ src/main/java/sendpost_java_sdk/ApiCallback.java
 src/main/java/sendpost_java_sdk/ApiClient.java
 src/main/java/sendpost_java_sdk/ApiException.java
 src/main/java/sendpost_java_sdk/ApiResponse.java
+src/main/java/sendpost_java_sdk/Attachment.java
 src/main/java/sendpost_java_sdk/Configuration.java
+src/main/java/sendpost_java_sdk/CopyTo.java
 src/main/java/sendpost_java_sdk/CreateDomainRequest.java
 src/main/java/sendpost_java_sdk/CreateSuppressionRequest.java
 src/main/java/sendpost_java_sdk/CreateSuppressionRequestHardBounceInner.java
@@ -184,3 +188,5 @@ src/main/java/sendpost_java_sdk/auth/ApiKeyAuth.java
 src/main/java/sendpost_java_sdk/auth/Authentication.java
 src/main/java/sendpost_java_sdk/auth/HttpBasicAuth.java
 src/main/java/sendpost_java_sdk/auth/HttpBearerAuth.java
+src/test/java/sendpost_java_sdk/AttachmentTest.java
+src/test/java/sendpost_java_sdk/CopyToTest.java

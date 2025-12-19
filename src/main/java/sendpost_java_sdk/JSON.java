@@ -101,6 +101,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.AggregateStat.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.AggregateStats.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.AggregatedEmailStats.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.Attachment.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.CopyTo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.CreateDomainRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.CreateSuppressionRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.CreateSuppressionRequestHardBounceInner.CustomTypeAdapterFactory());

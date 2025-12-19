@@ -18,6 +18,10 @@
 |**clicked** | **Boolean** | Trigger webhook on email message link being clicked. |  [optional] |
 |**unsubscribed** | **Boolean** | Trigger webhook on email message being unsubscribed. |  [optional] |
 |**spam** | **Boolean** | Trigger webhook on email message being marked as spam. |  [optional] |
+|**sent** | **Boolean** | Trigger webhook on email message being sent. |  [optional] |
+|**smtpDropped** | **Boolean** | Trigger webhook on email message being dropped by SMTP. |  [optional] |
+|**uniqueOpen** | **Boolean** | Trigger webhook on unique email opens. |  [optional] |
+|**uniqueClick** | **Boolean** | Trigger webhook on unique email clicks. |  [optional] |
 
 
 

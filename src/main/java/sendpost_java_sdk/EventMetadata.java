@@ -52,7 +52,7 @@ import sendpost_java_sdk.JSON;
 /**
  * EventMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-17T13:23:02.403668+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class EventMetadata {
   public static final String SERIALIZED_NAME_SMTP_CODE = "smtpCode";
   @SerializedName(SERIALIZED_NAME_SMTP_CODE)

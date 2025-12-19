@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * NewWebhook
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-17T13:23:02.403668+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class NewWebhook {
   public static final String SERIALIZED_NAME_ENABLED = "enabled";
   @SerializedName(SERIALIZED_NAME_ENABLED)
@@ -104,6 +104,26 @@ public class NewWebhook {
   @SerializedName(SERIALIZED_NAME_SPAM)
   @javax.annotation.Nullable
   private Boolean spam;
+
+  public static final String SERIALIZED_NAME_SENT = "sent";
+  @SerializedName(SERIALIZED_NAME_SENT)
+  @javax.annotation.Nullable
+  private Boolean sent;
+
+  public static final String SERIALIZED_NAME_SMTP_DROPPED = "smtpDropped";
+  @SerializedName(SERIALIZED_NAME_SMTP_DROPPED)
+  @javax.annotation.Nullable
+  private Boolean smtpDropped;
+
+  public static final String SERIALIZED_NAME_UNIQUE_OPEN = "uniqueOpen";
+  @SerializedName(SERIALIZED_NAME_UNIQUE_OPEN)
+  @javax.annotation.Nullable
+  private Boolean uniqueOpen;
+
+  public static final String SERIALIZED_NAME_UNIQUE_CLICK = "uniqueClick";
+  @SerializedName(SERIALIZED_NAME_UNIQUE_CLICK)
+  @javax.annotation.Nullable
+  private Boolean uniqueClick;
 
   public NewWebhook() {
   }
@@ -317,6 +337,82 @@ public class NewWebhook {
   }
 
 
+  public NewWebhook sent(@javax.annotation.Nullable Boolean sent) {
+    this.sent = sent;
+    return this;
+  }
+
+  /**
+   * Trigger webhook on email message being sent.
+   * @return sent
+   */
+  @javax.annotation.Nullable
+  public Boolean getSent() {
+    return sent;
+  }
+
+  public void setSent(@javax.annotation.Nullable Boolean sent) {
+    this.sent = sent;
+  }
+
+
+  public NewWebhook smtpDropped(@javax.annotation.Nullable Boolean smtpDropped) {
+    this.smtpDropped = smtpDropped;
+    return this;
+  }
+
+  /**
+   * Trigger webhook on email message being dropped by SMTP.
+   * @return smtpDropped
+   */
+  @javax.annotation.Nullable
+  public Boolean getSmtpDropped() {
+    return smtpDropped;
+  }
+
+  public void setSmtpDropped(@javax.annotation.Nullable Boolean smtpDropped) {
+    this.smtpDropped = smtpDropped;
+  }
+
+
+  public NewWebhook uniqueOpen(@javax.annotation.Nullable Boolean uniqueOpen) {
+    this.uniqueOpen = uniqueOpen;
+    return this;
+  }
+
+  /**
+   * Trigger webhook on unique email opens.
+   * @return uniqueOpen
+   */
+  @javax.annotation.Nullable
+  public Boolean getUniqueOpen() {
+    return uniqueOpen;
+  }
+
+  public void setUniqueOpen(@javax.annotation.Nullable Boolean uniqueOpen) {
+    this.uniqueOpen = uniqueOpen;
+  }
+
+
+  public NewWebhook uniqueClick(@javax.annotation.Nullable Boolean uniqueClick) {
+    this.uniqueClick = uniqueClick;
+    return this;
+  }
+
+  /**
+   * Trigger webhook on unique email clicks.
+   * @return uniqueClick
+   */
+  @javax.annotation.Nullable
+  public Boolean getUniqueClick() {
+    return uniqueClick;
+  }
+
+  public void setUniqueClick(@javax.annotation.Nullable Boolean uniqueClick) {
+    this.uniqueClick = uniqueClick;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -337,12 +433,16 @@ public class NewWebhook {
         Objects.equals(this.opened, newWebhook.opened) &&
         Objects.equals(this.clicked, newWebhook.clicked) &&
         Objects.equals(this.unsubscribed, newWebhook.unsubscribed) &&
-        Objects.equals(this.spam, newWebhook.spam);
+        Objects.equals(this.spam, newWebhook.spam) &&
+        Objects.equals(this.sent, newWebhook.sent) &&
+        Objects.equals(this.smtpDropped, newWebhook.smtpDropped) &&
+        Objects.equals(this.uniqueOpen, newWebhook.uniqueOpen) &&
+        Objects.equals(this.uniqueClick, newWebhook.uniqueClick);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(enabled, url, processed, delivered, dropped, softBounced, hardBounced, opened, clicked, unsubscribed, spam);
+    return Objects.hash(enabled, url, processed, delivered, dropped, softBounced, hardBounced, opened, clicked, unsubscribed, spam, sent, smtpDropped, uniqueOpen, uniqueClick);
   }
 
   @Override
@@ -360,6 +460,10 @@ public class NewWebhook {
     sb.append("    clicked: ").append(toIndentedString(clicked)).append("\n");
     sb.append("    unsubscribed: ").append(toIndentedString(unsubscribed)).append("\n");
     sb.append("    spam: ").append(toIndentedString(spam)).append("\n");
+    sb.append("    sent: ").append(toIndentedString(sent)).append("\n");
+    sb.append("    smtpDropped: ").append(toIndentedString(smtpDropped)).append("\n");
+    sb.append("    uniqueOpen: ").append(toIndentedString(uniqueOpen)).append("\n");
+    sb.append("    uniqueClick: ").append(toIndentedString(uniqueClick)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -393,6 +497,10 @@ public class NewWebhook {
     openapiFields.add("clicked");
     openapiFields.add("unsubscribed");
     openapiFields.add("spam");
+    openapiFields.add("sent");
+    openapiFields.add("smtpDropped");
+    openapiFields.add("uniqueOpen");
+    openapiFields.add("uniqueClick");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

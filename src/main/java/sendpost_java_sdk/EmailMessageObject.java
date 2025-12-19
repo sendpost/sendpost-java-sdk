@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import sendpost_java_sdk.Attachment;
 import sendpost_java_sdk.EmailAddress;
 import sendpost_java_sdk.Recipient;
 
@@ -54,12 +55,17 @@ import sendpost_java_sdk.JSON;
 /**
  * EmailMessageObject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-17T13:23:02.403668+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class EmailMessageObject {
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
   @javax.annotation.Nullable
   private EmailAddress from;
+
+  public static final String SERIALIZED_NAME_REPLY_TO = "replyTo";
+  @SerializedName(SERIALIZED_NAME_REPLY_TO)
+  @javax.annotation.Nullable
+  private EmailAddress replyTo;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -71,6 +77,11 @@ public class EmailMessageObject {
   @javax.annotation.Nullable
   private String subject;
 
+  public static final String SERIALIZED_NAME_PRE_TEXT = "preText";
+  @SerializedName(SERIALIZED_NAME_PRE_TEXT)
+  @javax.annotation.Nullable
+  private String preText;
+
   public static final String SERIALIZED_NAME_HTML_BODY = "htmlBody";
   @SerializedName(SERIALIZED_NAME_HTML_BODY)
   @javax.annotation.Nullable
@@ -80,6 +91,11 @@ public class EmailMessageObject {
   @SerializedName(SERIALIZED_NAME_TEXT_BODY)
   @javax.annotation.Nullable
   private String textBody;
+
+  public static final String SERIALIZED_NAME_AMP_BODY = "ampBody";
+  @SerializedName(SERIALIZED_NAME_AMP_BODY)
+  @javax.annotation.Nullable
+  private String ampBody;
 
   public static final String SERIALIZED_NAME_IPPOOL = "ippool";
   @SerializedName(SERIALIZED_NAME_IPPOOL)
@@ -106,6 +122,16 @@ public class EmailMessageObject {
   @javax.annotation.Nullable
   private List<String> groups = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_ATTACHMENTS = "attachments";
+  @SerializedName(SERIALIZED_NAME_ATTACHMENTS)
+  @javax.annotation.Nullable
+  private List<Attachment> attachments = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_WEBHOOK_ENDPOINT = "webhookEndpoint";
+  @SerializedName(SERIALIZED_NAME_WEBHOOK_ENDPOINT)
+  @javax.annotation.Nullable
+  private String webhookEndpoint;
+
   public EmailMessageObject() {
   }
 
@@ -125,6 +151,25 @@ public class EmailMessageObject {
 
   public void setFrom(@javax.annotation.Nullable EmailAddress from) {
     this.from = from;
+  }
+
+
+  public EmailMessageObject replyTo(@javax.annotation.Nullable EmailAddress replyTo) {
+    this.replyTo = replyTo;
+    return this;
+  }
+
+  /**
+   * Get replyTo
+   * @return replyTo
+   */
+  @javax.annotation.Nullable
+  public EmailAddress getReplyTo() {
+    return replyTo;
+  }
+
+  public void setReplyTo(@javax.annotation.Nullable EmailAddress replyTo) {
+    this.replyTo = replyTo;
   }
 
 
@@ -174,6 +219,25 @@ public class EmailMessageObject {
   }
 
 
+  public EmailMessageObject preText(@javax.annotation.Nullable String preText) {
+    this.preText = preText;
+    return this;
+  }
+
+  /**
+   * Get preText
+   * @return preText
+   */
+  @javax.annotation.Nullable
+  public String getPreText() {
+    return preText;
+  }
+
+  public void setPreText(@javax.annotation.Nullable String preText) {
+    this.preText = preText;
+  }
+
+
   public EmailMessageObject htmlBody(@javax.annotation.Nullable String htmlBody) {
     this.htmlBody = htmlBody;
     return this;
@@ -209,6 +273,25 @@ public class EmailMessageObject {
 
   public void setTextBody(@javax.annotation.Nullable String textBody) {
     this.textBody = textBody;
+  }
+
+
+  public EmailMessageObject ampBody(@javax.annotation.Nullable String ampBody) {
+    this.ampBody = ampBody;
+    return this;
+  }
+
+  /**
+   * Get ampBody
+   * @return ampBody
+   */
+  @javax.annotation.Nullable
+  public String getAmpBody() {
+    return ampBody;
+  }
+
+  public void setAmpBody(@javax.annotation.Nullable String ampBody) {
+    this.ampBody = ampBody;
   }
 
 
@@ -323,6 +406,52 @@ public class EmailMessageObject {
   }
 
 
+  public EmailMessageObject attachments(@javax.annotation.Nullable List<Attachment> attachments) {
+    this.attachments = attachments;
+    return this;
+  }
+
+  public EmailMessageObject addAttachmentsItem(Attachment attachmentsItem) {
+    if (this.attachments == null) {
+      this.attachments = new ArrayList<>();
+    }
+    this.attachments.add(attachmentsItem);
+    return this;
+  }
+
+  /**
+   * Get attachments
+   * @return attachments
+   */
+  @javax.annotation.Nullable
+  public List<Attachment> getAttachments() {
+    return attachments;
+  }
+
+  public void setAttachments(@javax.annotation.Nullable List<Attachment> attachments) {
+    this.attachments = attachments;
+  }
+
+
+  public EmailMessageObject webhookEndpoint(@javax.annotation.Nullable String webhookEndpoint) {
+    this.webhookEndpoint = webhookEndpoint;
+    return this;
+  }
+
+  /**
+   * Get webhookEndpoint
+   * @return webhookEndpoint
+   */
+  @javax.annotation.Nullable
+  public String getWebhookEndpoint() {
+    return webhookEndpoint;
+  }
+
+  public void setWebhookEndpoint(@javax.annotation.Nullable String webhookEndpoint) {
+    this.webhookEndpoint = webhookEndpoint;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -334,20 +463,25 @@ public class EmailMessageObject {
     }
     EmailMessageObject emailMessageObject = (EmailMessageObject) o;
     return Objects.equals(this.from, emailMessageObject.from) &&
+        Objects.equals(this.replyTo, emailMessageObject.replyTo) &&
         Objects.equals(this.to, emailMessageObject.to) &&
         Objects.equals(this.subject, emailMessageObject.subject) &&
+        Objects.equals(this.preText, emailMessageObject.preText) &&
         Objects.equals(this.htmlBody, emailMessageObject.htmlBody) &&
         Objects.equals(this.textBody, emailMessageObject.textBody) &&
+        Objects.equals(this.ampBody, emailMessageObject.ampBody) &&
         Objects.equals(this.ippool, emailMessageObject.ippool) &&
         Objects.equals(this.headers, emailMessageObject.headers) &&
         Objects.equals(this.trackOpens, emailMessageObject.trackOpens) &&
         Objects.equals(this.trackClicks, emailMessageObject.trackClicks) &&
-        Objects.equals(this.groups, emailMessageObject.groups);
+        Objects.equals(this.groups, emailMessageObject.groups) &&
+        Objects.equals(this.attachments, emailMessageObject.attachments) &&
+        Objects.equals(this.webhookEndpoint, emailMessageObject.webhookEndpoint);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(from, to, subject, htmlBody, textBody, ippool, headers, trackOpens, trackClicks, groups);
+    return Objects.hash(from, replyTo, to, subject, preText, htmlBody, textBody, ampBody, ippool, headers, trackOpens, trackClicks, groups, attachments, webhookEndpoint);
   }
 
   @Override
@@ -355,15 +489,20 @@ public class EmailMessageObject {
     StringBuilder sb = new StringBuilder();
     sb.append("class EmailMessageObject {\n");
     sb.append("    from: ").append(toIndentedString(from)).append("\n");
+    sb.append("    replyTo: ").append(toIndentedString(replyTo)).append("\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
     sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
+    sb.append("    preText: ").append(toIndentedString(preText)).append("\n");
     sb.append("    htmlBody: ").append(toIndentedString(htmlBody)).append("\n");
     sb.append("    textBody: ").append(toIndentedString(textBody)).append("\n");
+    sb.append("    ampBody: ").append(toIndentedString(ampBody)).append("\n");
     sb.append("    ippool: ").append(toIndentedString(ippool)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    trackOpens: ").append(toIndentedString(trackOpens)).append("\n");
     sb.append("    trackClicks: ").append(toIndentedString(trackClicks)).append("\n");
     sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
+    sb.append("    attachments: ").append(toIndentedString(attachments)).append("\n");
+    sb.append("    webhookEndpoint: ").append(toIndentedString(webhookEndpoint)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -387,15 +526,20 @@ public class EmailMessageObject {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("from");
+    openapiFields.add("replyTo");
     openapiFields.add("to");
     openapiFields.add("subject");
+    openapiFields.add("preText");
     openapiFields.add("htmlBody");
     openapiFields.add("textBody");
+    openapiFields.add("ampBody");
     openapiFields.add("ippool");
     openapiFields.add("headers");
     openapiFields.add("trackOpens");
     openapiFields.add("trackClicks");
     openapiFields.add("groups");
+    openapiFields.add("attachments");
+    openapiFields.add("webhookEndpoint");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -426,6 +570,10 @@ public class EmailMessageObject {
       if (jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) {
         EmailAddress.validateJsonElement(jsonObj.get("from"));
       }
+      // validate the optional field `replyTo`
+      if (jsonObj.get("replyTo") != null && !jsonObj.get("replyTo").isJsonNull()) {
+        EmailAddress.validateJsonElement(jsonObj.get("replyTo"));
+      }
       if (jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) {
         JsonArray jsonArrayto = jsonObj.getAsJsonArray("to");
         if (jsonArrayto != null) {
@@ -443,11 +591,17 @@ public class EmailMessageObject {
       if ((jsonObj.get("subject") != null && !jsonObj.get("subject").isJsonNull()) && !jsonObj.get("subject").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `subject` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subject").toString()));
       }
+      if ((jsonObj.get("preText") != null && !jsonObj.get("preText").isJsonNull()) && !jsonObj.get("preText").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `preText` to be a primitive type in the JSON string but got `%s`", jsonObj.get("preText").toString()));
+      }
       if ((jsonObj.get("htmlBody") != null && !jsonObj.get("htmlBody").isJsonNull()) && !jsonObj.get("htmlBody").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `htmlBody` to be a primitive type in the JSON string but got `%s`", jsonObj.get("htmlBody").toString()));
       }
       if ((jsonObj.get("textBody") != null && !jsonObj.get("textBody").isJsonNull()) && !jsonObj.get("textBody").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `textBody` to be a primitive type in the JSON string but got `%s`", jsonObj.get("textBody").toString()));
+      }
+      if ((jsonObj.get("ampBody") != null && !jsonObj.get("ampBody").isJsonNull()) && !jsonObj.get("ampBody").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ampBody` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ampBody").toString()));
       }
       if ((jsonObj.get("ippool") != null && !jsonObj.get("ippool").isJsonNull()) && !jsonObj.get("ippool").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ippool` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ippool").toString()));
@@ -455,6 +609,23 @@ public class EmailMessageObject {
       // ensure the optional json data is an array if present
       if (jsonObj.get("groups") != null && !jsonObj.get("groups").isJsonNull() && !jsonObj.get("groups").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `groups` to be an array in the JSON string but got `%s`", jsonObj.get("groups").toString()));
+      }
+      if (jsonObj.get("attachments") != null && !jsonObj.get("attachments").isJsonNull()) {
+        JsonArray jsonArrayattachments = jsonObj.getAsJsonArray("attachments");
+        if (jsonArrayattachments != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("attachments").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `attachments` to be an array in the JSON string but got `%s`", jsonObj.get("attachments").toString()));
+          }
+
+          // validate the optional field `attachments` (array)
+          for (int i = 0; i < jsonArrayattachments.size(); i++) {
+            Attachment.validateJsonElement(jsonArrayattachments.get(i));
+          };
+        }
+      }
+      if ((jsonObj.get("webhookEndpoint") != null && !jsonObj.get("webhookEndpoint").isJsonNull()) && !jsonObj.get("webhookEndpoint").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `webhookEndpoint` to be a primitive type in the JSON string but got `%s`", jsonObj.get("webhookEndpoint").toString()));
       }
   }
 

@@ -13,303 +13,44 @@
 
 package sendpost_java_sdk;
 
-import java.util.Objects;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import sendpost_java_sdk.IP;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import sendpost_java_sdk.JSON;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
- * IPPoolUpdateRequest
+ * Model tests for Attachment
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:14:22.957303+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
-public class IPPoolUpdateRequest {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  @javax.annotation.Nullable
-  private String name;
+public class AttachmentTest {
+    private final Attachment model = new Attachment();
 
-  public static final String SERIALIZED_NAME_IPS = "ips";
-  @SerializedName(SERIALIZED_NAME_IPS)
-  @javax.annotation.Nullable
-  private List<IP> ips = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_ROUTING_STRATEGY = "routingStrategy";
-  @SerializedName(SERIALIZED_NAME_ROUTING_STRATEGY)
-  @javax.annotation.Nullable
-  private Integer routingStrategy;
-
-  public static final String SERIALIZED_NAME_ROUTING_META_DATA = "routingMetaData";
-  @SerializedName(SERIALIZED_NAME_ROUTING_META_DATA)
-  @javax.annotation.Nullable
-  private String routingMetaData;
-
-  public IPPoolUpdateRequest() {
-  }
-
-  public IPPoolUpdateRequest name(@javax.annotation.Nullable String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @javax.annotation.Nullable
-  public String getName() {
-    return name;
-  }
-
-  public void setName(@javax.annotation.Nullable String name) {
-    this.name = name;
-  }
-
-
-  public IPPoolUpdateRequest ips(@javax.annotation.Nullable List<IP> ips) {
-    this.ips = ips;
-    return this;
-  }
-
-  public IPPoolUpdateRequest addIpsItem(IP ipsItem) {
-    if (this.ips == null) {
-      this.ips = new ArrayList<>();
+    /**
+     * Model tests for Attachment
+     */
+    @Test
+    public void testAttachment() {
+        // TODO: test Attachment
     }
-    this.ips.add(ipsItem);
-    return this;
-  }
 
-  /**
-   * Get ips
-   * @return ips
-   */
-  @javax.annotation.Nullable
-  public List<IP> getIps() {
-    return ips;
-  }
-
-  public void setIps(@javax.annotation.Nullable List<IP> ips) {
-    this.ips = ips;
-  }
-
-
-  public IPPoolUpdateRequest routingStrategy(@javax.annotation.Nullable Integer routingStrategy) {
-    this.routingStrategy = routingStrategy;
-    return this;
-  }
-
-  /**
-   * Get routingStrategy
-   * @return routingStrategy
-   */
-  @javax.annotation.Nullable
-  public Integer getRoutingStrategy() {
-    return routingStrategy;
-  }
-
-  public void setRoutingStrategy(@javax.annotation.Nullable Integer routingStrategy) {
-    this.routingStrategy = routingStrategy;
-  }
-
-
-  public IPPoolUpdateRequest routingMetaData(@javax.annotation.Nullable String routingMetaData) {
-    this.routingMetaData = routingMetaData;
-    return this;
-  }
-
-  /**
-   * Get routingMetaData
-   * @return routingMetaData
-   */
-  @javax.annotation.Nullable
-  public String getRoutingMetaData() {
-    return routingMetaData;
-  }
-
-  public void setRoutingMetaData(@javax.annotation.Nullable String routingMetaData) {
-    this.routingMetaData = routingMetaData;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    /**
+     * Test the property 'content'
+     */
+    @Test
+    public void contentTest() {
+        // TODO: test content
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Test the property 'filename'
+     */
+    @Test
+    public void filenameTest() {
+        // TODO: test filename
     }
-    IPPoolUpdateRequest ipPoolUpdateRequest = (IPPoolUpdateRequest) o;
-    return Objects.equals(this.name, ipPoolUpdateRequest.name) &&
-        Objects.equals(this.ips, ipPoolUpdateRequest.ips) &&
-        Objects.equals(this.routingStrategy, ipPoolUpdateRequest.routingStrategy) &&
-        Objects.equals(this.routingMetaData, ipPoolUpdateRequest.routingMetaData);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, ips, routingStrategy, routingMetaData);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class IPPoolUpdateRequest {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
-    sb.append("    routingStrategy: ").append(toIndentedString(routingStrategy)).append("\n");
-    sb.append("    routingMetaData: ").append(toIndentedString(routingMetaData)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("ips");
-    openapiFields.add("routingStrategy");
-    openapiFields.add("routingMetaData");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
-
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to IPPoolUpdateRequest
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!IPPoolUpdateRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in IPPoolUpdateRequest is not found in the empty JSON string", IPPoolUpdateRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!IPPoolUpdateRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IPPoolUpdateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (jsonObj.get("ips") != null && !jsonObj.get("ips").isJsonNull()) {
-        JsonArray jsonArrayips = jsonObj.getAsJsonArray("ips");
-        if (jsonArrayips != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("ips").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `ips` to be an array in the JSON string but got `%s`", jsonObj.get("ips").toString()));
-          }
-
-          // validate the optional field `ips` (array)
-          for (int i = 0; i < jsonArrayips.size(); i++) {
-            IP.validateJsonElement(jsonArrayips.get(i));
-          };
-        }
-      }
-      if ((jsonObj.get("routingMetaData") != null && !jsonObj.get("routingMetaData").isJsonNull()) && !jsonObj.get("routingMetaData").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `routingMetaData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("routingMetaData").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IPPoolUpdateRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IPPoolUpdateRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IPPoolUpdateRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IPPoolUpdateRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<IPPoolUpdateRequest>() {
-           @Override
-           public void write(JsonWriter out, IPPoolUpdateRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public IPPoolUpdateRequest read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
-    }
-  }
-
-  /**
-   * Create an instance of IPPoolUpdateRequest given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of IPPoolUpdateRequest
-   * @throws IOException if the JSON string is invalid with respect to IPPoolUpdateRequest
-   */
-  public static IPPoolUpdateRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, IPPoolUpdateRequest.class);
-  }
-
-  /**
-   * Convert an instance of IPPoolUpdateRequest to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
-
