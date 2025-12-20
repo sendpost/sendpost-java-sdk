@@ -13,7 +13,7 @@
 
 package sendpost_java_sdk;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:21:25.807988+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-20T16:08:23.928230+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Pair {
     private String name = "";
     private String value = "";

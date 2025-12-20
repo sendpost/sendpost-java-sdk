@@ -117,7 +117,6 @@ public class SendPostSDKTest {
             System.out.println("Response count: " + responses.size());
             for (EmailResponse response : responses) {
                 System.out.println("  - Message ID: " + response.getMessageId());
-                System.out.println("  - Status: " + response.getStatus());
             }
             
         } catch (ApiException e) {

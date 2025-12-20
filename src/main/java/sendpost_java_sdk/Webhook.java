@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import sendpost_java_sdk.Member;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,7 +49,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Webhook
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-19T20:21:25.807988+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-20T16:08:23.928230+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Webhook {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -134,6 +135,16 @@ public class Webhook {
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nullable
   private Long created;
+
+  public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY)
+  @javax.annotation.Nullable
+  private Member createdBy;
+
+  public static final String SERIALIZED_NAME_UPDATED_BY = "updatedBy";
+  @SerializedName(SERIALIZED_NAME_UPDATED_BY)
+  @javax.annotation.Nullable
+  private Member updatedBy;
 
   public Webhook() {
   }
@@ -461,6 +472,44 @@ public class Webhook {
   }
 
 
+  public Webhook createdBy(@javax.annotation.Nullable Member createdBy) {
+    this.createdBy = createdBy;
+    return this;
+  }
+
+  /**
+   * Member who created the webhook
+   * @return createdBy
+   */
+  @javax.annotation.Nullable
+  public Member getCreatedBy() {
+    return createdBy;
+  }
+
+  public void setCreatedBy(@javax.annotation.Nullable Member createdBy) {
+    this.createdBy = createdBy;
+  }
+
+
+  public Webhook updatedBy(@javax.annotation.Nullable Member updatedBy) {
+    this.updatedBy = updatedBy;
+    return this;
+  }
+
+  /**
+   * Member who updated the webhook
+   * @return updatedBy
+   */
+  @javax.annotation.Nullable
+  public Member getUpdatedBy() {
+    return updatedBy;
+  }
+
+  public void setUpdatedBy(@javax.annotation.Nullable Member updatedBy) {
+    this.updatedBy = updatedBy;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -487,12 +536,14 @@ public class Webhook {
         Objects.equals(this.smtpDropped, webhook.smtpDropped) &&
         Objects.equals(this.uniqueOpen, webhook.uniqueOpen) &&
         Objects.equals(this.uniqueClick, webhook.uniqueClick) &&
-        Objects.equals(this.created, webhook.created);
+        Objects.equals(this.created, webhook.created) &&
+        Objects.equals(this.createdBy, webhook.createdBy) &&
+        Objects.equals(this.updatedBy, webhook.updatedBy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, enabled, url, processed, delivered, dropped, softBounced, hardBounced, opened, clicked, unsubscribed, spam, sent, smtpDropped, uniqueOpen, uniqueClick, created);
+    return Objects.hash(id, enabled, url, processed, delivered, dropped, softBounced, hardBounced, opened, clicked, unsubscribed, spam, sent, smtpDropped, uniqueOpen, uniqueClick, created, createdBy, updatedBy);
   }
 
   @Override
@@ -516,6 +567,8 @@ public class Webhook {
     sb.append("    uniqueOpen: ").append(toIndentedString(uniqueOpen)).append("\n");
     sb.append("    uniqueClick: ").append(toIndentedString(uniqueClick)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+    sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -555,6 +608,8 @@ public class Webhook {
     openapiFields.add("uniqueOpen");
     openapiFields.add("uniqueClick");
     openapiFields.add("created");
+    openapiFields.add("createdBy");
+    openapiFields.add("updatedBy");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

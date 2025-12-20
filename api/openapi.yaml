@@ -2660,12 +2660,12 @@ components:
         to: to
         submittedAt: 0
         message: message
-        status: status
       properties:
         to:
           type: string
         submittedAt:
           description: UNIX epoch nano timestamp
+          format: int64
           type: integer
         messageId:
           description: Message UUID
@@ -2673,9 +2673,6 @@ components:
         errorCode:
           type: integer
         message:
-          type: string
-        status:
-          description: Status of the email response
           type: string
     EmailAddress:
       example:
@@ -3750,6 +3747,18 @@ components:
     Webhook:
       example:
         smtpDropped: false
+        updatedBy:
+          phoneNumber: "+919876543210"
+          isForbidden: false
+          isVerified: true
+          created: 1567512491588004044
+          companyName: SendPost
+          onboardQAnswered: true
+          name: Raj
+          id: 117
+          updated: 1567512491588004044
+          email: raj@piedpiper.com
+          logoURL: https://www.sendpost.io/logo.png
         hardBounced: true
         created: 1567512491588004044
         dropped: false
@@ -3762,6 +3771,18 @@ components:
         processed: true
         unsubscribed: true
         uniqueOpen: true
+        createdBy:
+          phoneNumber: "+919876543210"
+          isForbidden: false
+          isVerified: true
+          created: 1567512491588004044
+          companyName: SendPost
+          onboardQAnswered: true
+          name: Raj
+          id: 117
+          updated: 1567512491588004044
+          email: raj@piedpiper.com
+          logoURL: https://www.sendpost.io/logo.png
         uniqueClick: true
         softBounced: false
         id: 117
@@ -3836,6 +3857,10 @@ components:
           example: 1567512491588004044
           format: int64
           type: integer
+        createdBy:
+          $ref: '#/components/schemas/Member'
+        updatedBy:
+          $ref: '#/components/schemas/Member'
     NewWebhook:
       example:
         smtpDropped: false

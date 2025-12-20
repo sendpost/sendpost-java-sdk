@@ -24,6 +24,8 @@
 |**uniqueOpen** | **Boolean** | Trigger webhook on unique email opens. |  [optional] |
 |**uniqueClick** | **Boolean** | Trigger webhook on unique email clicks. |  [optional] |
 |**created** | **Long** | UNIX epoch nano timestamp when the webhook was created. |  [optional] |
+|**createdBy** | **Member** | Member who created the webhook |  [optional] |
+|**updatedBy** | **Member** | Member who updated the webhook |  [optional] |
 
 
 
