@@ -146,7 +146,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Create a New IPPool
+     * Create IPPool
      * Creates a new IPPool with the specified name, IPs, and third-party sending providers.
      * @param ipPoolCreateRequest  (required)
      * @return IPPool
@@ -165,7 +165,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Create a New IPPool
+     * Create IPPool
      * Creates a new IPPool with the specified name, IPs, and third-party sending providers.
      * @param ipPoolCreateRequest  (required)
      * @return ApiResponse&lt;IPPool&gt;
@@ -185,7 +185,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Create a New IPPool (asynchronously)
+     * Create IPPool (asynchronously)
      * Creates a new IPPool with the specified name, IPs, and third-party sending providers.
      * @param ipPoolCreateRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -278,7 +278,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Delete a Specific IPPool
+     * Delete IPPool
      * Delete a specific IPPool based on its ID.
      * @param ippoolId The ID of the IPPool to delete (required)
      * @return IPPoolDeleteResponse
@@ -298,7 +298,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Delete a Specific IPPool
+     * Delete IPPool
      * Delete a specific IPPool based on its ID.
      * @param ippoolId The ID of the IPPool to delete (required)
      * @return ApiResponse&lt;IPPoolDeleteResponse&gt;
@@ -319,7 +319,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Delete a Specific IPPool (asynchronously)
+     * Delete IPPool (asynchronously)
      * Delete a specific IPPool based on its ID.
      * @param ippoolId The ID of the IPPool to delete (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -420,7 +420,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Get All IPPools
+     * List IPPools
      * Retrieves a list of all IPPools and information about all IPs contained in that pool.
      * @param limit Number of records to return per request (optional)
      * @param offset Number of initial records to skip (optional)
@@ -441,7 +441,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Get All IPPools
+     * List IPPools
      * Retrieves a list of all IPPools and information about all IPs contained in that pool.
      * @param limit Number of records to return per request (optional)
      * @param offset Number of initial records to skip (optional)
@@ -463,7 +463,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Get All IPPools (asynchronously)
+     * List IPPools (asynchronously)
      * Retrieves a list of all IPPools and information about all IPs contained in that pool.
      * @param limit Number of records to return per request (optional)
      * @param offset Number of initial records to skip (optional)
@@ -557,7 +557,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Get a Specific IPPool
+     * Get IPPool
      * Retrieves details of a specific IPPool based on its ID.
      * @param ippoolId The ID of the IPPool whose information you want to retrieve (required)
      * @return IPPool
@@ -576,7 +576,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Get a Specific IPPool
+     * Get IPPool
      * Retrieves details of a specific IPPool based on its ID.
      * @param ippoolId The ID of the IPPool whose information you want to retrieve (required)
      * @return ApiResponse&lt;IPPool&gt;
@@ -596,7 +596,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Get a Specific IPPool (asynchronously)
+     * Get IPPool (asynchronously)
      * Retrieves details of a specific IPPool based on its ID.
      * @param ippoolId The ID of the IPPool whose information you want to retrieve (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -697,7 +697,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Update an Existing IPPool
+     * Update IPPool
      * Update the details of an existing IPPool by its ID.
      * @param ippoolId The ID of the IPPool to update (required)
      * @param ipPoolUpdateRequest  (required)
@@ -719,7 +719,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Update an Existing IPPool
+     * Update IPPool
      * Update the details of an existing IPPool by its ID.
      * @param ippoolId The ID of the IPPool to update (required)
      * @param ipPoolUpdateRequest  (required)
@@ -742,7 +742,7 @@ public class IpPoolsApi {
     }
 
     /**
-     * Update an Existing IPPool (asynchronously)
+     * Update IPPool (asynchronously)
      * Update the details of an existing IPPool by its ID.
      * @param ippoolId The ID of the IPPool to update (required)
      * @param ipPoolUpdateRequest  (required)

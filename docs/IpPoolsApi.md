@@ -4,18 +4,18 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createIPPool**](IpPoolsApi.md#createIPPool) | **POST** /account/ippool | Create a New IPPool |
-| [**deleteIPPool**](IpPoolsApi.md#deleteIPPool) | **DELETE** /account/ippool/{ippool_id} | Delete a Specific IPPool |
-| [**getAllIPPools**](IpPoolsApi.md#getAllIPPools) | **GET** /account/ippool | Get All IPPools |
-| [**getIPPoolById**](IpPoolsApi.md#getIPPoolById) | **GET** /account/ippool/{ippool_id} | Get a Specific IPPool |
-| [**updateIPPool**](IpPoolsApi.md#updateIPPool) | **PUT** /account/ippool/{ippool_id} | Update an Existing IPPool |
+| [**createIPPool**](IpPoolsApi.md#createIPPool) | **POST** /account/ippool | Create IPPool |
+| [**deleteIPPool**](IpPoolsApi.md#deleteIPPool) | **DELETE** /account/ippool/{ippool_id} | Delete IPPool |
+| [**getAllIPPools**](IpPoolsApi.md#getAllIPPools) | **GET** /account/ippool | List IPPools |
+| [**getIPPoolById**](IpPoolsApi.md#getIPPoolById) | **GET** /account/ippool/{ippool_id} | Get IPPool |
+| [**updateIPPool**](IpPoolsApi.md#updateIPPool) | **PUT** /account/ippool/{ippool_id} | Update IPPool |
 
 
 <a id="createIPPool"></a>
 # **createIPPool**
 > IPPool createIPPool(ipPoolCreateRequest)
 
-Create a New IPPool
+Create IPPool
 
 Creates a new IPPool with the specified name, IPs, and third-party sending providers.
 
@@ -85,7 +85,7 @@ public class Example {
 # **deleteIPPool**
 > IPPoolDeleteResponse deleteIPPool(ippoolId)
 
-Delete a Specific IPPool
+Delete IPPool
 
 Delete a specific IPPool based on its ID.
 
@@ -149,7 +149,7 @@ No authorization required
 # **getAllIPPools**
 > List&lt;IPPool&gt; getAllIPPools(limit, offset, search)
 
-Get All IPPools
+List IPPools
 
 Retrieves a list of all IPPools and information about all IPs contained in that pool.
 
@@ -223,7 +223,7 @@ public class Example {
 # **getIPPoolById**
 > IPPool getIPPoolById(ippoolId)
 
-Get a Specific IPPool
+Get IPPool
 
 Retrieves details of a specific IPPool based on its ID.
 
@@ -293,7 +293,7 @@ public class Example {
 # **updateIPPool**
 > IPPool updateIPPool(ippoolId, ipPoolUpdateRequest)
 
-Update an Existing IPPool
+Update IPPool
 
 Update the details of an existing IPPool by its ID.
 

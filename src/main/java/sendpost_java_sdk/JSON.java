@@ -111,13 +111,14 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.CreateSuppressionRequestUnsubscribeInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DeleteResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DeleteSubAccountResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DeleteSuppression200Response.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DeleteSuppression200ResponseInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DeleteSuppressionRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DeleteWebhookResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.Device.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.Domain.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DomainDkim.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DomainDmarc.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DomainGpt.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DomainReturnPath.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DomainTrack.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.EIP.CustomTypeAdapterFactory());
@@ -146,7 +147,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.IPUpdateRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.Member.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.Message.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.MessageToInner.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.MessageHeaderTo.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.MessageTo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.NewSubAccount.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.NewWebhook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.OperatingSystem.CustomTypeAdapterFactory());

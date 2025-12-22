@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Track record host, type and value. This domain will be used for link tracking while rewriting links in your email message
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T13:35:12.742682+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:50:51.966722+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class DomainTrack {
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)

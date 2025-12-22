@@ -85,7 +85,7 @@ public class WebhookApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized. Invalid API key. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden. Webhook with the same URL already exists. </td><td>  -  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable. Cannot create webhook for the default sub-account. </td><td>  -  </td></tr>
@@ -149,7 +149,7 @@ public class WebhookApi {
     }
 
     /**
-     * Create a New Webhook
+     * Create Webhook
      * Create a new webhook by specifying its properties.
      * @param newWebhook  (required)
      * @return Webhook
@@ -158,7 +158,7 @@ public class WebhookApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized. Invalid API key. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden. Webhook with the same URL already exists. </td><td>  -  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable. Cannot create webhook for the default sub-account. </td><td>  -  </td></tr>
@@ -171,7 +171,7 @@ public class WebhookApi {
     }
 
     /**
-     * Create a New Webhook
+     * Create Webhook
      * Create a new webhook by specifying its properties.
      * @param newWebhook  (required)
      * @return ApiResponse&lt;Webhook&gt;
@@ -180,7 +180,7 @@ public class WebhookApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized. Invalid API key. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden. Webhook with the same URL already exists. </td><td>  -  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable. Cannot create webhook for the default sub-account. </td><td>  -  </td></tr>
@@ -194,7 +194,7 @@ public class WebhookApi {
     }
 
     /**
-     * Create a New Webhook (asynchronously)
+     * Create Webhook (asynchronously)
      * Create a new webhook by specifying its properties.
      * @param newWebhook  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -204,7 +204,7 @@ public class WebhookApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized. Invalid API key. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden. Webhook with the same URL already exists. </td><td>  -  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable. Cannot create webhook for the default sub-account. </td><td>  -  </td></tr>
@@ -288,7 +288,7 @@ public class WebhookApi {
     }
 
     /**
-     * Delete a Specific Webhook
+     * Delete Webhook
      * Delete a webhook by its ID.
      * @param webhookId ID of the webhook to delete. (required)
      * @return DeleteWebhookResponse
@@ -306,7 +306,7 @@ public class WebhookApi {
     }
 
     /**
-     * Delete a Specific Webhook
+     * Delete Webhook
      * Delete a webhook by its ID.
      * @param webhookId ID of the webhook to delete. (required)
      * @return ApiResponse&lt;DeleteWebhookResponse&gt;
@@ -325,7 +325,7 @@ public class WebhookApi {
     }
 
     /**
-     * Delete a Specific Webhook (asynchronously)
+     * Delete Webhook (asynchronously)
      * Delete a webhook by its ID.
      * @param webhookId ID of the webhook to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -423,7 +423,7 @@ public class WebhookApi {
     }
 
     /**
-     * Get All Webhooks
+     * List Webhooks
      * Retrieves a list of all webhooks, their endpoints, and the events for which they are active.
      * @param limit Number of records to return per request. (optional)
      * @param offset Number of initial records to skip. (optional)
@@ -443,7 +443,7 @@ public class WebhookApi {
     }
 
     /**
-     * Get All Webhooks
+     * List Webhooks
      * Retrieves a list of all webhooks, their endpoints, and the events for which they are active.
      * @param limit Number of records to return per request. (optional)
      * @param offset Number of initial records to skip. (optional)
@@ -464,7 +464,7 @@ public class WebhookApi {
     }
 
     /**
-     * Get All Webhooks (asynchronously)
+     * List Webhooks (asynchronously)
      * Retrieves a list of all webhooks, their endpoints, and the events for which they are active.
      * @param limit Number of records to return per request. (optional)
      * @param offset Number of initial records to skip. (optional)
@@ -556,7 +556,7 @@ public class WebhookApi {
     }
 
     /**
-     * Get a Specific Webhook
+     * Get Webhook
      * Retrieves a specific webhook based on its ID.
      * @param webhookId The ID of the webhook to retrieve. (required)
      * @return Webhook
@@ -574,7 +574,7 @@ public class WebhookApi {
     }
 
     /**
-     * Get a Specific Webhook
+     * Get Webhook
      * Retrieves a specific webhook based on its ID.
      * @param webhookId The ID of the webhook to retrieve. (required)
      * @return ApiResponse&lt;Webhook&gt;
@@ -593,7 +593,7 @@ public class WebhookApi {
     }
 
     /**
-     * Get a Specific Webhook (asynchronously)
+     * Get Webhook (asynchronously)
      * Retrieves a specific webhook based on its ID.
      * @param webhookId The ID of the webhook to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -690,7 +690,7 @@ public class WebhookApi {
     }
 
     /**
-     * Update an Existing Webhook
+     * Update Webhook
      * Update the properties of an existing webhook.
      * @param webhookId ID of the webhook to update. (required)
      * @param updateWebhook  (required)
@@ -709,7 +709,7 @@ public class WebhookApi {
     }
 
     /**
-     * Update an Existing Webhook
+     * Update Webhook
      * Update the properties of an existing webhook.
      * @param webhookId ID of the webhook to update. (required)
      * @param updateWebhook  (required)
@@ -729,7 +729,7 @@ public class WebhookApi {
     }
 
     /**
-     * Update an Existing Webhook (asynchronously)
+     * Update Webhook (asynchronously)
      * Update the properties of an existing webhook.
      * @param webhookId ID of the webhook to update. (required)
      * @param updateWebhook  (required)

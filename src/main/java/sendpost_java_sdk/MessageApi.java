@@ -28,7 +28,6 @@ import java.io.IOException;
 
 
 import sendpost_java_sdk.Message;
-import java.time.OffsetDateTime;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -73,173 +72,6 @@ public class MessageApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for getAllMessages
-     * @param from Date from which messages should be retrieved. (required)
-     * @param to Date to which messages should be retrieved. (Should be later than &#x60;from&#x60; and no more than 60 days apart.) (required)
-     * @param limit Number of records to return per request. (optional, default to 50)
-     * @param offset Number of initial records to skip. (optional, default to 0)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful retrieval of messages. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid input parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized. Invalid API key. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAllMessagesCall(@javax.annotation.Nonnull OffsetDateTime from, @javax.annotation.Nonnull OffsetDateTime to, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/account/message";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (from != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
-        }
-
-        if (to != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
-        }
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (offset != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "accountAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAllMessagesValidateBeforeCall(@javax.annotation.Nonnull OffsetDateTime from, @javax.annotation.Nonnull OffsetDateTime to, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'from' is set
-        if (from == null) {
-            throw new ApiException("Missing the required parameter 'from' when calling getAllMessages(Async)");
-        }
-
-        // verify the required parameter 'to' is set
-        if (to == null) {
-            throw new ApiException("Missing the required parameter 'to' when calling getAllMessages(Async)");
-        }
-
-        return getAllMessagesCall(from, to, limit, offset, _callback);
-
-    }
-
-    /**
-     * Get all  messages
-     * Retrieve messages sent via the SendPost platform within a specific date range.
-     * @param from Date from which messages should be retrieved. (required)
-     * @param to Date to which messages should be retrieved. (Should be later than &#x60;from&#x60; and no more than 60 days apart.) (required)
-     * @param limit Number of records to return per request. (optional, default to 50)
-     * @param offset Number of initial records to skip. (optional, default to 0)
-     * @return List&lt;Message&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful retrieval of messages. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid input parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized. Invalid API key. </td><td>  -  </td></tr>
-     </table>
-     */
-    public List<Message> getAllMessages(@javax.annotation.Nonnull OffsetDateTime from, @javax.annotation.Nonnull OffsetDateTime to, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
-        ApiResponse<List<Message>> localVarResp = getAllMessagesWithHttpInfo(from, to, limit, offset);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get all  messages
-     * Retrieve messages sent via the SendPost platform within a specific date range.
-     * @param from Date from which messages should be retrieved. (required)
-     * @param to Date to which messages should be retrieved. (Should be later than &#x60;from&#x60; and no more than 60 days apart.) (required)
-     * @param limit Number of records to return per request. (optional, default to 50)
-     * @param offset Number of initial records to skip. (optional, default to 0)
-     * @return ApiResponse&lt;List&lt;Message&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful retrieval of messages. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid input parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized. Invalid API key. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<List<Message>> getAllMessagesWithHttpInfo(@javax.annotation.Nonnull OffsetDateTime from, @javax.annotation.Nonnull OffsetDateTime to, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
-        okhttp3.Call localVarCall = getAllMessagesValidateBeforeCall(from, to, limit, offset, null);
-        Type localVarReturnType = new TypeToken<List<Message>>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get all  messages (asynchronously)
-     * Retrieve messages sent via the SendPost platform within a specific date range.
-     * @param from Date from which messages should be retrieved. (required)
-     * @param to Date to which messages should be retrieved. (Should be later than &#x60;from&#x60; and no more than 60 days apart.) (required)
-     * @param limit Number of records to return per request. (optional, default to 50)
-     * @param offset Number of initial records to skip. (optional, default to 0)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful retrieval of messages. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid input parameters. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized. Invalid API key. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getAllMessagesAsync(@javax.annotation.Nonnull OffsetDateTime from, @javax.annotation.Nonnull OffsetDateTime to, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<List<Message>> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getAllMessagesValidateBeforeCall(from, to, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<List<Message>>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
     /**
      * Build call for getMessageById
      * @param messageId The ID of the message to retrieve. (required)
@@ -312,7 +144,7 @@ public class MessageApi {
     }
 
     /**
-     * Retrieve a specific message
+     * Get Message
      * Retrieve detailed information about a specific message by its ID.
      * @param messageId The ID of the message to retrieve. (required)
      * @return Message
@@ -332,7 +164,7 @@ public class MessageApi {
     }
 
     /**
-     * Retrieve a specific message
+     * Get Message
      * Retrieve detailed information about a specific message by its ID.
      * @param messageId The ID of the message to retrieve. (required)
      * @return ApiResponse&lt;Message&gt;
@@ -353,7 +185,7 @@ public class MessageApi {
     }
 
     /**
-     * Retrieve a specific message (asynchronously)
+     * Get Message (asynchronously)
      * Retrieve detailed information about a specific message by its ID.
      * @param messageId The ID of the message to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes

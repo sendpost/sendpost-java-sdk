@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Member
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T13:35:12.742682+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:50:51.966722+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Member {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -65,6 +65,11 @@ public class Member {
   @javax.annotation.Nullable
   private Boolean isForbidden;
 
+  public static final String SERIALIZED_NAME_FIREBASE_U_I_D = "firebaseUID";
+  @SerializedName(SERIALIZED_NAME_FIREBASE_U_I_D)
+  @javax.annotation.Nullable
+  private String firebaseUID;
+
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
   @javax.annotation.Nullable
@@ -75,10 +80,10 @@ public class Member {
   @javax.annotation.Nullable
   private String name;
 
-  public static final String SERIALIZED_NAME_LOGO_U_R_L = "logoURL";
-  @SerializedName(SERIALIZED_NAME_LOGO_U_R_L)
+  public static final String SERIALIZED_NAME_URL = "url";
+  @SerializedName(SERIALIZED_NAME_URL)
   @javax.annotation.Nullable
-  private String logoURL;
+  private String url;
 
   public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
   @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
@@ -95,15 +100,15 @@ public class Member {
   @javax.annotation.Nullable
   private String phoneNumber;
 
+  public static final String SERIALIZED_NAME_NOTES_COLOR = "notesColor";
+  @SerializedName(SERIALIZED_NAME_NOTES_COLOR)
+  @javax.annotation.Nullable
+  private String notesColor;
+
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nullable
   private Integer created;
-
-  public static final String SERIALIZED_NAME_UPDATED = "updated";
-  @SerializedName(SERIALIZED_NAME_UPDATED)
-  @javax.annotation.Nullable
-  private Integer updated;
 
   public Member() {
   }
@@ -165,6 +170,25 @@ public class Member {
   }
 
 
+  public Member firebaseUID(@javax.annotation.Nullable String firebaseUID) {
+    this.firebaseUID = firebaseUID;
+    return this;
+  }
+
+  /**
+   * Firebase UID for the member
+   * @return firebaseUID
+   */
+  @javax.annotation.Nullable
+  public String getFirebaseUID() {
+    return firebaseUID;
+  }
+
+  public void setFirebaseUID(@javax.annotation.Nullable String firebaseUID) {
+    this.firebaseUID = firebaseUID;
+  }
+
+
   public Member email(@javax.annotation.Nullable String email) {
     this.email = email;
     return this;
@@ -203,22 +227,22 @@ public class Member {
   }
 
 
-  public Member logoURL(@javax.annotation.Nullable String logoURL) {
-    this.logoURL = logoURL;
+  public Member url(@javax.annotation.Nullable String url) {
+    this.url = url;
     return this;
   }
 
   /**
    * Logo URL for the member
-   * @return logoURL
+   * @return url
    */
   @javax.annotation.Nullable
-  public String getLogoURL() {
-    return logoURL;
+  public String getUrl() {
+    return url;
   }
 
-  public void setLogoURL(@javax.annotation.Nullable String logoURL) {
-    this.logoURL = logoURL;
+  public void setUrl(@javax.annotation.Nullable String url) {
+    this.url = url;
   }
 
 
@@ -279,6 +303,25 @@ public class Member {
   }
 
 
+  public Member notesColor(@javax.annotation.Nullable String notesColor) {
+    this.notesColor = notesColor;
+    return this;
+  }
+
+  /**
+   * Color for the member&#39;s notes
+   * @return notesColor
+   */
+  @javax.annotation.Nullable
+  public String getNotesColor() {
+    return notesColor;
+  }
+
+  public void setNotesColor(@javax.annotation.Nullable String notesColor) {
+    this.notesColor = notesColor;
+  }
+
+
   public Member created(@javax.annotation.Nullable Integer created) {
     this.created = created;
     return this;
@@ -298,25 +341,6 @@ public class Member {
   }
 
 
-  public Member updated(@javax.annotation.Nullable Integer updated) {
-    this.updated = updated;
-    return this;
-  }
-
-  /**
-   * UNIX epoch nano timestamp when the member was updated
-   * @return updated
-   */
-  @javax.annotation.Nullable
-  public Integer getUpdated() {
-    return updated;
-  }
-
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
-    this.updated = updated;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -330,19 +354,20 @@ public class Member {
     return Objects.equals(this.id, member.id) &&
         Objects.equals(this.isVerified, member.isVerified) &&
         Objects.equals(this.isForbidden, member.isForbidden) &&
+        Objects.equals(this.firebaseUID, member.firebaseUID) &&
         Objects.equals(this.email, member.email) &&
         Objects.equals(this.name, member.name) &&
-        Objects.equals(this.logoURL, member.logoURL) &&
+        Objects.equals(this.url, member.url) &&
         Objects.equals(this.companyName, member.companyName) &&
         Objects.equals(this.onboardQAnswered, member.onboardQAnswered) &&
         Objects.equals(this.phoneNumber, member.phoneNumber) &&
-        Objects.equals(this.created, member.created) &&
-        Objects.equals(this.updated, member.updated);
+        Objects.equals(this.notesColor, member.notesColor) &&
+        Objects.equals(this.created, member.created);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, isVerified, isForbidden, email, name, logoURL, companyName, onboardQAnswered, phoneNumber, created, updated);
+    return Objects.hash(id, isVerified, isForbidden, firebaseUID, email, name, url, companyName, onboardQAnswered, phoneNumber, notesColor, created);
   }
 
   @Override
@@ -352,14 +377,15 @@ public class Member {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    isVerified: ").append(toIndentedString(isVerified)).append("\n");
     sb.append("    isForbidden: ").append(toIndentedString(isForbidden)).append("\n");
+    sb.append("    firebaseUID: ").append(toIndentedString(firebaseUID)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    logoURL: ").append(toIndentedString(logoURL)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("    onboardQAnswered: ").append(toIndentedString(onboardQAnswered)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
+    sb.append("    notesColor: ").append(toIndentedString(notesColor)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
-    sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -385,14 +411,15 @@ public class Member {
     openapiFields.add("id");
     openapiFields.add("isVerified");
     openapiFields.add("isForbidden");
+    openapiFields.add("firebaseUID");
     openapiFields.add("email");
     openapiFields.add("name");
-    openapiFields.add("logoURL");
+    openapiFields.add("url");
     openapiFields.add("companyName");
     openapiFields.add("onboardQAnswered");
     openapiFields.add("phoneNumber");
+    openapiFields.add("notesColor");
     openapiFields.add("created");
-    openapiFields.add("updated");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -419,20 +446,26 @@ public class Member {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("firebaseUID") != null && !jsonObj.get("firebaseUID").isJsonNull()) && !jsonObj.get("firebaseUID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `firebaseUID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("firebaseUID").toString()));
+      }
       if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("logoURL") != null && !jsonObj.get("logoURL").isJsonNull()) && !jsonObj.get("logoURL").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `logoURL` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logoURL").toString()));
+      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
       }
       if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
       }
       if ((jsonObj.get("phoneNumber") != null && !jsonObj.get("phoneNumber").isJsonNull()) && !jsonObj.get("phoneNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `phoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneNumber").toString()));
+      }
+      if ((jsonObj.get("notesColor") != null && !jsonObj.get("notesColor").isJsonNull()) && !jsonObj.get("notesColor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `notesColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("notesColor").toString()));
       }
   }
 

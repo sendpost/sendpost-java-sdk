@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import sendpost_java_sdk.DomainDkim;
 import sendpost_java_sdk.DomainDmarc;
+import sendpost_java_sdk.DomainGpt;
 import sendpost_java_sdk.DomainReturnPath;
 import sendpost_java_sdk.DomainTrack;
 
@@ -52,7 +53,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Domain
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T13:35:12.742682+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:50:51.966722+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Domain {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -114,10 +115,45 @@ public class Domain {
   @javax.annotation.Nullable
   private Boolean verified;
 
+  public static final String SERIALIZED_NAME_DOMAIN_REGISTERED_DATE = "domainRegisteredDate";
+  @SerializedName(SERIALIZED_NAME_DOMAIN_REGISTERED_DATE)
+  @javax.annotation.Nullable
+  private String domainRegisteredDate;
+
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nullable
   private Long created;
+
+  public static final String SERIALIZED_NAME_GPT_VERIFIED = "gptVerified";
+  @SerializedName(SERIALIZED_NAME_GPT_VERIFIED)
+  @javax.annotation.Nullable
+  private Boolean gptVerified;
+
+  public static final String SERIALIZED_NAME_GPT = "gpt";
+  @SerializedName(SERIALIZED_NAME_GPT)
+  @javax.annotation.Nullable
+  private DomainGpt gpt;
+
+  public static final String SERIALIZED_NAME_DMARC_FAILURE_REASON = "dmarcFailureReason";
+  @SerializedName(SERIALIZED_NAME_DMARC_FAILURE_REASON)
+  @javax.annotation.Nullable
+  private String dmarcFailureReason;
+
+  public static final String SERIALIZED_NAME_DKIM_FAILURE_REASON = "dkimFailureReason";
+  @SerializedName(SERIALIZED_NAME_DKIM_FAILURE_REASON)
+  @javax.annotation.Nullable
+  private String dkimFailureReason;
+
+  public static final String SERIALIZED_NAME_TRACK_FAILURE_REASON = "trackFailureReason";
+  @SerializedName(SERIALIZED_NAME_TRACK_FAILURE_REASON)
+  @javax.annotation.Nullable
+  private String trackFailureReason;
+
+  public static final String SERIALIZED_NAME_RETURN_PATH_FAILURE_REASON = "returnPathFailureReason";
+  @SerializedName(SERIALIZED_NAME_RETURN_PATH_FAILURE_REASON)
+  @javax.annotation.Nullable
+  private String returnPathFailureReason;
 
   public Domain() {
   }
@@ -350,6 +386,25 @@ public class Domain {
   }
 
 
+  public Domain domainRegisteredDate(@javax.annotation.Nullable String domainRegisteredDate) {
+    this.domainRegisteredDate = domainRegisteredDate;
+    return this;
+  }
+
+  /**
+   * Date when the domain was registered
+   * @return domainRegisteredDate
+   */
+  @javax.annotation.Nullable
+  public String getDomainRegisteredDate() {
+    return domainRegisteredDate;
+  }
+
+  public void setDomainRegisteredDate(@javax.annotation.Nullable String domainRegisteredDate) {
+    this.domainRegisteredDate = domainRegisteredDate;
+  }
+
+
   public Domain created(@javax.annotation.Nullable Long created) {
     this.created = created;
     return this;
@@ -366,6 +421,120 @@ public class Domain {
 
   public void setCreated(@javax.annotation.Nullable Long created) {
     this.created = created;
+  }
+
+
+  public Domain gptVerified(@javax.annotation.Nullable Boolean gptVerified) {
+    this.gptVerified = gptVerified;
+    return this;
+  }
+
+  /**
+   * Status of GPT verification ( true or false )
+   * @return gptVerified
+   */
+  @javax.annotation.Nullable
+  public Boolean getGptVerified() {
+    return gptVerified;
+  }
+
+  public void setGptVerified(@javax.annotation.Nullable Boolean gptVerified) {
+    this.gptVerified = gptVerified;
+  }
+
+
+  public Domain gpt(@javax.annotation.Nullable DomainGpt gpt) {
+    this.gpt = gpt;
+    return this;
+  }
+
+  /**
+   * Get gpt
+   * @return gpt
+   */
+  @javax.annotation.Nullable
+  public DomainGpt getGpt() {
+    return gpt;
+  }
+
+  public void setGpt(@javax.annotation.Nullable DomainGpt gpt) {
+    this.gpt = gpt;
+  }
+
+
+  public Domain dmarcFailureReason(@javax.annotation.Nullable String dmarcFailureReason) {
+    this.dmarcFailureReason = dmarcFailureReason;
+    return this;
+  }
+
+  /**
+   * Reason for DMARC verification failure
+   * @return dmarcFailureReason
+   */
+  @javax.annotation.Nullable
+  public String getDmarcFailureReason() {
+    return dmarcFailureReason;
+  }
+
+  public void setDmarcFailureReason(@javax.annotation.Nullable String dmarcFailureReason) {
+    this.dmarcFailureReason = dmarcFailureReason;
+  }
+
+
+  public Domain dkimFailureReason(@javax.annotation.Nullable String dkimFailureReason) {
+    this.dkimFailureReason = dkimFailureReason;
+    return this;
+  }
+
+  /**
+   * Reason for DKIM verification failure
+   * @return dkimFailureReason
+   */
+  @javax.annotation.Nullable
+  public String getDkimFailureReason() {
+    return dkimFailureReason;
+  }
+
+  public void setDkimFailureReason(@javax.annotation.Nullable String dkimFailureReason) {
+    this.dkimFailureReason = dkimFailureReason;
+  }
+
+
+  public Domain trackFailureReason(@javax.annotation.Nullable String trackFailureReason) {
+    this.trackFailureReason = trackFailureReason;
+    return this;
+  }
+
+  /**
+   * Reason for Track verification failure
+   * @return trackFailureReason
+   */
+  @javax.annotation.Nullable
+  public String getTrackFailureReason() {
+    return trackFailureReason;
+  }
+
+  public void setTrackFailureReason(@javax.annotation.Nullable String trackFailureReason) {
+    this.trackFailureReason = trackFailureReason;
+  }
+
+
+  public Domain returnPathFailureReason(@javax.annotation.Nullable String returnPathFailureReason) {
+    this.returnPathFailureReason = returnPathFailureReason;
+    return this;
+  }
+
+  /**
+   * Reason for ReturnPath verification failure
+   * @return returnPathFailureReason
+   */
+  @javax.annotation.Nullable
+  public String getReturnPathFailureReason() {
+    return returnPathFailureReason;
+  }
+
+  public void setReturnPathFailureReason(@javax.annotation.Nullable String returnPathFailureReason) {
+    this.returnPathFailureReason = returnPathFailureReason;
   }
 
 
@@ -391,12 +560,19 @@ public class Domain {
         Objects.equals(this.returnPathVerified, domain.returnPathVerified) &&
         Objects.equals(this.trackVerified, domain.trackVerified) &&
         Objects.equals(this.verified, domain.verified) &&
-        Objects.equals(this.created, domain.created);
+        Objects.equals(this.domainRegisteredDate, domain.domainRegisteredDate) &&
+        Objects.equals(this.created, domain.created) &&
+        Objects.equals(this.gptVerified, domain.gptVerified) &&
+        Objects.equals(this.gpt, domain.gpt) &&
+        Objects.equals(this.dmarcFailureReason, domain.dmarcFailureReason) &&
+        Objects.equals(this.dkimFailureReason, domain.dkimFailureReason) &&
+        Objects.equals(this.trackFailureReason, domain.trackFailureReason) &&
+        Objects.equals(this.returnPathFailureReason, domain.returnPathFailureReason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, dkim, returnPath, track, dmarc, dkimConfig, dkimVerified, dmarcVerified, returnPathVerified, trackVerified, verified, created);
+    return Objects.hash(id, name, dkim, returnPath, track, dmarc, dkimConfig, dkimVerified, dmarcVerified, returnPathVerified, trackVerified, verified, domainRegisteredDate, created, gptVerified, gpt, dmarcFailureReason, dkimFailureReason, trackFailureReason, returnPathFailureReason);
   }
 
   @Override
@@ -415,7 +591,14 @@ public class Domain {
     sb.append("    returnPathVerified: ").append(toIndentedString(returnPathVerified)).append("\n");
     sb.append("    trackVerified: ").append(toIndentedString(trackVerified)).append("\n");
     sb.append("    verified: ").append(toIndentedString(verified)).append("\n");
+    sb.append("    domainRegisteredDate: ").append(toIndentedString(domainRegisteredDate)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    gptVerified: ").append(toIndentedString(gptVerified)).append("\n");
+    sb.append("    gpt: ").append(toIndentedString(gpt)).append("\n");
+    sb.append("    dmarcFailureReason: ").append(toIndentedString(dmarcFailureReason)).append("\n");
+    sb.append("    dkimFailureReason: ").append(toIndentedString(dkimFailureReason)).append("\n");
+    sb.append("    trackFailureReason: ").append(toIndentedString(trackFailureReason)).append("\n");
+    sb.append("    returnPathFailureReason: ").append(toIndentedString(returnPathFailureReason)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -450,7 +633,14 @@ public class Domain {
     openapiFields.add("returnPathVerified");
     openapiFields.add("trackVerified");
     openapiFields.add("verified");
+    openapiFields.add("domainRegisteredDate");
     openapiFields.add("created");
+    openapiFields.add("gptVerified");
+    openapiFields.add("gpt");
+    openapiFields.add("dmarcFailureReason");
+    openapiFields.add("dkimFailureReason");
+    openapiFields.add("trackFailureReason");
+    openapiFields.add("returnPathFailureReason");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -498,6 +688,25 @@ public class Domain {
       }
       if ((jsonObj.get("dkimConfig") != null && !jsonObj.get("dkimConfig").isJsonNull()) && !jsonObj.get("dkimConfig").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `dkimConfig` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dkimConfig").toString()));
+      }
+      if ((jsonObj.get("domainRegisteredDate") != null && !jsonObj.get("domainRegisteredDate").isJsonNull()) && !jsonObj.get("domainRegisteredDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `domainRegisteredDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("domainRegisteredDate").toString()));
+      }
+      // validate the optional field `gpt`
+      if (jsonObj.get("gpt") != null && !jsonObj.get("gpt").isJsonNull()) {
+        DomainGpt.validateJsonElement(jsonObj.get("gpt"));
+      }
+      if ((jsonObj.get("dmarcFailureReason") != null && !jsonObj.get("dmarcFailureReason").isJsonNull()) && !jsonObj.get("dmarcFailureReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dmarcFailureReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dmarcFailureReason").toString()));
+      }
+      if ((jsonObj.get("dkimFailureReason") != null && !jsonObj.get("dkimFailureReason").isJsonNull()) && !jsonObj.get("dkimFailureReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dkimFailureReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dkimFailureReason").toString()));
+      }
+      if ((jsonObj.get("trackFailureReason") != null && !jsonObj.get("trackFailureReason").isJsonNull()) && !jsonObj.get("trackFailureReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `trackFailureReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("trackFailureReason").toString()));
+      }
+      if ((jsonObj.get("returnPathFailureReason") != null && !jsonObj.get("returnPathFailureReason").isJsonNull()) && !jsonObj.get("returnPathFailureReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `returnPathFailureReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("returnPathFailureReason").toString()));
       }
   }
 

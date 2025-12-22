@@ -25,7 +25,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import sendpost_java_sdk.MessageToInner;
+import sendpost_java_sdk.MessageHeaderTo;
+import sendpost_java_sdk.MessageTo;
 import sendpost_java_sdk.Person;
 
 import com.google.gson.Gson;
@@ -54,12 +55,47 @@ import sendpost_java_sdk.JSON;
 /**
  * Message
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T13:35:12.742682+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:50:51.966722+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Message {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String SERIALIZED_NAME_MESSAGE_I_D = "messageID";
+  @SerializedName(SERIALIZED_NAME_MESSAGE_I_D)
   @javax.annotation.Nullable
-  private String id;
+  private String messageID;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
+  @javax.annotation.Nullable
+  private Integer accountID;
+
+  public static final String SERIALIZED_NAME_SUB_ACCOUNT_I_D = "subAccountID";
+  @SerializedName(SERIALIZED_NAME_SUB_ACCOUNT_I_D)
+  @javax.annotation.Nullable
+  private Integer subAccountID;
+
+  public static final String SERIALIZED_NAME_IP_I_D = "ipID";
+  @SerializedName(SERIALIZED_NAME_IP_I_D)
+  @javax.annotation.Nullable
+  private Integer ipID;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_I_P_POOL_I_D = "accountIPPoolID";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_I_P_POOL_I_D)
+  @javax.annotation.Nullable
+  private Integer accountIPPoolID;
+
+  public static final String SERIALIZED_NAME_PUBLIC_I_P = "publicIP";
+  @SerializedName(SERIALIZED_NAME_PUBLIC_I_P)
+  @javax.annotation.Nullable
+  private String publicIP;
+
+  public static final String SERIALIZED_NAME_LOCAL_I_P = "localIP";
+  @SerializedName(SERIALIZED_NAME_LOCAL_I_P)
+  @javax.annotation.Nullable
+  private String localIP;
+
+  public static final String SERIALIZED_NAME_EMAIL_TYPE = "emailType";
+  @SerializedName(SERIALIZED_NAME_EMAIL_TYPE)
+  @javax.annotation.Nullable
+  private String emailType;
 
   public static final String SERIALIZED_NAME_SUBMITTED_AT = "submittedAt";
   @SerializedName(SERIALIZED_NAME_SUBMITTED_AT)
@@ -79,12 +115,47 @@ public class Message {
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
   @javax.annotation.Nullable
-  private List<MessageToInner> to = new ArrayList<>();
+  private MessageTo to;
+
+  public static final String SERIALIZED_NAME_HEADER_TO = "headerTo";
+  @SerializedName(SERIALIZED_NAME_HEADER_TO)
+  @javax.annotation.Nullable
+  private MessageHeaderTo headerTo;
+
+  public static final String SERIALIZED_NAME_HEADER_CC = "headerCc";
+  @SerializedName(SERIALIZED_NAME_HEADER_CC)
+  @javax.annotation.Nullable
+  private List<String> headerCc = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_HEADER_BCC = "headerBcc";
+  @SerializedName(SERIALIZED_NAME_HEADER_BCC)
+  @javax.annotation.Nullable
+  private List<String> headerBcc = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_ATTACHMENTS = "attachments";
+  @SerializedName(SERIALIZED_NAME_ATTACHMENTS)
+  @javax.annotation.Nullable
+  private List<String> attachments = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_GROUPS = "groups";
+  @SerializedName(SERIALIZED_NAME_GROUPS)
+  @javax.annotation.Nullable
+  private List<String> groups = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_IP_POOL = "ipPool";
+  @SerializedName(SERIALIZED_NAME_IP_POOL)
+  @javax.annotation.Nullable
+  private String ipPool;
 
   public static final String SERIALIZED_NAME_HEADERS = "headers";
   @SerializedName(SERIALIZED_NAME_HEADERS)
   @javax.annotation.Nullable
   private Map<String, String> headers = new HashMap<>();
+
+  public static final String SERIALIZED_NAME_CUSTOM_FIELDS = "customFields";
+  @SerializedName(SERIALIZED_NAME_CUSTOM_FIELDS)
+  @javax.annotation.Nullable
+  private Map<String, String> customFields = new HashMap<>();
 
   public static final String SERIALIZED_NAME_SUBJECT = "subject";
   @SerializedName(SERIALIZED_NAME_SUBJECT)
@@ -106,10 +177,10 @@ public class Message {
   @javax.annotation.Nullable
   private String textBody;
 
-  public static final String SERIALIZED_NAME_IPPOOL = "ippool";
-  @SerializedName(SERIALIZED_NAME_IPPOOL)
+  public static final String SERIALIZED_NAME_AMP_BODY = "ampBody";
+  @SerializedName(SERIALIZED_NAME_AMP_BODY)
   @javax.annotation.Nullable
-  private String ippool;
+  private String ampBody;
 
   public static final String SERIALIZED_NAME_TRACK_OPENS = "trackOpens";
   @SerializedName(SERIALIZED_NAME_TRACK_OPENS)
@@ -121,30 +192,173 @@ public class Message {
   @javax.annotation.Nullable
   private Boolean trackClicks;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
+  public static final String SERIALIZED_NAME_ATTEMPT = "attempt";
+  @SerializedName(SERIALIZED_NAME_ATTEMPT)
   @javax.annotation.Nullable
-  private String status;
+  private Integer attempt;
+
+  public static final String SERIALIZED_NAME_WEBHOOK_ENDPOINT = "webhookEndpoint";
+  @SerializedName(SERIALIZED_NAME_WEBHOOK_ENDPOINT)
+  @javax.annotation.Nullable
+  private String webhookEndpoint;
+
+  public static final String SERIALIZED_NAME_MX_RECORDS = "mxRecords";
+  @SerializedName(SERIALIZED_NAME_MX_RECORDS)
+  @javax.annotation.Nullable
+  private List<String> mxRecords = new ArrayList<>();
 
   public Message() {
   }
 
-  public Message id(@javax.annotation.Nullable String id) {
-    this.id = id;
+  public Message messageID(@javax.annotation.Nullable String messageID) {
+    this.messageID = messageID;
     return this;
   }
 
   /**
    * Unique ID for the message.
-   * @return id
+   * @return messageID
    */
   @javax.annotation.Nullable
-  public String getId() {
-    return id;
+  public String getMessageID() {
+    return messageID;
   }
 
-  public void setId(@javax.annotation.Nullable String id) {
-    this.id = id;
+  public void setMessageID(@javax.annotation.Nullable String messageID) {
+    this.messageID = messageID;
+  }
+
+
+  public Message accountID(@javax.annotation.Nullable Integer accountID) {
+    this.accountID = accountID;
+    return this;
+  }
+
+  /**
+   * Account ID associated with the message.
+   * @return accountID
+   */
+  @javax.annotation.Nullable
+  public Integer getAccountID() {
+    return accountID;
+  }
+
+  public void setAccountID(@javax.annotation.Nullable Integer accountID) {
+    this.accountID = accountID;
+  }
+
+
+  public Message subAccountID(@javax.annotation.Nullable Integer subAccountID) {
+    this.subAccountID = subAccountID;
+    return this;
+  }
+
+  /**
+   * Sub-account ID associated with the message.
+   * @return subAccountID
+   */
+  @javax.annotation.Nullable
+  public Integer getSubAccountID() {
+    return subAccountID;
+  }
+
+  public void setSubAccountID(@javax.annotation.Nullable Integer subAccountID) {
+    this.subAccountID = subAccountID;
+  }
+
+
+  public Message ipID(@javax.annotation.Nullable Integer ipID) {
+    this.ipID = ipID;
+    return this;
+  }
+
+  /**
+   * IP ID used for sending the message.
+   * @return ipID
+   */
+  @javax.annotation.Nullable
+  public Integer getIpID() {
+    return ipID;
+  }
+
+  public void setIpID(@javax.annotation.Nullable Integer ipID) {
+    this.ipID = ipID;
+  }
+
+
+  public Message accountIPPoolID(@javax.annotation.Nullable Integer accountIPPoolID) {
+    this.accountIPPoolID = accountIPPoolID;
+    return this;
+  }
+
+  /**
+   * Account IP Pool ID associated with the message.
+   * @return accountIPPoolID
+   */
+  @javax.annotation.Nullable
+  public Integer getAccountIPPoolID() {
+    return accountIPPoolID;
+  }
+
+  public void setAccountIPPoolID(@javax.annotation.Nullable Integer accountIPPoolID) {
+    this.accountIPPoolID = accountIPPoolID;
+  }
+
+
+  public Message publicIP(@javax.annotation.Nullable String publicIP) {
+    this.publicIP = publicIP;
+    return this;
+  }
+
+  /**
+   * Public IP address used for sending the message.
+   * @return publicIP
+   */
+  @javax.annotation.Nullable
+  public String getPublicIP() {
+    return publicIP;
+  }
+
+  public void setPublicIP(@javax.annotation.Nullable String publicIP) {
+    this.publicIP = publicIP;
+  }
+
+
+  public Message localIP(@javax.annotation.Nullable String localIP) {
+    this.localIP = localIP;
+    return this;
+  }
+
+  /**
+   * Local IP address used for sending the message.
+   * @return localIP
+   */
+  @javax.annotation.Nullable
+  public String getLocalIP() {
+    return localIP;
+  }
+
+  public void setLocalIP(@javax.annotation.Nullable String localIP) {
+    this.localIP = localIP;
+  }
+
+
+  public Message emailType(@javax.annotation.Nullable String emailType) {
+    this.emailType = emailType;
+    return this;
+  }
+
+  /**
+   * Type of email service used.
+   * @return emailType
+   */
+  @javax.annotation.Nullable
+  public String getEmailType() {
+    return emailType;
+  }
+
+  public void setEmailType(@javax.annotation.Nullable String emailType) {
+    this.emailType = emailType;
   }
 
 
@@ -205,30 +419,168 @@ public class Message {
   }
 
 
-  public Message to(@javax.annotation.Nullable List<MessageToInner> to) {
+  public Message to(@javax.annotation.Nullable MessageTo to) {
     this.to = to;
-    return this;
-  }
-
-  public Message addToItem(MessageToInner toItem) {
-    if (this.to == null) {
-      this.to = new ArrayList<>();
-    }
-    this.to.add(toItem);
     return this;
   }
 
   /**
-   * List of objects comprising name, email and customFields of the recipients
+   * Get to
    * @return to
    */
   @javax.annotation.Nullable
-  public List<MessageToInner> getTo() {
+  public MessageTo getTo() {
     return to;
   }
 
-  public void setTo(@javax.annotation.Nullable List<MessageToInner> to) {
+  public void setTo(@javax.annotation.Nullable MessageTo to) {
     this.to = to;
+  }
+
+
+  public Message headerTo(@javax.annotation.Nullable MessageHeaderTo headerTo) {
+    this.headerTo = headerTo;
+    return this;
+  }
+
+  /**
+   * Get headerTo
+   * @return headerTo
+   */
+  @javax.annotation.Nullable
+  public MessageHeaderTo getHeaderTo() {
+    return headerTo;
+  }
+
+  public void setHeaderTo(@javax.annotation.Nullable MessageHeaderTo headerTo) {
+    this.headerTo = headerTo;
+  }
+
+
+  public Message headerCc(@javax.annotation.Nullable List<String> headerCc) {
+    this.headerCc = headerCc;
+    return this;
+  }
+
+  public Message addHeaderCcItem(String headerCcItem) {
+    if (this.headerCc == null) {
+      this.headerCc = new ArrayList<>();
+    }
+    this.headerCc.add(headerCcItem);
+    return this;
+  }
+
+  /**
+   * List of CC recipients from email headers
+   * @return headerCc
+   */
+  @javax.annotation.Nullable
+  public List<String> getHeaderCc() {
+    return headerCc;
+  }
+
+  public void setHeaderCc(@javax.annotation.Nullable List<String> headerCc) {
+    this.headerCc = headerCc;
+  }
+
+
+  public Message headerBcc(@javax.annotation.Nullable List<String> headerBcc) {
+    this.headerBcc = headerBcc;
+    return this;
+  }
+
+  public Message addHeaderBccItem(String headerBccItem) {
+    if (this.headerBcc == null) {
+      this.headerBcc = new ArrayList<>();
+    }
+    this.headerBcc.add(headerBccItem);
+    return this;
+  }
+
+  /**
+   * List of BCC recipients from email headers
+   * @return headerBcc
+   */
+  @javax.annotation.Nullable
+  public List<String> getHeaderBcc() {
+    return headerBcc;
+  }
+
+  public void setHeaderBcc(@javax.annotation.Nullable List<String> headerBcc) {
+    this.headerBcc = headerBcc;
+  }
+
+
+  public Message attachments(@javax.annotation.Nullable List<String> attachments) {
+    this.attachments = attachments;
+    return this;
+  }
+
+  public Message addAttachmentsItem(String attachmentsItem) {
+    if (this.attachments == null) {
+      this.attachments = new ArrayList<>();
+    }
+    this.attachments.add(attachmentsItem);
+    return this;
+  }
+
+  /**
+   * List of attachments
+   * @return attachments
+   */
+  @javax.annotation.Nullable
+  public List<String> getAttachments() {
+    return attachments;
+  }
+
+  public void setAttachments(@javax.annotation.Nullable List<String> attachments) {
+    this.attachments = attachments;
+  }
+
+
+  public Message groups(@javax.annotation.Nullable List<String> groups) {
+    this.groups = groups;
+    return this;
+  }
+
+  public Message addGroupsItem(String groupsItem) {
+    if (this.groups == null) {
+      this.groups = new ArrayList<>();
+    }
+    this.groups.add(groupsItem);
+    return this;
+  }
+
+  /**
+   * List of groups associated with the message
+   * @return groups
+   */
+  @javax.annotation.Nullable
+  public List<String> getGroups() {
+    return groups;
+  }
+
+  public void setGroups(@javax.annotation.Nullable List<String> groups) {
+    this.groups = groups;
+  }
+
+
+  public Message ipPool(@javax.annotation.Nullable String ipPool) {
+    this.ipPool = ipPool;
+    return this;
+  }
+
+  /**
+   * IP Pool from which emails will go out. Relevant only for customers on dedicated IP plans.
+   * @return ipPool
+   */
+  @javax.annotation.Nullable
+  public String getIpPool() {
+    return ipPool;
+  }
+
+  public void setIpPool(@javax.annotation.Nullable String ipPool) {
+    this.ipPool = ipPool;
   }
 
 
@@ -246,7 +598,7 @@ public class Message {
   }
 
   /**
-   * Key-Value pair which are added to every email message being sent and also with webhooks triggered on events such as email delivered, open, click etc. They are useful to identify emai, recipient etc. in your internal system
+   * Key-Value pair which are added to every email message being sent and also with webhooks triggered on events such as email delivered, open, click etc. They are useful to identify email, recipient etc. in your internal system
    * @return headers
    */
   @javax.annotation.Nullable
@@ -256,6 +608,33 @@ public class Message {
 
   public void setHeaders(@javax.annotation.Nullable Map<String, String> headers) {
     this.headers = headers;
+  }
+
+
+  public Message customFields(@javax.annotation.Nullable Map<String, String> customFields) {
+    this.customFields = customFields;
+    return this;
+  }
+
+  public Message putCustomFieldsItem(String key, String customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new HashMap<>();
+    }
+    this.customFields.put(key, customFieldsItem);
+    return this;
+  }
+
+  /**
+   * Key-Value pair of custom fields at message level
+   * @return customFields
+   */
+  @javax.annotation.Nullable
+  public Map<String, String> getCustomFields() {
+    return customFields;
+  }
+
+  public void setCustomFields(@javax.annotation.Nullable Map<String, String> customFields) {
+    this.customFields = customFields;
   }
 
 
@@ -335,22 +714,22 @@ public class Message {
   }
 
 
-  public Message ippool(@javax.annotation.Nullable String ippool) {
-    this.ippool = ippool;
+  public Message ampBody(@javax.annotation.Nullable String ampBody) {
+    this.ampBody = ampBody;
     return this;
   }
 
   /**
-   * IP Pool from which emails will go out. Relevant only for customers on dedicated IP plans.
-   * @return ippool
+   * AMP email content.
+   * @return ampBody
    */
   @javax.annotation.Nullable
-  public String getIppool() {
-    return ippool;
+  public String getAmpBody() {
+    return ampBody;
   }
 
-  public void setIppool(@javax.annotation.Nullable String ippool) {
-    this.ippool = ippool;
+  public void setAmpBody(@javax.annotation.Nullable String ampBody) {
+    this.ampBody = ampBody;
   }
 
 
@@ -392,22 +771,68 @@ public class Message {
   }
 
 
-  public Message status(@javax.annotation.Nullable String status) {
-    this.status = status;
+  public Message attempt(@javax.annotation.Nullable Integer attempt) {
+    this.attempt = attempt;
     return this;
   }
 
   /**
-   * Status of the message
-   * @return status
+   * Number of delivery attempts made for the message.
+   * @return attempt
    */
   @javax.annotation.Nullable
-  public String getStatus() {
-    return status;
+  public Integer getAttempt() {
+    return attempt;
   }
 
-  public void setStatus(@javax.annotation.Nullable String status) {
-    this.status = status;
+  public void setAttempt(@javax.annotation.Nullable Integer attempt) {
+    this.attempt = attempt;
+  }
+
+
+  public Message webhookEndpoint(@javax.annotation.Nullable String webhookEndpoint) {
+    this.webhookEndpoint = webhookEndpoint;
+    return this;
+  }
+
+  /**
+   * Webhook endpoint URL for the message.
+   * @return webhookEndpoint
+   */
+  @javax.annotation.Nullable
+  public String getWebhookEndpoint() {
+    return webhookEndpoint;
+  }
+
+  public void setWebhookEndpoint(@javax.annotation.Nullable String webhookEndpoint) {
+    this.webhookEndpoint = webhookEndpoint;
+  }
+
+
+  public Message mxRecords(@javax.annotation.Nullable List<String> mxRecords) {
+    this.mxRecords = mxRecords;
+    return this;
+  }
+
+  public Message addMxRecordsItem(String mxRecordsItem) {
+    if (this.mxRecords == null) {
+      this.mxRecords = new ArrayList<>();
+    }
+    this.mxRecords.add(mxRecordsItem);
+    return this;
+  }
+
+  /**
+   * List of MX records for the recipient domain
+   * @return mxRecords
+   */
+  @javax.annotation.Nullable
+  public List<String> getMxRecords() {
+    return mxRecords;
+  }
+
+  public void setMxRecords(@javax.annotation.Nullable List<String> mxRecords) {
+    this.mxRecords = mxRecords;
   }
 
 
@@ -421,45 +846,77 @@ public class Message {
       return false;
     }
     Message message = (Message) o;
-    return Objects.equals(this.id, message.id) &&
+    return Objects.equals(this.messageID, message.messageID) &&
+        Objects.equals(this.accountID, message.accountID) &&
+        Objects.equals(this.subAccountID, message.subAccountID) &&
+        Objects.equals(this.ipID, message.ipID) &&
+        Objects.equals(this.accountIPPoolID, message.accountIPPoolID) &&
+        Objects.equals(this.publicIP, message.publicIP) &&
+        Objects.equals(this.localIP, message.localIP) &&
+        Objects.equals(this.emailType, message.emailType) &&
         Objects.equals(this.submittedAt, message.submittedAt) &&
         Objects.equals(this.from, message.from) &&
         Objects.equals(this.replyTo, message.replyTo) &&
         Objects.equals(this.to, message.to) &&
+        Objects.equals(this.headerTo, message.headerTo) &&
+        Objects.equals(this.headerCc, message.headerCc) &&
+        Objects.equals(this.headerBcc, message.headerBcc) &&
+        Objects.equals(this.attachments, message.attachments) &&
+        Objects.equals(this.groups, message.groups) &&
+        Objects.equals(this.ipPool, message.ipPool) &&
         Objects.equals(this.headers, message.headers) &&
+        Objects.equals(this.customFields, message.customFields) &&
         Objects.equals(this.subject, message.subject) &&
         Objects.equals(this.preText, message.preText) &&
         Objects.equals(this.htmlBody, message.htmlBody) &&
         Objects.equals(this.textBody, message.textBody) &&
-        Objects.equals(this.ippool, message.ippool) &&
+        Objects.equals(this.ampBody, message.ampBody) &&
         Objects.equals(this.trackOpens, message.trackOpens) &&
         Objects.equals(this.trackClicks, message.trackClicks) &&
-        Objects.equals(this.status, message.status);
+        Objects.equals(this.attempt, message.attempt) &&
+        Objects.equals(this.webhookEndpoint, message.webhookEndpoint) &&
+        Objects.equals(this.mxRecords, message.mxRecords);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, submittedAt, from, replyTo, to, headers, subject, preText, htmlBody, textBody, ippool, trackOpens, trackClicks, status);
+    return Objects.hash(messageID, accountID, subAccountID, ipID, accountIPPoolID, publicIP, localIP, emailType, submittedAt, from, replyTo, to, headerTo, headerCc, headerBcc, attachments, groups, ipPool, headers, customFields, subject, preText, htmlBody, textBody, ampBody, trackOpens, trackClicks, attempt, webhookEndpoint, mxRecords);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Message {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    messageID: ").append(toIndentedString(messageID)).append("\n");
+    sb.append("    accountID: ").append(toIndentedString(accountID)).append("\n");
+    sb.append("    subAccountID: ").append(toIndentedString(subAccountID)).append("\n");
+    sb.append("    ipID: ").append(toIndentedString(ipID)).append("\n");
+    sb.append("    accountIPPoolID: ").append(toIndentedString(accountIPPoolID)).append("\n");
+    sb.append("    publicIP: ").append(toIndentedString(publicIP)).append("\n");
+    sb.append("    localIP: ").append(toIndentedString(localIP)).append("\n");
+    sb.append("    emailType: ").append(toIndentedString(emailType)).append("\n");
     sb.append("    submittedAt: ").append(toIndentedString(submittedAt)).append("\n");
     sb.append("    from: ").append(toIndentedString(from)).append("\n");
     sb.append("    replyTo: ").append(toIndentedString(replyTo)).append("\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
+    sb.append("    headerTo: ").append(toIndentedString(headerTo)).append("\n");
+    sb.append("    headerCc: ").append(toIndentedString(headerCc)).append("\n");
+    sb.append("    headerBcc: ").append(toIndentedString(headerBcc)).append("\n");
+    sb.append("    attachments: ").append(toIndentedString(attachments)).append("\n");
+    sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
+    sb.append("    ipPool: ").append(toIndentedString(ipPool)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("    preText: ").append(toIndentedString(preText)).append("\n");
     sb.append("    htmlBody: ").append(toIndentedString(htmlBody)).append("\n");
     sb.append("    textBody: ").append(toIndentedString(textBody)).append("\n");
-    sb.append("    ippool: ").append(toIndentedString(ippool)).append("\n");
+    sb.append("    ampBody: ").append(toIndentedString(ampBody)).append("\n");
     sb.append("    trackOpens: ").append(toIndentedString(trackOpens)).append("\n");
     sb.append("    trackClicks: ").append(toIndentedString(trackClicks)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    attempt: ").append(toIndentedString(attempt)).append("\n");
+    sb.append("    webhookEndpoint: ").append(toIndentedString(webhookEndpoint)).append("\n");
+    sb.append("    mxRecords: ").append(toIndentedString(mxRecords)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -482,20 +939,36 @@ public class Message {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
+    openapiFields.add("messageID");
+    openapiFields.add("accountID");
+    openapiFields.add("subAccountID");
+    openapiFields.add("ipID");
+    openapiFields.add("accountIPPoolID");
+    openapiFields.add("publicIP");
+    openapiFields.add("localIP");
+    openapiFields.add("emailType");
     openapiFields.add("submittedAt");
     openapiFields.add("from");
     openapiFields.add("replyTo");
     openapiFields.add("to");
+    openapiFields.add("headerTo");
+    openapiFields.add("headerCc");
+    openapiFields.add("headerBcc");
+    openapiFields.add("attachments");
+    openapiFields.add("groups");
+    openapiFields.add("ipPool");
     openapiFields.add("headers");
+    openapiFields.add("customFields");
     openapiFields.add("subject");
     openapiFields.add("preText");
     openapiFields.add("htmlBody");
     openapiFields.add("textBody");
-    openapiFields.add("ippool");
+    openapiFields.add("ampBody");
     openapiFields.add("trackOpens");
     openapiFields.add("trackClicks");
-    openapiFields.add("status");
+    openapiFields.add("attempt");
+    openapiFields.add("webhookEndpoint");
+    openapiFields.add("mxRecords");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -522,22 +995,44 @@ public class Message {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("messageID") != null && !jsonObj.get("messageID").isJsonNull()) && !jsonObj.get("messageID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `messageID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("messageID").toString()));
       }
+      if ((jsonObj.get("publicIP") != null && !jsonObj.get("publicIP").isJsonNull()) && !jsonObj.get("publicIP").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `publicIP` to be a primitive type in the JSON string but got `%s`", jsonObj.get("publicIP").toString()));
+      }
+      if ((jsonObj.get("localIP") != null && !jsonObj.get("localIP").isJsonNull()) && !jsonObj.get("localIP").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `localIP` to be a primitive type in the JSON string but got `%s`", jsonObj.get("localIP").toString()));
+      }
+      if ((jsonObj.get("emailType") != null && !jsonObj.get("emailType").isJsonNull()) && !jsonObj.get("emailType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `emailType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("emailType").toString()));
+      }
+      // validate the optional field `to`
       if (jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) {
-        JsonArray jsonArrayto = jsonObj.getAsJsonArray("to");
-        if (jsonArrayto != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("to").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `to` to be an array in the JSON string but got `%s`", jsonObj.get("to").toString()));
-          }
-
-          // validate the optional field `to` (array)
-          for (int i = 0; i < jsonArrayto.size(); i++) {
-            MessageToInner.validateJsonElement(jsonArrayto.get(i));
-          };
-        }
+        MessageTo.validateJsonElement(jsonObj.get("to"));
+      }
+      // validate the optional field `headerTo`
+      if (jsonObj.get("headerTo") != null && !jsonObj.get("headerTo").isJsonNull()) {
+        MessageHeaderTo.validateJsonElement(jsonObj.get("headerTo"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("headerCc") != null && !jsonObj.get("headerCc").isJsonNull() && !jsonObj.get("headerCc").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `headerCc` to be an array in the JSON string but got `%s`", jsonObj.get("headerCc").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("headerBcc") != null && !jsonObj.get("headerBcc").isJsonNull() && !jsonObj.get("headerBcc").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `headerBcc` to be an array in the JSON string but got `%s`", jsonObj.get("headerBcc").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("attachments") != null && !jsonObj.get("attachments").isJsonNull() && !jsonObj.get("attachments").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `attachments` to be an array in the JSON string but got `%s`", jsonObj.get("attachments").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("groups") != null && !jsonObj.get("groups").isJsonNull() && !jsonObj.get("groups").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `groups` to be an array in the JSON string but got `%s`", jsonObj.get("groups").toString()));
+      }
+      if ((jsonObj.get("ipPool") != null && !jsonObj.get("ipPool").isJsonNull()) && !jsonObj.get("ipPool").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ipPool` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ipPool").toString()));
       }
       if ((jsonObj.get("subject") != null && !jsonObj.get("subject").isJsonNull()) && !jsonObj.get("subject").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `subject` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subject").toString()));
@@ -551,11 +1046,15 @@ public class Message {
       if ((jsonObj.get("textBody") != null && !jsonObj.get("textBody").isJsonNull()) && !jsonObj.get("textBody").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `textBody` to be a primitive type in the JSON string but got `%s`", jsonObj.get("textBody").toString()));
       }
-      if ((jsonObj.get("ippool") != null && !jsonObj.get("ippool").isJsonNull()) && !jsonObj.get("ippool").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ippool` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ippool").toString()));
+      if ((jsonObj.get("ampBody") != null && !jsonObj.get("ampBody").isJsonNull()) && !jsonObj.get("ampBody").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ampBody` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ampBody").toString()));
       }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      if ((jsonObj.get("webhookEndpoint") != null && !jsonObj.get("webhookEndpoint").isJsonNull()) && !jsonObj.get("webhookEndpoint").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `webhookEndpoint` to be a primitive type in the JSON string but got `%s`", jsonObj.get("webhookEndpoint").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("mxRecords") != null && !jsonObj.get("mxRecords").isJsonNull() && !jsonObj.get("mxRecords").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mxRecords` to be an array in the JSON string but got `%s`", jsonObj.get("mxRecords").toString()));
       }
   }
 

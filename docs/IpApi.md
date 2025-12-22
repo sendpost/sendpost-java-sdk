@@ -4,18 +4,18 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**allocateNewIp**](IpApi.md#allocateNewIp) | **PUT** /account/ip/allocate | Allocate a New IP |
-| [**deleteIp**](IpApi.md#deleteIp) | **DELETE** /account/ip/{ip_id} | Delete a Specific IP |
-| [**getAllIps**](IpApi.md#getAllIps) | **GET** /account/ip/ | Get All IPs |
-| [**getSpecificIp**](IpApi.md#getSpecificIp) | **GET** /account/ip/{ip_id} | Get a Specific IP |
-| [**updateIp**](IpApi.md#updateIp) | **PUT** /account/ip/{ip_id} | Update an Existing IP |
+| [**allocateNewIp**](IpApi.md#allocateNewIp) | **PUT** /account/ip/allocate | Allocate IP |
+| [**deleteIp**](IpApi.md#deleteIp) | **DELETE** /account/ip/{ip_id} | Delete IP |
+| [**getAllIps**](IpApi.md#getAllIps) | **GET** /account/ip/ | List IPs |
+| [**getSpecificIp**](IpApi.md#getSpecificIp) | **GET** /account/ip/{ip_id} | Get IP |
+| [**updateIp**](IpApi.md#updateIp) | **PUT** /account/ip/{ip_id} | Update IP |
 
 
 <a id="allocateNewIp"></a>
 # **allocateNewIp**
 > IP allocateNewIp(ipAllocationRequest)
 
-Allocate a New IP
+Allocate IP
 
 Allocates a new IP resource to the account. 
 
@@ -84,7 +84,7 @@ public class Example {
 # **deleteIp**
 > IPDeletionResponse deleteIp(ipId)
 
-Delete a Specific IP
+Delete IP
 
 Deletes a specific IP resource based on the provided IP ID. 
 
@@ -153,7 +153,7 @@ public class Example {
 # **getAllIps**
 > List&lt;IP&gt; getAllIps(limit, offset, search)
 
-Get All IPs
+List IPs
 
 Retrieves a list of all IPs associated with the main account. 
 
@@ -226,7 +226,7 @@ public class Example {
 # **getSpecificIp**
 > IP getSpecificIp(ipId)
 
-Get a Specific IP
+Get IP
 
 Retrieves detailed information about a specific IP based on the provided ID. 
 
@@ -295,7 +295,7 @@ public class Example {
 # **updateIp**
 > IP updateIp(ipId, ipUpdateRequest)
 
-Update an Existing IP
+Update IP
 
 Updates an existing IP resource based on the provided IP ID. 
 

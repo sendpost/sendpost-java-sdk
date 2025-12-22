@@ -147,7 +147,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Create a New Sub-Account
+     * Create Sub-Account
      * Creates a new sub-account under the current account.
      * @param newSubAccount  (required)
      * @return SubAccount
@@ -167,7 +167,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Create a New Sub-Account
+     * Create Sub-Account
      * Creates a new sub-account under the current account.
      * @param newSubAccount  (required)
      * @return ApiResponse&lt;SubAccount&gt;
@@ -188,7 +188,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Create a New Sub-Account (asynchronously)
+     * Create Sub-Account (asynchronously)
      * Creates a new sub-account under the current account.
      * @param newSubAccount  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -282,7 +282,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Delete a Specific Sub-Account
+     * Delete Sub-Account
      * Deletes a specific sub-account by its ID.
      * @param subaccountId The ID of the sub-account to delete. (required)
      * @return DeleteSubAccountResponse
@@ -302,7 +302,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Delete a Specific Sub-Account
+     * Delete Sub-Account
      * Deletes a specific sub-account by its ID.
      * @param subaccountId The ID of the sub-account to delete. (required)
      * @return ApiResponse&lt;DeleteSubAccountResponse&gt;
@@ -323,7 +323,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Delete a Specific Sub-Account (asynchronously)
+     * Delete Sub-Account (asynchronously)
      * Deletes a specific sub-account by its ID.
      * @param subaccountId The ID of the sub-account to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -424,7 +424,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Get All Sub-Accounts
+     * List Sub-Accounts
      * Retrieves a list of all sub-accounts associated with a specific account.
      * @param limit Number of records to return per request. (optional)
      * @param offset Number of initial records to skip. (optional)
@@ -445,7 +445,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Get All Sub-Accounts
+     * List Sub-Accounts
      * Retrieves a list of all sub-accounts associated with a specific account.
      * @param limit Number of records to return per request. (optional)
      * @param offset Number of initial records to skip. (optional)
@@ -467,7 +467,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Get All Sub-Accounts (asynchronously)
+     * List Sub-Accounts (asynchronously)
      * Retrieves a list of all sub-accounts associated with a specific account.
      * @param limit Number of records to return per request. (optional)
      * @param offset Number of initial records to skip. (optional)
@@ -562,7 +562,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Get a Specific Sub-Account
+     * Get Sub-Account
      * Retrieves a specific sub-account by its ID.
      * @param subaccountId The ID of the sub-account to retrieve. (required)
      * @return SubAccount
@@ -582,7 +582,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Get a Specific Sub-Account
+     * Get Sub-Account
      * Retrieves a specific sub-account by its ID.
      * @param subaccountId The ID of the sub-account to retrieve. (required)
      * @return ApiResponse&lt;SubAccount&gt;
@@ -603,7 +603,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Get a Specific Sub-Account (asynchronously)
+     * Get Sub-Account (asynchronously)
      * Retrieves a specific sub-account by its ID.
      * @param subaccountId The ID of the sub-account to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -704,7 +704,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Update an Existing Sub-Account
+     * Update Sub-Account
      * Updates the details of an existing sub-account.
      * @param subaccountId The ID of the sub-account to update. (required)
      * @param updateSubAccount  (required)
@@ -725,7 +725,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Update an Existing Sub-Account
+     * Update Sub-Account
      * Updates the details of an existing sub-account.
      * @param subaccountId The ID of the sub-account to update. (required)
      * @param updateSubAccount  (required)
@@ -747,7 +747,7 @@ public class SubAccountApi {
     }
 
     /**
-     * Update an Existing Sub-Account (asynchronously)
+     * Update Sub-Account (asynchronously)
      * Updates the details of an existing sub-account.
      * @param subaccountId The ID of the sub-account to update. (required)
      * @param updateSubAccount  (required)

@@ -152,7 +152,7 @@ public class DomainApi {
     }
 
     /**
-     * Get All Domains
+     * List Domains
      * Retrieve a list of all domains associated with the sub-account, including their DNS records and authentication status. 
      * @param limit Number of records to return per request (optional)
      * @param offset Number of initial records to skip (optional)
@@ -172,7 +172,7 @@ public class DomainApi {
     }
 
     /**
-     * Get All Domains
+     * List Domains
      * Retrieve a list of all domains associated with the sub-account, including their DNS records and authentication status. 
      * @param limit Number of records to return per request (optional)
      * @param offset Number of initial records to skip (optional)
@@ -193,7 +193,7 @@ public class DomainApi {
     }
 
     /**
-     * Get All Domains (asynchronously)
+     * List Domains (asynchronously)
      * Retrieve a list of all domains associated with the sub-account, including their DNS records and authentication status. 
      * @param limit Number of records to return per request (optional)
      * @param offset Number of initial records to skip (optional)
@@ -285,7 +285,7 @@ public class DomainApi {
     }
 
     /**
-     * Delete a specific domain
+     * Delete Domain
      * Delete a specific domain using its &#x60;id&#x60;.
      * @param domainId The unique ID of the domain to delete. (required)
      * @return DeleteResponse
@@ -303,7 +303,7 @@ public class DomainApi {
     }
 
     /**
-     * Delete a specific domain
+     * Delete Domain
      * Delete a specific domain using its &#x60;id&#x60;.
      * @param domainId The unique ID of the domain to delete. (required)
      * @return ApiResponse&lt;DeleteResponse&gt;
@@ -322,7 +322,7 @@ public class DomainApi {
     }
 
     /**
-     * Delete a specific domain (asynchronously)
+     * Delete Domain (asynchronously)
      * Delete a specific domain using its &#x60;id&#x60;.
      * @param domainId The unique ID of the domain to delete. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -412,7 +412,7 @@ public class DomainApi {
     }
 
     /**
-     * Get a specific domain
+     * Get Domain
      * Retrieve details of a specific domain using its &#x60;id&#x60;.
      * @param domainId The unique ID of the domain to retrieve. (required)
      * @return Domain
@@ -430,7 +430,7 @@ public class DomainApi {
     }
 
     /**
-     * Get a specific domain
+     * Get Domain
      * Retrieve details of a specific domain using its &#x60;id&#x60;.
      * @param domainId The unique ID of the domain to retrieve. (required)
      * @return ApiResponse&lt;Domain&gt;
@@ -449,7 +449,7 @@ public class DomainApi {
     }
 
     /**
-     * Get a specific domain (asynchronously)
+     * Get Domain (asynchronously)
      * Retrieve details of a specific domain using its &#x60;id&#x60;.
      * @param domainId The unique ID of the domain to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -539,7 +539,7 @@ public class DomainApi {
     }
 
     /**
-     * Create a new domain
+     * Create Domain
      * Add a new domain using its &#x60;name&#x60;.
      * @param createDomainRequest  (required)
      * @return Domain
@@ -557,7 +557,7 @@ public class DomainApi {
     }
 
     /**
-     * Create a new domain
+     * Create Domain
      * Add a new domain using its &#x60;name&#x60;.
      * @param createDomainRequest  (required)
      * @return ApiResponse&lt;Domain&gt;
@@ -576,7 +576,7 @@ public class DomainApi {
     }
 
     /**
-     * Create a new domain (asynchronously)
+     * Create Domain (asynchronously)
      * Add a new domain using its &#x60;name&#x60;.
      * @param createDomainRequest  (required)
      * @param _callback The callback to be executed when the API call finishes

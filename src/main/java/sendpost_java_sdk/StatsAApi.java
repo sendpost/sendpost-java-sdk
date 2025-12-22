@@ -326,7 +326,7 @@ public class StatsAApi {
     }
 
     /**
-     * Get Account Aggregate Stats by Group
+     * Get Account Group Aggregate Stats
      * Gets aggregated email stats for a specific group in all sub-accounts of a specific account for the given daterange. The maximum daterange for which these stats can be retrieved is 366 days.
      * @param group Group whose aggregate stats need to be retrieved. (required)
      * @param from Date from which stats should be retrieved (should be in the format &#x60;YYYY-MM-DD&#x60;). (required)
@@ -348,7 +348,7 @@ public class StatsAApi {
     }
 
     /**
-     * Get Account Aggregate Stats by Group
+     * Get Account Group Aggregate Stats
      * Gets aggregated email stats for a specific group in all sub-accounts of a specific account for the given daterange. The maximum daterange for which these stats can be retrieved is 366 days.
      * @param group Group whose aggregate stats need to be retrieved. (required)
      * @param from Date from which stats should be retrieved (should be in the format &#x60;YYYY-MM-DD&#x60;). (required)
@@ -371,7 +371,7 @@ public class StatsAApi {
     }
 
     /**
-     * Get Account Aggregate Stats by Group (asynchronously)
+     * Get Account Group Aggregate Stats (asynchronously)
      * Gets aggregated email stats for a specific group in all sub-accounts of a specific account for the given daterange. The maximum daterange for which these stats can be retrieved is 366 days.
      * @param group Group whose aggregate stats need to be retrieved. (required)
      * @param from Date from which stats should be retrieved (should be in the format &#x60;YYYY-MM-DD&#x60;). (required)
@@ -490,7 +490,7 @@ public class StatsAApi {
     }
 
     /**
-     * Get All Account Stats By Group
+     * List Account Group Stats
      * Gets a list of all email stats for all sub-accounts of a specific account by group for a given daterange. The maximum daterange for which these stats can be retrieved is 31 days.
      * @param group Group whose stats need to be retrieved (required)
      * @param from Date from which stats should be retrieved (should be in the format &#x60;YYYY-MM-DD&#x60;) (required)
@@ -512,7 +512,7 @@ public class StatsAApi {
     }
 
     /**
-     * Get All Account Stats By Group
+     * List Account Group Stats
      * Gets a list of all email stats for all sub-accounts of a specific account by group for a given daterange. The maximum daterange for which these stats can be retrieved is 31 days.
      * @param group Group whose stats need to be retrieved (required)
      * @param from Date from which stats should be retrieved (should be in the format &#x60;YYYY-MM-DD&#x60;) (required)
@@ -535,7 +535,7 @@ public class StatsAApi {
     }
 
     /**
-     * Get All Account Stats By Group (asynchronously)
+     * List Account Group Stats (asynchronously)
      * Gets a list of all email stats for all sub-accounts of a specific account by group for a given daterange. The maximum daterange for which these stats can be retrieved is 31 days.
      * @param group Group whose stats need to be retrieved (required)
      * @param from Date from which stats should be retrieved (should be in the format &#x60;YYYY-MM-DD&#x60;) (required)
@@ -645,7 +645,7 @@ public class StatsAApi {
     }
 
     /**
-     * Get All Account Stats
+     * List Account Stats
      * Retrieve email statistics for all sub-accounts of a specific account for a given date range.
      * @param from The start date for retrieving stats (inclusive) (required)
      * @param to The end date for retrieving stats (inclusive). The difference between &#x60;from&#x60; and &#x60;to&#x60; should not exceed 31 days. (required)
@@ -667,7 +667,7 @@ public class StatsAApi {
     }
 
     /**
-     * Get All Account Stats
+     * List Account Stats
      * Retrieve email statistics for all sub-accounts of a specific account for a given date range.
      * @param from The start date for retrieving stats (inclusive) (required)
      * @param to The end date for retrieving stats (inclusive). The difference between &#x60;from&#x60; and &#x60;to&#x60; should not exceed 31 days. (required)
@@ -690,7 +690,7 @@ public class StatsAApi {
     }
 
     /**
-     * Get All Account Stats (asynchronously)
+     * List Account Stats (asynchronously)
      * Retrieve email statistics for all sub-accounts of a specific account for a given date range.
      * @param from The start date for retrieving stats (inclusive) (required)
      * @param to The end date for retrieving stats (inclusive). The difference between &#x60;from&#x60; and &#x60;to&#x60; should not exceed 31 days. (required)

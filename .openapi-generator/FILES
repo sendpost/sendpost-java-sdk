@@ -20,7 +20,7 @@ docs/CreateSuppressionRequestSpamComplaintInner.md
 docs/CreateSuppressionRequestUnsubscribeInner.md
 docs/DeleteResponse.md
 docs/DeleteSubAccountResponse.md
-docs/DeleteSuppression200Response.md
+docs/DeleteSuppression200ResponseInner.md
 docs/DeleteSuppressionRequest.md
 docs/DeleteWebhookResponse.md
 docs/Device.md
@@ -28,6 +28,7 @@ docs/Domain.md
 docs/DomainApi.md
 docs/DomainDkim.md
 docs/DomainDmarc.md
+docs/DomainGpt.md
 docs/DomainReturnPath.md
 docs/DomainTrack.md
 docs/EIP.md
@@ -60,7 +61,8 @@ docs/IpPoolsApi.md
 docs/Member.md
 docs/Message.md
 docs/MessageApi.md
-docs/MessageToInner.md
+docs/MessageHeaderTo.md
+docs/MessageTo.md
 docs/NewSubAccount.md
 docs/NewWebhook.md
 docs/OperatingSystem.md
@@ -113,7 +115,7 @@ src/main/java/sendpost_java_sdk/CreateSuppressionRequestSpamComplaintInner.java
 src/main/java/sendpost_java_sdk/CreateSuppressionRequestUnsubscribeInner.java
 src/main/java/sendpost_java_sdk/DeleteResponse.java
 src/main/java/sendpost_java_sdk/DeleteSubAccountResponse.java
-src/main/java/sendpost_java_sdk/DeleteSuppression200Response.java
+src/main/java/sendpost_java_sdk/DeleteSuppression200ResponseInner.java
 src/main/java/sendpost_java_sdk/DeleteSuppressionRequest.java
 src/main/java/sendpost_java_sdk/DeleteWebhookResponse.java
 src/main/java/sendpost_java_sdk/Device.java
@@ -121,6 +123,7 @@ src/main/java/sendpost_java_sdk/Domain.java
 src/main/java/sendpost_java_sdk/DomainApi.java
 src/main/java/sendpost_java_sdk/DomainDkim.java
 src/main/java/sendpost_java_sdk/DomainDmarc.java
+src/main/java/sendpost_java_sdk/DomainGpt.java
 src/main/java/sendpost_java_sdk/DomainReturnPath.java
 src/main/java/sendpost_java_sdk/DomainTrack.java
 src/main/java/sendpost_java_sdk/EIP.java
@@ -155,7 +158,8 @@ src/main/java/sendpost_java_sdk/JSON.java
 src/main/java/sendpost_java_sdk/Member.java
 src/main/java/sendpost_java_sdk/Message.java
 src/main/java/sendpost_java_sdk/MessageApi.java
-src/main/java/sendpost_java_sdk/MessageToInner.java
+src/main/java/sendpost_java_sdk/MessageHeaderTo.java
+src/main/java/sendpost_java_sdk/MessageTo.java
 src/main/java/sendpost_java_sdk/NewSubAccount.java
 src/main/java/sendpost_java_sdk/NewWebhook.java
 src/main/java/sendpost_java_sdk/OperatingSystem.java

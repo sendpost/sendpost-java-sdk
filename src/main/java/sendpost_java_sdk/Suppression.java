@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Suppression
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T13:35:12.742682+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:50:51.966722+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Suppression {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -60,10 +60,10 @@ public class Suppression {
   @javax.annotation.Nullable
   private Integer reason;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String SERIALIZED_NAME_SMTP_ERROR = "smtp_error";
+  @SerializedName(SERIALIZED_NAME_SMTP_ERROR)
   @javax.annotation.Nullable
-  private Integer type;
+  private String smtpError;
 
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
@@ -116,22 +116,22 @@ public class Suppression {
   }
 
 
-  public Suppression type(@javax.annotation.Nullable Integer type) {
-    this.type = type;
+  public Suppression smtpError(@javax.annotation.Nullable String smtpError) {
+    this.smtpError = smtpError;
     return this;
   }
 
   /**
-   * The type of the suppression (alias for reason: 0 &#x3D; manual, 1 &#x3D; unsubscribe, 2 &#x3D; hard bounce, 3 &#x3D; spam complaint)
-   * @return type
+   * SMTP error code in case of hard bounce suppression
+   * @return smtpError
    */
   @javax.annotation.Nullable
-  public Integer getType() {
-    return type;
+  public String getSmtpError() {
+    return smtpError;
   }
 
-  public void setType(@javax.annotation.Nullable Integer type) {
-    this.type = type;
+  public void setSmtpError(@javax.annotation.Nullable String smtpError) {
+    this.smtpError = smtpError;
   }
 
 
@@ -185,14 +185,14 @@ public class Suppression {
     Suppression suppression = (Suppression) o;
     return Objects.equals(this.id, suppression.id) &&
         Objects.equals(this.reason, suppression.reason) &&
-        Objects.equals(this.type, suppression.type) &&
+        Objects.equals(this.smtpError, suppression.smtpError) &&
         Objects.equals(this.email, suppression.email) &&
         Objects.equals(this.created, suppression.created);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, reason, type, email, created);
+    return Objects.hash(id, reason, smtpError, email, created);
   }
 
   @Override
@@ -201,7 +201,7 @@ public class Suppression {
     sb.append("class Suppression {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    smtpError: ").append(toIndentedString(smtpError)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("}");
@@ -228,7 +228,7 @@ public class Suppression {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("reason");
-    openapiFields.add("type");
+    openapiFields.add("smtp_error");
     openapiFields.add("email");
     openapiFields.add("created");
 
@@ -257,6 +257,9 @@ public class Suppression {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("smtp_error") != null && !jsonObj.get("smtp_error").isJsonNull()) && !jsonObj.get("smtp_error").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `smtp_error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("smtp_error").toString()));
+      }
       if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
       }

@@ -5,8 +5,8 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**accountSubaccountStatSubaccountIdAggregateGet**](StatsApi.md#accountSubaccountStatSubaccountIdAggregateGet) | **GET** /account/subaccount/stat/{subaccount_id}/aggregate | Get Aggregate Stats |
-| [**accountSubaccountStatSubaccountIdGet**](StatsApi.md#accountSubaccountStatSubaccountIdGet) | **GET** /account/subaccount/stat/{subaccount_id} | Get All Stats |
-| [**getAggregateStatsByGroup**](StatsApi.md#getAggregateStatsByGroup) | **GET** /account/subaccount/stat/{subaccount_id}/group | Get aggregated stats by group |
+| [**accountSubaccountStatSubaccountIdGet**](StatsApi.md#accountSubaccountStatSubaccountIdGet) | **GET** /account/subaccount/stat/{subaccount_id} | List Stats |
+| [**getAggregateStatsByGroup**](StatsApi.md#getAggregateStatsByGroup) | **GET** /account/subaccount/stat/{subaccount_id}/group | Get Group Aggregate Stats |
 
 
 <a id="accountSubaccountStatSubaccountIdAggregateGet"></a>
@@ -86,7 +86,7 @@ public class Example {
 # **accountSubaccountStatSubaccountIdGet**
 > List&lt;Stat&gt; accountSubaccountStatSubaccountIdGet(from, to, subaccountId)
 
-Get All Stats
+List Stats
 
 Retrieves a list of email stats for a specific sub-account within a given date range. Both &#x60;from&#x60; and &#x60;to&#x60; dates are inclusive.   **Note**: The maximum date range is 31 days. 
 
@@ -159,7 +159,7 @@ public class Example {
 # **getAggregateStatsByGroup**
 > AggregateStat getAggregateStatsByGroup(group, from, to, subaccountId)
 
-Get aggregated stats by group
+Get Group Aggregate Stats
 
 Retrieves aggregated email stats for a specific group in a sub-account for the specified daterange. The maximum daterange for which these stats can be retrieved is 366 days. Ensure that the difference between the &#x60;from&#x60; and &#x60;to&#x60; dates does not exceed 366 days. 
 

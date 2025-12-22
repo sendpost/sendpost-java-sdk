@@ -52,37 +52,32 @@ import sendpost_java_sdk.JSON;
 /**
  * SubAccount
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T13:35:12.742682+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:50:51.966722+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class SubAccount {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
   private Integer id;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  @javax.annotation.Nullable
-  private String name;
-
-  public static final String SERIALIZED_NAME_CREATED = "created";
-  @SerializedName(SERIALIZED_NAME_CREATED)
-  @javax.annotation.Nullable
-  private Integer created;
-
   public static final String SERIALIZED_NAME_API_KEY = "apiKey";
   @SerializedName(SERIALIZED_NAME_API_KEY)
   @javax.annotation.Nullable
   private String apiKey;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
+  private String name;
 
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
   private List<String> labels = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_IS_PLUS = "isPlus";
-  @SerializedName(SERIALIZED_NAME_IS_PLUS)
+  public static final String SERIALIZED_NAME_SMTP_AUTHS = "smtpAuths";
+  @SerializedName(SERIALIZED_NAME_SMTP_AUTHS)
   @javax.annotation.Nullable
-  private Boolean isPlus;
+  private List<SMTPAuth> smtpAuths = new ArrayList<>();
 
   /**
    * Type of the sub-account
@@ -141,20 +136,55 @@ public class SubAccount {
   @javax.annotation.Nullable
   private TypeEnum type;
 
-  public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
+  public static final String SERIALIZED_NAME_IS_PLUS = "isPlus";
+  @SerializedName(SERIALIZED_NAME_IS_PLUS)
+  @javax.annotation.Nullable
+  private Boolean isPlus;
+
+  public static final String SERIALIZED_NAME_CREATED = "created";
+  @SerializedName(SERIALIZED_NAME_CREATED)
+  @javax.annotation.Nullable
+  private Integer created;
+
+  public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
   @javax.annotation.Nullable
   private Member createdBy;
 
-  public static final String SERIALIZED_NAME_UPDATED_BY = "updatedBy";
+  public static final String SERIALIZED_NAME_UPDATED_BY = "updated_by";
   @SerializedName(SERIALIZED_NAME_UPDATED_BY)
   @javax.annotation.Nullable
   private Member updatedBy;
 
-  public static final String SERIALIZED_NAME_SMTP_AUTHS = "smtpAuths";
-  @SerializedName(SERIALIZED_NAME_SMTP_AUTHS)
+  public static final String SERIALIZED_NAME_BLOCKED = "blocked";
+  @SerializedName(SERIALIZED_NAME_BLOCKED)
   @javax.annotation.Nullable
-  private List<SMTPAuth> smtpAuths = new ArrayList<>();
+  private Boolean blocked;
+
+  public static final String SERIALIZED_NAME_BLOCKED_AT = "blocked_at";
+  @SerializedName(SERIALIZED_NAME_BLOCKED_AT)
+  @javax.annotation.Nullable
+  private Integer blockedAt;
+
+  public static final String SERIALIZED_NAME_BLOCK_REASON = "block_reason";
+  @SerializedName(SERIALIZED_NAME_BLOCK_REASON)
+  @javax.annotation.Nullable
+  private String blockReason;
+
+  public static final String SERIALIZED_NAME_HB_EXEMPT = "hb_exempt";
+  @SerializedName(SERIALIZED_NAME_HB_EXEMPT)
+  @javax.annotation.Nullable
+  private Boolean hbExempt;
+
+  public static final String SERIALIZED_NAME_GENERATE_WEEKLY_REPORT = "generate_weekly_report";
+  @SerializedName(SERIALIZED_NAME_GENERATE_WEEKLY_REPORT)
+  @javax.annotation.Nullable
+  private Boolean generateWeeklyReport;
+
+  public static final String SERIALIZED_NAME_HANDLERS = "handlers";
+  @SerializedName(SERIALIZED_NAME_HANDLERS)
+  @javax.annotation.Nullable
+  private List<String> handlers = new ArrayList<>();
 
   public SubAccount() {
   }
@@ -178,44 +208,6 @@ public class SubAccount {
   }
 
 
-  public SubAccount name(@javax.annotation.Nullable String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Name of the sub-account.
-   * @return name
-   */
-  @javax.annotation.Nullable
-  public String getName() {
-    return name;
-  }
-
-  public void setName(@javax.annotation.Nullable String name) {
-    this.name = name;
-  }
-
-
-  public SubAccount created(@javax.annotation.Nullable Integer created) {
-    this.created = created;
-    return this;
-  }
-
-  /**
-   * UNIX epoch nano timestamp when the sub-account was created.
-   * @return created
-   */
-  @javax.annotation.Nullable
-  public Integer getCreated() {
-    return created;
-  }
-
-  public void setCreated(@javax.annotation.Nullable Integer created) {
-    this.created = created;
-  }
-
-
   public SubAccount apiKey(@javax.annotation.Nullable String apiKey) {
     this.apiKey = apiKey;
     return this;
@@ -232,6 +224,25 @@ public class SubAccount {
 
   public void setApiKey(@javax.annotation.Nullable String apiKey) {
     this.apiKey = apiKey;
+  }
+
+
+  public SubAccount name(@javax.annotation.Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Name of the sub-account.
+   * @return name
+   */
+  @javax.annotation.Nullable
+  public String getName() {
+    return name;
+  }
+
+  public void setName(@javax.annotation.Nullable String name) {
+    this.name = name;
   }
 
 
@@ -262,22 +273,30 @@ public class SubAccount {
   }
 
 
-  public SubAccount isPlus(@javax.annotation.Nullable Boolean isPlus) {
-    this.isPlus = isPlus;
+  public SubAccount smtpAuths(@javax.annotation.Nullable List<SMTPAuth> smtpAuths) {
+    this.smtpAuths = smtpAuths;
+    return this;
+  }
+
+  public SubAccount addSmtpAuthsItem(SMTPAuth smtpAuthsItem) {
+    if (this.smtpAuths == null) {
+      this.smtpAuths = new ArrayList<>();
+    }
+    this.smtpAuths.add(smtpAuthsItem);
     return this;
   }
 
   /**
-   * Indicates whether the sub-account is a Plus sub-account
-   * @return isPlus
+   * SMTP Auths associated with the sub-account
+   * @return smtpAuths
    */
   @javax.annotation.Nullable
-  public Boolean getIsPlus() {
-    return isPlus;
+  public List<SMTPAuth> getSmtpAuths() {
+    return smtpAuths;
   }
 
-  public void setIsPlus(@javax.annotation.Nullable Boolean isPlus) {
-    this.isPlus = isPlus;
+  public void setSmtpAuths(@javax.annotation.Nullable List<SMTPAuth> smtpAuths) {
+    this.smtpAuths = smtpAuths;
   }
 
 
@@ -297,6 +316,44 @@ public class SubAccount {
 
   public void setType(@javax.annotation.Nullable TypeEnum type) {
     this.type = type;
+  }
+
+
+  public SubAccount isPlus(@javax.annotation.Nullable Boolean isPlus) {
+    this.isPlus = isPlus;
+    return this;
+  }
+
+  /**
+   * Indicates whether the sub-account is a Plus sub-account
+   * @return isPlus
+   */
+  @javax.annotation.Nullable
+  public Boolean getIsPlus() {
+    return isPlus;
+  }
+
+  public void setIsPlus(@javax.annotation.Nullable Boolean isPlus) {
+    this.isPlus = isPlus;
+  }
+
+
+  public SubAccount created(@javax.annotation.Nullable Integer created) {
+    this.created = created;
+    return this;
+  }
+
+  /**
+   * UNIX epoch nano timestamp when the sub-account was created.
+   * @return created
+   */
+  @javax.annotation.Nullable
+  public Integer getCreated() {
+    return created;
+  }
+
+  public void setCreated(@javax.annotation.Nullable Integer created) {
+    this.created = created;
   }
 
 
@@ -338,30 +395,125 @@ public class SubAccount {
   }
 
 
-  public SubAccount smtpAuths(@javax.annotation.Nullable List<SMTPAuth> smtpAuths) {
-    this.smtpAuths = smtpAuths;
-    return this;
-  }
-
-  public SubAccount addSmtpAuthsItem(SMTPAuth smtpAuthsItem) {
-    if (this.smtpAuths == null) {
-      this.smtpAuths = new ArrayList<>();
-    }
-    this.smtpAuths.add(smtpAuthsItem);
+  public SubAccount blocked(@javax.annotation.Nullable Boolean blocked) {
+    this.blocked = blocked;
     return this;
   }
 
   /**
-   * SMTP Auths associated with the sub-account
-   * @return smtpAuths
+   * Indicates whether the sub-account is blocked
+   * @return blocked
    */
   @javax.annotation.Nullable
-  public List<SMTPAuth> getSmtpAuths() {
-    return smtpAuths;
+  public Boolean getBlocked() {
+    return blocked;
   }
 
-  public void setSmtpAuths(@javax.annotation.Nullable List<SMTPAuth> smtpAuths) {
-    this.smtpAuths = smtpAuths;
+  public void setBlocked(@javax.annotation.Nullable Boolean blocked) {
+    this.blocked = blocked;
+  }
+
+
+  public SubAccount blockedAt(@javax.annotation.Nullable Integer blockedAt) {
+    this.blockedAt = blockedAt;
+    return this;
+  }
+
+  /**
+   * UNIX epoch nano timestamp when the sub-account was blocked (0 if not blocked)
+   * @return blockedAt
+   */
+  @javax.annotation.Nullable
+  public Integer getBlockedAt() {
+    return blockedAt;
+  }
+
+  public void setBlockedAt(@javax.annotation.Nullable Integer blockedAt) {
+    this.blockedAt = blockedAt;
+  }
+
+
+  public SubAccount blockReason(@javax.annotation.Nullable String blockReason) {
+    this.blockReason = blockReason;
+    return this;
+  }
+
+  /**
+   * Reason for blocking the sub-account
+   * @return blockReason
+   */
+  @javax.annotation.Nullable
+  public String getBlockReason() {
+    return blockReason;
+  }
+
+  public void setBlockReason(@javax.annotation.Nullable String blockReason) {
+    this.blockReason = blockReason;
+  }
+
+
+  public SubAccount hbExempt(@javax.annotation.Nullable Boolean hbExempt) {
+    this.hbExempt = hbExempt;
+    return this;
+  }
+
+  /**
+   * Indicates whether the sub-account is exempt from hard bounce tracking
+   * @return hbExempt
+   */
+  @javax.annotation.Nullable
+  public Boolean getHbExempt() {
+    return hbExempt;
+  }
+
+  public void setHbExempt(@javax.annotation.Nullable Boolean hbExempt) {
+    this.hbExempt = hbExempt;
+  }
+
+
+  public SubAccount generateWeeklyReport(@javax.annotation.Nullable Boolean generateWeeklyReport) {
+    this.generateWeeklyReport = generateWeeklyReport;
+    return this;
+  }
+
+  /**
+   * Indicates whether weekly reports are generated for this sub-account
+   * @return generateWeeklyReport
+   */
+  @javax.annotation.Nullable
+  public Boolean getGenerateWeeklyReport() {
+    return generateWeeklyReport;
+  }
+
+  public void setGenerateWeeklyReport(@javax.annotation.Nullable Boolean generateWeeklyReport) {
+    this.generateWeeklyReport = generateWeeklyReport;
+  }
+
+
+  public SubAccount handlers(@javax.annotation.Nullable List<String> handlers) {
+    this.handlers = handlers;
+    return this;
+  }
+
+  public SubAccount addHandlersItem(String handlersItem) {
+    if (this.handlers == null) {
+      this.handlers = new ArrayList<>();
+    }
+    this.handlers.add(handlersItem);
+    return this;
+  }
+
+  /**
+   * Handlers associated with the sub-account
+   * @return handlers
+   */
+  @javax.annotation.Nullable
+  public List<String> getHandlers() {
+    return handlers;
+  }
+
+  public void setHandlers(@javax.annotation.Nullable List<String> handlers) {
+    this.handlers = handlers;
   }
 
 
@@ -376,20 +528,26 @@ public class SubAccount {
     }
     SubAccount subAccount = (SubAccount) o;
     return Objects.equals(this.id, subAccount.id) &&
-        Objects.equals(this.name, subAccount.name) &&
-        Objects.equals(this.created, subAccount.created) &&
         Objects.equals(this.apiKey, subAccount.apiKey) &&
+        Objects.equals(this.name, subAccount.name) &&
         Objects.equals(this.labels, subAccount.labels) &&
-        Objects.equals(this.isPlus, subAccount.isPlus) &&
+        Objects.equals(this.smtpAuths, subAccount.smtpAuths) &&
         Objects.equals(this.type, subAccount.type) &&
+        Objects.equals(this.isPlus, subAccount.isPlus) &&
+        Objects.equals(this.created, subAccount.created) &&
         Objects.equals(this.createdBy, subAccount.createdBy) &&
         Objects.equals(this.updatedBy, subAccount.updatedBy) &&
-        Objects.equals(this.smtpAuths, subAccount.smtpAuths);
+        Objects.equals(this.blocked, subAccount.blocked) &&
+        Objects.equals(this.blockedAt, subAccount.blockedAt) &&
+        Objects.equals(this.blockReason, subAccount.blockReason) &&
+        Objects.equals(this.hbExempt, subAccount.hbExempt) &&
+        Objects.equals(this.generateWeeklyReport, subAccount.generateWeeklyReport) &&
+        Objects.equals(this.handlers, subAccount.handlers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, created, apiKey, labels, isPlus, type, createdBy, updatedBy, smtpAuths);
+    return Objects.hash(id, apiKey, name, labels, smtpAuths, type, isPlus, created, createdBy, updatedBy, blocked, blockedAt, blockReason, hbExempt, generateWeeklyReport, handlers);
   }
 
   @Override
@@ -397,15 +555,21 @@ public class SubAccount {
     StringBuilder sb = new StringBuilder();
     sb.append("class SubAccount {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    apiKey: ").append(toIndentedString(apiKey)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    isPlus: ").append(toIndentedString(isPlus)).append("\n");
+    sb.append("    smtpAuths: ").append(toIndentedString(smtpAuths)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    isPlus: ").append(toIndentedString(isPlus)).append("\n");
+    sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
-    sb.append("    smtpAuths: ").append(toIndentedString(smtpAuths)).append("\n");
+    sb.append("    blocked: ").append(toIndentedString(blocked)).append("\n");
+    sb.append("    blockedAt: ").append(toIndentedString(blockedAt)).append("\n");
+    sb.append("    blockReason: ").append(toIndentedString(blockReason)).append("\n");
+    sb.append("    hbExempt: ").append(toIndentedString(hbExempt)).append("\n");
+    sb.append("    generateWeeklyReport: ").append(toIndentedString(generateWeeklyReport)).append("\n");
+    sb.append("    handlers: ").append(toIndentedString(handlers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -429,15 +593,21 @@ public class SubAccount {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
-    openapiFields.add("name");
-    openapiFields.add("created");
     openapiFields.add("apiKey");
+    openapiFields.add("name");
     openapiFields.add("labels");
-    openapiFields.add("isPlus");
-    openapiFields.add("type");
-    openapiFields.add("createdBy");
-    openapiFields.add("updatedBy");
     openapiFields.add("smtpAuths");
+    openapiFields.add("type");
+    openapiFields.add("isPlus");
+    openapiFields.add("created");
+    openapiFields.add("created_by");
+    openapiFields.add("updated_by");
+    openapiFields.add("blocked");
+    openapiFields.add("blocked_at");
+    openapiFields.add("block_reason");
+    openapiFields.add("hb_exempt");
+    openapiFields.add("generate_weekly_report");
+    openapiFields.add("handlers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -464,19 +634,15 @@ public class SubAccount {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
       if ((jsonObj.get("apiKey") != null && !jsonObj.get("apiKey").isJsonNull()) && !jsonObj.get("apiKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `apiKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("apiKey").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("labels") != null && !jsonObj.get("labels").isJsonNull() && !jsonObj.get("labels").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `labels` to be an array in the JSON string but got `%s`", jsonObj.get("labels").toString()));
-      }
-      // validate the optional field `type`
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
-        TypeEnum.validateJsonElement(jsonObj.get("type"));
       }
       if (jsonObj.get("smtpAuths") != null && !jsonObj.get("smtpAuths").isJsonNull()) {
         JsonArray jsonArraysmtpAuths = jsonObj.getAsJsonArray("smtpAuths");
@@ -491,6 +657,17 @@ public class SubAccount {
             SMTPAuth.validateJsonElement(jsonArraysmtpAuths.get(i));
           };
         }
+      }
+      // validate the optional field `type`
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
+      }
+      if ((jsonObj.get("block_reason") != null && !jsonObj.get("block_reason").isJsonNull()) && !jsonObj.get("block_reason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `block_reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("block_reason").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("handlers") != null && !jsonObj.get("handlers").isJsonNull() && !jsonObj.get("handlers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `handlers` to be an array in the JSON string but got `%s`", jsonObj.get("handlers").toString()));
       }
   }
 

@@ -55,7 +55,7 @@ import sendpost_java_sdk.JSON;
 /**
  * EmailMessage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T13:35:12.742682+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:50:51.966722+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class EmailMessage {
   public static final String SERIALIZED_NAME_MESSAGE_I_D = "messageID";
   @SerializedName(SERIALIZED_NAME_MESSAGE_I_D)

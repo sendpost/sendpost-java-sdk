@@ -4,16 +4,16 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createSuppression**](SuppressionApi.md#createSuppression) | **POST** /subaccount/suppression | Create new suppressions |
-| [**deleteSuppression**](SuppressionApi.md#deleteSuppression) | **DELETE** /subaccount/suppression | Delete suppressions |
-| [**getSuppressionList**](SuppressionApi.md#getSuppressionList) | **GET** /subaccount/suppression | Get all suppressions |
+| [**createSuppression**](SuppressionApi.md#createSuppression) | **POST** /subaccount/suppression | Create Suppressions |
+| [**deleteSuppression**](SuppressionApi.md#deleteSuppression) | **DELETE** /subaccount/suppression | Delete Suppressions |
+| [**getSuppressionList**](SuppressionApi.md#getSuppressionList) | **GET** /subaccount/suppression | List Suppressions |
 
 
 <a id="createSuppression"></a>
 # **createSuppression**
 > List&lt;Suppression&gt; createSuppression(createSuppressionRequest)
 
-Create new suppressions
+Create Suppressions
 
 Creates new suppressions by posting to the suppression resource. You can specify different types of suppressions including &#x60;hardBounce&#x60;, &#x60;manual&#x60;, &#x60;unsubscribe&#x60;, and &#x60;spamComplaint&#x60;. 
 
@@ -80,9 +80,9 @@ public class Example {
 
 <a id="deleteSuppression"></a>
 # **deleteSuppression**
-> DeleteSuppression200Response deleteSuppression(deleteSuppressionRequest)
+> List&lt;DeleteSuppression200ResponseInner&gt; deleteSuppression(deleteSuppressionRequest)
 
-Delete suppressions
+Delete Suppressions
 
 Deletes one or more suppressions for a given sub-account. The request can contain a list of emails to delete specific suppressions or delete a single suppression. 
 
@@ -110,7 +110,7 @@ public class Example {
     SuppressionApi apiInstance = new SuppressionApi(defaultClient);
     DeleteSuppressionRequest deleteSuppressionRequest = new DeleteSuppressionRequest(); // DeleteSuppressionRequest | 
     try {
-      DeleteSuppression200Response result = apiInstance.deleteSuppression(deleteSuppressionRequest);
+      List<DeleteSuppression200ResponseInner> result = apiInstance.deleteSuppression(deleteSuppressionRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SuppressionApi#deleteSuppression");
@@ -131,7 +131,7 @@ public class Example {
 
 ### Return type
 
-[**DeleteSuppression200Response**](DeleteSuppression200Response.md)
+[**List&lt;DeleteSuppression200ResponseInner&gt;**](DeleteSuppression200ResponseInner.md)
 
 ### Authorization
 
@@ -151,7 +151,7 @@ public class Example {
 # **getSuppressionList**
 > List&lt;Suppression&gt; getSuppressionList(from, to, limit, offset, search, type)
 
-Get all suppressions
+List Suppressions
 
 Retrieves a list of suppressions associated with a specific sub-account within a given date range. The maximum difference between &#x60;from&#x60; and &#x60;to&#x60; dates should not exceed 60 days. 
 

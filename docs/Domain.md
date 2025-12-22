@@ -19,7 +19,14 @@
 |**returnPathVerified** | **Boolean** | Status of ReturnPath verification ( true or false ) |  [optional] |
 |**trackVerified** | **Boolean** | Status of Track verification ( true or false ) |  [optional] |
 |**verified** | **Boolean** | Overall verification status of the domain |  [optional] |
+|**domainRegisteredDate** | **String** | Date when the domain was registered |  [optional] |
 |**created** | **Long** | UNIX epoch timestamp in nanoseconds. |  [optional] |
+|**gptVerified** | **Boolean** | Status of GPT verification ( true or false ) |  [optional] |
+|**gpt** | [**DomainGpt**](DomainGpt.md) |  |  [optional] |
+|**dmarcFailureReason** | **String** | Reason for DMARC verification failure |  [optional] |
+|**dkimFailureReason** | **String** | Reason for DKIM verification failure |  [optional] |
+|**trackFailureReason** | **String** | Reason for Track verification failure |  [optional] |
+|**returnPathFailureReason** | **String** | Reason for ReturnPath verification failure |  [optional] |
 
 
 

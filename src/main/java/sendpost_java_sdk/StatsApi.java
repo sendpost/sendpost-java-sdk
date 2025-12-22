@@ -317,7 +317,7 @@ public class StatsApi {
     }
 
     /**
-     * Get All Stats
+     * List Stats
      * Retrieves a list of email stats for a specific sub-account within a given date range. Both &#x60;from&#x60; and &#x60;to&#x60; dates are inclusive.   **Note**: The maximum date range is 31 days. 
      * @param from Start date for stats retrieval. (required)
      * @param to Date to which stats should be retrieved ( Note than from date should be earlier than to date. Also the difference between from and to date shouldn&#39;t ne more than 60 days )  (required)
@@ -337,7 +337,7 @@ public class StatsApi {
     }
 
     /**
-     * Get All Stats
+     * List Stats
      * Retrieves a list of email stats for a specific sub-account within a given date range. Both &#x60;from&#x60; and &#x60;to&#x60; dates are inclusive.   **Note**: The maximum date range is 31 days. 
      * @param from Start date for stats retrieval. (required)
      * @param to Date to which stats should be retrieved ( Note than from date should be earlier than to date. Also the difference between from and to date shouldn&#39;t ne more than 60 days )  (required)
@@ -358,7 +358,7 @@ public class StatsApi {
     }
 
     /**
-     * Get All Stats (asynchronously)
+     * List Stats (asynchronously)
      * Retrieves a list of email stats for a specific sub-account within a given date range. Both &#x60;from&#x60; and &#x60;to&#x60; dates are inclusive.   **Note**: The maximum date range is 31 days. 
      * @param from Start date for stats retrieval. (required)
      * @param to Date to which stats should be retrieved ( Note than from date should be earlier than to date. Also the difference between from and to date shouldn&#39;t ne more than 60 days )  (required)
@@ -480,7 +480,7 @@ public class StatsApi {
     }
 
     /**
-     * Get aggregated stats by group
+     * Get Group Aggregate Stats
      * Retrieves aggregated email stats for a specific group in a sub-account for the specified daterange. The maximum daterange for which these stats can be retrieved is 366 days. Ensure that the difference between the &#x60;from&#x60; and &#x60;to&#x60; dates does not exceed 366 days. 
      * @param group Group whose aggregated stats need to be retrieved (required)
      * @param from The starting date for the aggregated stats (required)
@@ -501,7 +501,7 @@ public class StatsApi {
     }
 
     /**
-     * Get aggregated stats by group
+     * Get Group Aggregate Stats
      * Retrieves aggregated email stats for a specific group in a sub-account for the specified daterange. The maximum daterange for which these stats can be retrieved is 366 days. Ensure that the difference between the &#x60;from&#x60; and &#x60;to&#x60; dates does not exceed 366 days. 
      * @param group Group whose aggregated stats need to be retrieved (required)
      * @param from The starting date for the aggregated stats (required)
@@ -523,7 +523,7 @@ public class StatsApi {
     }
 
     /**
-     * Get aggregated stats by group (asynchronously)
+     * Get Group Aggregate Stats (asynchronously)
      * Retrieves aggregated email stats for a specific group in a sub-account for the specified daterange. The maximum daterange for which these stats can be retrieved is 366 days. Ensure that the difference between the &#x60;from&#x60; and &#x60;to&#x60; dates does not exceed 366 days. 
      * @param group Group whose aggregated stats need to be retrieved (required)
      * @param from The starting date for the aggregated stats (required)

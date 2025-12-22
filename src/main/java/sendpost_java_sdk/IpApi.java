@@ -145,7 +145,7 @@ public class IpApi {
     }
 
     /**
-     * Allocate a New IP
+     * Allocate IP
      * Allocates a new IP resource to the account. 
      * @param ipAllocationRequest  (required)
      * @return IP
@@ -163,7 +163,7 @@ public class IpApi {
     }
 
     /**
-     * Allocate a New IP
+     * Allocate IP
      * Allocates a new IP resource to the account. 
      * @param ipAllocationRequest  (required)
      * @return ApiResponse&lt;IP&gt;
@@ -182,7 +182,7 @@ public class IpApi {
     }
 
     /**
-     * Allocate a New IP (asynchronously)
+     * Allocate IP (asynchronously)
      * Allocates a new IP resource to the account. 
      * @param ipAllocationRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -272,7 +272,7 @@ public class IpApi {
     }
 
     /**
-     * Delete a Specific IP
+     * Delete IP
      * Deletes a specific IP resource based on the provided IP ID. 
      * @param ipId The ID of the IP resource to delete (required)
      * @return IPDeletionResponse
@@ -290,7 +290,7 @@ public class IpApi {
     }
 
     /**
-     * Delete a Specific IP
+     * Delete IP
      * Deletes a specific IP resource based on the provided IP ID. 
      * @param ipId The ID of the IP resource to delete (required)
      * @return ApiResponse&lt;IPDeletionResponse&gt;
@@ -309,7 +309,7 @@ public class IpApi {
     }
 
     /**
-     * Delete a Specific IP (asynchronously)
+     * Delete IP (asynchronously)
      * Deletes a specific IP resource based on the provided IP ID. 
      * @param ipId The ID of the IP resource to delete (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -407,7 +407,7 @@ public class IpApi {
     }
 
     /**
-     * Get All IPs
+     * List IPs
      * Retrieves a list of all IPs associated with the main account. 
      * @param limit Number of records to return per request (optional)
      * @param offset Number of initial records to skip (optional)
@@ -427,7 +427,7 @@ public class IpApi {
     }
 
     /**
-     * Get All IPs
+     * List IPs
      * Retrieves a list of all IPs associated with the main account. 
      * @param limit Number of records to return per request (optional)
      * @param offset Number of initial records to skip (optional)
@@ -448,7 +448,7 @@ public class IpApi {
     }
 
     /**
-     * Get All IPs (asynchronously)
+     * List IPs (asynchronously)
      * Retrieves a list of all IPs associated with the main account. 
      * @param limit Number of records to return per request (optional)
      * @param offset Number of initial records to skip (optional)
@@ -540,7 +540,7 @@ public class IpApi {
     }
 
     /**
-     * Get a Specific IP
+     * Get IP
      * Retrieves detailed information about a specific IP based on the provided ID. 
      * @param ipId The ID of the IP resource to retrieve (required)
      * @return IP
@@ -558,7 +558,7 @@ public class IpApi {
     }
 
     /**
-     * Get a Specific IP
+     * Get IP
      * Retrieves detailed information about a specific IP based on the provided ID. 
      * @param ipId The ID of the IP resource to retrieve (required)
      * @return ApiResponse&lt;IP&gt;
@@ -577,7 +577,7 @@ public class IpApi {
     }
 
     /**
-     * Get a Specific IP (asynchronously)
+     * Get IP (asynchronously)
      * Retrieves detailed information about a specific IP based on the provided ID. 
      * @param ipId The ID of the IP resource to retrieve (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -674,7 +674,7 @@ public class IpApi {
     }
 
     /**
-     * Update an Existing IP
+     * Update IP
      * Updates an existing IP resource based on the provided IP ID. 
      * @param ipId The ID of the IP resource to update (required)
      * @param ipUpdateRequest  (required)
@@ -693,7 +693,7 @@ public class IpApi {
     }
 
     /**
-     * Update an Existing IP
+     * Update IP
      * Updates an existing IP resource based on the provided IP ID. 
      * @param ipId The ID of the IP resource to update (required)
      * @param ipUpdateRequest  (required)
@@ -713,7 +713,7 @@ public class IpApi {
     }
 
     /**
-     * Update an Existing IP (asynchronously)
+     * Update IP (asynchronously)
      * Updates an existing IP resource based on the provided IP ID. 
      * @param ipId The ID of the IP resource to update (required)
      * @param ipUpdateRequest  (required)

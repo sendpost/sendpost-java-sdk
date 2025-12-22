@@ -28,7 +28,7 @@ import java.io.IOException;
 
 
 import sendpost_java_sdk.CreateSuppressionRequest;
-import sendpost_java_sdk.DeleteSuppression200Response;
+import sendpost_java_sdk.DeleteSuppression200ResponseInner;
 import sendpost_java_sdk.DeleteSuppressionRequest;
 import java.time.LocalDate;
 import sendpost_java_sdk.Suppression;
@@ -146,7 +146,7 @@ public class SuppressionApi {
     }
 
     /**
-     * Create new suppressions
+     * Create Suppressions
      * Creates new suppressions by posting to the suppression resource. You can specify different types of suppressions including &#x60;hardBounce&#x60;, &#x60;manual&#x60;, &#x60;unsubscribe&#x60;, and &#x60;spamComplaint&#x60;. 
      * @param createSuppressionRequest  (required)
      * @return List&lt;Suppression&gt;
@@ -164,7 +164,7 @@ public class SuppressionApi {
     }
 
     /**
-     * Create new suppressions
+     * Create Suppressions
      * Creates new suppressions by posting to the suppression resource. You can specify different types of suppressions including &#x60;hardBounce&#x60;, &#x60;manual&#x60;, &#x60;unsubscribe&#x60;, and &#x60;spamComplaint&#x60;. 
      * @param createSuppressionRequest  (required)
      * @return ApiResponse&lt;List&lt;Suppression&gt;&gt;
@@ -183,7 +183,7 @@ public class SuppressionApi {
     }
 
     /**
-     * Create new suppressions (asynchronously)
+     * Create Suppressions (asynchronously)
      * Creates new suppressions by posting to the suppression resource. You can specify different types of suppressions including &#x60;hardBounce&#x60;, &#x60;manual&#x60;, &#x60;unsubscribe&#x60;, and &#x60;spamComplaint&#x60;. 
      * @param createSuppressionRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -273,10 +273,10 @@ public class SuppressionApi {
     }
 
     /**
-     * Delete suppressions
+     * Delete Suppressions
      * Deletes one or more suppressions for a given sub-account. The request can contain a list of emails to delete specific suppressions or delete a single suppression. 
      * @param deleteSuppressionRequest  (required)
-     * @return DeleteSuppression200Response
+     * @return List&lt;DeleteSuppression200ResponseInner&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -285,16 +285,16 @@ public class SuppressionApi {
         <tr><td> 200 </td><td> A message indicating successful suppression deletion </td><td>  -  </td></tr>
      </table>
      */
-    public DeleteSuppression200Response deleteSuppression(@javax.annotation.Nonnull DeleteSuppressionRequest deleteSuppressionRequest) throws ApiException {
-        ApiResponse<DeleteSuppression200Response> localVarResp = deleteSuppressionWithHttpInfo(deleteSuppressionRequest);
+    public List<DeleteSuppression200ResponseInner> deleteSuppression(@javax.annotation.Nonnull DeleteSuppressionRequest deleteSuppressionRequest) throws ApiException {
+        ApiResponse<List<DeleteSuppression200ResponseInner>> localVarResp = deleteSuppressionWithHttpInfo(deleteSuppressionRequest);
         return localVarResp.getData();
     }
 
     /**
-     * Delete suppressions
+     * Delete Suppressions
      * Deletes one or more suppressions for a given sub-account. The request can contain a list of emails to delete specific suppressions or delete a single suppression. 
      * @param deleteSuppressionRequest  (required)
-     * @return ApiResponse&lt;DeleteSuppression200Response&gt;
+     * @return ApiResponse&lt;List&lt;DeleteSuppression200ResponseInner&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -303,14 +303,14 @@ public class SuppressionApi {
         <tr><td> 200 </td><td> A message indicating successful suppression deletion </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeleteSuppression200Response> deleteSuppressionWithHttpInfo(@javax.annotation.Nonnull DeleteSuppressionRequest deleteSuppressionRequest) throws ApiException {
+    public ApiResponse<List<DeleteSuppression200ResponseInner>> deleteSuppressionWithHttpInfo(@javax.annotation.Nonnull DeleteSuppressionRequest deleteSuppressionRequest) throws ApiException {
         okhttp3.Call localVarCall = deleteSuppressionValidateBeforeCall(deleteSuppressionRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteSuppression200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<DeleteSuppression200ResponseInner>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Delete suppressions (asynchronously)
+     * Delete Suppressions (asynchronously)
      * Deletes one or more suppressions for a given sub-account. The request can contain a list of emails to delete specific suppressions or delete a single suppression. 
      * @param deleteSuppressionRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -323,10 +323,10 @@ public class SuppressionApi {
         <tr><td> 200 </td><td> A message indicating successful suppression deletion </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteSuppressionAsync(@javax.annotation.Nonnull DeleteSuppressionRequest deleteSuppressionRequest, final ApiCallback<DeleteSuppression200Response> _callback) throws ApiException {
+    public okhttp3.Call deleteSuppressionAsync(@javax.annotation.Nonnull DeleteSuppressionRequest deleteSuppressionRequest, final ApiCallback<List<DeleteSuppression200ResponseInner>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteSuppressionValidateBeforeCall(deleteSuppressionRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteSuppression200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<DeleteSuppression200ResponseInner>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -433,7 +433,7 @@ public class SuppressionApi {
     }
 
     /**
-     * Get all suppressions
+     * List Suppressions
      * Retrieves a list of suppressions associated with a specific sub-account within a given date range. The maximum difference between &#x60;from&#x60; and &#x60;to&#x60; dates should not exceed 60 days. 
      * @param from Start date for the suppression records (required)
      * @param to End date for the suppression records (Note: &#x60;from&#x60; should be earlier than &#x60;to&#x60; and the date range should not exceed 60 days)  (required)
@@ -456,7 +456,7 @@ public class SuppressionApi {
     }
 
     /**
-     * Get all suppressions
+     * List Suppressions
      * Retrieves a list of suppressions associated with a specific sub-account within a given date range. The maximum difference between &#x60;from&#x60; and &#x60;to&#x60; dates should not exceed 60 days. 
      * @param from Start date for the suppression records (required)
      * @param to End date for the suppression records (Note: &#x60;from&#x60; should be earlier than &#x60;to&#x60; and the date range should not exceed 60 days)  (required)
@@ -480,7 +480,7 @@ public class SuppressionApi {
     }
 
     /**
-     * Get all suppressions (asynchronously)
+     * List Suppressions (asynchronously)
      * Retrieves a list of suppressions associated with a specific sub-account within a given date range. The maximum difference between &#x60;from&#x60; and &#x60;to&#x60; dates should not exceed 60 days. 
      * @param from Start date for the suppression records (required)
      * @param to End date for the suppression records (Note: &#x60;from&#x60; should be earlier than &#x60;to&#x60; and the date range should not exceed 60 days)  (required)

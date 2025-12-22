@@ -4,18 +4,18 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createSubAccount**](SubAccountApi.md#createSubAccount) | **POST** /account/subaccount/ | Create a New Sub-Account |
-| [**deleteSubAccount**](SubAccountApi.md#deleteSubAccount) | **DELETE** /account/subaccount/{subaccount_id} | Delete a Specific Sub-Account |
-| [**getAllSubAccounts**](SubAccountApi.md#getAllSubAccounts) | **GET** /account/subaccount/ | Get All Sub-Accounts |
-| [**getSubAccount**](SubAccountApi.md#getSubAccount) | **GET** /account/subaccount/{subaccount_id} | Get a Specific Sub-Account |
-| [**updateSubAccount**](SubAccountApi.md#updateSubAccount) | **PUT** /account/subaccount/{subaccount_id} | Update an Existing Sub-Account |
+| [**createSubAccount**](SubAccountApi.md#createSubAccount) | **POST** /account/subaccount/ | Create Sub-Account |
+| [**deleteSubAccount**](SubAccountApi.md#deleteSubAccount) | **DELETE** /account/subaccount/{subaccount_id} | Delete Sub-Account |
+| [**getAllSubAccounts**](SubAccountApi.md#getAllSubAccounts) | **GET** /account/subaccount/ | List Sub-Accounts |
+| [**getSubAccount**](SubAccountApi.md#getSubAccount) | **GET** /account/subaccount/{subaccount_id} | Get Sub-Account |
+| [**updateSubAccount**](SubAccountApi.md#updateSubAccount) | **PUT** /account/subaccount/{subaccount_id} | Update Sub-Account |
 
 
 <a id="createSubAccount"></a>
 # **createSubAccount**
 > SubAccount createSubAccount(newSubAccount)
 
-Create a New Sub-Account
+Create Sub-Account
 
 Creates a new sub-account under the current account.
 
@@ -86,7 +86,7 @@ public class Example {
 # **deleteSubAccount**
 > DeleteSubAccountResponse deleteSubAccount(subaccountId)
 
-Delete a Specific Sub-Account
+Delete Sub-Account
 
 Deletes a specific sub-account by its ID.
 
@@ -157,7 +157,7 @@ public class Example {
 # **getAllSubAccounts**
 > List&lt;SubAccount&gt; getAllSubAccounts(limit, offset, search)
 
-Get All Sub-Accounts
+List Sub-Accounts
 
 Retrieves a list of all sub-accounts associated with a specific account.
 
@@ -231,7 +231,7 @@ public class Example {
 # **getSubAccount**
 > SubAccount getSubAccount(subaccountId)
 
-Get a Specific Sub-Account
+Get Sub-Account
 
 Retrieves a specific sub-account by its ID.
 
@@ -302,7 +302,7 @@ public class Example {
 # **updateSubAccount**
 > SubAccount updateSubAccount(subaccountId, updateSubAccount)
 
-Update an Existing Sub-Account
+Update Sub-Account
 
 Updates the details of an existing sub-account.
 

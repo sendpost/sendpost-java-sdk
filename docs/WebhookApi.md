@@ -4,18 +4,18 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createWebhook**](WebhookApi.md#createWebhook) | **POST** /account/webhook | Create a New Webhook |
-| [**deleteWebhook**](WebhookApi.md#deleteWebhook) | **DELETE** /account/webhook/{webhook_id} | Delete a Specific Webhook |
-| [**getAllWebhooks**](WebhookApi.md#getAllWebhooks) | **GET** /account/webhook | Get All Webhooks |
-| [**getWebhook**](WebhookApi.md#getWebhook) | **GET** /account/webhook/{webhook_id} | Get a Specific Webhook |
-| [**updateWebhook**](WebhookApi.md#updateWebhook) | **PUT** /account/webhook/{webhook_id} | Update an Existing Webhook |
+| [**createWebhook**](WebhookApi.md#createWebhook) | **POST** /account/webhook | Create Webhook |
+| [**deleteWebhook**](WebhookApi.md#deleteWebhook) | **DELETE** /account/webhook/{webhook_id} | Delete Webhook |
+| [**getAllWebhooks**](WebhookApi.md#getAllWebhooks) | **GET** /account/webhook | List Webhooks |
+| [**getWebhook**](WebhookApi.md#getWebhook) | **GET** /account/webhook/{webhook_id} | Get Webhook |
+| [**updateWebhook**](WebhookApi.md#updateWebhook) | **PUT** /account/webhook/{webhook_id} | Update Webhook |
 
 
 <a id="createWebhook"></a>
 # **createWebhook**
 > Webhook createWebhook(newWebhook)
 
-Create a New Webhook
+Create Webhook
 
 Create a new webhook by specifying its properties.
 
@@ -78,7 +78,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Webhook created successfully. |  -  |
+| **201** | Webhook created successfully. |  -  |
 | **401** | Unauthorized. Invalid API key. |  -  |
 | **403** | Forbidden. Webhook with the same URL already exists. |  -  |
 | **406** | Not Acceptable. Cannot create webhook for the default sub-account. |  -  |
@@ -88,7 +88,7 @@ public class Example {
 # **deleteWebhook**
 > DeleteWebhookResponse deleteWebhook(webhookId)
 
-Delete a Specific Webhook
+Delete Webhook
 
 Delete a webhook by its ID.
 
@@ -157,7 +157,7 @@ public class Example {
 # **getAllWebhooks**
 > List&lt;Webhook&gt; getAllWebhooks(limit, offset, search)
 
-Get All Webhooks
+List Webhooks
 
 Retrieves a list of all webhooks, their endpoints, and the events for which they are active.
 
@@ -230,7 +230,7 @@ public class Example {
 # **getWebhook**
 > Webhook getWebhook(webhookId)
 
-Get a Specific Webhook
+Get Webhook
 
 Retrieves a specific webhook based on its ID.
 
@@ -299,7 +299,7 @@ public class Example {
 # **updateWebhook**
 > Webhook updateWebhook(webhookId, updateWebhook)
 
-Update an Existing Webhook
+Update Webhook
 
 Update the properties of an existing webhook.
 

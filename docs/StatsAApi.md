@@ -5,9 +5,9 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**getAccountAggregateStats**](StatsAApi.md#getAccountAggregateStats) | **GET** /account/stat/aggregate | Get Account Aggregate Stats |
-| [**getAccountAggregateStatsByGroup**](StatsAApi.md#getAccountAggregateStatsByGroup) | **GET** /account/stat/aggregate/group | Get Account Aggregate Stats by Group |
-| [**getAccountStatsByGroup**](StatsAApi.md#getAccountStatsByGroup) | **GET** /account/stat/group | Get All Account Stats By Group |
-| [**getAllAccountStats**](StatsAApi.md#getAllAccountStats) | **GET** /account/stat | Get All Account Stats |
+| [**getAccountAggregateStatsByGroup**](StatsAApi.md#getAccountAggregateStatsByGroup) | **GET** /account/stat/aggregate/group | Get Account Group Aggregate Stats |
+| [**getAccountStatsByGroup**](StatsAApi.md#getAccountStatsByGroup) | **GET** /account/stat/group | List Account Group Stats |
+| [**getAllAccountStats**](StatsAApi.md#getAllAccountStats) | **GET** /account/stat | List Account Stats |
 
 
 <a id="getAccountAggregateStats"></a>
@@ -88,7 +88,7 @@ public class Example {
 # **getAccountAggregateStatsByGroup**
 > AggregateStat getAccountAggregateStatsByGroup(group, from, to)
 
-Get Account Aggregate Stats by Group
+Get Account Group Aggregate Stats
 
 Gets aggregated email stats for a specific group in all sub-accounts of a specific account for the given daterange. The maximum daterange for which these stats can be retrieved is 366 days.
 
@@ -163,7 +163,7 @@ public class Example {
 # **getAccountStatsByGroup**
 > List&lt;Stat&gt; getAccountStatsByGroup(group, from, to)
 
-Get All Account Stats By Group
+List Account Group Stats
 
 Gets a list of all email stats for all sub-accounts of a specific account by group for a given daterange. The maximum daterange for which these stats can be retrieved is 31 days.
 
@@ -238,7 +238,7 @@ public class Example {
 # **getAllAccountStats**
 > List&lt;AccountStats&gt; getAllAccountStats(from, to)
 
-Get All Account Stats
+List Account Stats
 
 Retrieve email statistics for all sub-accounts of a specific account for a given date range.
 

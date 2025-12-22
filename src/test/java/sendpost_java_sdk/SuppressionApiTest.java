@@ -15,7 +15,7 @@ package sendpost_java_sdk;
 
 import sendpost_java_sdk.ApiException;
 import sendpost_java_sdk.CreateSuppressionRequest;
-import sendpost_java_sdk.DeleteSuppression200Response;
+import sendpost_java_sdk.DeleteSuppression200ResponseInner;
 import sendpost_java_sdk.DeleteSuppressionRequest;
 import java.time.LocalDate;
 import sendpost_java_sdk.Suppression;
@@ -36,7 +36,7 @@ public class SuppressionApiTest {
     private final SuppressionApi api = new SuppressionApi();
 
     /**
-     * Create new suppressions
+     * Create Suppressions
      *
      * Creates new suppressions by posting to the suppression resource. You can specify different types of suppressions including &#x60;hardBounce&#x60;, &#x60;manual&#x60;, &#x60;unsubscribe&#x60;, and &#x60;spamComplaint&#x60;. 
      *
@@ -50,7 +50,7 @@ public class SuppressionApiTest {
     }
 
     /**
-     * Delete suppressions
+     * Delete Suppressions
      *
      * Deletes one or more suppressions for a given sub-account. The request can contain a list of emails to delete specific suppressions or delete a single suppression. 
      *
@@ -59,12 +59,12 @@ public class SuppressionApiTest {
     @Test
     public void deleteSuppressionTest() throws ApiException {
         DeleteSuppressionRequest deleteSuppressionRequest = null;
-        DeleteSuppression200Response response = api.deleteSuppression(deleteSuppressionRequest);
+        List<DeleteSuppression200ResponseInner> response = api.deleteSuppression(deleteSuppressionRequest);
         // TODO: test validations
     }
 
     /**
-     * Get all suppressions
+     * List Suppressions
      *
      * Retrieves a list of suppressions associated with a specific sub-account within a given date range. The maximum difference between &#x60;from&#x60; and &#x60;to&#x60; dates should not exceed 60 days. 
      *

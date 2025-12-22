@@ -2,7 +2,7 @@
 
 SendPost API
 - API version: 1.0.0
-  - Build date: 2025-12-22T13:35:12.742682+05:30[Asia/Kolkata]
+  - Build date: 2025-12-22T15:50:51.966722+05:30[Asia/Kolkata]
   - Generator version: 7.13.0
 
 # Introduction
@@ -614,44 +614,43 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DomainApi* | [**getAllDomains**](docs/DomainApi.md#getAllDomains) | **GET** /subaccount/domain | Get All Domains
-*DomainApi* | [**subaccountDomainDomainIdDelete**](docs/DomainApi.md#subaccountDomainDomainIdDelete) | **DELETE** /subaccount/domain/{domain_id} | Delete a specific domain
-*DomainApi* | [**subaccountDomainDomainIdGet**](docs/DomainApi.md#subaccountDomainDomainIdGet) | **GET** /subaccount/domain/{domain_id} | Get a specific domain
-*DomainApi* | [**subaccountDomainPost**](docs/DomainApi.md#subaccountDomainPost) | **POST** /subaccount/domain | Create a new domain
+*DomainApi* | [**getAllDomains**](docs/DomainApi.md#getAllDomains) | **GET** /subaccount/domain | List Domains
+*DomainApi* | [**subaccountDomainDomainIdDelete**](docs/DomainApi.md#subaccountDomainDomainIdDelete) | **DELETE** /subaccount/domain/{domain_id} | Delete Domain
+*DomainApi* | [**subaccountDomainDomainIdGet**](docs/DomainApi.md#subaccountDomainDomainIdGet) | **GET** /subaccount/domain/{domain_id} | Get Domain
+*DomainApi* | [**subaccountDomainPost**](docs/DomainApi.md#subaccountDomainPost) | **POST** /subaccount/domain | Create Domain
 *EmailApi* | [**sendEmail**](docs/EmailApi.md#sendEmail) | **POST** /subaccount/email/ | Send Email
 *EmailApi* | [**sendEmailWithTemplate**](docs/EmailApi.md#sendEmailWithTemplate) | **POST** /subaccount/email/template | Send Email With Template
-*IpApi* | [**allocateNewIp**](docs/IpApi.md#allocateNewIp) | **PUT** /account/ip/allocate | Allocate a New IP
-*IpApi* | [**deleteIp**](docs/IpApi.md#deleteIp) | **DELETE** /account/ip/{ip_id} | Delete a Specific IP
-*IpApi* | [**getAllIps**](docs/IpApi.md#getAllIps) | **GET** /account/ip/ | Get All IPs
-*IpApi* | [**getSpecificIp**](docs/IpApi.md#getSpecificIp) | **GET** /account/ip/{ip_id} | Get a Specific IP
-*IpApi* | [**updateIp**](docs/IpApi.md#updateIp) | **PUT** /account/ip/{ip_id} | Update an Existing IP
-*IpPoolsApi* | [**createIPPool**](docs/IpPoolsApi.md#createIPPool) | **POST** /account/ippool | Create a New IPPool
-*IpPoolsApi* | [**deleteIPPool**](docs/IpPoolsApi.md#deleteIPPool) | **DELETE** /account/ippool/{ippool_id} | Delete a Specific IPPool
-*IpPoolsApi* | [**getAllIPPools**](docs/IpPoolsApi.md#getAllIPPools) | **GET** /account/ippool | Get All IPPools
-*IpPoolsApi* | [**getIPPoolById**](docs/IpPoolsApi.md#getIPPoolById) | **GET** /account/ippool/{ippool_id} | Get a Specific IPPool
-*IpPoolsApi* | [**updateIPPool**](docs/IpPoolsApi.md#updateIPPool) | **PUT** /account/ippool/{ippool_id} | Update an Existing IPPool
-*MessageApi* | [**getAllMessages**](docs/MessageApi.md#getAllMessages) | **GET** /account/message | Get all  messages
-*MessageApi* | [**getMessageById**](docs/MessageApi.md#getMessageById) | **GET** /account/message/{message_id} | Retrieve a specific message
+*IpApi* | [**allocateNewIp**](docs/IpApi.md#allocateNewIp) | **PUT** /account/ip/allocate | Allocate IP
+*IpApi* | [**deleteIp**](docs/IpApi.md#deleteIp) | **DELETE** /account/ip/{ip_id} | Delete IP
+*IpApi* | [**getAllIps**](docs/IpApi.md#getAllIps) | **GET** /account/ip/ | List IPs
+*IpApi* | [**getSpecificIp**](docs/IpApi.md#getSpecificIp) | **GET** /account/ip/{ip_id} | Get IP
+*IpApi* | [**updateIp**](docs/IpApi.md#updateIp) | **PUT** /account/ip/{ip_id} | Update IP
+*IpPoolsApi* | [**createIPPool**](docs/IpPoolsApi.md#createIPPool) | **POST** /account/ippool | Create IPPool
+*IpPoolsApi* | [**deleteIPPool**](docs/IpPoolsApi.md#deleteIPPool) | **DELETE** /account/ippool/{ippool_id} | Delete IPPool
+*IpPoolsApi* | [**getAllIPPools**](docs/IpPoolsApi.md#getAllIPPools) | **GET** /account/ippool | List IPPools
+*IpPoolsApi* | [**getIPPoolById**](docs/IpPoolsApi.md#getIPPoolById) | **GET** /account/ippool/{ippool_id} | Get IPPool
+*IpPoolsApi* | [**updateIPPool**](docs/IpPoolsApi.md#updateIPPool) | **PUT** /account/ippool/{ippool_id} | Update IPPool
+*MessageApi* | [**getMessageById**](docs/MessageApi.md#getMessageById) | **GET** /account/message/{message_id} | Get Message
 *StatsApi* | [**accountSubaccountStatSubaccountIdAggregateGet**](docs/StatsApi.md#accountSubaccountStatSubaccountIdAggregateGet) | **GET** /account/subaccount/stat/{subaccount_id}/aggregate | Get Aggregate Stats
-*StatsApi* | [**accountSubaccountStatSubaccountIdGet**](docs/StatsApi.md#accountSubaccountStatSubaccountIdGet) | **GET** /account/subaccount/stat/{subaccount_id} | Get All Stats
-*StatsApi* | [**getAggregateStatsByGroup**](docs/StatsApi.md#getAggregateStatsByGroup) | **GET** /account/subaccount/stat/{subaccount_id}/group | Get aggregated stats by group
+*StatsApi* | [**accountSubaccountStatSubaccountIdGet**](docs/StatsApi.md#accountSubaccountStatSubaccountIdGet) | **GET** /account/subaccount/stat/{subaccount_id} | List Stats
+*StatsApi* | [**getAggregateStatsByGroup**](docs/StatsApi.md#getAggregateStatsByGroup) | **GET** /account/subaccount/stat/{subaccount_id}/group | Get Group Aggregate Stats
 *StatsAApi* | [**getAccountAggregateStats**](docs/StatsAApi.md#getAccountAggregateStats) | **GET** /account/stat/aggregate | Get Account Aggregate Stats
-*StatsAApi* | [**getAccountAggregateStatsByGroup**](docs/StatsAApi.md#getAccountAggregateStatsByGroup) | **GET** /account/stat/aggregate/group | Get Account Aggregate Stats by Group
-*StatsAApi* | [**getAccountStatsByGroup**](docs/StatsAApi.md#getAccountStatsByGroup) | **GET** /account/stat/group | Get All Account Stats By Group
-*StatsAApi* | [**getAllAccountStats**](docs/StatsAApi.md#getAllAccountStats) | **GET** /account/stat | Get All Account Stats
-*SubAccountApi* | [**createSubAccount**](docs/SubAccountApi.md#createSubAccount) | **POST** /account/subaccount/ | Create a New Sub-Account
-*SubAccountApi* | [**deleteSubAccount**](docs/SubAccountApi.md#deleteSubAccount) | **DELETE** /account/subaccount/{subaccount_id} | Delete a Specific Sub-Account
-*SubAccountApi* | [**getAllSubAccounts**](docs/SubAccountApi.md#getAllSubAccounts) | **GET** /account/subaccount/ | Get All Sub-Accounts
-*SubAccountApi* | [**getSubAccount**](docs/SubAccountApi.md#getSubAccount) | **GET** /account/subaccount/{subaccount_id} | Get a Specific Sub-Account
-*SubAccountApi* | [**updateSubAccount**](docs/SubAccountApi.md#updateSubAccount) | **PUT** /account/subaccount/{subaccount_id} | Update an Existing Sub-Account
-*SuppressionApi* | [**createSuppression**](docs/SuppressionApi.md#createSuppression) | **POST** /subaccount/suppression | Create new suppressions
-*SuppressionApi* | [**deleteSuppression**](docs/SuppressionApi.md#deleteSuppression) | **DELETE** /subaccount/suppression | Delete suppressions
-*SuppressionApi* | [**getSuppressionList**](docs/SuppressionApi.md#getSuppressionList) | **GET** /subaccount/suppression | Get all suppressions
-*WebhookApi* | [**createWebhook**](docs/WebhookApi.md#createWebhook) | **POST** /account/webhook | Create a New Webhook
-*WebhookApi* | [**deleteWebhook**](docs/WebhookApi.md#deleteWebhook) | **DELETE** /account/webhook/{webhook_id} | Delete a Specific Webhook
-*WebhookApi* | [**getAllWebhooks**](docs/WebhookApi.md#getAllWebhooks) | **GET** /account/webhook | Get All Webhooks
-*WebhookApi* | [**getWebhook**](docs/WebhookApi.md#getWebhook) | **GET** /account/webhook/{webhook_id} | Get a Specific Webhook
-*WebhookApi* | [**updateWebhook**](docs/WebhookApi.md#updateWebhook) | **PUT** /account/webhook/{webhook_id} | Update an Existing Webhook
+*StatsAApi* | [**getAccountAggregateStatsByGroup**](docs/StatsAApi.md#getAccountAggregateStatsByGroup) | **GET** /account/stat/aggregate/group | Get Account Group Aggregate Stats
+*StatsAApi* | [**getAccountStatsByGroup**](docs/StatsAApi.md#getAccountStatsByGroup) | **GET** /account/stat/group | List Account Group Stats
+*StatsAApi* | [**getAllAccountStats**](docs/StatsAApi.md#getAllAccountStats) | **GET** /account/stat | List Account Stats
+*SubAccountApi* | [**createSubAccount**](docs/SubAccountApi.md#createSubAccount) | **POST** /account/subaccount/ | Create Sub-Account
+*SubAccountApi* | [**deleteSubAccount**](docs/SubAccountApi.md#deleteSubAccount) | **DELETE** /account/subaccount/{subaccount_id} | Delete Sub-Account
+*SubAccountApi* | [**getAllSubAccounts**](docs/SubAccountApi.md#getAllSubAccounts) | **GET** /account/subaccount/ | List Sub-Accounts
+*SubAccountApi* | [**getSubAccount**](docs/SubAccountApi.md#getSubAccount) | **GET** /account/subaccount/{subaccount_id} | Get Sub-Account
+*SubAccountApi* | [**updateSubAccount**](docs/SubAccountApi.md#updateSubAccount) | **PUT** /account/subaccount/{subaccount_id} | Update Sub-Account
+*SuppressionApi* | [**createSuppression**](docs/SuppressionApi.md#createSuppression) | **POST** /subaccount/suppression | Create Suppressions
+*SuppressionApi* | [**deleteSuppression**](docs/SuppressionApi.md#deleteSuppression) | **DELETE** /subaccount/suppression | Delete Suppressions
+*SuppressionApi* | [**getSuppressionList**](docs/SuppressionApi.md#getSuppressionList) | **GET** /subaccount/suppression | List Suppressions
+*WebhookApi* | [**createWebhook**](docs/WebhookApi.md#createWebhook) | **POST** /account/webhook | Create Webhook
+*WebhookApi* | [**deleteWebhook**](docs/WebhookApi.md#deleteWebhook) | **DELETE** /account/webhook/{webhook_id} | Delete Webhook
+*WebhookApi* | [**getAllWebhooks**](docs/WebhookApi.md#getAllWebhooks) | **GET** /account/webhook | List Webhooks
+*WebhookApi* | [**getWebhook**](docs/WebhookApi.md#getWebhook) | **GET** /account/webhook/{webhook_id} | Get Webhook
+*WebhookApi* | [**updateWebhook**](docs/WebhookApi.md#updateWebhook) | **PUT** /account/webhook/{webhook_id} | Update Webhook
 
 
 ## Documentation for Models
@@ -671,13 +670,14 @@ Class | Method | HTTP request | Description
  - [CreateSuppressionRequestUnsubscribeInner](docs/CreateSuppressionRequestUnsubscribeInner.md)
  - [DeleteResponse](docs/DeleteResponse.md)
  - [DeleteSubAccountResponse](docs/DeleteSubAccountResponse.md)
- - [DeleteSuppression200Response](docs/DeleteSuppression200Response.md)
+ - [DeleteSuppression200ResponseInner](docs/DeleteSuppression200ResponseInner.md)
  - [DeleteSuppressionRequest](docs/DeleteSuppressionRequest.md)
  - [DeleteWebhookResponse](docs/DeleteWebhookResponse.md)
  - [Device](docs/Device.md)
  - [Domain](docs/Domain.md)
  - [DomainDkim](docs/DomainDkim.md)
  - [DomainDmarc](docs/DomainDmarc.md)
+ - [DomainGpt](docs/DomainGpt.md)
  - [DomainReturnPath](docs/DomainReturnPath.md)
  - [DomainTrack](docs/DomainTrack.md)
  - [EIP](docs/EIP.md)
@@ -706,7 +706,8 @@ Class | Method | HTTP request | Description
  - [IPUpdateRequest](docs/IPUpdateRequest.md)
  - [Member](docs/Member.md)
  - [Message](docs/Message.md)
- - [MessageToInner](docs/MessageToInner.md)
+ - [MessageHeaderTo](docs/MessageHeaderTo.md)
+ - [MessageTo](docs/MessageTo.md)
  - [NewSubAccount](docs/NewSubAccount.md)
  - [NewWebhook](docs/NewWebhook.md)
  - [OperatingSystem](docs/OperatingSystem.md)

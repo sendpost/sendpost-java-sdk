@@ -15,7 +15,6 @@ package sendpost_java_sdk;
 
 import sendpost_java_sdk.ApiException;
 import sendpost_java_sdk.Message;
-import java.time.OffsetDateTime;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -33,24 +32,7 @@ public class MessageApiTest {
     private final MessageApi api = new MessageApi();
 
     /**
-     * Get all  messages
-     *
-     * Retrieve messages sent via the SendPost platform within a specific date range.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getAllMessagesTest() throws ApiException {
-        OffsetDateTime from = null;
-        OffsetDateTime to = null;
-        Integer limit = null;
-        Integer offset = null;
-        List<Message> response = api.getAllMessages(from, to, limit, offset);
-        // TODO: test validations
-    }
-
-    /**
-     * Retrieve a specific message
+     * Get Message
      *
      * Retrieve detailed information about a specific message by its ID.
      *

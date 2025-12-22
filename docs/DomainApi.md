@@ -4,17 +4,17 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getAllDomains**](DomainApi.md#getAllDomains) | **GET** /subaccount/domain | Get All Domains |
-| [**subaccountDomainDomainIdDelete**](DomainApi.md#subaccountDomainDomainIdDelete) | **DELETE** /subaccount/domain/{domain_id} | Delete a specific domain |
-| [**subaccountDomainDomainIdGet**](DomainApi.md#subaccountDomainDomainIdGet) | **GET** /subaccount/domain/{domain_id} | Get a specific domain |
-| [**subaccountDomainPost**](DomainApi.md#subaccountDomainPost) | **POST** /subaccount/domain | Create a new domain |
+| [**getAllDomains**](DomainApi.md#getAllDomains) | **GET** /subaccount/domain | List Domains |
+| [**subaccountDomainDomainIdDelete**](DomainApi.md#subaccountDomainDomainIdDelete) | **DELETE** /subaccount/domain/{domain_id} | Delete Domain |
+| [**subaccountDomainDomainIdGet**](DomainApi.md#subaccountDomainDomainIdGet) | **GET** /subaccount/domain/{domain_id} | Get Domain |
+| [**subaccountDomainPost**](DomainApi.md#subaccountDomainPost) | **POST** /subaccount/domain | Create Domain |
 
 
 <a id="getAllDomains"></a>
 # **getAllDomains**
 > List&lt;Domain&gt; getAllDomains(limit, offset, search)
 
-Get All Domains
+List Domains
 
 Retrieve a list of all domains associated with the sub-account, including their DNS records and authentication status. 
 
@@ -87,7 +87,7 @@ public class Example {
 # **subaccountDomainDomainIdDelete**
 > DeleteResponse subaccountDomainDomainIdDelete(domainId)
 
-Delete a specific domain
+Delete Domain
 
 Delete a specific domain using its &#x60;id&#x60;.
 
@@ -156,7 +156,7 @@ public class Example {
 # **subaccountDomainDomainIdGet**
 > Domain subaccountDomainDomainIdGet(domainId)
 
-Get a specific domain
+Get Domain
 
 Retrieve details of a specific domain using its &#x60;id&#x60;.
 
@@ -225,7 +225,7 @@ public class Example {
 # **subaccountDomainPost**
 > Domain subaccountDomainPost(createDomainRequest)
 
-Create a new domain
+Create Domain
 
 Add a new domain using its &#x60;name&#x60;.
 
