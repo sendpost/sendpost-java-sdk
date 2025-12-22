@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Suppression
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-20T16:08:23.928230+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T13:35:12.742682+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Suppression {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

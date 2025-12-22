@@ -234,7 +234,6 @@ public class SendPostSDKTest {
                 System.out.println("  - Message ID: " + message.getId());
                 System.out.println("    Subject: " + message.getSubject());
                 System.out.println("    From: " + message.getFrom());
-                System.out.println("    Status: " + message.getStatus());
             }
             
         } catch (ApiException e) {

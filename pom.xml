@@ -6,7 +6,7 @@
     <artifactId>sendpost-java-sdk</artifactId>
     <packaging>jar</packaging>
     <name>Sendpost Java SDK</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <url>https://github.com/sendpost/sendpost-java-sdk</url>
     <description>Java SDK for the SendPost API</description>
     <scm>

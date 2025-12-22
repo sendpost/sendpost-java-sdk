@@ -3745,20 +3745,9 @@ components:
       required:
       - publicIP
     Webhook:
+      additionalProperties: {}
       example:
         smtpDropped: false
-        updatedBy:
-          phoneNumber: "+919876543210"
-          isForbidden: false
-          isVerified: true
-          created: 1567512491588004044
-          companyName: SendPost
-          onboardQAnswered: true
-          name: Raj
-          id: 117
-          updated: 1567512491588004044
-          email: raj@piedpiper.com
-          logoURL: https://www.sendpost.io/logo.png
         hardBounced: true
         created: 1567512491588004044
         dropped: false
@@ -3766,12 +3755,7 @@ components:
         opened: true
         clicked: true
         sent: true
-        enabled: true
-        url: https://app.hooli.com/email/webhook
-        processed: true
-        unsubscribed: true
-        uniqueOpen: true
-        createdBy:
+        created_by:
           phoneNumber: "+919876543210"
           isForbidden: false
           isVerified: true
@@ -3783,83 +3767,83 @@ components:
           updated: 1567512491588004044
           email: raj@piedpiper.com
           logoURL: https://www.sendpost.io/logo.png
+        enabled: true
+        url: https://app.hooli.com/email/webhook
+        processed: true
+        unsubscribed: true
+        uniqueOpen: true
         uniqueClick: true
         softBounced: false
+        updated_by:
+          phoneNumber: "+919876543210"
+          isForbidden: false
+          isVerified: true
+          created: 1567512491588004044
+          companyName: SendPost
+          onboardQAnswered: true
+          name: Raj
+          id: 117
+          updated: 1567512491588004044
+          email: raj@piedpiper.com
+          logoURL: https://www.sendpost.io/logo.png
         id: 117
         spam: true
       properties:
         id:
           description: Unique ID for the webhook.
           example: 117
-          type: integer
         enabled:
           description: Indicates if the webhook is active or paused.
           example: true
-          type: boolean
         url:
           description: URL endpoint to which webhook calls need to be made.
           example: https://app.hooli.com/email/webhook
-          type: string
         processed:
           description: Trigger webhook on email message being processed.
           example: true
-          type: boolean
         delivered:
           description: Trigger webhook on email message being delivered.
           example: true
-          type: boolean
         dropped:
           description: Trigger webhook on email message being dropped.
           example: false
-          type: boolean
         softBounced:
           description: Trigger webhook on email message being soft bounced.
           example: false
-          type: boolean
         hardBounced:
           description: Trigger webhook on email message being hard bounced.
           example: true
-          type: boolean
         opened:
           description: Trigger webhook on email message being opened.
           example: true
-          type: boolean
         clicked:
           description: Trigger webhook on email message link being clicked.
           example: true
-          type: boolean
         unsubscribed:
           description: Trigger webhook on email message being unsubscribed.
           example: true
-          type: boolean
         spam:
           description: Trigger webhook on email message being marked as spam.
           example: true
-          type: boolean
         sent:
           description: Trigger webhook on email message being sent.
           example: true
-          type: boolean
         smtpDropped:
           description: Trigger webhook on email message being dropped by SMTP.
           example: false
-          type: boolean
         uniqueOpen:
           description: Trigger webhook on unique email opens.
           example: true
-          type: boolean
         uniqueClick:
           description: Trigger webhook on unique email clicks.
           example: true
-          type: boolean
         created:
           description: UNIX epoch nano timestamp when the webhook was created.
           example: 1567512491588004044
           format: int64
-          type: integer
-        createdBy:
+        created_by:
           $ref: '#/components/schemas/Member'
-        updatedBy:
+        updated_by:
           $ref: '#/components/schemas/Member'
     NewWebhook:
       example:
