@@ -48,12 +48,17 @@ import sendpost_java_sdk.JSON;
 /**
  * AggregateStats
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:50:51.966722+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-23T14:51:06.742514+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class AggregateStats {
   public static final String SERIALIZED_NAME_PROCESSED = "processed";
   @SerializedName(SERIALIZED_NAME_PROCESSED)
   @javax.annotation.Nullable
   private Integer processed;
+
+  public static final String SERIALIZED_NAME_SENT = "sent";
+  @SerializedName(SERIALIZED_NAME_SENT)
+  @javax.annotation.Nullable
+  private Integer sent;
 
   public static final String SERIALIZED_NAME_DELIVERED = "delivered";
   @SerializedName(SERIALIZED_NAME_DELIVERED)
@@ -64,6 +69,11 @@ public class AggregateStats {
   @SerializedName(SERIALIZED_NAME_DROPPED)
   @javax.annotation.Nullable
   private Integer dropped;
+
+  public static final String SERIALIZED_NAME_SMTP_DROPPED = "smtpDropped";
+  @SerializedName(SERIALIZED_NAME_SMTP_DROPPED)
+  @javax.annotation.Nullable
+  private Integer smtpDropped;
 
   public static final String SERIALIZED_NAME_HARD_BOUNCED = "hardBounced";
   @SerializedName(SERIALIZED_NAME_HARD_BOUNCED)
@@ -117,6 +127,25 @@ public class AggregateStats {
   }
 
 
+  public AggregateStats sent(@javax.annotation.Nullable Integer sent) {
+    this.sent = sent;
+    return this;
+  }
+
+  /**
+   * Get sent
+   * @return sent
+   */
+  @javax.annotation.Nullable
+  public Integer getSent() {
+    return sent;
+  }
+
+  public void setSent(@javax.annotation.Nullable Integer sent) {
+    this.sent = sent;
+  }
+
+
   public AggregateStats delivered(@javax.annotation.Nullable Integer delivered) {
     this.delivered = delivered;
     return this;
@@ -152,6 +181,25 @@ public class AggregateStats {
 
   public void setDropped(@javax.annotation.Nullable Integer dropped) {
     this.dropped = dropped;
+  }
+
+
+  public AggregateStats smtpDropped(@javax.annotation.Nullable Integer smtpDropped) {
+    this.smtpDropped = smtpDropped;
+    return this;
+  }
+
+  /**
+   * Get smtpDropped
+   * @return smtpDropped
+   */
+  @javax.annotation.Nullable
+  public Integer getSmtpDropped() {
+    return smtpDropped;
+  }
+
+  public void setSmtpDropped(@javax.annotation.Nullable Integer smtpDropped) {
+    this.smtpDropped = smtpDropped;
   }
 
 
@@ -280,8 +328,10 @@ public class AggregateStats {
     }
     AggregateStats aggregateStats = (AggregateStats) o;
     return Objects.equals(this.processed, aggregateStats.processed) &&
+        Objects.equals(this.sent, aggregateStats.sent) &&
         Objects.equals(this.delivered, aggregateStats.delivered) &&
         Objects.equals(this.dropped, aggregateStats.dropped) &&
+        Objects.equals(this.smtpDropped, aggregateStats.smtpDropped) &&
         Objects.equals(this.hardBounced, aggregateStats.hardBounced) &&
         Objects.equals(this.softBounced, aggregateStats.softBounced) &&
         Objects.equals(this.opens, aggregateStats.opens) &&
@@ -292,7 +342,7 @@ public class AggregateStats {
 
   @Override
   public int hashCode() {
-    return Objects.hash(processed, delivered, dropped, hardBounced, softBounced, opens, clicks, unsubscribed, spams);
+    return Objects.hash(processed, sent, delivered, dropped, smtpDropped, hardBounced, softBounced, opens, clicks, unsubscribed, spams);
   }
 
   @Override
@@ -300,8 +350,10 @@ public class AggregateStats {
     StringBuilder sb = new StringBuilder();
     sb.append("class AggregateStats {\n");
     sb.append("    processed: ").append(toIndentedString(processed)).append("\n");
+    sb.append("    sent: ").append(toIndentedString(sent)).append("\n");
     sb.append("    delivered: ").append(toIndentedString(delivered)).append("\n");
     sb.append("    dropped: ").append(toIndentedString(dropped)).append("\n");
+    sb.append("    smtpDropped: ").append(toIndentedString(smtpDropped)).append("\n");
     sb.append("    hardBounced: ").append(toIndentedString(hardBounced)).append("\n");
     sb.append("    softBounced: ").append(toIndentedString(softBounced)).append("\n");
     sb.append("    opens: ").append(toIndentedString(opens)).append("\n");
@@ -331,8 +383,10 @@ public class AggregateStats {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("processed");
+    openapiFields.add("sent");
     openapiFields.add("delivered");
     openapiFields.add("dropped");
+    openapiFields.add("smtpDropped");
     openapiFields.add("hardBounced");
     openapiFields.add("softBounced");
     openapiFields.add("opens");

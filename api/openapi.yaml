@@ -2823,12 +2823,16 @@ components:
         date: 2020-03-12
         stats:
           processed: 225
+          smtpDropped: 5
           unsubscribed: 6
           hardBounced: 10
           dropped: 10
           softBounced: 5
           delivered: 200
+          opened: 150
           spam: 2
+          sent: 220
+          clicked: 130
       properties:
         date:
           description: Date for which stats are retrieved (UTC).
@@ -2840,16 +2844,24 @@ components:
     AggregateStat:
       example:
         processed: 225
+        smtpDropped: 5
         unsubscribed: 6
         hardBounced: 10
         dropped: 10
         softBounced: 5
         delivered: 200
+        opened: 150
         spam: 2
+        sent: 220
+        clicked: 130
       properties:
         processed:
           description: Number of emails accepted by SendPost API.
           example: 225
+          type: integer
+        sent:
+          description: Number of emails sent.
+          example: 220
           type: integer
         delivered:
           description: Number of emails we were able to successfully deliver at SMTP
@@ -2861,6 +2873,10 @@ components:
             because the email is invalid or email in in existing suppression list
           example: 10
           type: integer
+        smtpDropped:
+          description: Number of emails dropped by SMTP.
+          example: 5
+          type: integer
         hardBounced:
           description: Number of emails where we got SMTP hard bounce error code by
             the recipient mail provider
@@ -2871,6 +2887,14 @@ components:
             the recipent mail provider. Soft bounced emails are retried upto 5 times
             over 24 hour period before marking them as hardBounced.
           example: 5
+          type: integer
+        opened:
+          description: Number of emails opened by recipients
+          example: 150
+          type: integer
+        clicked:
+          description: Number of email links clicked by recipients
+          example: 130
           type: integer
         unsubscribed:
           description: Number of email recipients who unsubscribed from receiving
@@ -2894,11 +2918,17 @@ components:
         processed:
           description: Total number of emails accepted by SendPost API
           type: integer
+        sent:
+          description: Total number of emails sent
+          type: integer
         delivered:
           description: Total number of emails successfully delivered to SMTP
           type: integer
         dropped:
           description: Total number of emails dropped without delivery
+          type: integer
+        smtpDropped:
+          description: Total number of emails dropped by SMTP
           type: integer
         hardBounced:
           description: Total number of hard bounce errors
@@ -3474,6 +3504,7 @@ components:
         date: 2020-03-12
         stat:
           processed: 1225
+          smtpDropped: 5
           unsubscribed: 15
           spams: 12
           hardBounced: 10
@@ -3482,6 +3513,7 @@ components:
           opens: 150
           clicks: 130
           delivered: 1200
+          sent: 1220
       properties:
         date:
           example: 2020-03-12
@@ -3492,6 +3524,7 @@ components:
     AggregateStats:
       example:
         processed: 22500
+        smtpDropped: 400
         unsubscribed: 500
         spams: 200
         hardBounced: 1000
@@ -3500,15 +3533,22 @@ components:
         opens: 5000
         clicks: 3000
         delivered: 20000
+        sent: 22400
       properties:
         processed:
           example: 22500
+          type: integer
+        sent:
+          example: 22400
           type: integer
         delivered:
           example: 20000
           type: integer
         dropped:
           example: 1000
+          type: integer
+        smtpDropped:
+          example: 400
           type: integer
         hardBounced:
           example: 1000
@@ -4859,16 +4899,24 @@ components:
     Stat_stats:
       example:
         processed: 225
+        smtpDropped: 5
         unsubscribed: 6
         hardBounced: 10
         dropped: 10
         softBounced: 5
         delivered: 200
+        opened: 150
         spam: 2
+        sent: 220
+        clicked: 130
       properties:
         processed:
           description: Number of emails accepted by SendPost API.
           example: 225
+          type: integer
+        sent:
+          description: Number of emails sent.
+          example: 220
           type: integer
         delivered:
           description: Number of emails we were able to successfully deliver at SMTP
@@ -4880,6 +4928,10 @@ components:
             because the email is invalid or email in in existing suppression list
           example: 10
           type: integer
+        smtpDropped:
+          description: Number of emails dropped by SMTP.
+          example: 5
+          type: integer
         hardBounced:
           description: Number of emails where we got SMTP hard bounce error code by
             the recipient mail provider
@@ -4890,6 +4942,14 @@ components:
             the recipent mail provider. Soft bounced emails are retried upto 5 times
             over 24 hour period before marking them as hardBounced.
           example: 5
+          type: integer
+        opened:
+          description: Number of emails opened by recipients
+          example: 150
+          type: integer
+        clicked:
+          description: Number of email links clicked by recipients
+          example: 130
           type: integer
         unsubscribed:
           description: Number of email recipients who unsubscribed from receiving
@@ -4905,12 +4965,18 @@ components:
         processed:
           description: Number of emails accepted by SendPost API
           type: integer
+        sent:
+          description: Number of emails sent
+          type: integer
         delivered:
           description: Number of emails successfully delivered to SMTP without errors
           type: integer
         dropped:
           description: Number of emails dropped without attempting to deliver due
             to invalid email or suppression list
+          type: integer
+        smtpDropped:
+          description: Number of emails dropped by SMTP
           type: integer
         hardBounced:
           description: Number of emails that resulted in a hard bounce error
@@ -4933,6 +4999,7 @@ components:
     AccountStats_stat:
       example:
         processed: 1225
+        smtpDropped: 5
         unsubscribed: 15
         spams: 12
         hardBounced: 10
@@ -4941,15 +5008,22 @@ components:
         opens: 150
         clicks: 130
         delivered: 1200
+        sent: 1220
       properties:
         processed:
           example: 1225
+          type: integer
+        sent:
+          example: 1220
           type: integer
         delivered:
           example: 1200
           type: integer
         dropped:
           example: 10
+          type: integer
+        smtpDropped:
+          example: 5
           type: integer
         hardBounced:
           example: 10

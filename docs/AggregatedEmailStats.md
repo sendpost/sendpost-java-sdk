@@ -8,8 +8,10 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**processed** | **Integer** | Total number of emails accepted by SendPost API |  [optional] |
+|**sent** | **Integer** | Total number of emails sent |  [optional] |
 |**delivered** | **Integer** | Total number of emails successfully delivered to SMTP |  [optional] |
 |**dropped** | **Integer** | Total number of emails dropped without delivery |  [optional] |
+|**smtpDropped** | **Integer** | Total number of emails dropped by SMTP |  [optional] |
 |**hardBounced** | **Integer** | Total number of hard bounce errors |  [optional] |
 |**softBounced** | **Integer** | Total number of soft bounce errors |  [optional] |
 |**opened** | **Integer** | Total number of emails opened by recipients |  [optional] |

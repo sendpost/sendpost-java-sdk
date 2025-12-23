@@ -48,12 +48,17 @@ import sendpost_java_sdk.JSON;
 /**
  * EmailStatsStats
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-22T15:50:51.966722+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-23T14:51:06.742514+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class EmailStatsStats {
   public static final String SERIALIZED_NAME_PROCESSED = "processed";
   @SerializedName(SERIALIZED_NAME_PROCESSED)
   @javax.annotation.Nullable
   private Integer processed;
+
+  public static final String SERIALIZED_NAME_SENT = "sent";
+  @SerializedName(SERIALIZED_NAME_SENT)
+  @javax.annotation.Nullable
+  private Integer sent;
 
   public static final String SERIALIZED_NAME_DELIVERED = "delivered";
   @SerializedName(SERIALIZED_NAME_DELIVERED)
@@ -64,6 +69,11 @@ public class EmailStatsStats {
   @SerializedName(SERIALIZED_NAME_DROPPED)
   @javax.annotation.Nullable
   private Integer dropped;
+
+  public static final String SERIALIZED_NAME_SMTP_DROPPED = "smtpDropped";
+  @SerializedName(SERIALIZED_NAME_SMTP_DROPPED)
+  @javax.annotation.Nullable
+  private Integer smtpDropped;
 
   public static final String SERIALIZED_NAME_HARD_BOUNCED = "hardBounced";
   @SerializedName(SERIALIZED_NAME_HARD_BOUNCED)
@@ -117,6 +127,25 @@ public class EmailStatsStats {
   }
 
 
+  public EmailStatsStats sent(@javax.annotation.Nullable Integer sent) {
+    this.sent = sent;
+    return this;
+  }
+
+  /**
+   * Number of emails sent
+   * @return sent
+   */
+  @javax.annotation.Nullable
+  public Integer getSent() {
+    return sent;
+  }
+
+  public void setSent(@javax.annotation.Nullable Integer sent) {
+    this.sent = sent;
+  }
+
+
   public EmailStatsStats delivered(@javax.annotation.Nullable Integer delivered) {
     this.delivered = delivered;
     return this;
@@ -152,6 +181,25 @@ public class EmailStatsStats {
 
   public void setDropped(@javax.annotation.Nullable Integer dropped) {
     this.dropped = dropped;
+  }
+
+
+  public EmailStatsStats smtpDropped(@javax.annotation.Nullable Integer smtpDropped) {
+    this.smtpDropped = smtpDropped;
+    return this;
+  }
+
+  /**
+   * Number of emails dropped by SMTP
+   * @return smtpDropped
+   */
+  @javax.annotation.Nullable
+  public Integer getSmtpDropped() {
+    return smtpDropped;
+  }
+
+  public void setSmtpDropped(@javax.annotation.Nullable Integer smtpDropped) {
+    this.smtpDropped = smtpDropped;
   }
 
 
@@ -280,8 +328,10 @@ public class EmailStatsStats {
     }
     EmailStatsStats emailStatsStats = (EmailStatsStats) o;
     return Objects.equals(this.processed, emailStatsStats.processed) &&
+        Objects.equals(this.sent, emailStatsStats.sent) &&
         Objects.equals(this.delivered, emailStatsStats.delivered) &&
         Objects.equals(this.dropped, emailStatsStats.dropped) &&
+        Objects.equals(this.smtpDropped, emailStatsStats.smtpDropped) &&
         Objects.equals(this.hardBounced, emailStatsStats.hardBounced) &&
         Objects.equals(this.softBounced, emailStatsStats.softBounced) &&
         Objects.equals(this.opened, emailStatsStats.opened) &&
@@ -292,7 +342,7 @@ public class EmailStatsStats {
 
   @Override
   public int hashCode() {
-    return Objects.hash(processed, delivered, dropped, hardBounced, softBounced, opened, clicked, unsubscribed, spam);
+    return Objects.hash(processed, sent, delivered, dropped, smtpDropped, hardBounced, softBounced, opened, clicked, unsubscribed, spam);
   }
 
   @Override
@@ -300,8 +350,10 @@ public class EmailStatsStats {
     StringBuilder sb = new StringBuilder();
     sb.append("class EmailStatsStats {\n");
     sb.append("    processed: ").append(toIndentedString(processed)).append("\n");
+    sb.append("    sent: ").append(toIndentedString(sent)).append("\n");
     sb.append("    delivered: ").append(toIndentedString(delivered)).append("\n");
     sb.append("    dropped: ").append(toIndentedString(dropped)).append("\n");
+    sb.append("    smtpDropped: ").append(toIndentedString(smtpDropped)).append("\n");
     sb.append("    hardBounced: ").append(toIndentedString(hardBounced)).append("\n");
     sb.append("    softBounced: ").append(toIndentedString(softBounced)).append("\n");
     sb.append("    opened: ").append(toIndentedString(opened)).append("\n");
@@ -331,8 +383,10 @@ public class EmailStatsStats {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("processed");
+    openapiFields.add("sent");
     openapiFields.add("delivered");
     openapiFields.add("dropped");
+    openapiFields.add("smtpDropped");
     openapiFields.add("hardBounced");
     openapiFields.add("softBounced");
     openapiFields.add("opened");
