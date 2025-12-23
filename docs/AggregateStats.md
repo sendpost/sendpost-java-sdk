@@ -14,8 +14,8 @@
 |**smtpDropped** | **Integer** |  |  [optional] |
 |**hardBounced** | **Integer** |  |  [optional] |
 |**softBounced** | **Integer** |  |  [optional] |
-|**opens** | **Integer** |  |  [optional] |
-|**clicks** | **Integer** |  |  [optional] |
+|**opened** | **Integer** |  |  [optional] |
+|**clicked** | **Integer** |  |  [optional] |
 |**unsubscribed** | **Integer** |  |  [optional] |
 |**spams** | **Integer** |  |  [optional] |
 

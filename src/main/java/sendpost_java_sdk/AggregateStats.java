@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * AggregateStats
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-23T14:51:06.742514+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-23T15:20:44.786405+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class AggregateStats {
   public static final String SERIALIZED_NAME_PROCESSED = "processed";
   @SerializedName(SERIALIZED_NAME_PROCESSED)
@@ -85,15 +85,15 @@ public class AggregateStats {
   @javax.annotation.Nullable
   private Integer softBounced;
 
-  public static final String SERIALIZED_NAME_OPENS = "opens";
-  @SerializedName(SERIALIZED_NAME_OPENS)
+  public static final String SERIALIZED_NAME_OPENED = "opened";
+  @SerializedName(SERIALIZED_NAME_OPENED)
   @javax.annotation.Nullable
-  private Integer opens;
+  private Integer opened;
 
-  public static final String SERIALIZED_NAME_CLICKS = "clicks";
-  @SerializedName(SERIALIZED_NAME_CLICKS)
+  public static final String SERIALIZED_NAME_CLICKED = "clicked";
+  @SerializedName(SERIALIZED_NAME_CLICKED)
   @javax.annotation.Nullable
-  private Integer clicks;
+  private Integer clicked;
 
   public static final String SERIALIZED_NAME_UNSUBSCRIBED = "unsubscribed";
   @SerializedName(SERIALIZED_NAME_UNSUBSCRIBED)
@@ -241,41 +241,41 @@ public class AggregateStats {
   }
 
 
-  public AggregateStats opens(@javax.annotation.Nullable Integer opens) {
-    this.opens = opens;
+  public AggregateStats opened(@javax.annotation.Nullable Integer opened) {
+    this.opened = opened;
     return this;
   }
 
   /**
-   * Get opens
-   * @return opens
+   * Get opened
+   * @return opened
    */
   @javax.annotation.Nullable
-  public Integer getOpens() {
-    return opens;
+  public Integer getOpened() {
+    return opened;
   }
 
-  public void setOpens(@javax.annotation.Nullable Integer opens) {
-    this.opens = opens;
+  public void setOpened(@javax.annotation.Nullable Integer opened) {
+    this.opened = opened;
   }
 
 
-  public AggregateStats clicks(@javax.annotation.Nullable Integer clicks) {
-    this.clicks = clicks;
+  public AggregateStats clicked(@javax.annotation.Nullable Integer clicked) {
+    this.clicked = clicked;
     return this;
   }
 
   /**
-   * Get clicks
-   * @return clicks
+   * Get clicked
+   * @return clicked
    */
   @javax.annotation.Nullable
-  public Integer getClicks() {
-    return clicks;
+  public Integer getClicked() {
+    return clicked;
   }
 
-  public void setClicks(@javax.annotation.Nullable Integer clicks) {
-    this.clicks = clicks;
+  public void setClicked(@javax.annotation.Nullable Integer clicked) {
+    this.clicked = clicked;
   }
 
 
@@ -334,15 +334,15 @@ public class AggregateStats {
         Objects.equals(this.smtpDropped, aggregateStats.smtpDropped) &&
         Objects.equals(this.hardBounced, aggregateStats.hardBounced) &&
         Objects.equals(this.softBounced, aggregateStats.softBounced) &&
-        Objects.equals(this.opens, aggregateStats.opens) &&
-        Objects.equals(this.clicks, aggregateStats.clicks) &&
+        Objects.equals(this.opened, aggregateStats.opened) &&
+        Objects.equals(this.clicked, aggregateStats.clicked) &&
         Objects.equals(this.unsubscribed, aggregateStats.unsubscribed) &&
         Objects.equals(this.spams, aggregateStats.spams);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(processed, sent, delivered, dropped, smtpDropped, hardBounced, softBounced, opens, clicks, unsubscribed, spams);
+    return Objects.hash(processed, sent, delivered, dropped, smtpDropped, hardBounced, softBounced, opened, clicked, unsubscribed, spams);
   }
 
   @Override
@@ -356,8 +356,8 @@ public class AggregateStats {
     sb.append("    smtpDropped: ").append(toIndentedString(smtpDropped)).append("\n");
     sb.append("    hardBounced: ").append(toIndentedString(hardBounced)).append("\n");
     sb.append("    softBounced: ").append(toIndentedString(softBounced)).append("\n");
-    sb.append("    opens: ").append(toIndentedString(opens)).append("\n");
-    sb.append("    clicks: ").append(toIndentedString(clicks)).append("\n");
+    sb.append("    opened: ").append(toIndentedString(opened)).append("\n");
+    sb.append("    clicked: ").append(toIndentedString(clicked)).append("\n");
     sb.append("    unsubscribed: ").append(toIndentedString(unsubscribed)).append("\n");
     sb.append("    spams: ").append(toIndentedString(spams)).append("\n");
     sb.append("}");
@@ -389,8 +389,8 @@ public class AggregateStats {
     openapiFields.add("smtpDropped");
     openapiFields.add("hardBounced");
     openapiFields.add("softBounced");
-    openapiFields.add("opens");
-    openapiFields.add("clicks");
+    openapiFields.add("opened");
+    openapiFields.add("clicked");
     openapiFields.add("unsubscribed");
     openapiFields.add("spams");
 

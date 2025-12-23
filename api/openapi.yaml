@@ -1838,8 +1838,8 @@ paths:
                   dropped: 10
                   hardBounced: 10
                   softBounced: 5
-                  opens: 150
-                  clicks: 130
+                  opened: 150
+                  clicked: 130
                   unsubscribed: 15
                   spams: 12
               - date: 2020-03-14
@@ -1849,8 +1849,8 @@ paths:
                   dropped: 20
                   hardBounced: 15
                   softBounced: 5
-                  opens: 172
-                  clicks: 147
+                  opened: 172
+                  clicked: 147
                   unsubscribed: 5
                   spams: 2
               schema:
@@ -1908,8 +1908,8 @@ paths:
                 dropped: 1000
                 hardBounced: 1000
                 softBounced: 500
-                opens: 5000
-                clicks: 3000
+                opened: 5000
+                clicked: 3000
                 unsubscribed: 500
                 spams: 200
               schema:
@@ -3510,10 +3510,10 @@ components:
           hardBounced: 10
           dropped: 10
           softBounced: 5
-          opens: 150
-          clicks: 130
           delivered: 1200
+          opened: 150
           sent: 1220
+          clicked: 130
       properties:
         date:
           example: 2020-03-12
@@ -3530,10 +3530,10 @@ components:
         hardBounced: 1000
         dropped: 1000
         softBounced: 500
-        opens: 5000
-        clicks: 3000
         delivered: 20000
+        opened: 5000
         sent: 22400
+        clicked: 3000
       properties:
         processed:
           example: 22500
@@ -3556,10 +3556,10 @@ components:
         softBounced:
           example: 500
           type: integer
-        opens:
+        opened:
           example: 5000
           type: integer
-        clicks:
+        clicked:
           example: 3000
           type: integer
         unsubscribed:
@@ -5005,10 +5005,10 @@ components:
         hardBounced: 10
         dropped: 10
         softBounced: 5
-        opens: 150
-        clicks: 130
         delivered: 1200
+        opened: 150
         sent: 1220
+        clicked: 130
       properties:
         processed:
           example: 1225
@@ -5031,10 +5031,10 @@ components:
         softBounced:
           example: 5
           type: integer
-        opens:
+        opened:
           example: 150
           type: integer
-        clicks:
+        clicked:
           example: 130
           type: integer
         unsubscribed:
