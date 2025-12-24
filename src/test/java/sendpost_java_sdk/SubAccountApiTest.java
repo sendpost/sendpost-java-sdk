@@ -14,8 +14,8 @@
 package sendpost_java_sdk;
 
 import sendpost_java_sdk.ApiException;
+import sendpost_java_sdk.CreateSubAccountRequest;
 import sendpost_java_sdk.DeleteSubAccountResponse;
-import sendpost_java_sdk.NewSubAccount;
 import sendpost_java_sdk.SubAccount;
 import sendpost_java_sdk.UpdateSubAccount;
 import org.junit.jupiter.api.Disabled;
@@ -35,7 +35,7 @@ public class SubAccountApiTest {
     private final SubAccountApi api = new SubAccountApi();
 
     /**
-     * Create a New Sub-Account
+     * Create Sub-Account
      *
      * Creates a new sub-account under the current account.
      *
@@ -43,13 +43,13 @@ public class SubAccountApiTest {
      */
     @Test
     public void createSubAccountTest() throws ApiException {
-        NewSubAccount newSubAccount = null;
-        SubAccount response = api.createSubAccount(newSubAccount);
+        CreateSubAccountRequest createSubAccountRequest = null;
+        SubAccount response = api.createSubAccount(createSubAccountRequest);
         // TODO: test validations
     }
 
     /**
-     * Delete a Specific Sub-Account
+     * Delete Sub-Account
      *
      * Deletes a specific sub-account by its ID.
      *
@@ -63,7 +63,7 @@ public class SubAccountApiTest {
     }
 
     /**
-     * Get All Sub-Accounts
+     * List Sub-Accounts
      *
      * Retrieves a list of all sub-accounts associated with a specific account.
      *
@@ -79,7 +79,7 @@ public class SubAccountApiTest {
     }
 
     /**
-     * Get a Specific Sub-Account
+     * Get Sub-Account
      *
      * Retrieves a specific sub-account by its ID.
      *
@@ -93,7 +93,7 @@ public class SubAccountApiTest {
     }
 
     /**
-     * Update an Existing Sub-Account
+     * Update Sub-Account
      *
      * Updates the details of an existing sub-account.
      *

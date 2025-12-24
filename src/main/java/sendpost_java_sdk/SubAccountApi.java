@@ -27,8 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import sendpost_java_sdk.CreateSubAccountRequest;
 import sendpost_java_sdk.DeleteSubAccountResponse;
-import sendpost_java_sdk.NewSubAccount;
 import sendpost_java_sdk.SubAccount;
 import sendpost_java_sdk.UpdateSubAccount;
 
@@ -77,7 +77,7 @@ public class SubAccountApi {
 
     /**
      * Build call for createSubAccount
-     * @param newSubAccount  (required)
+     * @param createSubAccountRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -90,7 +90,7 @@ public class SubAccountApi {
         <tr><td> 401 </td><td> Unauthorized, invalid API key. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createSubAccountCall(@javax.annotation.Nonnull NewSubAccount newSubAccount, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createSubAccountCall(@javax.annotation.Nonnull CreateSubAccountRequest createSubAccountRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -104,7 +104,7 @@ public class SubAccountApi {
             basePath = null;
         }
 
-        Object localVarPostBody = newSubAccount;
+        Object localVarPostBody = createSubAccountRequest;
 
         // create path and map variables
         String localVarPath = "/account/subaccount/";
@@ -136,20 +136,20 @@ public class SubAccountApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createSubAccountValidateBeforeCall(@javax.annotation.Nonnull NewSubAccount newSubAccount, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'newSubAccount' is set
-        if (newSubAccount == null) {
-            throw new ApiException("Missing the required parameter 'newSubAccount' when calling createSubAccount(Async)");
+    private okhttp3.Call createSubAccountValidateBeforeCall(@javax.annotation.Nonnull CreateSubAccountRequest createSubAccountRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'createSubAccountRequest' is set
+        if (createSubAccountRequest == null) {
+            throw new ApiException("Missing the required parameter 'createSubAccountRequest' when calling createSubAccount(Async)");
         }
 
-        return createSubAccountCall(newSubAccount, _callback);
+        return createSubAccountCall(createSubAccountRequest, _callback);
 
     }
 
     /**
      * Create Sub-Account
      * Creates a new sub-account under the current account.
-     * @param newSubAccount  (required)
+     * @param createSubAccountRequest  (required)
      * @return SubAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -161,15 +161,15 @@ public class SubAccountApi {
         <tr><td> 401 </td><td> Unauthorized, invalid API key. </td><td>  -  </td></tr>
      </table>
      */
-    public SubAccount createSubAccount(@javax.annotation.Nonnull NewSubAccount newSubAccount) throws ApiException {
-        ApiResponse<SubAccount> localVarResp = createSubAccountWithHttpInfo(newSubAccount);
+    public SubAccount createSubAccount(@javax.annotation.Nonnull CreateSubAccountRequest createSubAccountRequest) throws ApiException {
+        ApiResponse<SubAccount> localVarResp = createSubAccountWithHttpInfo(createSubAccountRequest);
         return localVarResp.getData();
     }
 
     /**
      * Create Sub-Account
      * Creates a new sub-account under the current account.
-     * @param newSubAccount  (required)
+     * @param createSubAccountRequest  (required)
      * @return ApiResponse&lt;SubAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -181,8 +181,8 @@ public class SubAccountApi {
         <tr><td> 401 </td><td> Unauthorized, invalid API key. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SubAccount> createSubAccountWithHttpInfo(@javax.annotation.Nonnull NewSubAccount newSubAccount) throws ApiException {
-        okhttp3.Call localVarCall = createSubAccountValidateBeforeCall(newSubAccount, null);
+    public ApiResponse<SubAccount> createSubAccountWithHttpInfo(@javax.annotation.Nonnull CreateSubAccountRequest createSubAccountRequest) throws ApiException {
+        okhttp3.Call localVarCall = createSubAccountValidateBeforeCall(createSubAccountRequest, null);
         Type localVarReturnType = new TypeToken<SubAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -190,7 +190,7 @@ public class SubAccountApi {
     /**
      * Create Sub-Account (asynchronously)
      * Creates a new sub-account under the current account.
-     * @param newSubAccount  (required)
+     * @param createSubAccountRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -203,9 +203,9 @@ public class SubAccountApi {
         <tr><td> 401 </td><td> Unauthorized, invalid API key. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createSubAccountAsync(@javax.annotation.Nonnull NewSubAccount newSubAccount, final ApiCallback<SubAccount> _callback) throws ApiException {
+    public okhttp3.Call createSubAccountAsync(@javax.annotation.Nonnull CreateSubAccountRequest createSubAccountRequest, final ApiCallback<SubAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createSubAccountValidateBeforeCall(newSubAccount, _callback);
+        okhttp3.Call localVarCall = createSubAccountValidateBeforeCall(createSubAccountRequest, _callback);
         Type localVarReturnType = new TypeToken<SubAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

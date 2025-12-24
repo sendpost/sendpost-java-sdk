@@ -22,8 +22,10 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import sendpost_java_sdk.Member;
+import java.util.Map;
+import sendpost_java_sdk.Label;
 import sendpost_java_sdk.SMTPAuth;
 
 import com.google.gson.Gson;
@@ -52,7 +54,7 @@ import sendpost_java_sdk.JSON;
 /**
  * SubAccount
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-23T15:20:44.786405+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class SubAccount {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -72,7 +74,7 @@ public class SubAccount {
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private List<String> labels = new ArrayList<>();
+  private List<Label> labels = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SMTP_AUTHS = "smtpAuths";
   @SerializedName(SERIALIZED_NAME_SMTP_AUTHS)
@@ -144,17 +146,17 @@ public class SubAccount {
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nullable
-  private Integer created;
+  private Long created;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
   @javax.annotation.Nullable
-  private Member createdBy;
+  private Map<String, Object> createdBy = new HashMap<>();
 
   public static final String SERIALIZED_NAME_UPDATED_BY = "updated_by";
   @SerializedName(SERIALIZED_NAME_UPDATED_BY)
   @javax.annotation.Nullable
-  private Member updatedBy;
+  private Map<String, Object> updatedBy = new HashMap<>();
 
   public static final String SERIALIZED_NAME_BLOCKED = "blocked";
   @SerializedName(SERIALIZED_NAME_BLOCKED)
@@ -246,12 +248,12 @@ public class SubAccount {
   }
 
 
-  public SubAccount labels(@javax.annotation.Nullable List<String> labels) {
+  public SubAccount labels(@javax.annotation.Nullable List<Label> labels) {
     this.labels = labels;
     return this;
   }
 
-  public SubAccount addLabelsItem(String labelsItem) {
+  public SubAccount addLabelsItem(Label labelsItem) {
     if (this.labels == null) {
       this.labels = new ArrayList<>();
     }
@@ -264,11 +266,11 @@ public class SubAccount {
    * @return labels
    */
   @javax.annotation.Nullable
-  public List<String> getLabels() {
+  public List<Label> getLabels() {
     return labels;
   }
 
-  public void setLabels(@javax.annotation.Nullable List<String> labels) {
+  public void setLabels(@javax.annotation.Nullable List<Label> labels) {
     this.labels = labels;
   }
 
@@ -338,7 +340,7 @@ public class SubAccount {
   }
 
 
-  public SubAccount created(@javax.annotation.Nullable Integer created) {
+  public SubAccount created(@javax.annotation.Nullable Long created) {
     this.created = created;
     return this;
   }
@@ -348,17 +350,25 @@ public class SubAccount {
    * @return created
    */
   @javax.annotation.Nullable
-  public Integer getCreated() {
+  public Long getCreated() {
     return created;
   }
 
-  public void setCreated(@javax.annotation.Nullable Integer created) {
+  public void setCreated(@javax.annotation.Nullable Long created) {
     this.created = created;
   }
 
 
-  public SubAccount createdBy(@javax.annotation.Nullable Member createdBy) {
+  public SubAccount createdBy(@javax.annotation.Nullable Map<String, Object> createdBy) {
     this.createdBy = createdBy;
+    return this;
+  }
+
+  public SubAccount putCreatedByItem(String key, Object createdByItem) {
+    if (this.createdBy == null) {
+      this.createdBy = new HashMap<>();
+    }
+    this.createdBy.put(key, createdByItem);
     return this;
   }
 
@@ -367,17 +377,25 @@ public class SubAccount {
    * @return createdBy
    */
   @javax.annotation.Nullable
-  public Member getCreatedBy() {
+  public Map<String, Object> getCreatedBy() {
     return createdBy;
   }
 
-  public void setCreatedBy(@javax.annotation.Nullable Member createdBy) {
+  public void setCreatedBy(@javax.annotation.Nullable Map<String, Object> createdBy) {
     this.createdBy = createdBy;
   }
 
 
-  public SubAccount updatedBy(@javax.annotation.Nullable Member updatedBy) {
+  public SubAccount updatedBy(@javax.annotation.Nullable Map<String, Object> updatedBy) {
     this.updatedBy = updatedBy;
+    return this;
+  }
+
+  public SubAccount putUpdatedByItem(String key, Object updatedByItem) {
+    if (this.updatedBy == null) {
+      this.updatedBy = new HashMap<>();
+    }
+    this.updatedBy.put(key, updatedByItem);
     return this;
   }
 
@@ -386,11 +404,11 @@ public class SubAccount {
    * @return updatedBy
    */
   @javax.annotation.Nullable
-  public Member getUpdatedBy() {
+  public Map<String, Object> getUpdatedBy() {
     return updatedBy;
   }
 
-  public void setUpdatedBy(@javax.annotation.Nullable Member updatedBy) {
+  public void setUpdatedBy(@javax.annotation.Nullable Map<String, Object> updatedBy) {
     this.updatedBy = updatedBy;
   }
 
@@ -640,9 +658,19 @@ public class SubAccount {
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("labels") != null && !jsonObj.get("labels").isJsonNull() && !jsonObj.get("labels").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `labels` to be an array in the JSON string but got `%s`", jsonObj.get("labels").toString()));
+      if (jsonObj.get("labels") != null && !jsonObj.get("labels").isJsonNull()) {
+        JsonArray jsonArraylabels = jsonObj.getAsJsonArray("labels");
+        if (jsonArraylabels != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("labels").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `labels` to be an array in the JSON string but got `%s`", jsonObj.get("labels").toString()));
+          }
+
+          // validate the optional field `labels` (array)
+          for (int i = 0; i < jsonArraylabels.size(); i++) {
+            Label.validateJsonElement(jsonArraylabels.get(i));
+          };
+        }
       }
       if (jsonObj.get("smtpAuths") != null && !jsonObj.get("smtpAuths").isJsonNull()) {
         JsonArray jsonArraysmtpAuths = jsonObj.getAsJsonArray("smtpAuths");

@@ -2102,7 +2102,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NewSubAccount'
+              $ref: '#/components/schemas/CreateSubAccountRequest'
         required: true
       responses:
         "201":
@@ -2280,7 +2280,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NewWebhook'
+              $ref: '#/components/schemas/CreateWebhookRequest'
         required: true
       responses:
         "201":
@@ -2975,7 +2975,39 @@ components:
           type: integer
     IP:
       example:
-        autoWarmupPlan: autoWarmupPlan
+        autoWarmupPlan:
+          mailruWarmupPlan: mailruWarmupPlan
+          attWarmupPlan: attWarmupPlan
+          aolWarmupPlan: aolWarmupPlan
+          icloudWarmupPlan: icloudWarmupPlan
+          mimecastWarmupPlan: mimecastWarmupPlan
+          amazonworkmailWarmupPlan: amazonworkmailWarmupPlan
+          symantecWarmupPlan: symantecWarmupPlan
+          office365WarmupPlan: office365WarmupPlan
+          warmupInterval: 24
+          comcastWarmupPlan: comcastWarmupPlan
+          sophosWarmupPlan: sophosWarmupPlan
+          yahooWarmupPlan: yahooWarmupPlan
+          checkpointWarmupPlan: checkpointWarmupPlan
+          zohobusinessWarmupPlan: zohobusinessWarmupPlan
+          id: 742
+          microsoftWarmupPlan: microsoftWarmupPlan
+          barracudaWarmupPlan: barracudaWarmupPlan
+          fortinetWarmupPlan: fortinetWarmupPlan
+          created: 1761234191727534000
+          trendmicroWarmupPlan: trendmicroWarmupPlan
+          gmxWarmupPlan: gmxWarmupPlan
+          qqWarmupPlan: qqWarmupPlan
+          proofpointWarmupPlan: proofpointWarmupPlan
+          defaultWarmupPlan: defaultWarmupPlan
+          googleworkspaceWarmupPlan: googleworkspaceWarmupPlan
+          name: Default Auto Warmup Plan
+          yandexWarmupPlan: yandexWarmupPlan
+          ciscoironportWarmupPlan: ciscoironportWarmupPlan
+          rackspaceWarmupPlan: rackspaceWarmupPlan
+          gmailWarmupPlan: gmailWarmupPlan
+          zohoWarmupPlan: zohoWarmupPlan
+          updated: 1766535064510659800
         yahooSettings: "{\"name\":\"yahoo\",\"maxConcurrentConnections\":16,...}"
         comcastSettings: "{\"name\":\"comcast\",\"maxConcurrentConnections\":20,...}"
         created: 1703224038766344700
@@ -3107,6 +3139,7 @@ components:
         created:
           description: The timestamp (UNIX epoch) when the IP was created
           example: 1703224038766344700
+          format: int64
           type: integer
         infraClassification:
           description: Classification of the infrastructure
@@ -3121,10 +3154,7 @@ components:
           example: 1
           type: integer
         autoWarmupPlan:
-          description: The auto-warmup plan associated with the IP
-          type: string
-          nullable: true
-          example: null
+          $ref: '#/components/schemas/AutoWarmupPlan'
       required:
       - created
       - id
@@ -3205,7 +3235,39 @@ components:
         created: 1597511124804000
         routingMetaData: "{}"
         ips:
-        - autoWarmupPlan: autoWarmupPlan
+        - autoWarmupPlan:
+            mailruWarmupPlan: mailruWarmupPlan
+            attWarmupPlan: attWarmupPlan
+            aolWarmupPlan: aolWarmupPlan
+            icloudWarmupPlan: icloudWarmupPlan
+            mimecastWarmupPlan: mimecastWarmupPlan
+            amazonworkmailWarmupPlan: amazonworkmailWarmupPlan
+            symantecWarmupPlan: symantecWarmupPlan
+            office365WarmupPlan: office365WarmupPlan
+            warmupInterval: 24
+            comcastWarmupPlan: comcastWarmupPlan
+            sophosWarmupPlan: sophosWarmupPlan
+            yahooWarmupPlan: yahooWarmupPlan
+            checkpointWarmupPlan: checkpointWarmupPlan
+            zohobusinessWarmupPlan: zohobusinessWarmupPlan
+            id: 742
+            microsoftWarmupPlan: microsoftWarmupPlan
+            barracudaWarmupPlan: barracudaWarmupPlan
+            fortinetWarmupPlan: fortinetWarmupPlan
+            created: 1761234191727534000
+            trendmicroWarmupPlan: trendmicroWarmupPlan
+            gmxWarmupPlan: gmxWarmupPlan
+            qqWarmupPlan: qqWarmupPlan
+            proofpointWarmupPlan: proofpointWarmupPlan
+            defaultWarmupPlan: defaultWarmupPlan
+            googleworkspaceWarmupPlan: googleworkspaceWarmupPlan
+            name: Default Auto Warmup Plan
+            yandexWarmupPlan: yandexWarmupPlan
+            ciscoironportWarmupPlan: ciscoironportWarmupPlan
+            rackspaceWarmupPlan: rackspaceWarmupPlan
+            gmailWarmupPlan: gmailWarmupPlan
+            zohoWarmupPlan: zohoWarmupPlan
+            updated: 1766535064510659800
           yahooSettings: "{\"name\":\"yahoo\",\"maxConcurrentConnections\":16,...}"
           comcastSettings: "{\"name\":\"comcast\",\"maxConcurrentConnections\":20,...}"
           created: 1703224038766344700
@@ -3264,7 +3326,39 @@ components:
           microsoftSettings: "{\"name\":\"microsoft\",\"maxConcurrentConnections\"\
             :16,...}"
           defaultSettings: "{\"name\":\"default\",\"maxConcurrentConnections\":14,...}"
-        - autoWarmupPlan: autoWarmupPlan
+        - autoWarmupPlan:
+            mailruWarmupPlan: mailruWarmupPlan
+            attWarmupPlan: attWarmupPlan
+            aolWarmupPlan: aolWarmupPlan
+            icloudWarmupPlan: icloudWarmupPlan
+            mimecastWarmupPlan: mimecastWarmupPlan
+            amazonworkmailWarmupPlan: amazonworkmailWarmupPlan
+            symantecWarmupPlan: symantecWarmupPlan
+            office365WarmupPlan: office365WarmupPlan
+            warmupInterval: 24
+            comcastWarmupPlan: comcastWarmupPlan
+            sophosWarmupPlan: sophosWarmupPlan
+            yahooWarmupPlan: yahooWarmupPlan
+            checkpointWarmupPlan: checkpointWarmupPlan
+            zohobusinessWarmupPlan: zohobusinessWarmupPlan
+            id: 742
+            microsoftWarmupPlan: microsoftWarmupPlan
+            barracudaWarmupPlan: barracudaWarmupPlan
+            fortinetWarmupPlan: fortinetWarmupPlan
+            created: 1761234191727534000
+            trendmicroWarmupPlan: trendmicroWarmupPlan
+            gmxWarmupPlan: gmxWarmupPlan
+            qqWarmupPlan: qqWarmupPlan
+            proofpointWarmupPlan: proofpointWarmupPlan
+            defaultWarmupPlan: defaultWarmupPlan
+            googleworkspaceWarmupPlan: googleworkspaceWarmupPlan
+            name: Default Auto Warmup Plan
+            yandexWarmupPlan: yandexWarmupPlan
+            ciscoironportWarmupPlan: ciscoironportWarmupPlan
+            rackspaceWarmupPlan: rackspaceWarmupPlan
+            gmailWarmupPlan: gmailWarmupPlan
+            zohoWarmupPlan: zohoWarmupPlan
+            updated: 1766535064510659800
           yahooSettings: "{\"name\":\"yahoo\",\"maxConcurrentConnections\":16,...}"
           comcastSettings: "{\"name\":\"comcast\",\"maxConcurrentConnections\":20,...}"
           created: 1703224038766344700
@@ -3341,6 +3435,7 @@ components:
           type: string
         created:
           example: 1597511124804000
+          format: int64
           type: integer
         ips:
           items:
@@ -3426,6 +3521,7 @@ components:
           type: integer
         created:
           example: 1597511124701000
+          format: int64
           type: integer
     IPPoolCreateRequest:
       example:
@@ -3577,18 +3673,7 @@ components:
         block_reason: ""
         type: 1
         created_by:
-          firebaseUID: "1234567890"
-          phoneNumber: "+919876543210"
-          isForbidden: false
-          isVerified: true
-          created: 1567512491588004044
-          companyName: SendPost
-          onboardQAnswered: true
-          name: Raj
-          notesColor: '#000000'
-          id: 117
-          email: raj@piedpiper.com
-          url: https://www.sendpost.io/logo.png
+          key: ""
         labels: []
         smtpAuths:
         - password: default@117.sendpost.io
@@ -3606,18 +3691,7 @@ components:
         handlers: []
         name: API
         updated_by:
-          firebaseUID: "1234567890"
-          phoneNumber: "+919876543210"
-          isForbidden: false
-          isVerified: true
-          created: 1567512491588004044
-          companyName: SendPost
-          onboardQAnswered: true
-          name: Raj
-          notesColor: '#000000'
-          id: 117
-          email: raj@piedpiper.com
-          url: https://www.sendpost.io/logo.png
+          key: ""
         blocked_at: 0
         id: 50441
       properties:
@@ -3637,7 +3711,7 @@ components:
           description: Labels associated with the sub-account
           example: []
           items:
-            type: string
+            $ref: '#/components/schemas/Label'
           type: array
         smtpAuths:
           description: SMTP Auths associated with the sub-account
@@ -3658,11 +3732,18 @@ components:
         created:
           description: UNIX epoch nano timestamp when the sub-account was created.
           example: 1733844681120384500
+          format: int64
           type: integer
         created_by:
-          $ref: '#/components/schemas/Member'
+          additionalProperties: true
+          description: Member who created the sub-account
+          type: object
+          nullable: true
         updated_by:
-          $ref: '#/components/schemas/Member'
+          additionalProperties: true
+          description: Member who updated the sub-account
+          type: object
+          nullable: true
         blocked:
           description: Indicates whether the sub-account is blocked
           example: false
@@ -3714,25 +3795,14 @@ components:
         created:
           description: UNIX epoch nano timestamp when the SMTP Auth was created
           example: 1567512491588004044
+          format: int64
           type: integer
         updated:
           description: UNIX epoch nano timestamp when the SMTP Auth was updated
           example: 1567512491588004044
+          format: int64
           type: integer
     Member:
-      example:
-        firebaseUID: "1234567890"
-        phoneNumber: "+919876543210"
-        isForbidden: false
-        isVerified: true
-        created: 1567512491588004044
-        companyName: SendPost
-        onboardQAnswered: true
-        name: Raj
-        notesColor: '#000000'
-        id: 117
-        email: raj@piedpiper.com
-        url: https://www.sendpost.io/logo.png
       properties:
         id:
           description: Unique ID for the member
@@ -3781,8 +3851,9 @@ components:
         created:
           description: UNIX epoch nano timestamp when the member was created
           example: 1567512491588004044
+          format: int64
           type: integer
-    NewSubAccount:
+    CreateSubAccountRequest:
       example:
         name: FoxHole
       properties:
@@ -3835,18 +3906,7 @@ components:
         clicked: true
         sent: true
         created_by:
-          firebaseUID: "1234567890"
-          phoneNumber: "+919876543210"
-          isForbidden: false
-          isVerified: true
-          created: 1567512491588004044
-          companyName: SendPost
-          onboardQAnswered: true
-          name: Raj
-          notesColor: '#000000'
-          id: 117
-          email: raj@piedpiper.com
-          url: https://www.sendpost.io/logo.png
+          key: ""
         enabled: true
         url: https://app.hooli.com/email/webhook
         processed: true
@@ -3855,18 +3915,7 @@ components:
         uniqueClick: true
         softBounced: false
         updated_by:
-          firebaseUID: "1234567890"
-          phoneNumber: "+919876543210"
-          isForbidden: false
-          isVerified: true
-          created: 1567512491588004044
-          companyName: SendPost
-          onboardQAnswered: true
-          name: Raj
-          notesColor: '#000000'
-          id: 117
-          email: raj@piedpiper.com
-          url: https://www.sendpost.io/logo.png
+          key: ""
         id: 117
         spam: true
       properties:
@@ -3923,10 +3972,14 @@ components:
           example: 1567512491588004044
           format: int64
         created_by:
-          $ref: '#/components/schemas/Member'
+          additionalProperties: true
+          description: Member who created the webhook
+          nullable: true
         updated_by:
-          $ref: '#/components/schemas/Member'
-    NewWebhook:
+          additionalProperties: true
+          description: Member who updated the webhook
+          nullable: true
+    CreateWebhookRequest:
       example:
         smtpDropped: false
         hardBounced: true
@@ -4006,7 +4059,7 @@ components:
           type: boolean
     UpdateWebhook:
       allOf:
-      - $ref: '#/components/schemas/NewWebhook'
+      - $ref: '#/components/schemas/CreateWebhookRequest'
       example:
         smtpDropped: false
         hardBounced: true
@@ -4037,184 +4090,7 @@ components:
           example: Webhook (https://app.hooli.com/email/webhook) has been deleted
             successfully.
           type: string
-    WebhookObject:
-      example:
-        emailMessage:
-          headers:
-            X-Campaign-Id: "12345"
-          trackOpens: true
-          customFields:
-            Company: Company Name
-            Email: user@example.com
-          messageID: mjhl-1401-sasdf-129324
-          groups:
-          - welcome
-          - user-onboarding
-          publicIP: 52.34.11.12
-          accountID: 117
-          ipID: 123
-          subAccountID: 117
-          emailType: default
-          replyTo:
-            name: Gavin
-            email: gavin@hooli.com
-          localIP: 127.0.0.1
-          from:
-            name: Richard
-            email: richard@piedpiper.com
-          to:
-          - cc:
-            - customFields:
-                Company: Hooli
-              name: Dinesh
-              email: dinesh@bachmanity.com
-            - customFields:
-                Company: Hooli
-              name: Dinesh
-              email: dinesh@bachmanity.com
-            bcc:
-            - customFields:
-                Company: Hooli
-              name: Jian
-              email: jian@bachmanity.com
-            - customFields:
-                Company: Hooli
-              name: Jian
-              email: jian@bachmanity.com
-            customFields:
-              Company: Hooli
-            name: Gavin
-            email: gavin@hooli.com
-          - cc:
-            - customFields:
-                Company: Hooli
-              name: Dinesh
-              email: dinesh@bachmanity.com
-            - customFields:
-                Company: Hooli
-              name: Dinesh
-              email: dinesh@bachmanity.com
-            bcc:
-            - customFields:
-                Company: Hooli
-              name: Jian
-              email: jian@bachmanity.com
-            - customFields:
-                Company: Hooli
-              name: Jian
-              email: jian@bachmanity.com
-            customFields:
-              Company: Hooli
-            name: Gavin
-            email: gavin@hooli.com
-          submittedAt: 1567512491587205024
-          trackClicks: true
-          webhookEndpoint: https://webhook.example.com/webhook
-          ipPool: transactional-piedpiper
-        event:
-          eventID: edhg-123gh-afasdf-124egh
-          messageSubject: Welcome to Pied Piper :) + 1 quick question
-          tpspId: 1
-          groups:
-          - transactional
-          - user-onboarding
-          messageID: mjhl-1401-sasdf-129324
-          smtpCode: 200
-          type: 2
-          domainID: 123
-          eventMetadata:
-            smtpDescription: email delivered successfully
-            geo:
-              countryCode: US
-              postalCode: "12345"
-              timeZone: America/Los_Angeles
-              cityID: "123"
-              continentCode: EU
-            os:
-              Major: "10"
-              PatchMinor: "0"
-              Family: Windows
-              Minor: "0"
-              Patch: "0"
-            clickedURL: https://hooli.com
-            trackedIP: 52.34.11.12
-            smtpCode: 200
-            userAgent:
-              Major: "5.0"
-              Family: Mozilla
-              Minor: "0"
-              Patch: "0"
-            rawUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\
-              \ (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
-            device:
-              Family: ""
-          smtpDescription: email delivered successfully
-          accountID: 117
-          ipID: 123
-          messageType: default
-          subAccountID: 117
-          toName: Gavin
-          ipPoolID: 123
-          fromName: Richard
-          from: richard@piedpiper.com
-          to: gavin@hooli.com
-          submittedAt: 1567512491587205024
-      properties:
-        event:
-          $ref: '#/components/schemas/Event'
-        emailMessage:
-          $ref: '#/components/schemas/EmailMessage'
-      tags:
-      - Webhook Reference
     Event:
-      example:
-        eventID: edhg-123gh-afasdf-124egh
-        messageSubject: Welcome to Pied Piper :) + 1 quick question
-        tpspId: 1
-        groups:
-        - transactional
-        - user-onboarding
-        messageID: mjhl-1401-sasdf-129324
-        smtpCode: 200
-        type: 2
-        domainID: 123
-        eventMetadata:
-          smtpDescription: email delivered successfully
-          geo:
-            countryCode: US
-            postalCode: "12345"
-            timeZone: America/Los_Angeles
-            cityID: "123"
-            continentCode: EU
-          os:
-            Major: "10"
-            PatchMinor: "0"
-            Family: Windows
-            Minor: "0"
-            Patch: "0"
-          clickedURL: https://hooli.com
-          trackedIP: 52.34.11.12
-          smtpCode: 200
-          userAgent:
-            Major: "5.0"
-            Family: Mozilla
-            Minor: "0"
-            Patch: "0"
-          rawUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\
-            \ (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
-          device:
-            Family: ""
-        smtpDescription: email delivered successfully
-        accountID: 117
-        ipID: 123
-        messageType: default
-        subAccountID: 117
-        toName: Gavin
-        ipPoolID: 123
-        fromName: Richard
-        from: richard@piedpiper.com
-        to: gavin@hooli.com
-        submittedAt: 1567512491587205024
       properties:
         eventID:
           example: edhg-123gh-afasdf-124egh
@@ -4280,32 +4156,6 @@ components:
         eventMetadata:
           $ref: '#/components/schemas/EventMetadata'
     EventMetadata:
-      example:
-        smtpDescription: email delivered successfully
-        geo:
-          countryCode: US
-          postalCode: "12345"
-          timeZone: America/Los_Angeles
-          cityID: "123"
-          continentCode: EU
-        os:
-          Major: "10"
-          PatchMinor: "0"
-          Family: Windows
-          Minor: "0"
-          Patch: "0"
-        clickedURL: https://hooli.com
-        trackedIP: 52.34.11.12
-        smtpCode: 200
-        userAgent:
-          Major: "5.0"
-          Family: Mozilla
-          Minor: "0"
-          Patch: "0"
-        rawUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\
-          \ (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
-        device:
-          Family: ""
       properties:
         smtpCode:
           example: 200
@@ -4332,11 +4182,6 @@ components:
             \ like Gecko) Chrome/83.0.4103.116 Safari/537.36"
           type: string
     UserAgent:
-      example:
-        Major: "5.0"
-        Family: Mozilla
-        Minor: "0"
-        Patch: "0"
       properties:
         Family:
           example: Mozilla
@@ -4351,12 +4196,6 @@ components:
           example: "0"
           type: string
     OperatingSystem:
-      example:
-        Major: "10"
-        PatchMinor: "0"
-        Family: Windows
-        Minor: "0"
-        Patch: "0"
       properties:
         Family:
           example: Windows
@@ -4374,19 +4213,11 @@ components:
           example: "0"
           type: string
     Device:
-      example:
-        Family: ""
       properties:
         Family:
           example: ""
           type: string
     GeoLocation:
-      example:
-        countryCode: US
-        postalCode: "12345"
-        timeZone: America/Los_Angeles
-        cityID: "123"
-        continentCode: EU
       properties:
         cityID:
           example: "123"
@@ -4404,78 +4235,6 @@ components:
           example: America/Los_Angeles
           type: string
     EmailMessage:
-      example:
-        headers:
-          X-Campaign-Id: "12345"
-        trackOpens: true
-        customFields:
-          Company: Company Name
-          Email: user@example.com
-        messageID: mjhl-1401-sasdf-129324
-        groups:
-        - welcome
-        - user-onboarding
-        publicIP: 52.34.11.12
-        accountID: 117
-        ipID: 123
-        subAccountID: 117
-        emailType: default
-        replyTo:
-          name: Gavin
-          email: gavin@hooli.com
-        localIP: 127.0.0.1
-        from:
-          name: Richard
-          email: richard@piedpiper.com
-        to:
-        - cc:
-          - customFields:
-              Company: Hooli
-            name: Dinesh
-            email: dinesh@bachmanity.com
-          - customFields:
-              Company: Hooli
-            name: Dinesh
-            email: dinesh@bachmanity.com
-          bcc:
-          - customFields:
-              Company: Hooli
-            name: Jian
-            email: jian@bachmanity.com
-          - customFields:
-              Company: Hooli
-            name: Jian
-            email: jian@bachmanity.com
-          customFields:
-            Company: Hooli
-          name: Gavin
-          email: gavin@hooli.com
-        - cc:
-          - customFields:
-              Company: Hooli
-            name: Dinesh
-            email: dinesh@bachmanity.com
-          - customFields:
-              Company: Hooli
-            name: Dinesh
-            email: dinesh@bachmanity.com
-          bcc:
-          - customFields:
-              Company: Hooli
-            name: Jian
-            email: jian@bachmanity.com
-          - customFields:
-              Company: Hooli
-            name: Jian
-            email: jian@bachmanity.com
-          customFields:
-            Company: Hooli
-          name: Gavin
-          email: gavin@hooli.com
-        submittedAt: 1567512491587205024
-        trackClicks: true
-        webhookEndpoint: https://webhook.example.com/webhook
-        ipPool: transactional-piedpiper
       properties:
         messageID:
           example: mjhl-1401-sasdf-129324
@@ -4748,6 +4507,159 @@ components:
           example: team@piedpiper.com
           format: email
           type: string
+    AutoWarmupPlan:
+      example:
+        mailruWarmupPlan: mailruWarmupPlan
+        attWarmupPlan: attWarmupPlan
+        aolWarmupPlan: aolWarmupPlan
+        icloudWarmupPlan: icloudWarmupPlan
+        mimecastWarmupPlan: mimecastWarmupPlan
+        amazonworkmailWarmupPlan: amazonworkmailWarmupPlan
+        symantecWarmupPlan: symantecWarmupPlan
+        office365WarmupPlan: office365WarmupPlan
+        warmupInterval: 24
+        comcastWarmupPlan: comcastWarmupPlan
+        sophosWarmupPlan: sophosWarmupPlan
+        yahooWarmupPlan: yahooWarmupPlan
+        checkpointWarmupPlan: checkpointWarmupPlan
+        zohobusinessWarmupPlan: zohobusinessWarmupPlan
+        id: 742
+        microsoftWarmupPlan: microsoftWarmupPlan
+        barracudaWarmupPlan: barracudaWarmupPlan
+        fortinetWarmupPlan: fortinetWarmupPlan
+        created: 1761234191727534000
+        trendmicroWarmupPlan: trendmicroWarmupPlan
+        gmxWarmupPlan: gmxWarmupPlan
+        qqWarmupPlan: qqWarmupPlan
+        proofpointWarmupPlan: proofpointWarmupPlan
+        defaultWarmupPlan: defaultWarmupPlan
+        googleworkspaceWarmupPlan: googleworkspaceWarmupPlan
+        name: Default Auto Warmup Plan
+        yandexWarmupPlan: yandexWarmupPlan
+        ciscoironportWarmupPlan: ciscoironportWarmupPlan
+        rackspaceWarmupPlan: rackspaceWarmupPlan
+        gmailWarmupPlan: gmailWarmupPlan
+        zohoWarmupPlan: zohoWarmupPlan
+        updated: 1766535064510659800
+      properties:
+        id:
+          description: Unique ID for the auto-warmup plan
+          example: 742
+          type: integer
+        name:
+          description: Name of the auto-warmup plan
+          example: Default Auto Warmup Plan
+          type: string
+        gmailWarmupPlan:
+          description: Gmail warmup plan configuration in JSON format
+          type: string
+        yahooWarmupPlan:
+          description: Yahoo warmup plan configuration in JSON format
+          type: string
+        aolWarmupPlan:
+          description: AOL warmup plan configuration in JSON format
+          type: string
+        microsoftWarmupPlan:
+          description: Microsoft warmup plan configuration in JSON format
+          type: string
+        comcastWarmupPlan:
+          description: Comcast warmup plan configuration in JSON format
+          type: string
+        yandexWarmupPlan:
+          description: Yandex warmup plan configuration in JSON format
+          type: string
+        gmxWarmupPlan:
+          description: GMX warmup plan configuration in JSON format
+          type: string
+        mailruWarmupPlan:
+          description: Mail.ru warmup plan configuration in JSON format
+          type: string
+        icloudWarmupPlan:
+          description: iCloud warmup plan configuration in JSON format
+          type: string
+        zohoWarmupPlan:
+          description: Zoho warmup plan configuration in JSON format
+          type: string
+        qqWarmupPlan:
+          description: QQ warmup plan configuration in JSON format
+          type: string
+        defaultWarmupPlan:
+          description: Default warmup plan configuration in JSON format
+          type: string
+        attWarmupPlan:
+          description: AT&T warmup plan configuration in JSON format
+          type: string
+        office365WarmupPlan:
+          description: Office365 warmup plan configuration in JSON format
+          type: string
+        googleworkspaceWarmupPlan:
+          description: Google Workspace warmup plan configuration in JSON format
+          type: string
+        proofpointWarmupPlan:
+          description: Proofpoint warmup plan configuration in JSON format
+          type: string
+        mimecastWarmupPlan:
+          description: Mimecast warmup plan configuration in JSON format
+          type: string
+        barracudaWarmupPlan:
+          description: Barracuda warmup plan configuration in JSON format
+          type: string
+        ciscoironportWarmupPlan:
+          description: Cisco IronPort warmup plan configuration in JSON format
+          type: string
+        rackspaceWarmupPlan:
+          description: Rackspace warmup plan configuration in JSON format
+          type: string
+        zohobusinessWarmupPlan:
+          description: Zoho Business warmup plan configuration in JSON format
+          type: string
+        amazonworkmailWarmupPlan:
+          description: Amazon WorkMail warmup plan configuration in JSON format
+          type: string
+        symantecWarmupPlan:
+          description: Symantec warmup plan configuration in JSON format
+          type: string
+        fortinetWarmupPlan:
+          description: Fortinet warmup plan configuration in JSON format
+          type: string
+        sophosWarmupPlan:
+          description: Sophos warmup plan configuration in JSON format
+          type: string
+        trendmicroWarmupPlan:
+          description: Trend Micro warmup plan configuration in JSON format
+          type: string
+        checkpointWarmupPlan:
+          description: Checkpoint warmup plan configuration in JSON format
+          type: string
+        created:
+          description: UNIX epoch nano timestamp when the warmup plan was created
+          example: 1761234191727534000
+          format: int64
+          type: integer
+        updated:
+          description: UNIX epoch nano timestamp when the warmup plan was last updated
+          example: 1766535064510659800
+          format: int64
+          type: integer
+        warmupInterval:
+          description: Warmup interval in hours
+          example: 24
+          type: integer
+    Label:
+      properties:
+        id:
+          description: Unique ID for the label
+          example: 325
+          type: integer
+        name:
+          description: Name of the label
+          example: Free Tier
+          type: string
+        created:
+          description: UNIX epoch nano timestamp when the label was created
+          example: 1685427871489941179
+          format: int64
+          type: integer
     createSuppression_request_hardBounce_inner:
       properties:
         email:
@@ -5044,9 +4956,6 @@ components:
           example: 12
           type: integer
     EmailMessage_from:
-      example:
-        name: Richard
-        email: richard@piedpiper.com
       properties:
         name:
           example: Richard
@@ -5055,9 +4964,6 @@ components:
           example: richard@piedpiper.com
           type: string
     EmailMessage_replyTo:
-      example:
-        name: Gavin
-        email: gavin@hooli.com
       properties:
         name:
           example: Gavin
@@ -5066,11 +4972,6 @@ components:
           example: gavin@hooli.com
           type: string
     EmailMessage_to_inner_cc_inner:
-      example:
-        customFields:
-          Company: Hooli
-        name: Dinesh
-        email: dinesh@bachmanity.com
       properties:
         name:
           example: Dinesh
@@ -5084,11 +4985,6 @@ components:
           example:
             Company: Hooli
     EmailMessage_to_inner_bcc_inner:
-      example:
-        customFields:
-          Company: Hooli
-        name: Jian
-        email: jian@bachmanity.com
       properties:
         name:
           example: Jian
@@ -5102,29 +4998,6 @@ components:
           example:
             Company: Hooli
     EmailMessage_to_inner:
-      example:
-        cc:
-        - customFields:
-            Company: Hooli
-          name: Dinesh
-          email: dinesh@bachmanity.com
-        - customFields:
-            Company: Hooli
-          name: Dinesh
-          email: dinesh@bachmanity.com
-        bcc:
-        - customFields:
-            Company: Hooli
-          name: Jian
-          email: jian@bachmanity.com
-        - customFields:
-            Company: Hooli
-          name: Jian
-          email: jian@bachmanity.com
-        customFields:
-          Company: Hooli
-        name: Gavin
-        email: gavin@hooli.com
       properties:
         name:
           example: Gavin

@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import sendpost_java_sdk.AutoWarmupPlan;
 import sendpost_java_sdk.Domain;
 
 import com.google.gson.Gson;
@@ -49,7 +50,7 @@ import sendpost_java_sdk.JSON;
 /**
  * IP
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-23T15:20:44.786405+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class IP {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -144,7 +145,7 @@ public class IP {
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nonnull
-  private Integer created;
+  private Long created;
 
   public static final String SERIALIZED_NAME_INFRA_CLASSIFICATION = "infraClassification";
   @SerializedName(SERIALIZED_NAME_INFRA_CLASSIFICATION)
@@ -164,7 +165,7 @@ public class IP {
   public static final String SERIALIZED_NAME_AUTO_WARMUP_PLAN = "autoWarmupPlan";
   @SerializedName(SERIALIZED_NAME_AUTO_WARMUP_PLAN)
   @javax.annotation.Nullable
-  private String autoWarmupPlan;
+  private AutoWarmupPlan autoWarmupPlan;
 
   public IP() {
   }
@@ -213,7 +214,7 @@ public class IP {
   }
 
   /**
-   * Details of the system domain associated with the IP
+   * Get systemDomain
    * @return systemDomain
    */
   @javax.annotation.Nullable
@@ -511,7 +512,7 @@ public class IP {
   }
 
 
-  public IP created(@javax.annotation.Nonnull Integer created) {
+  public IP created(@javax.annotation.Nonnull Long created) {
     this.created = created;
     return this;
   }
@@ -521,11 +522,11 @@ public class IP {
    * @return created
    */
   @javax.annotation.Nonnull
-  public Integer getCreated() {
+  public Long getCreated() {
     return created;
   }
 
-  public void setCreated(@javax.annotation.Nonnull Integer created) {
+  public void setCreated(@javax.annotation.Nonnull Long created) {
     this.created = created;
   }
 
@@ -587,21 +588,21 @@ public class IP {
   }
 
 
-  public IP autoWarmupPlan(@javax.annotation.Nullable String autoWarmupPlan) {
+  public IP autoWarmupPlan(@javax.annotation.Nullable AutoWarmupPlan autoWarmupPlan) {
     this.autoWarmupPlan = autoWarmupPlan;
     return this;
   }
 
   /**
-   * The auto-warmup plan associated with the IP
+   * The auto-warmup plan associated with the IP. Can be null if no warmup plan is assigned.
    * @return autoWarmupPlan
    */
   @javax.annotation.Nullable
-  public String getAutoWarmupPlan() {
+  public AutoWarmupPlan getAutoWarmupPlan() {
     return autoWarmupPlan;
   }
 
-  public void setAutoWarmupPlan(@javax.annotation.Nullable String autoWarmupPlan) {
+  public void setAutoWarmupPlan(@javax.annotation.Nullable AutoWarmupPlan autoWarmupPlan) {
     this.autoWarmupPlan = autoWarmupPlan;
   }
 
@@ -757,6 +758,10 @@ public class IP {
       if (!jsonObj.get("publicIP").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `publicIP` to be a primitive type in the JSON string but got `%s`", jsonObj.get("publicIP").toString()));
       }
+      // validate the optional field `systemDomain`
+      if (jsonObj.get("systemDomain") != null && !jsonObj.get("systemDomain").isJsonNull()) {
+        Domain.validateJsonElement(jsonObj.get("systemDomain"));
+      }
       if ((jsonObj.get("reverseDNSHostname") != null && !jsonObj.get("reverseDNSHostname").isJsonNull()) && !jsonObj.get("reverseDNSHostname").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reverseDNSHostname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reverseDNSHostname").toString()));
       }
@@ -802,8 +807,9 @@ public class IP {
       if ((jsonObj.get("infraClassification") != null && !jsonObj.get("infraClassification").isJsonNull()) && !jsonObj.get("infraClassification").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `infraClassification` to be a primitive type in the JSON string but got `%s`", jsonObj.get("infraClassification").toString()));
       }
-      if ((jsonObj.get("autoWarmupPlan") != null && !jsonObj.get("autoWarmupPlan").isJsonNull()) && !jsonObj.get("autoWarmupPlan").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `autoWarmupPlan` to be a primitive type in the JSON string but got `%s`", jsonObj.get("autoWarmupPlan").toString()));
+      // validate the optional field `autoWarmupPlan`
+      if (jsonObj.get("autoWarmupPlan") != null && !jsonObj.get("autoWarmupPlan").isJsonNull()) {
+        AutoWarmupPlan.validateJsonElement(jsonObj.get("autoWarmupPlan"));
       }
   }
 

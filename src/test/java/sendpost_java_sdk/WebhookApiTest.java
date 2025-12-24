@@ -14,8 +14,8 @@
 package sendpost_java_sdk;
 
 import sendpost_java_sdk.ApiException;
+import sendpost_java_sdk.CreateWebhookRequest;
 import sendpost_java_sdk.DeleteWebhookResponse;
-import sendpost_java_sdk.NewWebhook;
 import sendpost_java_sdk.UpdateWebhook;
 import sendpost_java_sdk.Webhook;
 import org.junit.jupiter.api.Disabled;
@@ -35,7 +35,7 @@ public class WebhookApiTest {
     private final WebhookApi api = new WebhookApi();
 
     /**
-     * Create a New Webhook
+     * Create Webhook
      *
      * Create a new webhook by specifying its properties.
      *
@@ -43,13 +43,13 @@ public class WebhookApiTest {
      */
     @Test
     public void createWebhookTest() throws ApiException {
-        NewWebhook newWebhook = null;
-        Webhook response = api.createWebhook(newWebhook);
+        CreateWebhookRequest createWebhookRequest = null;
+        Webhook response = api.createWebhook(createWebhookRequest);
         // TODO: test validations
     }
 
     /**
-     * Delete a Specific Webhook
+     * Delete Webhook
      *
      * Delete a webhook by its ID.
      *
@@ -63,7 +63,7 @@ public class WebhookApiTest {
     }
 
     /**
-     * Get All Webhooks
+     * List Webhooks
      *
      * Retrieves a list of all webhooks, their endpoints, and the events for which they are active.
      *
@@ -79,7 +79,7 @@ public class WebhookApiTest {
     }
 
     /**
-     * Get a Specific Webhook
+     * Get Webhook
      *
      * Retrieves a specific webhook based on its ID.
      *
@@ -93,7 +93,7 @@ public class WebhookApiTest {
     }
 
     /**
-     * Update an Existing Webhook
+     * Update Webhook
      *
      * Update the properties of an existing webhook.
      *

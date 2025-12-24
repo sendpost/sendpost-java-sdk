@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * SMTPAuth
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-23T15:20:44.786405+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class SMTPAuth {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -68,12 +68,12 @@ public class SMTPAuth {
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nullable
-  private Integer created;
+  private Long created;
 
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
   @javax.annotation.Nullable
-  private Integer updated;
+  private Long updated;
 
   public SMTPAuth() {
   }
@@ -135,7 +135,7 @@ public class SMTPAuth {
   }
 
 
-  public SMTPAuth created(@javax.annotation.Nullable Integer created) {
+  public SMTPAuth created(@javax.annotation.Nullable Long created) {
     this.created = created;
     return this;
   }
@@ -145,16 +145,16 @@ public class SMTPAuth {
    * @return created
    */
   @javax.annotation.Nullable
-  public Integer getCreated() {
+  public Long getCreated() {
     return created;
   }
 
-  public void setCreated(@javax.annotation.Nullable Integer created) {
+  public void setCreated(@javax.annotation.Nullable Long created) {
     this.created = created;
   }
 
 
-  public SMTPAuth updated(@javax.annotation.Nullable Integer updated) {
+  public SMTPAuth updated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
     return this;
   }
@@ -164,11 +164,11 @@ public class SMTPAuth {
    * @return updated
    */
   @javax.annotation.Nullable
-  public Integer getUpdated() {
+  public Long getUpdated() {
     return updated;
   }
 
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
+  public void setUpdated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
   }
 

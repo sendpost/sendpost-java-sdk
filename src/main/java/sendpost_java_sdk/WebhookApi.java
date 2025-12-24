@@ -27,8 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import sendpost_java_sdk.CreateWebhookRequest;
 import sendpost_java_sdk.DeleteWebhookResponse;
-import sendpost_java_sdk.NewWebhook;
 import sendpost_java_sdk.UpdateWebhook;
 import sendpost_java_sdk.Webhook;
 
@@ -77,7 +77,7 @@ public class WebhookApi {
 
     /**
      * Build call for createWebhook
-     * @param newWebhook  (required)
+     * @param createWebhookRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -92,7 +92,7 @@ public class WebhookApi {
         <tr><td> 422 </td><td> Unprocessable entity. Invalid request body. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createWebhookCall(@javax.annotation.Nonnull NewWebhook newWebhook, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createWebhookCall(@javax.annotation.Nonnull CreateWebhookRequest createWebhookRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -106,7 +106,7 @@ public class WebhookApi {
             basePath = null;
         }
 
-        Object localVarPostBody = newWebhook;
+        Object localVarPostBody = createWebhookRequest;
 
         // create path and map variables
         String localVarPath = "/account/webhook";
@@ -138,20 +138,20 @@ public class WebhookApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createWebhookValidateBeforeCall(@javax.annotation.Nonnull NewWebhook newWebhook, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'newWebhook' is set
-        if (newWebhook == null) {
-            throw new ApiException("Missing the required parameter 'newWebhook' when calling createWebhook(Async)");
+    private okhttp3.Call createWebhookValidateBeforeCall(@javax.annotation.Nonnull CreateWebhookRequest createWebhookRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'createWebhookRequest' is set
+        if (createWebhookRequest == null) {
+            throw new ApiException("Missing the required parameter 'createWebhookRequest' when calling createWebhook(Async)");
         }
 
-        return createWebhookCall(newWebhook, _callback);
+        return createWebhookCall(createWebhookRequest, _callback);
 
     }
 
     /**
      * Create Webhook
      * Create a new webhook by specifying its properties.
-     * @param newWebhook  (required)
+     * @param createWebhookRequest  (required)
      * @return Webhook
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -165,15 +165,15 @@ public class WebhookApi {
         <tr><td> 422 </td><td> Unprocessable entity. Invalid request body. </td><td>  -  </td></tr>
      </table>
      */
-    public Webhook createWebhook(@javax.annotation.Nonnull NewWebhook newWebhook) throws ApiException {
-        ApiResponse<Webhook> localVarResp = createWebhookWithHttpInfo(newWebhook);
+    public Webhook createWebhook(@javax.annotation.Nonnull CreateWebhookRequest createWebhookRequest) throws ApiException {
+        ApiResponse<Webhook> localVarResp = createWebhookWithHttpInfo(createWebhookRequest);
         return localVarResp.getData();
     }
 
     /**
      * Create Webhook
      * Create a new webhook by specifying its properties.
-     * @param newWebhook  (required)
+     * @param createWebhookRequest  (required)
      * @return ApiResponse&lt;Webhook&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -187,8 +187,8 @@ public class WebhookApi {
         <tr><td> 422 </td><td> Unprocessable entity. Invalid request body. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Webhook> createWebhookWithHttpInfo(@javax.annotation.Nonnull NewWebhook newWebhook) throws ApiException {
-        okhttp3.Call localVarCall = createWebhookValidateBeforeCall(newWebhook, null);
+    public ApiResponse<Webhook> createWebhookWithHttpInfo(@javax.annotation.Nonnull CreateWebhookRequest createWebhookRequest) throws ApiException {
+        okhttp3.Call localVarCall = createWebhookValidateBeforeCall(createWebhookRequest, null);
         Type localVarReturnType = new TypeToken<Webhook>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -196,7 +196,7 @@ public class WebhookApi {
     /**
      * Create Webhook (asynchronously)
      * Create a new webhook by specifying its properties.
-     * @param newWebhook  (required)
+     * @param createWebhookRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -211,9 +211,9 @@ public class WebhookApi {
         <tr><td> 422 </td><td> Unprocessable entity. Invalid request body. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createWebhookAsync(@javax.annotation.Nonnull NewWebhook newWebhook, final ApiCallback<Webhook> _callback) throws ApiException {
+    public okhttp3.Call createWebhookAsync(@javax.annotation.Nonnull CreateWebhookRequest createWebhookRequest, final ApiCallback<Webhook> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createWebhookValidateBeforeCall(newWebhook, _callback);
+        okhttp3.Call localVarCall = createWebhookValidateBeforeCall(createWebhookRequest, _callback);
         Type localVarReturnType = new TypeToken<Webhook>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

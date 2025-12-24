@@ -52,7 +52,7 @@ import sendpost_java_sdk.JSON;
 /**
  * IPPool
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-23T15:20:44.786405+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class IPPool {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -67,7 +67,7 @@ public class IPPool {
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nullable
-  private Integer created;
+  private Long created;
 
   public static final String SERIALIZED_NAME_IPS = "ips";
   @SerializedName(SERIALIZED_NAME_IPS)
@@ -160,7 +160,7 @@ public class IPPool {
   }
 
 
-  public IPPool created(@javax.annotation.Nullable Integer created) {
+  public IPPool created(@javax.annotation.Nullable Long created) {
     this.created = created;
     return this;
   }
@@ -170,11 +170,11 @@ public class IPPool {
    * @return created
    */
   @javax.annotation.Nullable
-  public Integer getCreated() {
+  public Long getCreated() {
     return created;
   }
 
-  public void setCreated(@javax.annotation.Nullable Integer created) {
+  public void setCreated(@javax.annotation.Nullable Long created) {
     this.created = created;
   }
 

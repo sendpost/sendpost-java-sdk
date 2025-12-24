@@ -21,7 +21,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import sendpost_java_sdk.Member;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,7 +50,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Webhook
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-23T15:20:44.786405+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Webhook {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -139,12 +140,12 @@ public class Webhook {
   public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
   @javax.annotation.Nullable
-  private Member createdBy;
+  private Map<String, Object> createdBy = new HashMap<>();
 
   public static final String SERIALIZED_NAME_UPDATED_BY = "updated_by";
   @SerializedName(SERIALIZED_NAME_UPDATED_BY)
   @javax.annotation.Nullable
-  private Member updatedBy;
+  private Map<String, Object> updatedBy = new HashMap<>();
 
   public Webhook() {
   }
@@ -472,8 +473,16 @@ public class Webhook {
   }
 
 
-  public Webhook createdBy(@javax.annotation.Nullable Member createdBy) {
+  public Webhook createdBy(@javax.annotation.Nullable Map<String, Object> createdBy) {
     this.createdBy = createdBy;
+    return this;
+  }
+
+  public Webhook putCreatedByItem(String key, Object createdByItem) {
+    if (this.createdBy == null) {
+      this.createdBy = new HashMap<>();
+    }
+    this.createdBy.put(key, createdByItem);
     return this;
   }
 
@@ -482,17 +491,25 @@ public class Webhook {
    * @return createdBy
    */
   @javax.annotation.Nullable
-  public Member getCreatedBy() {
+  public Map<String, Object> getCreatedBy() {
     return createdBy;
   }
 
-  public void setCreatedBy(@javax.annotation.Nullable Member createdBy) {
+  public void setCreatedBy(@javax.annotation.Nullable Map<String, Object> createdBy) {
     this.createdBy = createdBy;
   }
 
 
-  public Webhook updatedBy(@javax.annotation.Nullable Member updatedBy) {
+  public Webhook updatedBy(@javax.annotation.Nullable Map<String, Object> updatedBy) {
     this.updatedBy = updatedBy;
+    return this;
+  }
+
+  public Webhook putUpdatedByItem(String key, Object updatedByItem) {
+    if (this.updatedBy == null) {
+      this.updatedBy = new HashMap<>();
+    }
+    this.updatedBy.put(key, updatedByItem);
     return this;
   }
 
@@ -501,11 +518,11 @@ public class Webhook {
    * @return updatedBy
    */
   @javax.annotation.Nullable
-  public Member getUpdatedBy() {
+  public Map<String, Object> getUpdatedBy() {
     return updatedBy;
   }
 
-  public void setUpdatedBy(@javax.annotation.Nullable Member updatedBy) {
+  public void setUpdatedBy(@javax.annotation.Nullable Map<String, Object> updatedBy) {
     this.updatedBy = updatedBy;
   }
 
