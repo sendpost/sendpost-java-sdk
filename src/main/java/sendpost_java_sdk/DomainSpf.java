@@ -46,58 +46,82 @@ import java.util.Set;
 import sendpost_java_sdk.JSON;
 
 /**
- * DeleteResponse
+ * SPF record host, type and value
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-26T18:17:45.714434+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
-public class DeleteResponse {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+public class DomainSpf {
+  public static final String SERIALIZED_NAME_HOST = "host";
+  @SerializedName(SERIALIZED_NAME_HOST)
   @javax.annotation.Nullable
-  private Integer id;
+  private String host;
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
   @javax.annotation.Nullable
-  private String message;
+  private String type;
 
-  public DeleteResponse() {
+  public static final String SERIALIZED_NAME_TEXT_VALUE = "textValue";
+  @SerializedName(SERIALIZED_NAME_TEXT_VALUE)
+  @javax.annotation.Nullable
+  private String textValue;
+
+  public DomainSpf() {
   }
 
-  public DeleteResponse id(@javax.annotation.Nullable Integer id) {
-    this.id = id;
+  public DomainSpf host(@javax.annotation.Nullable String host) {
+    this.host = host;
     return this;
   }
 
   /**
-   * ID of the deleted domain.
-   * @return id
+   * Get host
+   * @return host
    */
   @javax.annotation.Nullable
-  public Integer getId() {
-    return id;
+  public String getHost() {
+    return host;
   }
 
-  public void setId(@javax.annotation.Nullable Integer id) {
-    this.id = id;
+  public void setHost(@javax.annotation.Nullable String host) {
+    this.host = host;
   }
 
 
-  public DeleteResponse message(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public DomainSpf type(@javax.annotation.Nullable String type) {
+    this.type = type;
     return this;
   }
 
   /**
-   * Success message.
-   * @return message
+   * Get type
+   * @return type
    */
   @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
+  public String getType() {
+    return type;
   }
 
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public void setType(@javax.annotation.Nullable String type) {
+    this.type = type;
+  }
+
+
+  public DomainSpf textValue(@javax.annotation.Nullable String textValue) {
+    this.textValue = textValue;
+    return this;
+  }
+
+  /**
+   * Get textValue
+   * @return textValue
+   */
+  @javax.annotation.Nullable
+  public String getTextValue() {
+    return textValue;
+  }
+
+  public void setTextValue(@javax.annotation.Nullable String textValue) {
+    this.textValue = textValue;
   }
 
 
@@ -110,22 +134,24 @@ public class DeleteResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeleteResponse deleteResponse = (DeleteResponse) o;
-    return Objects.equals(this.id, deleteResponse.id) &&
-        Objects.equals(this.message, deleteResponse.message);
+    DomainSpf domainSpf = (DomainSpf) o;
+    return Objects.equals(this.host, domainSpf.host) &&
+        Objects.equals(this.type, domainSpf.type) &&
+        Objects.equals(this.textValue, domainSpf.textValue);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, message);
+    return Objects.hash(host, type, textValue);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DeleteResponse {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("class DomainSpf {\n");
+    sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    textValue: ").append(toIndentedString(textValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -148,8 +174,9 @@ public class DeleteResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("message");
+    openapiFields.add("host");
+    openapiFields.add("type");
+    openapiFields.add("textValue");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -159,25 +186,31 @@ public class DeleteResponse {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to DeleteResponse
+   * @throws IOException if the JSON Element is invalid with respect to DomainSpf
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!DeleteResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DeleteResponse is not found in the empty JSON string", DeleteResponse.openapiRequiredFields.toString()));
+        if (!DomainSpf.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DomainSpf is not found in the empty JSON string", DomainSpf.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!DeleteResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeleteResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!DomainSpf.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DomainSpf` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      if ((jsonObj.get("host") != null && !jsonObj.get("host").isJsonNull()) && !jsonObj.get("host").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("textValue") != null && !jsonObj.get("textValue").isJsonNull()) && !jsonObj.get("textValue").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `textValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("textValue").toString()));
       }
   }
 
@@ -185,22 +218,22 @@ public class DeleteResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DeleteResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DeleteResponse' and its subtypes
+       if (!DomainSpf.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DomainSpf' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DeleteResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DeleteResponse.class));
+       final TypeAdapter<DomainSpf> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DomainSpf.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<DeleteResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<DomainSpf>() {
            @Override
-           public void write(JsonWriter out, DeleteResponse value) throws IOException {
+           public void write(JsonWriter out, DomainSpf value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public DeleteResponse read(JsonReader in) throws IOException {
+           public DomainSpf read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -211,18 +244,18 @@ public class DeleteResponse {
   }
 
   /**
-   * Create an instance of DeleteResponse given an JSON string
+   * Create an instance of DomainSpf given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of DeleteResponse
-   * @throws IOException if the JSON string is invalid with respect to DeleteResponse
+   * @return An instance of DomainSpf
+   * @throws IOException if the JSON string is invalid with respect to DomainSpf
    */
-  public static DeleteResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DeleteResponse.class);
+  public static DomainSpf fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DomainSpf.class);
   }
 
   /**
-   * Convert an instance of DeleteResponse to an JSON string
+   * Convert an instance of DomainSpf to an JSON string
    *
    * @return JSON string
    */

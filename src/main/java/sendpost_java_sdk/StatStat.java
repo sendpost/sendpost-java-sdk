@@ -46,58 +46,274 @@ import java.util.Set;
 import sendpost_java_sdk.JSON;
 
 /**
- * DeleteResponse
+ * Statistics data for the date
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-26T18:17:45.714434+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
-public class DeleteResponse {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+public class StatStat {
+  public static final String SERIALIZED_NAME_PROCESSED = "processed";
+  @SerializedName(SERIALIZED_NAME_PROCESSED)
   @javax.annotation.Nullable
-  private Integer id;
+  private Integer processed;
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  public static final String SERIALIZED_NAME_SENT = "sent";
+  @SerializedName(SERIALIZED_NAME_SENT)
   @javax.annotation.Nullable
-  private String message;
+  private Integer sent;
 
-  public DeleteResponse() {
+  public static final String SERIALIZED_NAME_DELIVERED = "delivered";
+  @SerializedName(SERIALIZED_NAME_DELIVERED)
+  @javax.annotation.Nullable
+  private Integer delivered;
+
+  public static final String SERIALIZED_NAME_DROPPED = "dropped";
+  @SerializedName(SERIALIZED_NAME_DROPPED)
+  @javax.annotation.Nullable
+  private Integer dropped;
+
+  public static final String SERIALIZED_NAME_SMTP_DROPPED = "smtpDropped";
+  @SerializedName(SERIALIZED_NAME_SMTP_DROPPED)
+  @javax.annotation.Nullable
+  private Integer smtpDropped;
+
+  public static final String SERIALIZED_NAME_HARD_BOUNCED = "hardBounced";
+  @SerializedName(SERIALIZED_NAME_HARD_BOUNCED)
+  @javax.annotation.Nullable
+  private Integer hardBounced;
+
+  public static final String SERIALIZED_NAME_SOFT_BOUNCED = "softBounced";
+  @SerializedName(SERIALIZED_NAME_SOFT_BOUNCED)
+  @javax.annotation.Nullable
+  private Integer softBounced;
+
+  public static final String SERIALIZED_NAME_OPENED = "opened";
+  @SerializedName(SERIALIZED_NAME_OPENED)
+  @javax.annotation.Nullable
+  private Integer opened;
+
+  public static final String SERIALIZED_NAME_CLICKED = "clicked";
+  @SerializedName(SERIALIZED_NAME_CLICKED)
+  @javax.annotation.Nullable
+  private Integer clicked;
+
+  public static final String SERIALIZED_NAME_UNSUBSCRIBED = "unsubscribed";
+  @SerializedName(SERIALIZED_NAME_UNSUBSCRIBED)
+  @javax.annotation.Nullable
+  private Integer unsubscribed;
+
+  public static final String SERIALIZED_NAME_SPAM = "spam";
+  @SerializedName(SERIALIZED_NAME_SPAM)
+  @javax.annotation.Nullable
+  private Integer spam;
+
+  public StatStat() {
   }
 
-  public DeleteResponse id(@javax.annotation.Nullable Integer id) {
-    this.id = id;
+  public StatStat processed(@javax.annotation.Nullable Integer processed) {
+    this.processed = processed;
     return this;
   }
 
   /**
-   * ID of the deleted domain.
-   * @return id
+   * Number of emails accepted by SendPost API.
+   * @return processed
    */
   @javax.annotation.Nullable
-  public Integer getId() {
-    return id;
+  public Integer getProcessed() {
+    return processed;
   }
 
-  public void setId(@javax.annotation.Nullable Integer id) {
-    this.id = id;
+  public void setProcessed(@javax.annotation.Nullable Integer processed) {
+    this.processed = processed;
   }
 
 
-  public DeleteResponse message(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public StatStat sent(@javax.annotation.Nullable Integer sent) {
+    this.sent = sent;
     return this;
   }
 
   /**
-   * Success message.
-   * @return message
+   * Number of emails sent.
+   * @return sent
    */
   @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
+  public Integer getSent() {
+    return sent;
   }
 
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public void setSent(@javax.annotation.Nullable Integer sent) {
+    this.sent = sent;
+  }
+
+
+  public StatStat delivered(@javax.annotation.Nullable Integer delivered) {
+    this.delivered = delivered;
+    return this;
+  }
+
+  /**
+   * Number of emails we were able to successfully deliver at SMTP without encountering any error
+   * @return delivered
+   */
+  @javax.annotation.Nullable
+  public Integer getDelivered() {
+    return delivered;
+  }
+
+  public void setDelivered(@javax.annotation.Nullable Integer delivered) {
+    this.delivered = delivered;
+  }
+
+
+  public StatStat dropped(@javax.annotation.Nullable Integer dropped) {
+    this.dropped = dropped;
+    return this;
+  }
+
+  /**
+   * Number of emails drop without attempting to deliver either because the email is invalid or email in in existing suppression list
+   * @return dropped
+   */
+  @javax.annotation.Nullable
+  public Integer getDropped() {
+    return dropped;
+  }
+
+  public void setDropped(@javax.annotation.Nullable Integer dropped) {
+    this.dropped = dropped;
+  }
+
+
+  public StatStat smtpDropped(@javax.annotation.Nullable Integer smtpDropped) {
+    this.smtpDropped = smtpDropped;
+    return this;
+  }
+
+  /**
+   * Number of emails dropped by SMTP.
+   * @return smtpDropped
+   */
+  @javax.annotation.Nullable
+  public Integer getSmtpDropped() {
+    return smtpDropped;
+  }
+
+  public void setSmtpDropped(@javax.annotation.Nullable Integer smtpDropped) {
+    this.smtpDropped = smtpDropped;
+  }
+
+
+  public StatStat hardBounced(@javax.annotation.Nullable Integer hardBounced) {
+    this.hardBounced = hardBounced;
+    return this;
+  }
+
+  /**
+   * Number of emails where we got SMTP hard bounce error code by the recipient mail provider
+   * @return hardBounced
+   */
+  @javax.annotation.Nullable
+  public Integer getHardBounced() {
+    return hardBounced;
+  }
+
+  public void setHardBounced(@javax.annotation.Nullable Integer hardBounced) {
+    this.hardBounced = hardBounced;
+  }
+
+
+  public StatStat softBounced(@javax.annotation.Nullable Integer softBounced) {
+    this.softBounced = softBounced;
+    return this;
+  }
+
+  /**
+   * Number of emails where we got temporary soft bounce error by the recipent mail provider. Soft bounced emails are retried upto 5 times over 24 hour period before marking them as hardBounced.
+   * @return softBounced
+   */
+  @javax.annotation.Nullable
+  public Integer getSoftBounced() {
+    return softBounced;
+  }
+
+  public void setSoftBounced(@javax.annotation.Nullable Integer softBounced) {
+    this.softBounced = softBounced;
+  }
+
+
+  public StatStat opened(@javax.annotation.Nullable Integer opened) {
+    this.opened = opened;
+    return this;
+  }
+
+  /**
+   * Number of emails opened by recipients
+   * @return opened
+   */
+  @javax.annotation.Nullable
+  public Integer getOpened() {
+    return opened;
+  }
+
+  public void setOpened(@javax.annotation.Nullable Integer opened) {
+    this.opened = opened;
+  }
+
+
+  public StatStat clicked(@javax.annotation.Nullable Integer clicked) {
+    this.clicked = clicked;
+    return this;
+  }
+
+  /**
+   * Number of email links clicked by recipients
+   * @return clicked
+   */
+  @javax.annotation.Nullable
+  public Integer getClicked() {
+    return clicked;
+  }
+
+  public void setClicked(@javax.annotation.Nullable Integer clicked) {
+    this.clicked = clicked;
+  }
+
+
+  public StatStat unsubscribed(@javax.annotation.Nullable Integer unsubscribed) {
+    this.unsubscribed = unsubscribed;
+    return this;
+  }
+
+  /**
+   * Number of email recipients who unsubscribed from receiving further emails
+   * @return unsubscribed
+   */
+  @javax.annotation.Nullable
+  public Integer getUnsubscribed() {
+    return unsubscribed;
+  }
+
+  public void setUnsubscribed(@javax.annotation.Nullable Integer unsubscribed) {
+    this.unsubscribed = unsubscribed;
+  }
+
+
+  public StatStat spam(@javax.annotation.Nullable Integer spam) {
+    this.spam = spam;
+    return this;
+  }
+
+  /**
+   * Number of email recipients who marked emails as spam
+   * @return spam
+   */
+  @javax.annotation.Nullable
+  public Integer getSpam() {
+    return spam;
+  }
+
+  public void setSpam(@javax.annotation.Nullable Integer spam) {
+    this.spam = spam;
   }
 
 
@@ -110,22 +326,40 @@ public class DeleteResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeleteResponse deleteResponse = (DeleteResponse) o;
-    return Objects.equals(this.id, deleteResponse.id) &&
-        Objects.equals(this.message, deleteResponse.message);
+    StatStat statStat = (StatStat) o;
+    return Objects.equals(this.processed, statStat.processed) &&
+        Objects.equals(this.sent, statStat.sent) &&
+        Objects.equals(this.delivered, statStat.delivered) &&
+        Objects.equals(this.dropped, statStat.dropped) &&
+        Objects.equals(this.smtpDropped, statStat.smtpDropped) &&
+        Objects.equals(this.hardBounced, statStat.hardBounced) &&
+        Objects.equals(this.softBounced, statStat.softBounced) &&
+        Objects.equals(this.opened, statStat.opened) &&
+        Objects.equals(this.clicked, statStat.clicked) &&
+        Objects.equals(this.unsubscribed, statStat.unsubscribed) &&
+        Objects.equals(this.spam, statStat.spam);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, message);
+    return Objects.hash(processed, sent, delivered, dropped, smtpDropped, hardBounced, softBounced, opened, clicked, unsubscribed, spam);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DeleteResponse {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("class StatStat {\n");
+    sb.append("    processed: ").append(toIndentedString(processed)).append("\n");
+    sb.append("    sent: ").append(toIndentedString(sent)).append("\n");
+    sb.append("    delivered: ").append(toIndentedString(delivered)).append("\n");
+    sb.append("    dropped: ").append(toIndentedString(dropped)).append("\n");
+    sb.append("    smtpDropped: ").append(toIndentedString(smtpDropped)).append("\n");
+    sb.append("    hardBounced: ").append(toIndentedString(hardBounced)).append("\n");
+    sb.append("    softBounced: ").append(toIndentedString(softBounced)).append("\n");
+    sb.append("    opened: ").append(toIndentedString(opened)).append("\n");
+    sb.append("    clicked: ").append(toIndentedString(clicked)).append("\n");
+    sb.append("    unsubscribed: ").append(toIndentedString(unsubscribed)).append("\n");
+    sb.append("    spam: ").append(toIndentedString(spam)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -148,8 +382,17 @@ public class DeleteResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("message");
+    openapiFields.add("processed");
+    openapiFields.add("sent");
+    openapiFields.add("delivered");
+    openapiFields.add("dropped");
+    openapiFields.add("smtpDropped");
+    openapiFields.add("hardBounced");
+    openapiFields.add("softBounced");
+    openapiFields.add("opened");
+    openapiFields.add("clicked");
+    openapiFields.add("unsubscribed");
+    openapiFields.add("spam");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -159,48 +402,45 @@ public class DeleteResponse {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to DeleteResponse
+   * @throws IOException if the JSON Element is invalid with respect to StatStat
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!DeleteResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DeleteResponse is not found in the empty JSON string", DeleteResponse.openapiRequiredFields.toString()));
+        if (!StatStat.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in StatStat is not found in the empty JSON string", StatStat.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!DeleteResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeleteResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!StatStat.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `StatStat` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DeleteResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DeleteResponse' and its subtypes
+       if (!StatStat.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'StatStat' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DeleteResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DeleteResponse.class));
+       final TypeAdapter<StatStat> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(StatStat.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<DeleteResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<StatStat>() {
            @Override
-           public void write(JsonWriter out, DeleteResponse value) throws IOException {
+           public void write(JsonWriter out, StatStat value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public DeleteResponse read(JsonReader in) throws IOException {
+           public StatStat read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -211,18 +451,18 @@ public class DeleteResponse {
   }
 
   /**
-   * Create an instance of DeleteResponse given an JSON string
+   * Create an instance of StatStat given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of DeleteResponse
-   * @throws IOException if the JSON string is invalid with respect to DeleteResponse
+   * @return An instance of StatStat
+   * @throws IOException if the JSON string is invalid with respect to StatStat
    */
-  public static DeleteResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DeleteResponse.class);
+  public static StatStat fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, StatStat.class);
   }
 
   /**
-   * Convert an instance of DeleteResponse to an JSON string
+   * Convert an instance of StatStat to an JSON string
    *
    * @return JSON string
    */

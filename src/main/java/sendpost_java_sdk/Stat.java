@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Arrays;
-import sendpost_java_sdk.StatStats;
+import sendpost_java_sdk.StatStat;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,17 +50,17 @@ import sendpost_java_sdk.JSON;
 /**
  * Stat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-26T18:17:45.714434+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Stat {
   public static final String SERIALIZED_NAME_DATE = "date";
   @SerializedName(SERIALIZED_NAME_DATE)
   @javax.annotation.Nullable
   private LocalDate date;
 
-  public static final String SERIALIZED_NAME_STATS = "stats";
-  @SerializedName(SERIALIZED_NAME_STATS)
+  public static final String SERIALIZED_NAME_STAT = "stat";
+  @SerializedName(SERIALIZED_NAME_STAT)
   @javax.annotation.Nullable
-  private StatStats stats;
+  private StatStat stat;
 
   public Stat() {
   }
@@ -84,22 +84,22 @@ public class Stat {
   }
 
 
-  public Stat stats(@javax.annotation.Nullable StatStats stats) {
-    this.stats = stats;
+  public Stat stat(@javax.annotation.Nullable StatStat stat) {
+    this.stat = stat;
     return this;
   }
 
   /**
-   * Get stats
-   * @return stats
+   * Get stat
+   * @return stat
    */
   @javax.annotation.Nullable
-  public StatStats getStats() {
-    return stats;
+  public StatStat getStat() {
+    return stat;
   }
 
-  public void setStats(@javax.annotation.Nullable StatStats stats) {
-    this.stats = stats;
+  public void setStat(@javax.annotation.Nullable StatStat stat) {
+    this.stat = stat;
   }
 
 
@@ -114,12 +114,12 @@ public class Stat {
     }
     Stat stat = (Stat) o;
     return Objects.equals(this.date, stat.date) &&
-        Objects.equals(this.stats, stat.stats);
+        Objects.equals(this.stat, stat.stat);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, stats);
+    return Objects.hash(date, stat);
   }
 
   @Override
@@ -127,7 +127,7 @@ public class Stat {
     StringBuilder sb = new StringBuilder();
     sb.append("class Stat {\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    stats: ").append(toIndentedString(stats)).append("\n");
+    sb.append("    stat: ").append(toIndentedString(stat)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -151,7 +151,7 @@ public class Stat {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("date");
-    openapiFields.add("stats");
+    openapiFields.add("stat");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -178,9 +178,9 @@ public class Stat {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `stats`
-      if (jsonObj.get("stats") != null && !jsonObj.get("stats").isJsonNull()) {
-        StatStats.validateJsonElement(jsonObj.get("stats"));
+      // validate the optional field `stat`
+      if (jsonObj.get("stat") != null && !jsonObj.get("stat").isJsonNull()) {
+        StatStat.validateJsonElement(jsonObj.get("stat"));
       }
   }
 

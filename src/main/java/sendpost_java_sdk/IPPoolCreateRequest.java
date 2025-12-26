@@ -51,7 +51,7 @@ import sendpost_java_sdk.JSON;
 /**
  * IPPoolCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-26T18:17:45.714434+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class IPPoolCreateRequest {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -82,6 +82,21 @@ public class IPPoolCreateRequest {
   @SerializedName(SERIALIZED_NAME_OVERFLOW_POOL)
   @javax.annotation.Nullable
   private Boolean overflowPool;
+
+  public static final String SERIALIZED_NAME_WARMUP_INTERVAL = "warmupInterval";
+  @SerializedName(SERIALIZED_NAME_WARMUP_INTERVAL)
+  @javax.annotation.Nullable
+  private Integer warmupInterval;
+
+  public static final String SERIALIZED_NAME_OVERFLOW_STRATEGY = "overflowStrategy";
+  @SerializedName(SERIALIZED_NAME_OVERFLOW_STRATEGY)
+  @javax.annotation.Nullable
+  private Integer overflowStrategy;
+
+  public static final String SERIALIZED_NAME_OVERFLOW_POOL_NAME = "overflowPoolName";
+  @SerializedName(SERIALIZED_NAME_OVERFLOW_POOL_NAME)
+  @javax.annotation.Nullable
+  private String overflowPoolName;
 
   public IPPoolCreateRequest() {
   }
@@ -216,6 +231,63 @@ public class IPPoolCreateRequest {
   }
 
 
+  public IPPoolCreateRequest warmupInterval(@javax.annotation.Nullable Integer warmupInterval) {
+    this.warmupInterval = warmupInterval;
+    return this;
+  }
+
+  /**
+   * Warmup interval in hours. Must be greater than 0.
+   * @return warmupInterval
+   */
+  @javax.annotation.Nullable
+  public Integer getWarmupInterval() {
+    return warmupInterval;
+  }
+
+  public void setWarmupInterval(@javax.annotation.Nullable Integer warmupInterval) {
+    this.warmupInterval = warmupInterval;
+  }
+
+
+  public IPPoolCreateRequest overflowStrategy(@javax.annotation.Nullable Integer overflowStrategy) {
+    this.overflowStrategy = overflowStrategy;
+    return this;
+  }
+
+  /**
+   * Overflow strategy (0 &#x3D; None, 1 &#x3D; Use overflow pool)
+   * @return overflowStrategy
+   */
+  @javax.annotation.Nullable
+  public Integer getOverflowStrategy() {
+    return overflowStrategy;
+  }
+
+  public void setOverflowStrategy(@javax.annotation.Nullable Integer overflowStrategy) {
+    this.overflowStrategy = overflowStrategy;
+  }
+
+
+  public IPPoolCreateRequest overflowPoolName(@javax.annotation.Nullable String overflowPoolName) {
+    this.overflowPoolName = overflowPoolName;
+    return this;
+  }
+
+  /**
+   * Name of the overflow pool (required if overflowStrategy is 1)
+   * @return overflowPoolName
+   */
+  @javax.annotation.Nullable
+  public String getOverflowPoolName() {
+    return overflowPoolName;
+  }
+
+  public void setOverflowPoolName(@javax.annotation.Nullable String overflowPoolName) {
+    this.overflowPoolName = overflowPoolName;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -231,12 +303,15 @@ public class IPPoolCreateRequest {
         Objects.equals(this.tpsps, ipPoolCreateRequest.tpsps) &&
         Objects.equals(this.routingStrategy, ipPoolCreateRequest.routingStrategy) &&
         Objects.equals(this.routingMetaData, ipPoolCreateRequest.routingMetaData) &&
-        Objects.equals(this.overflowPool, ipPoolCreateRequest.overflowPool);
+        Objects.equals(this.overflowPool, ipPoolCreateRequest.overflowPool) &&
+        Objects.equals(this.warmupInterval, ipPoolCreateRequest.warmupInterval) &&
+        Objects.equals(this.overflowStrategy, ipPoolCreateRequest.overflowStrategy) &&
+        Objects.equals(this.overflowPoolName, ipPoolCreateRequest.overflowPoolName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, ips, tpsps, routingStrategy, routingMetaData, overflowPool);
+    return Objects.hash(name, ips, tpsps, routingStrategy, routingMetaData, overflowPool, warmupInterval, overflowStrategy, overflowPoolName);
   }
 
   @Override
@@ -249,6 +324,9 @@ public class IPPoolCreateRequest {
     sb.append("    routingStrategy: ").append(toIndentedString(routingStrategy)).append("\n");
     sb.append("    routingMetaData: ").append(toIndentedString(routingMetaData)).append("\n");
     sb.append("    overflowPool: ").append(toIndentedString(overflowPool)).append("\n");
+    sb.append("    warmupInterval: ").append(toIndentedString(warmupInterval)).append("\n");
+    sb.append("    overflowStrategy: ").append(toIndentedString(overflowStrategy)).append("\n");
+    sb.append("    overflowPoolName: ").append(toIndentedString(overflowPoolName)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -277,6 +355,9 @@ public class IPPoolCreateRequest {
     openapiFields.add("routingStrategy");
     openapiFields.add("routingMetaData");
     openapiFields.add("overflowPool");
+    openapiFields.add("warmupInterval");
+    openapiFields.add("overflowStrategy");
+    openapiFields.add("overflowPoolName");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -326,6 +407,9 @@ public class IPPoolCreateRequest {
       }
       if ((jsonObj.get("routingMetaData") != null && !jsonObj.get("routingMetaData").isJsonNull()) && !jsonObj.get("routingMetaData").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `routingMetaData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("routingMetaData").toString()));
+      }
+      if ((jsonObj.get("overflowPoolName") != null && !jsonObj.get("overflowPoolName").isJsonNull()) && !jsonObj.get("overflowPoolName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `overflowPoolName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("overflowPoolName").toString()));
       }
   }
 

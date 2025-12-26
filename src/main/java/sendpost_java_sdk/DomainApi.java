@@ -479,7 +479,7 @@ public class DomainApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Successful response </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call subaccountDomainPostCall(@javax.annotation.Nonnull CreateDomainRequest createDomainRequest, final ApiCallback _callback) throws ApiException {
@@ -548,7 +548,7 @@ public class DomainApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Successful response </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
      </table>
      */
     public Domain subaccountDomainPost(@javax.annotation.Nonnull CreateDomainRequest createDomainRequest) throws ApiException {
@@ -566,7 +566,7 @@ public class DomainApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Successful response </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Domain> subaccountDomainPostWithHttpInfo(@javax.annotation.Nonnull CreateDomainRequest createDomainRequest) throws ApiException {
@@ -586,7 +586,7 @@ public class DomainApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Successful response </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call subaccountDomainPostAsync(@javax.annotation.Nonnull CreateDomainRequest createDomainRequest, final ApiCallback<Domain> _callback) throws ApiException {

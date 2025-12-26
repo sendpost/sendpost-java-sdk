@@ -52,7 +52,7 @@ import sendpost_java_sdk.JSON;
 /**
  * IPPool
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-26T18:17:45.714434+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class IPPool {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -63,6 +63,11 @@ public class IPPool {
   @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
   private String name;
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
+  private Integer type;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -78,6 +83,11 @@ public class IPPool {
   @SerializedName(SERIALIZED_NAME_THIRD_PARTY_SENDING_PROVIDERS)
   @javax.annotation.Nullable
   private List<ThirdPartySendingProvider> thirdPartySendingProviders = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_TO_ACCOUNT_I_P_POOLS = "toAccountIPPools";
+  @SerializedName(SERIALIZED_NAME_TO_ACCOUNT_I_P_POOLS)
+  @javax.annotation.Nullable
+  private List<IPPool> toAccountIPPools = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ROUTING_STRATEGY = "routingStrategy";
   @SerializedName(SERIALIZED_NAME_ROUTING_STRATEGY)
@@ -160,6 +170,25 @@ public class IPPool {
   }
 
 
+  public IPPool type(@javax.annotation.Nullable Integer type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Type of IP pool (0 &#x3D; Shared, 1 &#x3D; Dedicated)
+   * @return type
+   */
+  @javax.annotation.Nullable
+  public Integer getType() {
+    return type;
+  }
+
+  public void setType(@javax.annotation.Nullable Integer type) {
+    this.type = type;
+  }
+
+
   public IPPool created(@javax.annotation.Nullable Long created) {
     this.created = created;
     return this;
@@ -230,6 +259,33 @@ public class IPPool {
 
   public void setThirdPartySendingProviders(@javax.annotation.Nullable List<ThirdPartySendingProvider> thirdPartySendingProviders) {
     this.thirdPartySendingProviders = thirdPartySendingProviders;
+  }
+
+
+  public IPPool toAccountIPPools(@javax.annotation.Nullable List<IPPool> toAccountIPPools) {
+    this.toAccountIPPools = toAccountIPPools;
+    return this;
+  }
+
+  public IPPool addToAccountIPPoolsItem(IPPool toAccountIPPoolsItem) {
+    if (this.toAccountIPPools == null) {
+      this.toAccountIPPools = new ArrayList<>();
+    }
+    this.toAccountIPPools.add(toAccountIPPoolsItem);
+    return this;
+  }
+
+  /**
+   * Related account IP pools
+   * @return toAccountIPPools
+   */
+  @javax.annotation.Nullable
+  public List<IPPool> getToAccountIPPools() {
+    return toAccountIPPools;
+  }
+
+  public void setToAccountIPPools(@javax.annotation.Nullable List<IPPool> toAccountIPPools) {
+    this.toAccountIPPools = toAccountIPPools;
   }
 
 
@@ -397,9 +453,11 @@ public class IPPool {
     IPPool ipPool = (IPPool) o;
     return Objects.equals(this.id, ipPool.id) &&
         Objects.equals(this.name, ipPool.name) &&
+        Objects.equals(this.type, ipPool.type) &&
         Objects.equals(this.created, ipPool.created) &&
         Objects.equals(this.ips, ipPool.ips) &&
         Objects.equals(this.thirdPartySendingProviders, ipPool.thirdPartySendingProviders) &&
+        Objects.equals(this.toAccountIPPools, ipPool.toAccountIPPools) &&
         Objects.equals(this.routingStrategy, ipPool.routingStrategy) &&
         Objects.equals(this.routingMetaData, ipPool.routingMetaData) &&
         Objects.equals(this.autoWarmupEnabled, ipPool.autoWarmupEnabled) &&
@@ -412,7 +470,7 @@ public class IPPool {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, created, ips, thirdPartySendingProviders, routingStrategy, routingMetaData, autoWarmupEnabled, infraMonitor, ipDomainWarmupStatus, shouldOverflow, overflowPoolName, warmupInterval);
+    return Objects.hash(id, name, type, created, ips, thirdPartySendingProviders, toAccountIPPools, routingStrategy, routingMetaData, autoWarmupEnabled, infraMonitor, ipDomainWarmupStatus, shouldOverflow, overflowPoolName, warmupInterval);
   }
 
   @Override
@@ -421,9 +479,11 @@ public class IPPool {
     sb.append("class IPPool {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
     sb.append("    thirdPartySendingProviders: ").append(toIndentedString(thirdPartySendingProviders)).append("\n");
+    sb.append("    toAccountIPPools: ").append(toIndentedString(toAccountIPPools)).append("\n");
     sb.append("    routingStrategy: ").append(toIndentedString(routingStrategy)).append("\n");
     sb.append("    routingMetaData: ").append(toIndentedString(routingMetaData)).append("\n");
     sb.append("    autoWarmupEnabled: ").append(toIndentedString(autoWarmupEnabled)).append("\n");
@@ -456,9 +516,11 @@ public class IPPool {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("name");
+    openapiFields.add("type");
     openapiFields.add("created");
     openapiFields.add("ips");
     openapiFields.add("thirdPartySendingProviders");
+    openapiFields.add("toAccountIPPools");
     openapiFields.add("routingStrategy");
     openapiFields.add("routingMetaData");
     openapiFields.add("autoWarmupEnabled");
@@ -521,6 +583,20 @@ public class IPPool {
           // validate the optional field `thirdPartySendingProviders` (array)
           for (int i = 0; i < jsonArraythirdPartySendingProviders.size(); i++) {
             ThirdPartySendingProvider.validateJsonElement(jsonArraythirdPartySendingProviders.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("toAccountIPPools") != null && !jsonObj.get("toAccountIPPools").isJsonNull()) {
+        JsonArray jsonArraytoAccountIPPools = jsonObj.getAsJsonArray("toAccountIPPools");
+        if (jsonArraytoAccountIPPools != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("toAccountIPPools").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `toAccountIPPools` to be an array in the JSON string but got `%s`", jsonObj.get("toAccountIPPools").toString()));
+          }
+
+          // validate the optional field `toAccountIPPools` (array)
+          for (int i = 0; i < jsonArraytoAccountIPPools.size(); i++) {
+            IPPool.validateJsonElement(jsonArraytoAccountIPPools.get(i));
           };
         }
       }

@@ -55,7 +55,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Message
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-26T18:17:45.714434+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Message {
   public static final String SERIALIZED_NAME_MESSAGE_I_D = "messageID";
   @SerializedName(SERIALIZED_NAME_MESSAGE_I_D)
@@ -100,7 +100,7 @@ public class Message {
   public static final String SERIALIZED_NAME_SUBMITTED_AT = "submittedAt";
   @SerializedName(SERIALIZED_NAME_SUBMITTED_AT)
   @javax.annotation.Nullable
-  private Integer submittedAt;
+  private Long submittedAt;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
@@ -362,7 +362,7 @@ public class Message {
   }
 
 
-  public Message submittedAt(@javax.annotation.Nullable Integer submittedAt) {
+  public Message submittedAt(@javax.annotation.Nullable Long submittedAt) {
     this.submittedAt = submittedAt;
     return this;
   }
@@ -372,11 +372,11 @@ public class Message {
    * @return submittedAt
    */
   @javax.annotation.Nullable
-  public Integer getSubmittedAt() {
+  public Long getSubmittedAt() {
     return submittedAt;
   }
 
-  public void setSubmittedAt(@javax.annotation.Nullable Integer submittedAt) {
+  public void setSubmittedAt(@javax.annotation.Nullable Long submittedAt) {
     this.submittedAt = submittedAt;
   }
 
@@ -1006,6 +1006,14 @@ public class Message {
       }
       if ((jsonObj.get("emailType") != null && !jsonObj.get("emailType").isJsonNull()) && !jsonObj.get("emailType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `emailType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("emailType").toString()));
+      }
+      // validate the optional field `from`
+      if (jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) {
+        Person.validateJsonElement(jsonObj.get("from"));
+      }
+      // validate the optional field `replyTo`
+      if (jsonObj.get("replyTo") != null && !jsonObj.get("replyTo").isJsonNull()) {
+        Person.validateJsonElement(jsonObj.get("replyTo"));
       }
       // validate the optional field `to`
       if (jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) {

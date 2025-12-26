@@ -54,7 +54,7 @@ import sendpost_java_sdk.JSON;
 /**
  * CreateSuppressionRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-26T18:17:45.714434+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class CreateSuppressionRequest {
   public static final String SERIALIZED_NAME_HARD_BOUNCE = "hardBounce";
   @SerializedName(SERIALIZED_NAME_HARD_BOUNCE)

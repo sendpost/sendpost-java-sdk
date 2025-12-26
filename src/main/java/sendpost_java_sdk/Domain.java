@@ -25,6 +25,7 @@ import sendpost_java_sdk.DomainDkim;
 import sendpost_java_sdk.DomainDmarc;
 import sendpost_java_sdk.DomainGpt;
 import sendpost_java_sdk.DomainReturnPath;
+import sendpost_java_sdk.DomainSpf;
 import sendpost_java_sdk.DomainTrack;
 
 import com.google.gson.Gson;
@@ -53,7 +54,7 @@ import sendpost_java_sdk.JSON;
 /**
  * Domain
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-26T18:17:45.714434+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class Domain {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -69,6 +70,11 @@ public class Domain {
   @SerializedName(SERIALIZED_NAME_DKIM)
   @javax.annotation.Nullable
   private DomainDkim dkim;
+
+  public static final String SERIALIZED_NAME_SPF = "spf";
+  @SerializedName(SERIALIZED_NAME_SPF)
+  @javax.annotation.Nullable
+  private DomainSpf spf;
 
   public static final String SERIALIZED_NAME_RETURN_PATH = "returnPath";
   @SerializedName(SERIALIZED_NAME_RETURN_PATH)
@@ -94,6 +100,16 @@ public class Domain {
   @SerializedName(SERIALIZED_NAME_DKIM_VERIFIED)
   @javax.annotation.Nullable
   private Boolean dkimVerified;
+
+  public static final String SERIALIZED_NAME_SPF_VERIFIED = "spfVerified";
+  @SerializedName(SERIALIZED_NAME_SPF_VERIFIED)
+  @javax.annotation.Nullable
+  private Boolean spfVerified;
+
+  public static final String SERIALIZED_NAME_MAILBOX_VERIFIED = "mailboxVerified";
+  @SerializedName(SERIALIZED_NAME_MAILBOX_VERIFIED)
+  @javax.annotation.Nullable
+  private Boolean mailboxVerified;
 
   public static final String SERIALIZED_NAME_DMARC_VERIFIED = "dmarcVerified";
   @SerializedName(SERIALIZED_NAME_DMARC_VERIFIED)
@@ -215,6 +231,25 @@ public class Domain {
   }
 
 
+  public Domain spf(@javax.annotation.Nullable DomainSpf spf) {
+    this.spf = spf;
+    return this;
+  }
+
+  /**
+   * Get spf
+   * @return spf
+   */
+  @javax.annotation.Nullable
+  public DomainSpf getSpf() {
+    return spf;
+  }
+
+  public void setSpf(@javax.annotation.Nullable DomainSpf spf) {
+    this.spf = spf;
+  }
+
+
   public Domain returnPath(@javax.annotation.Nullable DomainReturnPath returnPath) {
     this.returnPath = returnPath;
     return this;
@@ -307,6 +342,44 @@ public class Domain {
 
   public void setDkimVerified(@javax.annotation.Nullable Boolean dkimVerified) {
     this.dkimVerified = dkimVerified;
+  }
+
+
+  public Domain spfVerified(@javax.annotation.Nullable Boolean spfVerified) {
+    this.spfVerified = spfVerified;
+    return this;
+  }
+
+  /**
+   * Status of SPF verification ( true or false )
+   * @return spfVerified
+   */
+  @javax.annotation.Nullable
+  public Boolean getSpfVerified() {
+    return spfVerified;
+  }
+
+  public void setSpfVerified(@javax.annotation.Nullable Boolean spfVerified) {
+    this.spfVerified = spfVerified;
+  }
+
+
+  public Domain mailboxVerified(@javax.annotation.Nullable Boolean mailboxVerified) {
+    this.mailboxVerified = mailboxVerified;
+    return this;
+  }
+
+  /**
+   * Status of Mailbox verification ( true or false )
+   * @return mailboxVerified
+   */
+  @javax.annotation.Nullable
+  public Boolean getMailboxVerified() {
+    return mailboxVerified;
+  }
+
+  public void setMailboxVerified(@javax.annotation.Nullable Boolean mailboxVerified) {
+    this.mailboxVerified = mailboxVerified;
   }
 
 
@@ -551,11 +624,14 @@ public class Domain {
     return Objects.equals(this.id, domain.id) &&
         Objects.equals(this.name, domain.name) &&
         Objects.equals(this.dkim, domain.dkim) &&
+        Objects.equals(this.spf, domain.spf) &&
         Objects.equals(this.returnPath, domain.returnPath) &&
         Objects.equals(this.track, domain.track) &&
         Objects.equals(this.dmarc, domain.dmarc) &&
         Objects.equals(this.dkimConfig, domain.dkimConfig) &&
         Objects.equals(this.dkimVerified, domain.dkimVerified) &&
+        Objects.equals(this.spfVerified, domain.spfVerified) &&
+        Objects.equals(this.mailboxVerified, domain.mailboxVerified) &&
         Objects.equals(this.dmarcVerified, domain.dmarcVerified) &&
         Objects.equals(this.returnPathVerified, domain.returnPathVerified) &&
         Objects.equals(this.trackVerified, domain.trackVerified) &&
@@ -572,7 +648,7 @@ public class Domain {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, dkim, returnPath, track, dmarc, dkimConfig, dkimVerified, dmarcVerified, returnPathVerified, trackVerified, verified, domainRegisteredDate, created, gptVerified, gpt, dmarcFailureReason, dkimFailureReason, trackFailureReason, returnPathFailureReason);
+    return Objects.hash(id, name, dkim, spf, returnPath, track, dmarc, dkimConfig, dkimVerified, spfVerified, mailboxVerified, dmarcVerified, returnPathVerified, trackVerified, verified, domainRegisteredDate, created, gptVerified, gpt, dmarcFailureReason, dkimFailureReason, trackFailureReason, returnPathFailureReason);
   }
 
   @Override
@@ -582,11 +658,14 @@ public class Domain {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    dkim: ").append(toIndentedString(dkim)).append("\n");
+    sb.append("    spf: ").append(toIndentedString(spf)).append("\n");
     sb.append("    returnPath: ").append(toIndentedString(returnPath)).append("\n");
     sb.append("    track: ").append(toIndentedString(track)).append("\n");
     sb.append("    dmarc: ").append(toIndentedString(dmarc)).append("\n");
     sb.append("    dkimConfig: ").append(toIndentedString(dkimConfig)).append("\n");
     sb.append("    dkimVerified: ").append(toIndentedString(dkimVerified)).append("\n");
+    sb.append("    spfVerified: ").append(toIndentedString(spfVerified)).append("\n");
+    sb.append("    mailboxVerified: ").append(toIndentedString(mailboxVerified)).append("\n");
     sb.append("    dmarcVerified: ").append(toIndentedString(dmarcVerified)).append("\n");
     sb.append("    returnPathVerified: ").append(toIndentedString(returnPathVerified)).append("\n");
     sb.append("    trackVerified: ").append(toIndentedString(trackVerified)).append("\n");
@@ -624,11 +703,14 @@ public class Domain {
     openapiFields.add("id");
     openapiFields.add("name");
     openapiFields.add("dkim");
+    openapiFields.add("spf");
     openapiFields.add("returnPath");
     openapiFields.add("track");
     openapiFields.add("dmarc");
     openapiFields.add("dkimConfig");
     openapiFields.add("dkimVerified");
+    openapiFields.add("spfVerified");
+    openapiFields.add("mailboxVerified");
     openapiFields.add("dmarcVerified");
     openapiFields.add("returnPathVerified");
     openapiFields.add("trackVerified");
@@ -673,6 +755,10 @@ public class Domain {
       // validate the optional field `dkim`
       if (jsonObj.get("dkim") != null && !jsonObj.get("dkim").isJsonNull()) {
         DomainDkim.validateJsonElement(jsonObj.get("dkim"));
+      }
+      // validate the optional field `spf`
+      if (jsonObj.get("spf") != null && !jsonObj.get("spf").isJsonNull()) {
+        DomainSpf.validateJsonElement(jsonObj.get("spf"));
       }
       // validate the optional field `returnPath`
       if (jsonObj.get("returnPath") != null && !jsonObj.get("returnPath").isJsonNull()) {

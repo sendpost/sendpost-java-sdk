@@ -895,7 +895,7 @@ paths:
               $ref: '#/components/schemas/CreateDomainRequest'
         required: true
       responses:
-        "201":
+        "200":
           content:
             application/json:
               schema:
@@ -2283,7 +2283,7 @@ paths:
               $ref: '#/components/schemas/CreateWebhookRequest'
         required: true
       responses:
-        "201":
+        "200":
           content:
             application/json:
               schema:
@@ -2701,7 +2701,12 @@ components:
           textValue: sp.sendpost.email
           host: sp-bounces.hooli.com
           type: CNAME
+        mailboxVerified: false
         created: 1766394250613907000
+        spf:
+          textValue: sp.sendpost.info
+          host: sp-bounce.example.com
+          type: CNAME
         verified: false
         trackFailureReason: ""
         gpt:
@@ -2709,6 +2714,7 @@ components:
           host: example.com
           type: TXT
         dkimVerified: false
+        spfVerified: false
         dmarcFailureReason: ""
         dmarcVerified: false
         trackVerified: true
@@ -2739,6 +2745,8 @@ components:
           type: string
         dkim:
           $ref: '#/components/schemas/Domain_dkim'
+        spf:
+          $ref: '#/components/schemas/Domain_spf'
         returnPath:
           $ref: '#/components/schemas/Domain_returnPath'
         track:
@@ -2750,6 +2758,14 @@ components:
           type: string
         dkimVerified:
           description: Status of DKIM verification ( true or false )
+          example: false
+          type: boolean
+        spfVerified:
+          description: Status of SPF verification ( true or false )
+          example: false
+          type: boolean
+        mailboxVerified:
+          description: Status of Mailbox verification ( true or false )
           example: false
           type: boolean
         dmarcVerified:
@@ -2821,7 +2837,7 @@ components:
     Stat:
       example:
         date: 2020-03-12
-        stats:
+        stat:
           processed: 225
           smtpDropped: 5
           unsubscribed: 6
@@ -2839,8 +2855,8 @@ components:
           example: 2020-03-12
           format: date
           type: string
-        stats:
-          $ref: '#/components/schemas/Stat_stats'
+        stat:
+          $ref: '#/components/schemas/Stat_stat'
     AggregateStat:
       example:
         processed: 225
@@ -2975,6 +2991,10 @@ components:
           type: integer
     IP:
       example:
+        trendmicroSettings: "{\"name\":\"trendmicro\",\"maxConcurrentConnections\"\
+          :1,...}"
+        proofpointSettings: "{\"name\":\"proofpoint\",\"maxConcurrentConnections\"\
+          :1,...}"
         autoWarmupPlan:
           mailruWarmupPlan: mailruWarmupPlan
           attWarmupPlan: attWarmupPlan
@@ -3009,11 +3029,10 @@ components:
           zohoWarmupPlan: zohoWarmupPlan
           updated: 1766535064510659800
         yahooSettings: "{\"name\":\"yahoo\",\"maxConcurrentConnections\":16,...}"
+        mimecastSettings: "{\"name\":\"mimecast\",\"maxConcurrentConnections\":1,...}"
         comcastSettings: "{\"name\":\"comcast\",\"maxConcurrentConnections\":20,...}"
-        created: 1703224038766344700
         icloudSettings: "{\"name\":\"icloud\",\"maxConcurrentConnections\":20,...}"
         publicIP: 52.34.11.12
-        attSettings: "{\"name\":\"att\",\"maxConcurrentConnections\":1,...}"
         type: 0
         zohoSettings: "{\"name\":\"zoho\",\"maxConcurrentConnections\":1,...}"
         systemDomain:
@@ -3025,7 +3044,12 @@ components:
             textValue: sp.sendpost.email
             host: sp-bounces.hooli.com
             type: CNAME
+          mailboxVerified: false
           created: 1766394250613907000
+          spf:
+            textValue: sp.sendpost.info
+            host: sp-bounce.example.com
+            type: CNAME
           verified: false
           trackFailureReason: ""
           gpt:
@@ -3033,6 +3057,7 @@ components:
             host: example.com
             type: TXT
           dkimVerified: false
+          spfVerified: false
           dmarcFailureReason: ""
           dmarcVerified: false
           trackVerified: true
@@ -3052,19 +3077,38 @@ components:
             type: TXT
           domainRegisteredDate: 1995-08-14
           returnPathFailureReason: ""
-        gmxSettings: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
-        reverseDNSHostname: example.mtaspg.email
-        infraMonitor: true
-        mailruSettings: "{\"name\":\"mailru\",\"maxConcurrentConnections\":1,...}"
-        aolSettings: "{\"name\":\"aol\",\"maxConcurrentConnections\":20,...}"
+        checkpointSettings: "{\"name\":\"checkpoint\",\"maxConcurrentConnections\"\
+          :1,...}"
+        googleworkspaceSettings: "{\"name\":\"googleworkspace\",\"maxConcurrentConnections\"\
+          :1,...}"
         id: 11321
-        yandexSettings: "{\"name\":\"yandex\",\"maxConcurrentConnections\":2,...}"
         state: 1
+        ciscoironportSettings: "{\"name\":\"ciscoironport\",\"maxConcurrentConnections\"\
+          :1,...}"
         qqSettings: "{\"name\":\"qq\",\"maxConcurrentConnections\":1,...}"
-        infraClassification: ""
-        gmailSettings: "{\"name\":\"gmail\",\"maxConcurrentConnections\":100,...}"
         microsoftSettings: "{\"name\":\"microsoft\",\"maxConcurrentConnections\":16,...}"
         defaultSettings: "{\"name\":\"default\",\"maxConcurrentConnections\":14,...}"
+        amazonworkmailSettings: "{\"name\":\"amazonworkmail\",\"maxConcurrentConnections\"\
+          :1,...}"
+        rackspaceSettings: "{\"name\":\"rackspace\",\"maxConcurrentConnections\":1,...}"
+        created: 1703224038766344700
+        attSettings: "{\"name\":\"att\",\"maxConcurrentConnections\":1,...}"
+        barracudaSettings: "{\"name\":\"barracuda\",\"maxConcurrentConnections\":1,...}"
+        zohobusinessSettings: "{\"name\":\"zohobusiness\",\"maxConcurrentConnections\"\
+          :1,...}"
+        gmxSettings: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
+        labels: []
+        reverseDNSHostname: example.mtaspg.email
+        symantecSettings: "{\"name\":\"symantec\",\"maxConcurrentConnections\":1,...}"
+        infraMonitor: true
+        office365Settings: "{\"name\":\"office365\",\"maxConcurrentConnections\":1,...}"
+        mailruSettings: "{\"name\":\"mailru\",\"maxConcurrentConnections\":1,...}"
+        aolSettings: "{\"name\":\"aol\",\"maxConcurrentConnections\":20,...}"
+        yandexSettings: "{\"name\":\"yandex\",\"maxConcurrentConnections\":2,...}"
+        fortinetSettings: "{\"name\":\"fortinet\",\"maxConcurrentConnections\":1,...}"
+        sophosSettings: "{\"name\":\"sophos\",\"maxConcurrentConnections\":1,...}"
+        infraClassification: ""
+        gmailSettings: "{\"name\":\"gmail\",\"maxConcurrentConnections\":100,...}"
       properties:
         id:
           description: Unique ID for the IP
@@ -3136,6 +3180,65 @@ components:
           description: Configuration for AT&T delivery settings in JSON format
           example: "{\"name\":\"att\",\"maxConcurrentConnections\":1,...}"
           type: string
+        office365Settings:
+          description: Configuration for Office365 delivery settings in JSON format
+          example: "{\"name\":\"office365\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        googleworkspaceSettings:
+          description: Configuration for Google Workspace delivery settings in JSON
+            format
+          example: "{\"name\":\"googleworkspace\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        proofpointSettings:
+          description: Configuration for Proofpoint delivery settings in JSON format
+          example: "{\"name\":\"proofpoint\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        mimecastSettings:
+          description: Configuration for Mimecast delivery settings in JSON format
+          example: "{\"name\":\"mimecast\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        barracudaSettings:
+          description: Configuration for Barracuda delivery settings in JSON format
+          example: "{\"name\":\"barracuda\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        ciscoironportSettings:
+          description: Configuration for Cisco IronPort delivery settings in JSON
+            format
+          example: "{\"name\":\"ciscoironport\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        rackspaceSettings:
+          description: Configuration for Rackspace delivery settings in JSON format
+          example: "{\"name\":\"rackspace\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        zohobusinessSettings:
+          description: Configuration for Zoho Business delivery settings in JSON format
+          example: "{\"name\":\"zohobusiness\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        amazonworkmailSettings:
+          description: Configuration for Amazon WorkMail delivery settings in JSON
+            format
+          example: "{\"name\":\"amazonworkmail\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        symantecSettings:
+          description: Configuration for Symantec delivery settings in JSON format
+          example: "{\"name\":\"symantec\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        fortinetSettings:
+          description: Configuration for Fortinet delivery settings in JSON format
+          example: "{\"name\":\"fortinet\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        sophosSettings:
+          description: Configuration for Sophos delivery settings in JSON format
+          example: "{\"name\":\"sophos\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        trendmicroSettings:
+          description: Configuration for TrendMicro delivery settings in JSON format
+          example: "{\"name\":\"trendmicro\",\"maxConcurrentConnections\":1,...}"
+          type: string
+        checkpointSettings:
+          description: Configuration for CheckPoint delivery settings in JSON format
+          example: "{\"name\":\"checkpoint\",\"maxConcurrentConnections\":1,...}"
+          type: string
         created:
           description: The timestamp (UNIX epoch) when the IP was created
           example: 1703224038766344700
@@ -3155,6 +3258,12 @@ components:
           type: integer
         autoWarmupPlan:
           $ref: '#/components/schemas/AutoWarmupPlan'
+        labels:
+          description: Labels associated with the IP
+          example: []
+          items:
+            $ref: '#/components/schemas/Label'
+          type: array
       required:
       - created
       - id
@@ -3232,10 +3341,18 @@ components:
           type: 1
           oauthToken: ""
           key: ""
+        toAccountIPPools:
+        - null
+        - null
         created: 1597511124804000
         routingMetaData: "{}"
+        type: 0
         ips:
-        - autoWarmupPlan:
+        - trendmicroSettings: "{\"name\":\"trendmicro\",\"maxConcurrentConnections\"\
+            :1,...}"
+          proofpointSettings: "{\"name\":\"proofpoint\",\"maxConcurrentConnections\"\
+            :1,...}"
+          autoWarmupPlan:
             mailruWarmupPlan: mailruWarmupPlan
             attWarmupPlan: attWarmupPlan
             aolWarmupPlan: aolWarmupPlan
@@ -3269,11 +3386,10 @@ components:
             zohoWarmupPlan: zohoWarmupPlan
             updated: 1766535064510659800
           yahooSettings: "{\"name\":\"yahoo\",\"maxConcurrentConnections\":16,...}"
+          mimecastSettings: "{\"name\":\"mimecast\",\"maxConcurrentConnections\":1,...}"
           comcastSettings: "{\"name\":\"comcast\",\"maxConcurrentConnections\":20,...}"
-          created: 1703224038766344700
           icloudSettings: "{\"name\":\"icloud\",\"maxConcurrentConnections\":20,...}"
           publicIP: 52.34.11.12
-          attSettings: "{\"name\":\"att\",\"maxConcurrentConnections\":1,...}"
           type: 0
           zohoSettings: "{\"name\":\"zoho\",\"maxConcurrentConnections\":1,...}"
           systemDomain:
@@ -3285,7 +3401,12 @@ components:
               textValue: sp.sendpost.email
               host: sp-bounces.hooli.com
               type: CNAME
+            mailboxVerified: false
             created: 1766394250613907000
+            spf:
+              textValue: sp.sendpost.info
+              host: sp-bounce.example.com
+              type: CNAME
             verified: false
             trackFailureReason: ""
             gpt:
@@ -3293,6 +3414,7 @@ components:
               host: example.com
               type: TXT
             dkimVerified: false
+            spfVerified: false
             dmarcFailureReason: ""
             dmarcVerified: false
             trackVerified: true
@@ -3312,21 +3434,47 @@ components:
               type: TXT
             domainRegisteredDate: 1995-08-14
             returnPathFailureReason: ""
-          gmxSettings: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
-          reverseDNSHostname: example.mtaspg.email
-          infraMonitor: true
-          mailruSettings: "{\"name\":\"mailru\",\"maxConcurrentConnections\":1,...}"
-          aolSettings: "{\"name\":\"aol\",\"maxConcurrentConnections\":20,...}"
+          checkpointSettings: "{\"name\":\"checkpoint\",\"maxConcurrentConnections\"\
+            :1,...}"
+          googleworkspaceSettings: "{\"name\":\"googleworkspace\",\"maxConcurrentConnections\"\
+            :1,...}"
           id: 11321
-          yandexSettings: "{\"name\":\"yandex\",\"maxConcurrentConnections\":2,...}"
           state: 1
+          ciscoironportSettings: "{\"name\":\"ciscoironport\",\"maxConcurrentConnections\"\
+            :1,...}"
           qqSettings: "{\"name\":\"qq\",\"maxConcurrentConnections\":1,...}"
-          infraClassification: ""
-          gmailSettings: "{\"name\":\"gmail\",\"maxConcurrentConnections\":100,...}"
           microsoftSettings: "{\"name\":\"microsoft\",\"maxConcurrentConnections\"\
             :16,...}"
           defaultSettings: "{\"name\":\"default\",\"maxConcurrentConnections\":14,...}"
-        - autoWarmupPlan:
+          amazonworkmailSettings: "{\"name\":\"amazonworkmail\",\"maxConcurrentConnections\"\
+            :1,...}"
+          rackspaceSettings: "{\"name\":\"rackspace\",\"maxConcurrentConnections\"\
+            :1,...}"
+          created: 1703224038766344700
+          attSettings: "{\"name\":\"att\",\"maxConcurrentConnections\":1,...}"
+          barracudaSettings: "{\"name\":\"barracuda\",\"maxConcurrentConnections\"\
+            :1,...}"
+          zohobusinessSettings: "{\"name\":\"zohobusiness\",\"maxConcurrentConnections\"\
+            :1,...}"
+          gmxSettings: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
+          labels: []
+          reverseDNSHostname: example.mtaspg.email
+          symantecSettings: "{\"name\":\"symantec\",\"maxConcurrentConnections\":1,...}"
+          infraMonitor: true
+          office365Settings: "{\"name\":\"office365\",\"maxConcurrentConnections\"\
+            :1,...}"
+          mailruSettings: "{\"name\":\"mailru\",\"maxConcurrentConnections\":1,...}"
+          aolSettings: "{\"name\":\"aol\",\"maxConcurrentConnections\":20,...}"
+          yandexSettings: "{\"name\":\"yandex\",\"maxConcurrentConnections\":2,...}"
+          fortinetSettings: "{\"name\":\"fortinet\",\"maxConcurrentConnections\":1,...}"
+          sophosSettings: "{\"name\":\"sophos\",\"maxConcurrentConnections\":1,...}"
+          infraClassification: ""
+          gmailSettings: "{\"name\":\"gmail\",\"maxConcurrentConnections\":100,...}"
+        - trendmicroSettings: "{\"name\":\"trendmicro\",\"maxConcurrentConnections\"\
+            :1,...}"
+          proofpointSettings: "{\"name\":\"proofpoint\",\"maxConcurrentConnections\"\
+            :1,...}"
+          autoWarmupPlan:
             mailruWarmupPlan: mailruWarmupPlan
             attWarmupPlan: attWarmupPlan
             aolWarmupPlan: aolWarmupPlan
@@ -3360,11 +3508,10 @@ components:
             zohoWarmupPlan: zohoWarmupPlan
             updated: 1766535064510659800
           yahooSettings: "{\"name\":\"yahoo\",\"maxConcurrentConnections\":16,...}"
+          mimecastSettings: "{\"name\":\"mimecast\",\"maxConcurrentConnections\":1,...}"
           comcastSettings: "{\"name\":\"comcast\",\"maxConcurrentConnections\":20,...}"
-          created: 1703224038766344700
           icloudSettings: "{\"name\":\"icloud\",\"maxConcurrentConnections\":20,...}"
           publicIP: 52.34.11.12
-          attSettings: "{\"name\":\"att\",\"maxConcurrentConnections\":1,...}"
           type: 0
           zohoSettings: "{\"name\":\"zoho\",\"maxConcurrentConnections\":1,...}"
           systemDomain:
@@ -3376,7 +3523,12 @@ components:
               textValue: sp.sendpost.email
               host: sp-bounces.hooli.com
               type: CNAME
+            mailboxVerified: false
             created: 1766394250613907000
+            spf:
+              textValue: sp.sendpost.info
+              host: sp-bounce.example.com
+              type: CNAME
             verified: false
             trackFailureReason: ""
             gpt:
@@ -3384,6 +3536,7 @@ components:
               host: example.com
               type: TXT
             dkimVerified: false
+            spfVerified: false
             dmarcFailureReason: ""
             dmarcVerified: false
             trackVerified: true
@@ -3403,20 +3556,42 @@ components:
               type: TXT
             domainRegisteredDate: 1995-08-14
             returnPathFailureReason: ""
-          gmxSettings: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
-          reverseDNSHostname: example.mtaspg.email
-          infraMonitor: true
-          mailruSettings: "{\"name\":\"mailru\",\"maxConcurrentConnections\":1,...}"
-          aolSettings: "{\"name\":\"aol\",\"maxConcurrentConnections\":20,...}"
+          checkpointSettings: "{\"name\":\"checkpoint\",\"maxConcurrentConnections\"\
+            :1,...}"
+          googleworkspaceSettings: "{\"name\":\"googleworkspace\",\"maxConcurrentConnections\"\
+            :1,...}"
           id: 11321
-          yandexSettings: "{\"name\":\"yandex\",\"maxConcurrentConnections\":2,...}"
           state: 1
+          ciscoironportSettings: "{\"name\":\"ciscoironport\",\"maxConcurrentConnections\"\
+            :1,...}"
           qqSettings: "{\"name\":\"qq\",\"maxConcurrentConnections\":1,...}"
-          infraClassification: ""
-          gmailSettings: "{\"name\":\"gmail\",\"maxConcurrentConnections\":100,...}"
           microsoftSettings: "{\"name\":\"microsoft\",\"maxConcurrentConnections\"\
             :16,...}"
           defaultSettings: "{\"name\":\"default\",\"maxConcurrentConnections\":14,...}"
+          amazonworkmailSettings: "{\"name\":\"amazonworkmail\",\"maxConcurrentConnections\"\
+            :1,...}"
+          rackspaceSettings: "{\"name\":\"rackspace\",\"maxConcurrentConnections\"\
+            :1,...}"
+          created: 1703224038766344700
+          attSettings: "{\"name\":\"att\",\"maxConcurrentConnections\":1,...}"
+          barracudaSettings: "{\"name\":\"barracuda\",\"maxConcurrentConnections\"\
+            :1,...}"
+          zohobusinessSettings: "{\"name\":\"zohobusiness\",\"maxConcurrentConnections\"\
+            :1,...}"
+          gmxSettings: "{\"name\":\"gmx\",\"maxConcurrentConnections\":2,...}"
+          labels: []
+          reverseDNSHostname: example.mtaspg.email
+          symantecSettings: "{\"name\":\"symantec\",\"maxConcurrentConnections\":1,...}"
+          infraMonitor: true
+          office365Settings: "{\"name\":\"office365\",\"maxConcurrentConnections\"\
+            :1,...}"
+          mailruSettings: "{\"name\":\"mailru\",\"maxConcurrentConnections\":1,...}"
+          aolSettings: "{\"name\":\"aol\",\"maxConcurrentConnections\":20,...}"
+          yandexSettings: "{\"name\":\"yandex\",\"maxConcurrentConnections\":2,...}"
+          fortinetSettings: "{\"name\":\"fortinet\",\"maxConcurrentConnections\":1,...}"
+          sophosSettings: "{\"name\":\"sophos\",\"maxConcurrentConnections\":1,...}"
+          infraClassification: ""
+          gmailSettings: "{\"name\":\"gmail\",\"maxConcurrentConnections\":100,...}"
         overflowPoolName: Transactional
         warmupInterval: 60
         infraMonitor: true
@@ -3433,6 +3608,10 @@ components:
         name:
           example: Transactional
           type: string
+        type:
+          description: "Type of IP pool (0 = Shared, 1 = Dedicated)"
+          example: 0
+          type: integer
         created:
           example: 1597511124804000
           format: int64
@@ -3445,6 +3624,12 @@ components:
           items:
             $ref: '#/components/schemas/ThirdPartySendingProvider'
           type: array
+        toAccountIPPools:
+          description: Related account IP pools
+          items:
+            $ref: '#/components/schemas/IPPool'
+          type: array
+          nullable: true
         routingStrategy:
           example: 0
           type: integer
@@ -3525,6 +3710,9 @@ components:
           type: integer
     IPPoolCreateRequest:
       example:
+        warmupInterval: 24
+        overflowPoolName: ""
+        overflowStrategy: 0
         routingStrategy: 0
         overflowPool: false
         name: Marketing Promotional
@@ -3557,6 +3745,19 @@ components:
         overflowPool:
           example: false
           type: boolean
+        warmupInterval:
+          description: Warmup interval in hours. Must be greater than 0.
+          example: 24
+          type: integer
+        overflowStrategy:
+          description: "Overflow strategy (0 = None, 1 = Use overflow pool)"
+          example: 0
+          type: integer
+        overflowPoolName:
+          description: Name of the overflow pool (required if overflowStrategy is
+            1)
+          example: ""
+          type: string
     IPPoolUpdateRequest:
       example:
         routingStrategy: 0
@@ -3602,12 +3803,12 @@ components:
           processed: 1225
           smtpDropped: 5
           unsubscribed: 15
-          spams: 12
           hardBounced: 10
           dropped: 10
           softBounced: 5
           delivered: 1200
           opened: 150
+          spam: 12
           sent: 1220
           clicked: 130
       properties:
@@ -4391,6 +4592,7 @@ components:
         submittedAt:
           description: UNIX epoch nano timestamp when message was submitted.
           example: 1766396394503841392
+          format: int64
           type: integer
         from:
           $ref: '#/components/schemas/Person'
@@ -4743,6 +4945,22 @@ components:
         textValue:
           example: v=DKIM1;k=rsa;s=email;h=sha256;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDU9T3mqruDth2rHXCqNiPzr4oRbHqcUMkqCA4sTZgK7WrhjzerHVyqNAfq4Tyx9s4Tqj0CVfAuENp9mHFKt9Kow5csxqTeVkBoi5UaonafsDstm39ggxFQhKTlRpRoV+VNE5jU9WYlv3wywv28DY2woKYG6QBM6JPSKN1dYQpR4QIDAQAB
           type: string
+    Domain_spf:
+      description: "SPF record host, type and value"
+      example:
+        textValue: sp.sendpost.info
+        host: sp-bounce.example.com
+        type: CNAME
+      properties:
+        host:
+          example: sp-bounce.example.com
+          type: string
+        type:
+          example: CNAME
+          type: string
+        textValue:
+          example: sp.sendpost.info
+          type: string
     Domain_returnPath:
       description: "ReturnPath record host, type and value"
       example:
@@ -4808,7 +5026,8 @@ components:
         textValue:
           example: ""
           type: string
-    Stat_stats:
+    Stat_stat:
+      description: Statistics data for the date
       example:
         processed: 225
         smtpDropped: 5
@@ -4913,12 +5132,12 @@ components:
         processed: 1225
         smtpDropped: 5
         unsubscribed: 15
-        spams: 12
         hardBounced: 10
         dropped: 10
         softBounced: 5
         delivered: 1200
         opened: 150
+        spam: 12
         sent: 1220
         clicked: 130
       properties:
@@ -4952,7 +5171,8 @@ components:
         unsubscribed:
           example: 15
           type: integer
-        spams:
+        spam:
+          description: Number of spam complaints
           example: 12
           type: integer
     EmailMessage_from:

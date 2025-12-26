@@ -48,7 +48,7 @@ import sendpost_java_sdk.JSON;
 /**
  * AccountStatsStat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-26T18:17:45.714434+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class AccountStatsStat {
   public static final String SERIALIZED_NAME_PROCESSED = "processed";
   @SerializedName(SERIALIZED_NAME_PROCESSED)
@@ -100,10 +100,10 @@ public class AccountStatsStat {
   @javax.annotation.Nullable
   private Integer unsubscribed;
 
-  public static final String SERIALIZED_NAME_SPAMS = "spams";
-  @SerializedName(SERIALIZED_NAME_SPAMS)
+  public static final String SERIALIZED_NAME_SPAM = "spam";
+  @SerializedName(SERIALIZED_NAME_SPAM)
   @javax.annotation.Nullable
-  private Integer spams;
+  private Integer spam;
 
   public AccountStatsStat() {
   }
@@ -298,22 +298,22 @@ public class AccountStatsStat {
   }
 
 
-  public AccountStatsStat spams(@javax.annotation.Nullable Integer spams) {
-    this.spams = spams;
+  public AccountStatsStat spam(@javax.annotation.Nullable Integer spam) {
+    this.spam = spam;
     return this;
   }
 
   /**
-   * Get spams
-   * @return spams
+   * Number of spam complaints
+   * @return spam
    */
   @javax.annotation.Nullable
-  public Integer getSpams() {
-    return spams;
+  public Integer getSpam() {
+    return spam;
   }
 
-  public void setSpams(@javax.annotation.Nullable Integer spams) {
-    this.spams = spams;
+  public void setSpam(@javax.annotation.Nullable Integer spam) {
+    this.spam = spam;
   }
 
 
@@ -337,12 +337,12 @@ public class AccountStatsStat {
         Objects.equals(this.opened, accountStatsStat.opened) &&
         Objects.equals(this.clicked, accountStatsStat.clicked) &&
         Objects.equals(this.unsubscribed, accountStatsStat.unsubscribed) &&
-        Objects.equals(this.spams, accountStatsStat.spams);
+        Objects.equals(this.spam, accountStatsStat.spam);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(processed, sent, delivered, dropped, smtpDropped, hardBounced, softBounced, opened, clicked, unsubscribed, spams);
+    return Objects.hash(processed, sent, delivered, dropped, smtpDropped, hardBounced, softBounced, opened, clicked, unsubscribed, spam);
   }
 
   @Override
@@ -359,7 +359,7 @@ public class AccountStatsStat {
     sb.append("    opened: ").append(toIndentedString(opened)).append("\n");
     sb.append("    clicked: ").append(toIndentedString(clicked)).append("\n");
     sb.append("    unsubscribed: ").append(toIndentedString(unsubscribed)).append("\n");
-    sb.append("    spams: ").append(toIndentedString(spams)).append("\n");
+    sb.append("    spam: ").append(toIndentedString(spam)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -392,7 +392,7 @@ public class AccountStatsStat {
     openapiFields.add("opened");
     openapiFields.add("clicked");
     openapiFields.add("unsubscribed");
-    openapiFields.add("spams");
+    openapiFields.add("spam");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

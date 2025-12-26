@@ -33,6 +33,7 @@ docs/DomainDkim.md
 docs/DomainDmarc.md
 docs/DomainGpt.md
 docs/DomainReturnPath.md
+docs/DomainSpf.md
 docs/DomainTrack.md
 docs/EIP.md
 docs/EmailAddress.md
@@ -72,7 +73,7 @@ docs/Person.md
 docs/Recipient.md
 docs/SMTPAuth.md
 docs/Stat.md
-docs/StatStats.md
+docs/StatStat.md
 docs/StatsAApi.md
 docs/StatsApi.md
 docs/SubAccount.md
@@ -128,6 +129,7 @@ src/main/java/sendpost_java_sdk/DomainDkim.java
 src/main/java/sendpost_java_sdk/DomainDmarc.java
 src/main/java/sendpost_java_sdk/DomainGpt.java
 src/main/java/sendpost_java_sdk/DomainReturnPath.java
+src/main/java/sendpost_java_sdk/DomainSpf.java
 src/main/java/sendpost_java_sdk/DomainTrack.java
 src/main/java/sendpost_java_sdk/EIP.java
 src/main/java/sendpost_java_sdk/EmailAddress.java
@@ -174,7 +176,7 @@ src/main/java/sendpost_java_sdk/SMTPAuth.java
 src/main/java/sendpost_java_sdk/ServerConfiguration.java
 src/main/java/sendpost_java_sdk/ServerVariable.java
 src/main/java/sendpost_java_sdk/Stat.java
-src/main/java/sendpost_java_sdk/StatStats.java
+src/main/java/sendpost_java_sdk/StatStat.java
 src/main/java/sendpost_java_sdk/StatsAApi.java
 src/main/java/sendpost_java_sdk/StatsApi.java
 src/main/java/sendpost_java_sdk/StringUtil.java
@@ -192,6 +194,3 @@ src/main/java/sendpost_java_sdk/auth/ApiKeyAuth.java
 src/main/java/sendpost_java_sdk/auth/Authentication.java
 src/main/java/sendpost_java_sdk/auth/HttpBasicAuth.java
 src/main/java/sendpost_java_sdk/auth/HttpBearerAuth.java
-src/test/java/sendpost_java_sdk/AutoWarmupPlanTest.java
-src/test/java/sendpost_java_sdk/LabelTest.java
-src/test/java/sendpost_java_sdk/SubAccountApiTest.java

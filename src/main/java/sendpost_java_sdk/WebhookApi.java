@@ -85,7 +85,7 @@ public class WebhookApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized. Invalid API key. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden. Webhook with the same URL already exists. </td><td>  -  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable. Cannot create webhook for the default sub-account. </td><td>  -  </td></tr>
@@ -158,7 +158,7 @@ public class WebhookApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized. Invalid API key. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden. Webhook with the same URL already exists. </td><td>  -  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable. Cannot create webhook for the default sub-account. </td><td>  -  </td></tr>
@@ -180,7 +180,7 @@ public class WebhookApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized. Invalid API key. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden. Webhook with the same URL already exists. </td><td>  -  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable. Cannot create webhook for the default sub-account. </td><td>  -  </td></tr>
@@ -204,7 +204,7 @@ public class WebhookApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook created successfully. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized. Invalid API key. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden. Webhook with the same URL already exists. </td><td>  -  </td></tr>
         <tr><td> 406 </td><td> Not Acceptable. Cannot create webhook for the default sub-account. </td><td>  -  </td></tr>

@@ -123,6 +123,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DomainDmarc.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DomainGpt.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DomainReturnPath.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DomainSpf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.DomainTrack.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.EIP.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.EmailAddress.CustomTypeAdapterFactory());
@@ -158,7 +159,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.Recipient.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.SMTPAuth.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.Stat.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.StatStats.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.StatStat.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.SubAccount.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.Suppression.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new sendpost_java_sdk.ThirdPartySendingProvider.CustomTypeAdapterFactory());

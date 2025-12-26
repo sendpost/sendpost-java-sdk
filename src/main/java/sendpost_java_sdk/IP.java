@@ -20,9 +20,12 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import sendpost_java_sdk.AutoWarmupPlan;
 import sendpost_java_sdk.Domain;
+import sendpost_java_sdk.Label;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +53,7 @@ import sendpost_java_sdk.JSON;
 /**
  * IP
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-24T18:45:16.698236+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-26T18:17:45.714434+05:30[Asia/Kolkata]", comments = "Generator version: 7.13.0")
 public class IP {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -142,6 +145,76 @@ public class IP {
   @javax.annotation.Nullable
   private String attSettings;
 
+  public static final String SERIALIZED_NAME_OFFICE365_SETTINGS = "office365Settings";
+  @SerializedName(SERIALIZED_NAME_OFFICE365_SETTINGS)
+  @javax.annotation.Nullable
+  private String office365Settings;
+
+  public static final String SERIALIZED_NAME_GOOGLEWORKSPACE_SETTINGS = "googleworkspaceSettings";
+  @SerializedName(SERIALIZED_NAME_GOOGLEWORKSPACE_SETTINGS)
+  @javax.annotation.Nullable
+  private String googleworkspaceSettings;
+
+  public static final String SERIALIZED_NAME_PROOFPOINT_SETTINGS = "proofpointSettings";
+  @SerializedName(SERIALIZED_NAME_PROOFPOINT_SETTINGS)
+  @javax.annotation.Nullable
+  private String proofpointSettings;
+
+  public static final String SERIALIZED_NAME_MIMECAST_SETTINGS = "mimecastSettings";
+  @SerializedName(SERIALIZED_NAME_MIMECAST_SETTINGS)
+  @javax.annotation.Nullable
+  private String mimecastSettings;
+
+  public static final String SERIALIZED_NAME_BARRACUDA_SETTINGS = "barracudaSettings";
+  @SerializedName(SERIALIZED_NAME_BARRACUDA_SETTINGS)
+  @javax.annotation.Nullable
+  private String barracudaSettings;
+
+  public static final String SERIALIZED_NAME_CISCOIRONPORT_SETTINGS = "ciscoironportSettings";
+  @SerializedName(SERIALIZED_NAME_CISCOIRONPORT_SETTINGS)
+  @javax.annotation.Nullable
+  private String ciscoironportSettings;
+
+  public static final String SERIALIZED_NAME_RACKSPACE_SETTINGS = "rackspaceSettings";
+  @SerializedName(SERIALIZED_NAME_RACKSPACE_SETTINGS)
+  @javax.annotation.Nullable
+  private String rackspaceSettings;
+
+  public static final String SERIALIZED_NAME_ZOHOBUSINESS_SETTINGS = "zohobusinessSettings";
+  @SerializedName(SERIALIZED_NAME_ZOHOBUSINESS_SETTINGS)
+  @javax.annotation.Nullable
+  private String zohobusinessSettings;
+
+  public static final String SERIALIZED_NAME_AMAZONWORKMAIL_SETTINGS = "amazonworkmailSettings";
+  @SerializedName(SERIALIZED_NAME_AMAZONWORKMAIL_SETTINGS)
+  @javax.annotation.Nullable
+  private String amazonworkmailSettings;
+
+  public static final String SERIALIZED_NAME_SYMANTEC_SETTINGS = "symantecSettings";
+  @SerializedName(SERIALIZED_NAME_SYMANTEC_SETTINGS)
+  @javax.annotation.Nullable
+  private String symantecSettings;
+
+  public static final String SERIALIZED_NAME_FORTINET_SETTINGS = "fortinetSettings";
+  @SerializedName(SERIALIZED_NAME_FORTINET_SETTINGS)
+  @javax.annotation.Nullable
+  private String fortinetSettings;
+
+  public static final String SERIALIZED_NAME_SOPHOS_SETTINGS = "sophosSettings";
+  @SerializedName(SERIALIZED_NAME_SOPHOS_SETTINGS)
+  @javax.annotation.Nullable
+  private String sophosSettings;
+
+  public static final String SERIALIZED_NAME_TRENDMICRO_SETTINGS = "trendmicroSettings";
+  @SerializedName(SERIALIZED_NAME_TRENDMICRO_SETTINGS)
+  @javax.annotation.Nullable
+  private String trendmicroSettings;
+
+  public static final String SERIALIZED_NAME_CHECKPOINT_SETTINGS = "checkpointSettings";
+  @SerializedName(SERIALIZED_NAME_CHECKPOINT_SETTINGS)
+  @javax.annotation.Nullable
+  private String checkpointSettings;
+
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nonnull
@@ -166,6 +239,11 @@ public class IP {
   @SerializedName(SERIALIZED_NAME_AUTO_WARMUP_PLAN)
   @javax.annotation.Nullable
   private AutoWarmupPlan autoWarmupPlan;
+
+  public static final String SERIALIZED_NAME_LABELS = "labels";
+  @SerializedName(SERIALIZED_NAME_LABELS)
+  @javax.annotation.Nullable
+  private List<Label> labels = new ArrayList<>();
 
   public IP() {
   }
@@ -512,6 +590,272 @@ public class IP {
   }
 
 
+  public IP office365Settings(@javax.annotation.Nullable String office365Settings) {
+    this.office365Settings = office365Settings;
+    return this;
+  }
+
+  /**
+   * Configuration for Office365 delivery settings in JSON format
+   * @return office365Settings
+   */
+  @javax.annotation.Nullable
+  public String getOffice365Settings() {
+    return office365Settings;
+  }
+
+  public void setOffice365Settings(@javax.annotation.Nullable String office365Settings) {
+    this.office365Settings = office365Settings;
+  }
+
+
+  public IP googleworkspaceSettings(@javax.annotation.Nullable String googleworkspaceSettings) {
+    this.googleworkspaceSettings = googleworkspaceSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for Google Workspace delivery settings in JSON format
+   * @return googleworkspaceSettings
+   */
+  @javax.annotation.Nullable
+  public String getGoogleworkspaceSettings() {
+    return googleworkspaceSettings;
+  }
+
+  public void setGoogleworkspaceSettings(@javax.annotation.Nullable String googleworkspaceSettings) {
+    this.googleworkspaceSettings = googleworkspaceSettings;
+  }
+
+
+  public IP proofpointSettings(@javax.annotation.Nullable String proofpointSettings) {
+    this.proofpointSettings = proofpointSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for Proofpoint delivery settings in JSON format
+   * @return proofpointSettings
+   */
+  @javax.annotation.Nullable
+  public String getProofpointSettings() {
+    return proofpointSettings;
+  }
+
+  public void setProofpointSettings(@javax.annotation.Nullable String proofpointSettings) {
+    this.proofpointSettings = proofpointSettings;
+  }
+
+
+  public IP mimecastSettings(@javax.annotation.Nullable String mimecastSettings) {
+    this.mimecastSettings = mimecastSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for Mimecast delivery settings in JSON format
+   * @return mimecastSettings
+   */
+  @javax.annotation.Nullable
+  public String getMimecastSettings() {
+    return mimecastSettings;
+  }
+
+  public void setMimecastSettings(@javax.annotation.Nullable String mimecastSettings) {
+    this.mimecastSettings = mimecastSettings;
+  }
+
+
+  public IP barracudaSettings(@javax.annotation.Nullable String barracudaSettings) {
+    this.barracudaSettings = barracudaSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for Barracuda delivery settings in JSON format
+   * @return barracudaSettings
+   */
+  @javax.annotation.Nullable
+  public String getBarracudaSettings() {
+    return barracudaSettings;
+  }
+
+  public void setBarracudaSettings(@javax.annotation.Nullable String barracudaSettings) {
+    this.barracudaSettings = barracudaSettings;
+  }
+
+
+  public IP ciscoironportSettings(@javax.annotation.Nullable String ciscoironportSettings) {
+    this.ciscoironportSettings = ciscoironportSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for Cisco IronPort delivery settings in JSON format
+   * @return ciscoironportSettings
+   */
+  @javax.annotation.Nullable
+  public String getCiscoironportSettings() {
+    return ciscoironportSettings;
+  }
+
+  public void setCiscoironportSettings(@javax.annotation.Nullable String ciscoironportSettings) {
+    this.ciscoironportSettings = ciscoironportSettings;
+  }
+
+
+  public IP rackspaceSettings(@javax.annotation.Nullable String rackspaceSettings) {
+    this.rackspaceSettings = rackspaceSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for Rackspace delivery settings in JSON format
+   * @return rackspaceSettings
+   */
+  @javax.annotation.Nullable
+  public String getRackspaceSettings() {
+    return rackspaceSettings;
+  }
+
+  public void setRackspaceSettings(@javax.annotation.Nullable String rackspaceSettings) {
+    this.rackspaceSettings = rackspaceSettings;
+  }
+
+
+  public IP zohobusinessSettings(@javax.annotation.Nullable String zohobusinessSettings) {
+    this.zohobusinessSettings = zohobusinessSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for Zoho Business delivery settings in JSON format
+   * @return zohobusinessSettings
+   */
+  @javax.annotation.Nullable
+  public String getZohobusinessSettings() {
+    return zohobusinessSettings;
+  }
+
+  public void setZohobusinessSettings(@javax.annotation.Nullable String zohobusinessSettings) {
+    this.zohobusinessSettings = zohobusinessSettings;
+  }
+
+
+  public IP amazonworkmailSettings(@javax.annotation.Nullable String amazonworkmailSettings) {
+    this.amazonworkmailSettings = amazonworkmailSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for Amazon WorkMail delivery settings in JSON format
+   * @return amazonworkmailSettings
+   */
+  @javax.annotation.Nullable
+  public String getAmazonworkmailSettings() {
+    return amazonworkmailSettings;
+  }
+
+  public void setAmazonworkmailSettings(@javax.annotation.Nullable String amazonworkmailSettings) {
+    this.amazonworkmailSettings = amazonworkmailSettings;
+  }
+
+
+  public IP symantecSettings(@javax.annotation.Nullable String symantecSettings) {
+    this.symantecSettings = symantecSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for Symantec delivery settings in JSON format
+   * @return symantecSettings
+   */
+  @javax.annotation.Nullable
+  public String getSymantecSettings() {
+    return symantecSettings;
+  }
+
+  public void setSymantecSettings(@javax.annotation.Nullable String symantecSettings) {
+    this.symantecSettings = symantecSettings;
+  }
+
+
+  public IP fortinetSettings(@javax.annotation.Nullable String fortinetSettings) {
+    this.fortinetSettings = fortinetSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for Fortinet delivery settings in JSON format
+   * @return fortinetSettings
+   */
+  @javax.annotation.Nullable
+  public String getFortinetSettings() {
+    return fortinetSettings;
+  }
+
+  public void setFortinetSettings(@javax.annotation.Nullable String fortinetSettings) {
+    this.fortinetSettings = fortinetSettings;
+  }
+
+
+  public IP sophosSettings(@javax.annotation.Nullable String sophosSettings) {
+    this.sophosSettings = sophosSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for Sophos delivery settings in JSON format
+   * @return sophosSettings
+   */
+  @javax.annotation.Nullable
+  public String getSophosSettings() {
+    return sophosSettings;
+  }
+
+  public void setSophosSettings(@javax.annotation.Nullable String sophosSettings) {
+    this.sophosSettings = sophosSettings;
+  }
+
+
+  public IP trendmicroSettings(@javax.annotation.Nullable String trendmicroSettings) {
+    this.trendmicroSettings = trendmicroSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for TrendMicro delivery settings in JSON format
+   * @return trendmicroSettings
+   */
+  @javax.annotation.Nullable
+  public String getTrendmicroSettings() {
+    return trendmicroSettings;
+  }
+
+  public void setTrendmicroSettings(@javax.annotation.Nullable String trendmicroSettings) {
+    this.trendmicroSettings = trendmicroSettings;
+  }
+
+
+  public IP checkpointSettings(@javax.annotation.Nullable String checkpointSettings) {
+    this.checkpointSettings = checkpointSettings;
+    return this;
+  }
+
+  /**
+   * Configuration for CheckPoint delivery settings in JSON format
+   * @return checkpointSettings
+   */
+  @javax.annotation.Nullable
+  public String getCheckpointSettings() {
+    return checkpointSettings;
+  }
+
+  public void setCheckpointSettings(@javax.annotation.Nullable String checkpointSettings) {
+    this.checkpointSettings = checkpointSettings;
+  }
+
+
   public IP created(@javax.annotation.Nonnull Long created) {
     this.created = created;
     return this;
@@ -607,6 +951,33 @@ public class IP {
   }
 
 
+  public IP labels(@javax.annotation.Nullable List<Label> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public IP addLabelsItem(Label labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+  /**
+   * Labels associated with the IP
+   * @return labels
+   */
+  @javax.annotation.Nullable
+  public List<Label> getLabels() {
+    return labels;
+  }
+
+  public void setLabels(@javax.annotation.Nullable List<Label> labels) {
+    this.labels = labels;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -635,16 +1006,31 @@ public class IP {
         Objects.equals(this.qqSettings, IP.qqSettings) &&
         Objects.equals(this.defaultSettings, IP.defaultSettings) &&
         Objects.equals(this.attSettings, IP.attSettings) &&
+        Objects.equals(this.office365Settings, IP.office365Settings) &&
+        Objects.equals(this.googleworkspaceSettings, IP.googleworkspaceSettings) &&
+        Objects.equals(this.proofpointSettings, IP.proofpointSettings) &&
+        Objects.equals(this.mimecastSettings, IP.mimecastSettings) &&
+        Objects.equals(this.barracudaSettings, IP.barracudaSettings) &&
+        Objects.equals(this.ciscoironportSettings, IP.ciscoironportSettings) &&
+        Objects.equals(this.rackspaceSettings, IP.rackspaceSettings) &&
+        Objects.equals(this.zohobusinessSettings, IP.zohobusinessSettings) &&
+        Objects.equals(this.amazonworkmailSettings, IP.amazonworkmailSettings) &&
+        Objects.equals(this.symantecSettings, IP.symantecSettings) &&
+        Objects.equals(this.fortinetSettings, IP.fortinetSettings) &&
+        Objects.equals(this.sophosSettings, IP.sophosSettings) &&
+        Objects.equals(this.trendmicroSettings, IP.trendmicroSettings) &&
+        Objects.equals(this.checkpointSettings, IP.checkpointSettings) &&
         Objects.equals(this.created, IP.created) &&
         Objects.equals(this.infraClassification, IP.infraClassification) &&
         Objects.equals(this.infraMonitor, IP.infraMonitor) &&
         Objects.equals(this.state, IP.state) &&
-        Objects.equals(this.autoWarmupPlan, IP.autoWarmupPlan);
+        Objects.equals(this.autoWarmupPlan, IP.autoWarmupPlan) &&
+        Objects.equals(this.labels, IP.labels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, publicIP, systemDomain, reverseDNSHostname, type, gmailSettings, yahooSettings, aolSettings, microsoftSettings, comcastSettings, yandexSettings, gmxSettings, mailruSettings, icloudSettings, zohoSettings, qqSettings, defaultSettings, attSettings, created, infraClassification, infraMonitor, state, autoWarmupPlan);
+    return Objects.hash(id, publicIP, systemDomain, reverseDNSHostname, type, gmailSettings, yahooSettings, aolSettings, microsoftSettings, comcastSettings, yandexSettings, gmxSettings, mailruSettings, icloudSettings, zohoSettings, qqSettings, defaultSettings, attSettings, office365Settings, googleworkspaceSettings, proofpointSettings, mimecastSettings, barracudaSettings, ciscoironportSettings, rackspaceSettings, zohobusinessSettings, amazonworkmailSettings, symantecSettings, fortinetSettings, sophosSettings, trendmicroSettings, checkpointSettings, created, infraClassification, infraMonitor, state, autoWarmupPlan, labels);
   }
 
   @Override
@@ -669,11 +1055,26 @@ public class IP {
     sb.append("    qqSettings: ").append(toIndentedString(qqSettings)).append("\n");
     sb.append("    defaultSettings: ").append(toIndentedString(defaultSettings)).append("\n");
     sb.append("    attSettings: ").append(toIndentedString(attSettings)).append("\n");
+    sb.append("    office365Settings: ").append(toIndentedString(office365Settings)).append("\n");
+    sb.append("    googleworkspaceSettings: ").append(toIndentedString(googleworkspaceSettings)).append("\n");
+    sb.append("    proofpointSettings: ").append(toIndentedString(proofpointSettings)).append("\n");
+    sb.append("    mimecastSettings: ").append(toIndentedString(mimecastSettings)).append("\n");
+    sb.append("    barracudaSettings: ").append(toIndentedString(barracudaSettings)).append("\n");
+    sb.append("    ciscoironportSettings: ").append(toIndentedString(ciscoironportSettings)).append("\n");
+    sb.append("    rackspaceSettings: ").append(toIndentedString(rackspaceSettings)).append("\n");
+    sb.append("    zohobusinessSettings: ").append(toIndentedString(zohobusinessSettings)).append("\n");
+    sb.append("    amazonworkmailSettings: ").append(toIndentedString(amazonworkmailSettings)).append("\n");
+    sb.append("    symantecSettings: ").append(toIndentedString(symantecSettings)).append("\n");
+    sb.append("    fortinetSettings: ").append(toIndentedString(fortinetSettings)).append("\n");
+    sb.append("    sophosSettings: ").append(toIndentedString(sophosSettings)).append("\n");
+    sb.append("    trendmicroSettings: ").append(toIndentedString(trendmicroSettings)).append("\n");
+    sb.append("    checkpointSettings: ").append(toIndentedString(checkpointSettings)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    infraClassification: ").append(toIndentedString(infraClassification)).append("\n");
     sb.append("    infraMonitor: ").append(toIndentedString(infraMonitor)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    autoWarmupPlan: ").append(toIndentedString(autoWarmupPlan)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -714,11 +1115,26 @@ public class IP {
     openapiFields.add("qqSettings");
     openapiFields.add("defaultSettings");
     openapiFields.add("attSettings");
+    openapiFields.add("office365Settings");
+    openapiFields.add("googleworkspaceSettings");
+    openapiFields.add("proofpointSettings");
+    openapiFields.add("mimecastSettings");
+    openapiFields.add("barracudaSettings");
+    openapiFields.add("ciscoironportSettings");
+    openapiFields.add("rackspaceSettings");
+    openapiFields.add("zohobusinessSettings");
+    openapiFields.add("amazonworkmailSettings");
+    openapiFields.add("symantecSettings");
+    openapiFields.add("fortinetSettings");
+    openapiFields.add("sophosSettings");
+    openapiFields.add("trendmicroSettings");
+    openapiFields.add("checkpointSettings");
     openapiFields.add("created");
     openapiFields.add("infraClassification");
     openapiFields.add("infraMonitor");
     openapiFields.add("state");
     openapiFields.add("autoWarmupPlan");
+    openapiFields.add("labels");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -804,12 +1220,68 @@ public class IP {
       if ((jsonObj.get("attSettings") != null && !jsonObj.get("attSettings").isJsonNull()) && !jsonObj.get("attSettings").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `attSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("attSettings").toString()));
       }
+      if ((jsonObj.get("office365Settings") != null && !jsonObj.get("office365Settings").isJsonNull()) && !jsonObj.get("office365Settings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `office365Settings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("office365Settings").toString()));
+      }
+      if ((jsonObj.get("googleworkspaceSettings") != null && !jsonObj.get("googleworkspaceSettings").isJsonNull()) && !jsonObj.get("googleworkspaceSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `googleworkspaceSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("googleworkspaceSettings").toString()));
+      }
+      if ((jsonObj.get("proofpointSettings") != null && !jsonObj.get("proofpointSettings").isJsonNull()) && !jsonObj.get("proofpointSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `proofpointSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("proofpointSettings").toString()));
+      }
+      if ((jsonObj.get("mimecastSettings") != null && !jsonObj.get("mimecastSettings").isJsonNull()) && !jsonObj.get("mimecastSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mimecastSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mimecastSettings").toString()));
+      }
+      if ((jsonObj.get("barracudaSettings") != null && !jsonObj.get("barracudaSettings").isJsonNull()) && !jsonObj.get("barracudaSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `barracudaSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("barracudaSettings").toString()));
+      }
+      if ((jsonObj.get("ciscoironportSettings") != null && !jsonObj.get("ciscoironportSettings").isJsonNull()) && !jsonObj.get("ciscoironportSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ciscoironportSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ciscoironportSettings").toString()));
+      }
+      if ((jsonObj.get("rackspaceSettings") != null && !jsonObj.get("rackspaceSettings").isJsonNull()) && !jsonObj.get("rackspaceSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `rackspaceSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rackspaceSettings").toString()));
+      }
+      if ((jsonObj.get("zohobusinessSettings") != null && !jsonObj.get("zohobusinessSettings").isJsonNull()) && !jsonObj.get("zohobusinessSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `zohobusinessSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("zohobusinessSettings").toString()));
+      }
+      if ((jsonObj.get("amazonworkmailSettings") != null && !jsonObj.get("amazonworkmailSettings").isJsonNull()) && !jsonObj.get("amazonworkmailSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `amazonworkmailSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amazonworkmailSettings").toString()));
+      }
+      if ((jsonObj.get("symantecSettings") != null && !jsonObj.get("symantecSettings").isJsonNull()) && !jsonObj.get("symantecSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `symantecSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symantecSettings").toString()));
+      }
+      if ((jsonObj.get("fortinetSettings") != null && !jsonObj.get("fortinetSettings").isJsonNull()) && !jsonObj.get("fortinetSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `fortinetSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fortinetSettings").toString()));
+      }
+      if ((jsonObj.get("sophosSettings") != null && !jsonObj.get("sophosSettings").isJsonNull()) && !jsonObj.get("sophosSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sophosSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sophosSettings").toString()));
+      }
+      if ((jsonObj.get("trendmicroSettings") != null && !jsonObj.get("trendmicroSettings").isJsonNull()) && !jsonObj.get("trendmicroSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `trendmicroSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("trendmicroSettings").toString()));
+      }
+      if ((jsonObj.get("checkpointSettings") != null && !jsonObj.get("checkpointSettings").isJsonNull()) && !jsonObj.get("checkpointSettings").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkpointSettings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkpointSettings").toString()));
+      }
       if ((jsonObj.get("infraClassification") != null && !jsonObj.get("infraClassification").isJsonNull()) && !jsonObj.get("infraClassification").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `infraClassification` to be a primitive type in the JSON string but got `%s`", jsonObj.get("infraClassification").toString()));
       }
       // validate the optional field `autoWarmupPlan`
       if (jsonObj.get("autoWarmupPlan") != null && !jsonObj.get("autoWarmupPlan").isJsonNull()) {
         AutoWarmupPlan.validateJsonElement(jsonObj.get("autoWarmupPlan"));
+      }
+      if (jsonObj.get("labels") != null && !jsonObj.get("labels").isJsonNull()) {
+        JsonArray jsonArraylabels = jsonObj.getAsJsonArray("labels");
+        if (jsonArraylabels != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("labels").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `labels` to be an array in the JSON string but got `%s`", jsonObj.get("labels").toString()));
+          }
+
+          // validate the optional field `labels` (array)
+          for (int i = 0; i < jsonArraylabels.size(); i++) {
+            Label.validateJsonElement(jsonArraylabels.get(i));
+          };
+        }
       }
   }
 
