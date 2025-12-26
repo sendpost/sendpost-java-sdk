@@ -29,7 +29,7 @@ Add this dependency to your `pom.xml`:
 <dependency>
   <groupId>io.sendpost</groupId>
   <artifactId>sendpost-java-sdk</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.3</version>
 </dependency>
 ```
 
@@ -39,7 +39,7 @@ Add this dependency to your `build.gradle`:
 
 ```groovy
   dependencies {
-     implementation "io.sendpost:sendpost-java-sdk:1.0.0"
+     implementation "io.sendpost:sendpost-java-sdk:1.1.3"
   }
 ```
 
