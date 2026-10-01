@@ -16,7 +16,7 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 
 Get Account Aggregate Stats
 
-Retrieve aggregated email statistics for all sub-accounts of a specific account for a given date range.
+Retrieve summarized email statistics across all sub-accounts for a date range. Returns a single aggregated record—perfect for high-level reporting and dashboards.  **Use Cases:** - Annual email program review - Quarterly business reports - Month-over-month comparison - Board-level metrics - ROI calculations for email program  **Example:** Get full year stats for 2024: &#x60;&#x60;&#x60; GET /account/stat/aggregate?from&#x3D;2024-01-01&amp;to&#x3D;2024-12-31 &#x60;&#x60;&#x60;  **Note:** Maximum date range is 366 days (1 year). 
 
 ### Example
 ```java
@@ -40,8 +40,8 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     StatsAApi apiInstance = new StatsAApi(defaultClient);
-    LocalDate from = LocalDate.parse("2019-01-01"); // LocalDate | The start date for retrieving aggregated stats (inclusive)
-    LocalDate to = LocalDate.parse("2019-12-31"); // LocalDate | The end date for retrieving aggregated stats (inclusive). The difference between `from` and `to` should not exceed 366 days.
+    LocalDate from = LocalDate.parse("2024-01-01"); // LocalDate | Start date for aggregation (inclusive). Format YYYY-MM-DD.
+    LocalDate to = LocalDate.parse("2024-12-31"); // LocalDate | End date for aggregation (inclusive). Max 366 days from `from` date.
     try {
       AggregateStats result = apiInstance.getAccountAggregateStats(from, to);
       System.out.println(result);
@@ -60,8 +60,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **from** | **LocalDate**| The start date for retrieving aggregated stats (inclusive) | |
-| **to** | **LocalDate**| The end date for retrieving aggregated stats (inclusive). The difference between &#x60;from&#x60; and &#x60;to&#x60; should not exceed 366 days. | |
+| **from** | **LocalDate**| Start date for aggregation (inclusive). Format YYYY-MM-DD. | |
+| **to** | **LocalDate**| End date for aggregation (inclusive). Max 366 days from &#x60;from&#x60; date. | |
 
 ### Return type
 
@@ -90,7 +90,7 @@ public class Example {
 
 Get Account Group Aggregate Stats
 
-Gets aggregated email stats for a specific group in all sub-accounts of a specific account for the given daterange. The maximum daterange for which these stats can be retrieved is 366 days.
+Retrieve summarized email statistics for a specific group across all sub-accounts. Returns a single aggregated record for the group—ideal for campaign reporting.  **Use Cases:** - Annual performance report for a specific product integration - Compare total metrics for different campaigns - Summarize email performance for a specific customer segment - Calculate ROI for a marketing campaign by group  **Example:** Get yearly stats for Shopify integration: &#x60;&#x60;&#x60; GET /account/stat/aggregate/group?group&#x3D;shopify&amp;from&#x3D;2024-01-01&amp;to&#x3D;2024-12-31 &#x60;&#x60;&#x60;  **Note:** Maximum date range is 366 days (1 year). 
 
 ### Example
 ```java
@@ -114,9 +114,9 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     StatsAApi apiInstance = new StatsAApi(defaultClient);
-    String group = "shopify"; // String | Group whose aggregate stats need to be retrieved.
-    LocalDate from = LocalDate.parse("2019-01-01"); // LocalDate | Date from which stats should be retrieved (should be in the format `YYYY-MM-DD`).
-    LocalDate to = LocalDate.parse("2019-12-31"); // LocalDate | Date to which stats should be retrieved (should be in the format `YYYY-MM-DD`). Note that the difference between `from` and `to` should not be more than 366 days.
+    String group = "shopify"; // String | The group/tag name to filter and aggregate statistics by.
+    LocalDate from = LocalDate.parse("2024-01-01"); // LocalDate | Start date for aggregation (inclusive). Format YYYY-MM-DD.
+    LocalDate to = LocalDate.parse("2024-12-31"); // LocalDate | End date for aggregation (inclusive). Max 366 days from `from` date.
     try {
       AggregateStat result = apiInstance.getAccountAggregateStatsByGroup(group, from, to);
       System.out.println(result);
@@ -135,9 +135,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **group** | **String**| Group whose aggregate stats need to be retrieved. | |
-| **from** | **LocalDate**| Date from which stats should be retrieved (should be in the format &#x60;YYYY-MM-DD&#x60;). | |
-| **to** | **LocalDate**| Date to which stats should be retrieved (should be in the format &#x60;YYYY-MM-DD&#x60;). Note that the difference between &#x60;from&#x60; and &#x60;to&#x60; should not be more than 366 days. | |
+| **group** | **String**| The group/tag name to filter and aggregate statistics by. | |
+| **from** | **LocalDate**| Start date for aggregation (inclusive). Format YYYY-MM-DD. | |
+| **to** | **LocalDate**| End date for aggregation (inclusive). Max 366 days from &#x60;from&#x60; date. | |
 
 ### Return type
 
@@ -165,7 +165,7 @@ public class Example {
 
 List Account Group Stats
 
-Gets a list of all email stats for all sub-accounts of a specific account by group for a given daterange. The maximum daterange for which these stats can be retrieved is 31 days.
+Retrieve daily email statistics for a specific group across all sub-accounts. Returns one record per day, filtered by the group/tag you specify.  **What are Groups?** Groups (tags) are labels attached to emails when sending. They enable segmented analytics across your entire account.  **Common Group Strategies:** | Strategy | Example Groups | |----------|----------------| | By Product | &#x60;shopify&#x60;, &#x60;wordpress&#x60;, &#x60;api-direct&#x60; | | By Type | &#x60;transactional&#x60;, &#x60;marketing&#x60;, &#x60;alerts&#x60; | | By Team | &#x60;sales-team&#x60;, &#x60;support&#x60;, &#x60;engineering&#x60; | | By Campaign | &#x60;black-friday-2024&#x60;, &#x60;summer-sale&#x60; |  **Use Cases:** - Compare performance across products/integrations - Track specific campaign performance account-wide - Analyze transactional vs marketing metrics - Benchmark different teams&#39; email performance  **Note:** Maximum date range is 31 days. 
 
 ### Example
 ```java
@@ -189,9 +189,9 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     StatsAApi apiInstance = new StatsAApi(defaultClient);
-    String group = "shopify"; // String | Group whose stats need to be retrieved
-    LocalDate from = LocalDate.parse("2020-03-12"); // LocalDate | Date from which stats should be retrieved (should be in the format `YYYY-MM-DD`)
-    LocalDate to = LocalDate.parse("2020-04-14"); // LocalDate | Date to which stats should be retrieved (should be in the format `YYYY-MM-DD`). Note that the difference between `from` and `to` should not be more than 31 days.
+    String group = "shopify"; // String | The group/tag name to filter statistics by.
+    LocalDate from = LocalDate.parse("2024-01-01"); // LocalDate | Start date for stats retrieval (inclusive). Format YYYY-MM-DD.
+    LocalDate to = LocalDate.parse("2024-01-31"); // LocalDate | End date for stats retrieval (inclusive). Max 31 days from `from` date.
     try {
       List<Stat> result = apiInstance.getAccountStatsByGroup(group, from, to);
       System.out.println(result);
@@ -210,9 +210,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **group** | **String**| Group whose stats need to be retrieved | |
-| **from** | **LocalDate**| Date from which stats should be retrieved (should be in the format &#x60;YYYY-MM-DD&#x60;) | |
-| **to** | **LocalDate**| Date to which stats should be retrieved (should be in the format &#x60;YYYY-MM-DD&#x60;). Note that the difference between &#x60;from&#x60; and &#x60;to&#x60; should not be more than 31 days. | |
+| **group** | **String**| The group/tag name to filter statistics by. | |
+| **from** | **LocalDate**| Start date for stats retrieval (inclusive). Format YYYY-MM-DD. | |
+| **to** | **LocalDate**| End date for stats retrieval (inclusive). Max 31 days from &#x60;from&#x60; date. | |
 
 ### Return type
 
@@ -240,7 +240,7 @@ public class Example {
 
 List Account Stats
 
-Retrieve email statistics for all sub-accounts of a specific account for a given date range.
+Retrieve daily email statistics aggregated across all sub-accounts. Returns one record per day within the date range—ideal for organization-wide reporting.  **Metrics Per Day:** | Metric | Description | |--------|-------------| | &#x60;processed&#x60; | Total emails submitted across all sub-accounts | | &#x60;delivered&#x60; | Successfully delivered to recipients | | &#x60;dropped&#x60; | Blocked before sending | | &#x60;hardBounced&#x60; | Permanent delivery failures | | &#x60;softBounced&#x60; | Temporary delivery failures | | &#x60;opens&#x60; | Total email opens | | &#x60;clicks&#x60; | Total link clicks | | &#x60;unsubscribed&#x60; | Recipients who unsubscribed | | &#x60;spams&#x60; | Spam complaints received |  **Use Cases:** - Organization-wide email performance dashboard - Billing and usage tracking across all sub-accounts - Executive reporting for email program health - Trend analysis across your entire email operation  **Note:** Maximum date range is 31 days. 
 
 ### Example
 ```java
@@ -264,8 +264,8 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     StatsAApi apiInstance = new StatsAApi(defaultClient);
-    LocalDate from = LocalDate.parse("2020-03-12"); // LocalDate | The start date for retrieving stats (inclusive)
-    LocalDate to = LocalDate.parse("2020-04-14"); // LocalDate | The end date for retrieving stats (inclusive). The difference between `from` and `to` should not exceed 31 days.
+    LocalDate from = LocalDate.parse("2024-01-01"); // LocalDate | Start date for stats retrieval (inclusive). Format YYYY-MM-DD.
+    LocalDate to = LocalDate.parse("2024-01-31"); // LocalDate | End date for stats retrieval (inclusive). Max 31 days from `from` date.
     try {
       List<AccountStats> result = apiInstance.getAllAccountStats(from, to);
       System.out.println(result);
@@ -284,8 +284,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **from** | **LocalDate**| The start date for retrieving stats (inclusive) | |
-| **to** | **LocalDate**| The end date for retrieving stats (inclusive). The difference between &#x60;from&#x60; and &#x60;to&#x60; should not exceed 31 days. | |
+| **from** | **LocalDate**| Start date for stats retrieval (inclusive). Format YYYY-MM-DD. | |
+| **to** | **LocalDate**| End date for stats retrieval (inclusive). Max 31 days from &#x60;from&#x60; date. | |
 
 ### Return type
 

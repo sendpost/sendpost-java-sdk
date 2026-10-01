@@ -2,34 +2,38 @@
 
 # IP
 
+A dedicated IP address used for sending emails. Dedicated IPs give you full control over your sender reputation, as your deliverability is not affected by other senders.  **IP Warmup:** New IPs should be gradually \"warmed up\" by slowly increasing sending volume over 4-6 weeks to establish reputation with ISPs. 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **Integer** | Unique ID for the IP |  |
-|**publicIP** | **String** | The public IP address associated with the resource |  |
-|**systemDomain** | **Domain** | Details of the system domain associated with the IP |  [optional] |
-|**reverseDNSHostname** | **String** | The reverse DNS hostname for the IP |  [optional] |
-|**type** | **Integer** | Type of the IP |  [optional] |
-|**gmailSettings** | **String** | Configuration for Gmail delivery settings in JSON format |  [optional] |
-|**yahooSettings** | **String** | Configuration for Yahoo delivery settings in JSON format |  [optional] |
-|**aolSettings** | **String** | Configuration for AOL delivery settings in JSON format |  [optional] |
-|**microsoftSettings** | **String** | Configuration for Microsoft delivery settings in JSON format |  [optional] |
-|**comcastSettings** | **String** | Configuration for Comcast delivery settings in JSON format |  [optional] |
-|**yandexSettings** | **String** | Configuration for Yandex delivery settings in JSON format |  [optional] |
-|**gmxSettings** | **String** | Configuration for GMX delivery settings in JSON format |  [optional] |
-|**mailruSettings** | **String** | Configuration for Mail.ru delivery settings in JSON format |  [optional] |
-|**icloudSettings** | **String** | Configuration for iCloud delivery settings in JSON format |  [optional] |
-|**zohoSettings** | **String** | Configuration for Zoho delivery settings in JSON format |  [optional] |
-|**qqSettings** | **String** | Configuration for QQ delivery settings in JSON format |  [optional] |
-|**defaultSettings** | **String** | Default delivery settings in JSON format |  [optional] |
-|**attSettings** | **String** | Configuration for AT&amp;T delivery settings in JSON format |  [optional] |
-|**created** | **Integer** | The timestamp (UNIX epoch) when the IP was created |  |
-|**infraClassification** | **String** | Classification of the infrastructure |  [optional] |
-|**infraMonitor** | **Boolean** | Indicates whether infrastructure monitoring is enabled |  [optional] |
-|**state** | **Integer** | The state of the IP |  [optional] |
-|**autoWarmupPlan** | **String** | The auto-warmup plan associated with the IP |  [optional] |
+|**id** | **Long** | Unique identifier for the IP resource |  [optional] |
+|**publicIp** | **String** | The public IPv4 address used for sending emails. This is the IP that receiving mail servers will see.  |  [optional] |
+|**reverseDnsHostname** | **String** | The reverse DNS (PTR record) hostname for this IP. Properly configured rDNS is important for deliverability. Format: sp{id}.{region}.sendpost.email  |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) | Type of IP allocation: - &#x60;0&#x60; &#x3D; Shared IP (shared with other SendPost senders, pooled reputation) - &#x60;1&#x60; &#x3D; Dedicated IP (exclusive to your account, your own reputation)  |  [optional] |
+|**autoWarmupEnabled** | **Boolean** | Whether automatic IP warmup is enabled. When enabled, SendPost automatically manages sending volume to gradually build reputation on this IP.  |  [optional] |
+|**labels** | [**List&lt;Label&gt;**](Label.md) | Custom labels/tags for organizing IPs |  [optional] |
+|**state** | [**StateEnum**](#StateEnum) | Current state of the IP: - &#x60;0&#x60; &#x3D; Warmup (IP is in warmup phase, gradually building reputation) - &#x60;1&#x60; &#x3D; Normal (IP is fully warmed and ready for full sending volume)  |  [optional] |
+|**created** | **Long** | UNIX epoch timestamp in nanoseconds when the IP was allocated |  [optional] |
+
+
+
+## Enum: TypeEnum
+
+| Name | Value |
+|---- | -----|
+| NUMBER_0 | 0 |
+| NUMBER_1 | 1 |
+
+
+
+## Enum: StateEnum
+
+| Name | Value |
+|---- | -----|
+| NUMBER_0 | 0 |
+| NUMBER_1 | 1 |
 
 
 

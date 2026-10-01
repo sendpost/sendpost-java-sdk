@@ -17,7 +17,7 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 
 Allocate IP
 
-Allocates a new IP resource to the account. 
+Request allocation of a new dedicated IP address to your account. New IPs start in warmup state to build sender reputation gradually.  **Warmup Process:** - New IPs have limited daily sending capacity - Volume increases automatically each day while &#x60;autoWarmupEnabled&#x60; is set - Full capacity typically reached after 30-45 days - Consistent, engagement-positive sending accelerates warmup  **When to Allocate New IPs:** - Scaling beyond current IP capacity - Separating different email streams (transactional vs marketing) - Geographic IP requirements - Replacing an IP with poor reputation  **Best Practices:** - Dedicated IPs require consistent volume (10k+ emails/month ideal) - Low volume on dedicated IPs can harm deliverability - Consider shared IPs for low-volume senders 
 
 ### Example
 ```java
@@ -78,7 +78,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Details of the allocated IP |  -  |
+| **200** | Details of the newly allocated IP, including initial warmup status. |  -  |
 
 <a id="deleteIp"></a>
 # **deleteIp**
@@ -86,7 +86,7 @@ public class Example {
 
 Delete IP
 
-Deletes a specific IP resource based on the provided IP ID. 
+Remove an IP address from your account. This action is irreversible.  **⚠️ Before Deleting:** - Remove the IP from all IP pools first - Ensure no active sending relies on this IP - Consider impact on overall sending capacity  **Note:** You cannot delete an IP that is currently assigned to an IP pool. 
 
 ### Example
 ```java
@@ -110,7 +110,7 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     IpApi apiInstance = new IpApi(defaultClient);
-    Integer ipId = 56; // Integer | The ID of the IP resource to delete
+    Integer ipId = 11322; // Integer | The unique ID of the IP resource to delete.
     try {
       IPDeletionResponse result = apiInstance.deleteIp(ipId);
       System.out.println(result);
@@ -129,7 +129,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ipId** | **Integer**| The ID of the IP resource to delete | |
+| **ipId** | **Integer**| The unique ID of the IP resource to delete. | |
 
 ### Return type
 
@@ -147,7 +147,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Confirmation message after successful IP deletion |  -  |
+| **200** | Confirmation of successful IP deletion. |  -  |
 
 <a id="getAllIps"></a>
 # **getAllIps**
@@ -155,7 +155,7 @@ public class Example {
 
 List IPs
 
-Retrieves a list of all IPs associated with the main account. 
+Retrieve all IP addresses allocated to your account. IPs are the foundation of your sending infrastructure and directly impact deliverability.  **IP Types:** | Type | Value | Description | |------|-------|-------------| | Shared | &#x60;0&#x60; | IP shared with other SendPost senders. Cost-effective, reputation is pooled. | | Dedicated | &#x60;1&#x60; | Exclusive IP for your account. Full control over sender reputation. |  **IP States:** | State | Value | Description | |-------|-------|-------------| | Warmup | &#x60;0&#x60; | New IP building reputation. Volume is limited and gradually increases. | | Normal | &#x60;1&#x60; | Fully warmed IP ready for normal sending volume. |  **Warmup Information:** - &#x60;autoWarmupEnabled&#x60; - Whether SendPost is automatically increasing volume  **Use Cases:** - Monitor IP warmup progress for new IPs - Audit shared vs dedicated IP allocation - Plan IP pool configurations - Check available sending capacity 
 
 ### Example
 ```java
@@ -179,9 +179,9 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     IpApi apiInstance = new IpApi(defaultClient);
-    Integer limit = 56; // Integer | Number of records to return per request
-    Integer offset = 56; // Integer | Number of initial records to skip
-    String search = "search_example"; // String | Case insensitive search against IP's public IP address
+    Integer limit = 20; // Integer | Number of records to return per request. Default 20.
+    Integer offset = 0; // Integer | Number of initial records to skip for pagination.
+    String search = "52.34"; // String | Case insensitive search against public IP addresses.
     try {
       List<IP> result = apiInstance.getAllIps(limit, offset, search);
       System.out.println(result);
@@ -200,9 +200,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Number of records to return per request | [optional] |
-| **offset** | **Integer**| Number of initial records to skip | [optional] |
-| **search** | **String**| Case insensitive search against IP&#39;s public IP address | [optional] |
+| **limit** | **Integer**| Number of records to return per request. Default 20. | [optional] [default to 20] |
+| **offset** | **Integer**| Number of initial records to skip for pagination. | [optional] [default to 0] |
+| **search** | **String**| Case insensitive search against public IP addresses. | [optional] |
 
 ### Return type
 
@@ -228,7 +228,7 @@ public class Example {
 
 Get IP
 
-Retrieves detailed information about a specific IP based on the provided ID. 
+Retrieve detailed information about a specific IP address, including its warmup status, type, and configuration.  **Use Cases:** - Check warmup progress for a new dedicated IP - Verify IP configuration before adding to a pool - Debug deliverability issues by checking IP state - Monitor auto-warmup progress 
 
 ### Example
 ```java
@@ -252,7 +252,7 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     IpApi apiInstance = new IpApi(defaultClient);
-    Integer ipId = 56; // Integer | The ID of the IP resource to retrieve
+    Integer ipId = 11322; // Integer | The unique ID of the IP resource to retrieve.
     try {
       IP result = apiInstance.getSpecificIp(ipId);
       System.out.println(result);
@@ -271,7 +271,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ipId** | **Integer**| The ID of the IP resource to retrieve | |
+| **ipId** | **Integer**| The unique ID of the IP resource to retrieve. | |
 
 ### Return type
 
@@ -289,15 +289,15 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Information about the specified IP |  -  |
+| **200** | Detailed information about the specified IP. |  -  |
 
 <a id="updateIp"></a>
 # **updateIp**
-> IP updateIp(ipId, ipUpdateRequest)
+> IP updateIp(ipUpdateRequest, ipId)
 
 Update IP
 
-Updates an existing IP resource based on the provided IP ID. 
+Modify settings for an existing IP address. Use this to manage warmup configuration.  **Configurable Settings:** - &#x60;autoWarmupEnabled&#x60; - Enable/disable automatic warmup schedule  **Use Cases:** - Pause auto-warmup during low-volume periods - Re-enable warmup after manual intervention - Adjust warmup settings based on sending patterns 
 
 ### Example
 ```java
@@ -321,10 +321,10 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     IpApi apiInstance = new IpApi(defaultClient);
-    Integer ipId = 56; // Integer | The ID of the IP resource to update
     IPUpdateRequest ipUpdateRequest = new IPUpdateRequest(); // IPUpdateRequest | 
+    Integer ipId = 11322; // Integer | The unique ID of the IP resource to update.
     try {
-      IP result = apiInstance.updateIp(ipId, ipUpdateRequest);
+      IP result = apiInstance.updateIp(ipUpdateRequest, ipId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IpApi#updateIp");
@@ -341,8 +341,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ipId** | **Integer**| The ID of the IP resource to update | |
 | **ipUpdateRequest** | [**IPUpdateRequest**](IPUpdateRequest.md)|  | |
+| **ipId** | **Integer**| The unique ID of the IP resource to update. | |
 
 ### Return type
 
@@ -360,5 +360,5 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The updated IP information |  -  |
+| **200** | The updated IP information. |  -  |
 

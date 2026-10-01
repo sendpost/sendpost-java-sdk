@@ -2,41 +2,34 @@
 
 # Message
 
+A previously submitted email message with its metadata. Use the message lookup API to retrieve details about emails you have sent. 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**messageID** | **String** | Unique ID for the message. |  [optional] |
-|**accountID** | **Integer** | Account ID associated with the message. |  [optional] |
-|**subAccountID** | **Integer** | Sub-account ID associated with the message. |  [optional] |
-|**ipID** | **Integer** | IP ID used for sending the message. |  [optional] |
-|**accountIPPoolID** | **Integer** | Account IP Pool ID associated with the message. |  [optional] |
-|**publicIP** | **String** | Public IP address used for sending the message. |  [optional] |
-|**localIP** | **String** | Local IP address used for sending the message. |  [optional] |
-|**emailType** | **String** | Type of email service used. |  [optional] |
-|**submittedAt** | **Integer** | UNIX epoch nano timestamp when message was submitted. |  [optional] |
-|**from** | **Person** | Object comprising name and email address of the sender |  [optional] |
-|**replyTo** | **Person** | Object comprising name and email addresses to which email replies will go to |  [optional] |
-|**to** | [**MessageTo**](MessageTo.md) |  |  [optional] |
-|**headerTo** | [**MessageHeaderTo**](MessageHeaderTo.md) |  |  [optional] |
-|**headerCc** | **List&lt;String&gt;** | List of CC recipients from email headers |  [optional] |
-|**headerBcc** | **List&lt;String&gt;** | List of BCC recipients from email headers |  [optional] |
-|**attachments** | **List&lt;String&gt;** | List of attachments |  [optional] |
-|**groups** | **List&lt;String&gt;** | List of groups associated with the message |  [optional] |
-|**ipPool** | **String** | IP Pool from which emails will go out. Relevant only for customers on dedicated IP plans. |  [optional] |
-|**headers** | **Map&lt;String, String&gt;** | Key-Value pair which are added to every email message being sent and also with webhooks triggered on events such as email delivered, open, click etc. They are useful to identify email, recipient etc. in your internal system |  [optional] |
-|**customFields** | **Map&lt;String, String&gt;** | Key-Value pair of custom fields at message level |  [optional] |
-|**subject** | **String** | Email subject line. |  [optional] |
-|**preText** | **String** | Text which appears on mobile right after email subject line. |  [optional] |
-|**htmlBody** | **String** | HTML email content. |  [optional] |
-|**textBody** | **String** | Text email content. |  [optional] |
-|**ampBody** | **String** | AMP email content. |  [optional] |
-|**trackOpens** | **Boolean** | Indicates if email opens need to be tracked. |  [optional] |
-|**trackClicks** | **Boolean** | Indicates if email clicks need to be tracked. |  [optional] |
-|**attempt** | **Integer** | Number of delivery attempts made for the message. |  [optional] |
-|**webhookEndpoint** | **String** | Webhook endpoint URL for the message. |  [optional] |
-|**mxRecords** | **List&lt;String&gt;** | List of MX records for the recipient domain |  [optional] |
+|**messageId** | **String** | Unique identifier (UUID) for this email message |  [optional] |
+|**subAccountId** | **Long** | ID of the sub-account that sent this email |  [optional] |
+|**publicIp** | **String** | The public IP address used to send this email |  [optional] |
+|**emailType** | **String** | Classification of the email, e.g. \&quot;transactional\&quot; or \&quot;marketing\&quot;.  |  [optional] |
+|**submittedAt** | **Long** | UNIX epoch timestamp in nanoseconds when the email was submitted |  [optional] |
+|**from** | [**EmailAddress**](EmailAddress.md) | The sender&#39;s email address and display name |  [optional] |
+|**replyTo** | [**EmailAddress**](EmailAddress.md) | The Reply-To email address and display name |  [optional] |
+|**to** | [**Recipient**](Recipient.md) | The primary recipient, including any per-recipient CC/BCC and custom fields |  [optional] |
+|**headerTo** | [**Recipient**](Recipient.md) | The address rendered in the visible To header (may differ from the envelope recipient) |  [optional] |
+|**headerCc** | [**List&lt;CopyTo&gt;**](CopyTo.md) | Addresses rendered in the visible Cc header |  [optional] |
+|**headerBcc** | [**List&lt;CopyTo&gt;**](CopyTo.md) | Addresses rendered in the visible Bcc header |  [optional] |
+|**attachments** | [**List&lt;Attachment&gt;**](Attachment.md) | File attachments included with the email |  [optional] |
+|**groups** | **List&lt;String&gt;** | Tags/groups associated with this email |  [optional] |
+|**ipPool** | **String** | Name of the IP pool used for sending |  [optional] |
+|**headers** | **Map&lt;String, String&gt;** | Custom SMTP headers set on the message |  [optional] |
+|**subject** | **String** | The email subject line |  [optional] |
+|**preText** | **String** | Preheader/preview text shown by many email clients after the subject |  [optional] |
+|**htmlBody** | **String** | The HTML body of the email |  [optional] |
+|**textBody** | **String** | The plain-text body of the email |  [optional] |
+|**ampBody** | **String** | The AMP for Email body, if provided |  [optional] |
+|**trackOpens** | **Boolean** | Whether open tracking was enabled for this email |  [optional] |
+|**trackClicks** | **Boolean** | Whether click tracking was enabled for this email |  [optional] |
 
 
 

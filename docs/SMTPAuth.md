@@ -2,16 +2,15 @@
 
 # SMTPAuth
 
+SMTP authentication credentials for sending emails via SMTP relay. Use these credentials to configure your application to send email through SendPost's SMTP servers (smtp.sendpost.io).  **Note:** The SMTP password is never returned by the API. It is shown only once, in the dashboard, when credentials are created or regenerated. 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **Integer** | Unique ID for the SMTP Auth |  [optional] |
-|**username** | **String** | Username for the SMTP Auth |  [optional] |
-|**password** | **String** | Password for the SMTP Auth |  [optional] |
-|**created** | **Integer** | UNIX epoch nano timestamp when the SMTP Auth was created |  [optional] |
-|**updated** | **Integer** | UNIX epoch nano timestamp when the SMTP Auth was updated |  [optional] |
+|**id** | **Long** | Unique identifier for the SMTP credentials |  [optional] |
+|**username** | **String** | SMTP username for authentication. Format: {identifier}@{subaccount_id}.sendpost.io  |  [optional] |
+|**created** | **Long** | UNIX epoch timestamp in nanoseconds when credentials were created |  [optional] |
 
 
 

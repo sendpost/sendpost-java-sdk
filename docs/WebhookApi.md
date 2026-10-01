@@ -17,7 +17,7 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 
 Create Webhook
 
-Create a new webhook by specifying its properties.
+Create a new webhook to receive real-time notifications for email events. Your endpoint will receive HTTP POST requests with event data as they occur.  **Endpoint Requirements:** - Must be publicly accessible HTTPS URL - Should return 2xx status within 30 seconds - Handle potential duplicate events (use event ID for deduplication) - Implement retry/queue logic for reliability  **Choosing Events:** - **Engagement Tracking:** &#x60;uniqueOpened&#x60;, &#x60;uniqueClicked&#x60; for metrics - **Full History:** &#x60;opened&#x60;, &#x60;clicked&#x60; for complete event logs - **Delivery Monitoring:** &#x60;delivered&#x60;, &#x60;hardBounced&#x60;, &#x60;softBounced&#x60; - **Compliance:** &#x60;unsubscribed&#x60;, &#x60;spam&#x60;  **Best Practices:** - Only enable events you actually need - Store events before processing (async processing) - Implement idempotency using event IDs - Set up monitoring for webhook failures  **Webhook Payload Example:** &#x60;&#x60;&#x60;json {   \&quot;eventId\&quot;: \&quot;evt_123\&quot;,   \&quot;event\&quot;: \&quot;delivered\&quot;,   \&quot;messageId\&quot;: \&quot;msg_456\&quot;,   \&quot;recipient\&quot;: \&quot;user@example.com\&quot;,   \&quot;timestamp\&quot;: \&quot;2024-01-15T10:30:00Z\&quot; } &#x60;&#x60;&#x60; 
 
 ### Example
 ```java
@@ -79,10 +79,10 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Webhook created successfully. |  -  |
-| **401** | Unauthorized. Invalid API key. |  -  |
+| **401** | Unauthorized. Invalid or missing API key. |  -  |
 | **403** | Forbidden. Webhook with the same URL already exists. |  -  |
 | **406** | Not Acceptable. Cannot create webhook for the default sub-account. |  -  |
-| **422** | Unprocessable entity. Invalid request body. |  -  |
+| **422** | Unprocessable entity. Invalid URL or missing required fields. |  -  |
 
 <a id="deleteWebhook"></a>
 # **deleteWebhook**
@@ -90,7 +90,7 @@ public class Example {
 
 Delete Webhook
 
-Delete a webhook by its ID.
+Remove a webhook from your account. After deletion, no further events will be sent to that endpoint.  **Before Deleting:** - Ensure your application doesn&#39;t rely on these events - Consider updating to a new webhook instead if you&#39;re migrating  **Note:** Events that occurred before deletion are not affected. Historical data remains intact. 
 
 ### Example
 ```java
@@ -114,7 +114,7 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     WebhookApi apiInstance = new WebhookApi(defaultClient);
-    Integer webhookId = 117; // Integer | ID of the webhook to delete.
+    Integer webhookId = 117; // Integer | The unique ID of the webhook to delete.
     try {
       DeleteWebhookResponse result = apiInstance.deleteWebhook(webhookId);
       System.out.println(result);
@@ -133,7 +133,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **webhookId** | **Integer**| ID of the webhook to delete. | |
+| **webhookId** | **Integer**| The unique ID of the webhook to delete. | |
 
 ### Return type
 
@@ -155,11 +155,11 @@ public class Example {
 
 <a id="getAllWebhooks"></a>
 # **getAllWebhooks**
-> List&lt;Webhook&gt; getAllWebhooks(limit, offset, search)
+> List&lt;AccountWebhookWithStats&gt; getAllWebhooks(limit, offset, search)
 
 List Webhooks
 
-Retrieves a list of all webhooks, their endpoints, and the events for which they are active.
+Retrieve all configured webhooks for your account. Webhooks enable real-time notifications when email events occur, allowing you to build reactive applications.  **Supported Events:** | Event | Description | |-------|-------------| | &#x60;processed&#x60; | Email accepted and queued for delivery | | &#x60;dropped&#x60; | Email blocked (suppressed, invalid, policy) | | &#x60;delivered&#x60; | Email successfully delivered to recipient | | &#x60;hardBounced&#x60; | Permanent delivery failure | | &#x60;softBounced&#x60; | Temporary delivery failure | | &#x60;opened&#x60; | Recipient opened the email (all opens) | | &#x60;uniqueOpened&#x60; | First open per recipient only | | &#x60;clicked&#x60; | Recipient clicked a link (all clicks) | | &#x60;uniqueClicked&#x60; | First click per recipient only | | &#x60;unsubscribed&#x60; | Recipient unsubscribed | | &#x60;spam&#x60; | Recipient marked email as spam |  **Use Cases:** - Audit configured webhook endpoints - Verify webhook URLs are correct - Review enabled events per webhook - Debug webhook delivery issues 
 
 ### Example
 ```java
@@ -183,11 +183,11 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     WebhookApi apiInstance = new WebhookApi(defaultClient);
-    Integer limit = 10; // Integer | Number of records to return per request.
-    Integer offset = 0; // Integer | Number of initial records to skip.
-    String search = "hooli"; // String | Case insensitive search against webhook URL.
+    Integer limit = 20; // Integer | Number of records to return per request. Default 20.
+    Integer offset = 0; // Integer | Number of initial records to skip for pagination.
+    String search = "api.yoursite.com"; // String | Case insensitive search against webhook URLs.
     try {
-      List<Webhook> result = apiInstance.getAllWebhooks(limit, offset, search);
+      List<AccountWebhookWithStats> result = apiInstance.getAllWebhooks(limit, offset, search);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling WebhookApi#getAllWebhooks");
@@ -204,13 +204,13 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Number of records to return per request. | [optional] |
-| **offset** | **Integer**| Number of initial records to skip. | [optional] |
-| **search** | **String**| Case insensitive search against webhook URL. | [optional] |
+| **limit** | **Integer**| Number of records to return per request. Default 20. | [optional] [default to 20] |
+| **offset** | **Integer**| Number of initial records to skip for pagination. | [optional] [default to 0] |
+| **search** | **String**| Case insensitive search against webhook URLs. | [optional] |
 
 ### Return type
 
-[**List&lt;Webhook&gt;**](Webhook.md)
+[**List&lt;AccountWebhookWithStats&gt;**](AccountWebhookWithStats.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | A list of webhooks. |  -  |
+| **200** | List of configured webhooks, each with its delivery success rate. |  -  |
 
 <a id="getWebhook"></a>
 # **getWebhook**
@@ -232,7 +232,7 @@ public class Example {
 
 Get Webhook
 
-Retrieves a specific webhook based on its ID.
+Retrieve detailed information about a specific webhook, including its endpoint URL and enabled events.  **Use Cases:** - Verify webhook configuration - Debug event delivery issues - Check enabled events for a webhook - Audit webhook settings 
 
 ### Example
 ```java
@@ -256,7 +256,7 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     WebhookApi apiInstance = new WebhookApi(defaultClient);
-    Integer webhookId = 117; // Integer | The ID of the webhook to retrieve.
+    Integer webhookId = 117; // Integer | The unique ID of the webhook to retrieve.
     try {
       Webhook result = apiInstance.getWebhook(webhookId);
       System.out.println(result);
@@ -275,7 +275,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **webhookId** | **Integer**| The ID of the webhook to retrieve. | |
+| **webhookId** | **Integer**| The unique ID of the webhook to retrieve. | |
 
 ### Return type
 
@@ -293,15 +293,15 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Webhook details. |  -  |
+| **200** | Webhook configuration details. |  -  |
 
 <a id="updateWebhook"></a>
 # **updateWebhook**
-> Webhook updateWebhook(webhookId, updateWebhook)
+> Webhook updateWebhook(updateWebhook, webhookId)
 
 Update Webhook
 
-Update the properties of an existing webhook.
+Modify an existing webhook&#39;s configuration. Use this to change the endpoint URL or update which events trigger notifications.  **What Can Be Updated:** - Webhook endpoint URL - Enabled/disabled events - Event-specific settings  **Use Cases:** - Migrate to a new endpoint URL - Enable additional events as needs grow - Disable events to reduce traffic - Update after infrastructure changes 
 
 ### Example
 ```java
@@ -325,10 +325,10 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     WebhookApi apiInstance = new WebhookApi(defaultClient);
-    Integer webhookId = 117; // Integer | ID of the webhook to update.
     UpdateWebhook updateWebhook = new UpdateWebhook(); // UpdateWebhook | 
+    Integer webhookId = 117; // Integer | The unique ID of the webhook to update.
     try {
-      Webhook result = apiInstance.updateWebhook(webhookId, updateWebhook);
+      Webhook result = apiInstance.updateWebhook(updateWebhook, webhookId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling WebhookApi#updateWebhook");
@@ -345,8 +345,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **webhookId** | **Integer**| ID of the webhook to update. | |
 | **updateWebhook** | [**UpdateWebhook**](UpdateWebhook.md)|  | |
+| **webhookId** | **Integer**| The unique ID of the webhook to update. | |
 
 ### Return type
 

@@ -2,13 +2,14 @@
 
 # DeleteWebhookResponse
 
+Response confirming webhook deletion
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **Integer** | Unique ID of the deleted webhook. |  [optional] |
-|**message** | **String** | Success message. |  [optional] |
+|**id** | **Long** | ID of the deleted webhook |  [optional] |
+|**message** | **String** | Confirmation message |  [optional] |
 
 
 

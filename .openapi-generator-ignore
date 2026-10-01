@@ -21,3 +21,10 @@
 #docs/*.md
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
+
+# SXP-2793: protect hand-tuned Maven Central publishing descriptor + CI/meta
+# from regeneration (central-publishing-maven-plugin, GPG profile, scm,
+# licenses, developers). Bump the pom version by hand.
+pom.xml
+.github/**
+LICENSE

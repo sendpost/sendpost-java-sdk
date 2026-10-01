@@ -2,13 +2,14 @@
 
 # AccountStats
 
+Daily email statistics for an account
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**date** | **LocalDate** |  |  [optional] |
-|**stat** | [**AccountStatsStat**](AccountStatsStat.md) |  |  [optional] |
+|**date** | **LocalDate** | The date for these statistics (UTC) |  [optional] |
+|**stat** | [**DailyStatistics**](DailyStatistics.md) |  |  [optional] |
 
 
 

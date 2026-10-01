@@ -17,7 +17,7 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 
 Create Sub-Account
 
-Creates a new sub-account under the current account.
+Create a new sub-account to segment your email sending. Each sub-account gets its own API key, suppression list, and statistics.  **What You Get:** - Unique &#x60;X-SubAccount-ApiKey&#x60; for authentication - Isolated email statistics - Separate suppression management - Independent domain configuration - Optional SMTP credentials  **Naming Best Practices:** - Use descriptive names: &#x60;Transactional_Orders&#x60;, &#x60;Marketing_Newsletter&#x60; - Include environment: &#x60;Production_Alerts&#x60;, &#x60;Staging_Tests&#x60; - For multi-tenant: &#x60;Client_CompanyName&#x60;  **Use Cases:** - New application or microservice needing email - Onboarding a new client in multi-tenant setup - Creating isolated testing environment - Separating email streams for analytics 
 
 ### Example
 ```java
@@ -78,9 +78,9 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Sub-account successfully created. |  -  |
-| **403** | Forbidden, sub-account with the same name already exists. |  -  |
-| **401** | Unauthorized, invalid API key. |  -  |
+| **201** | Sub-account created successfully with API key. |  -  |
+| **403** | Forbidden. Sub-account with the same name already exists. |  -  |
+| **401** | Unauthorized. Invalid or missing API key. |  -  |
 
 <a id="deleteSubAccount"></a>
 # **deleteSubAccount**
@@ -88,7 +88,7 @@ public class Example {
 
 Delete Sub-Account
 
-Deletes a specific sub-account by its ID.
+Remove a sub-account from your organization. This action is irreversible.  **⚠️ Before Deleting:** - Export any needed statistics or suppression lists - Update applications using this sub-account&#39;s API key - Ensure no active email sending relies on this sub-account  **What Gets Deleted:** - All sub-account configuration - Associated API keys (will stop working) - Statistics are retained for your account records  **Note:** The default sub-account (type &#x60;0&#x60;) cannot be deleted. 
 
 ### Example
 ```java
@@ -112,7 +112,7 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     SubAccountApi apiInstance = new SubAccountApi(defaultClient);
-    Integer subaccountId = 12; // Integer | The ID of the sub-account to delete.
+    Integer subaccountId = 12; // Integer | The unique ID of the sub-account to delete.
     try {
       DeleteSubAccountResponse result = apiInstance.deleteSubAccount(subaccountId);
       System.out.println(result);
@@ -131,7 +131,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **subaccountId** | **Integer**| The ID of the sub-account to delete. | |
+| **subaccountId** | **Integer**| The unique ID of the sub-account to delete. | |
 
 ### Return type
 
@@ -149,9 +149,9 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Sub-account successfully deleted. |  -  |
-| **406** | Not Acceptable. Cannot delete the default sub-account. |  -  |
-| **401** | Unauthorized. Invalid API key. |  -  |
+| **200** | Sub-account deleted successfully. |  -  |
+| **406** | Not Acceptable. Cannot delete the default sub-account (type 0). |  -  |
+| **401** | Unauthorized. Invalid or missing API key. |  -  |
 
 <a id="getAllSubAccounts"></a>
 # **getAllSubAccounts**
@@ -159,7 +159,7 @@ public class Example {
 
 List Sub-Accounts
 
-Retrieves a list of all sub-accounts associated with a specific account.
+Retrieve all sub-accounts under your main account. Sub-accounts allow you to segment email sending for different applications, brands, or use cases.  **Sub-Account Types:** | Type | Value | Description | |------|-------|-------------| | Default | &#x60;0&#x60; | Primary sub-account created with your account (cannot be deleted) | | Custom | &#x60;1&#x60; | Additional sub-accounts you create |  **Each Sub-Account Has:** - Unique &#x60;X-SubAccount-ApiKey&#x60; for API authentication - Independent suppression list - Isolated email statistics - Own domain configurations - SMTP credentials (if enabled)  **Use Cases:** - Separate transactional and marketing emails - Multi-tenant SaaS applications (one sub-account per customer) - Different brands or product lines - Development/staging/production environments  **Note:** &#x60;isPlus&#x60; indicates SendX Plus customers with premium features. 
 
 ### Example
 ```java
@@ -183,9 +183,9 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     SubAccountApi apiInstance = new SubAccountApi(defaultClient);
-    Integer limit = 10; // Integer | Number of records to return per request.
-    Integer offset = 0; // Integer | Number of initial records to skip.
-    String search = "Hooli"; // String | Case-insensitive search against the sub-account name.
+    Integer limit = 20; // Integer | Number of records to return per request. Default 20.
+    Integer offset = 0; // Integer | Number of initial records to skip for pagination.
+    String search = "Production"; // String | Case-insensitive search against sub-account names.
     try {
       List<SubAccount> result = apiInstance.getAllSubAccounts(limit, offset, search);
       System.out.println(result);
@@ -204,9 +204,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Number of records to return per request. | [optional] |
-| **offset** | **Integer**| Number of initial records to skip. | [optional] |
-| **search** | **String**| Case-insensitive search against the sub-account name. | [optional] |
+| **limit** | **Integer**| Number of records to return per request. Default 20. | [optional] [default to 20] |
+| **offset** | **Integer**| Number of initial records to skip for pagination. | [optional] [default to 0] |
+| **search** | **String**| Case-insensitive search against sub-account names. | [optional] |
 
 ### Return type
 
@@ -224,8 +224,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully retrieved sub-accounts. |  -  |
-| **401** | Unauthorized, invalid API key. |  -  |
+| **200** | List of sub-accounts. |  -  |
+| **401** | Unauthorized. Invalid or missing API key. |  -  |
 
 <a id="getSubAccount"></a>
 # **getSubAccount**
@@ -233,7 +233,7 @@ public class Example {
 
 Get Sub-Account
 
-Retrieves a specific sub-account by its ID.
+Retrieve detailed information about a specific sub-account, including API keys, SMTP credentials, and configuration.  **Response Includes:** - Sub-account name and ID - API key for sub-account authentication - SMTP credentials (if enabled) - Team members with access - Labels/tags for categorization - Creation timestamp 
 
 ### Example
 ```java
@@ -257,7 +257,7 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     SubAccountApi apiInstance = new SubAccountApi(defaultClient);
-    Integer subaccountId = 11; // Integer | The ID of the sub-account to retrieve.
+    Integer subaccountId = 11; // Integer | The unique ID of the sub-account to retrieve.
     try {
       SubAccount result = apiInstance.getSubAccount(subaccountId);
       System.out.println(result);
@@ -276,7 +276,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **subaccountId** | **Integer**| The ID of the sub-account to retrieve. | |
+| **subaccountId** | **Integer**| The unique ID of the sub-account to retrieve. | |
 
 ### Return type
 
@@ -300,11 +300,11 @@ public class Example {
 
 <a id="updateSubAccount"></a>
 # **updateSubAccount**
-> SubAccount updateSubAccount(subaccountId, updateSubAccount)
+> SubAccount updateSubAccount(updateSubAccount, subaccountId)
 
 Update Sub-Account
 
-Updates the details of an existing sub-account.
+Modify settings for an existing sub-account. Use this to rename sub-accounts, update labels, or modify configuration.  **What Can Be Updated:** - Sub-account name - Labels/tags for categorization - Other configuration settings  **Use Cases:** - Rename sub-account for clarity - Update labels for organizational changes - Modify settings after initial setup 
 
 ### Example
 ```java
@@ -328,10 +328,10 @@ public class Example {
     //accountAuth.setApiKeyPrefix("Token");
 
     SubAccountApi apiInstance = new SubAccountApi(defaultClient);
-    Integer subaccountId = 12; // Integer | The ID of the sub-account to update.
     UpdateSubAccount updateSubAccount = new UpdateSubAccount(); // UpdateSubAccount | 
+    Integer subaccountId = 12; // Integer | The unique ID of the sub-account to update.
     try {
-      SubAccount result = apiInstance.updateSubAccount(subaccountId, updateSubAccount);
+      SubAccount result = apiInstance.updateSubAccount(updateSubAccount, subaccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SubAccountApi#updateSubAccount");
@@ -348,8 +348,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **subaccountId** | **Integer**| The ID of the sub-account to update. | |
 | **updateSubAccount** | [**UpdateSubAccount**](UpdateSubAccount.md)|  | |
+| **subaccountId** | **Integer**| The unique ID of the sub-account to update. | |
 
 ### Return type
 
@@ -367,7 +367,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Sub-account successfully updated. |  -  |
+| **200** | Sub-account updated successfully. |  -  |
 | **404** | Sub-account not found. |  -  |
-| **401** | Unauthorized, invalid API key. |  -  |
+| **401** | Unauthorized. Invalid or missing API key. |  -  |
 
